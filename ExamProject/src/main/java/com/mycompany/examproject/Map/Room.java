@@ -17,8 +17,9 @@ public class Room {
     private List<Room> connections; // Adjacent rooms (for navigation)
     private String description; // Textual description of the room
     private boolean visited; // Tracks if the room has been visited
+    private String roomPictureSource;
 
-    public Room(int x, int y, int floor, RoomType type, String description) {
+    public Room(int x, int y, int floor, RoomType type, String description, String roomPictureSource) {
         this.x = x;
         this.y = y;
         this.floor = floor;
@@ -26,6 +27,7 @@ public class Room {
         this.description = description;
         this.connections = new ArrayList<>();
         this.visited = false;
+        this.roomPictureSource = roomPictureSource;
     }
 
     // Getters and setters

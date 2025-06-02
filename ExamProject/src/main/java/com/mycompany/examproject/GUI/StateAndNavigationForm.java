@@ -362,6 +362,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BackWardsButtonActionPerformed
 
+    public void updateAllLabels(){
+    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackWardsButton;

@@ -23,6 +23,9 @@ public class GUIandLogicIntermediary {
         
         StateAndNavigationForm stateAndNavigationForm = new StateAndNavigationForm();
         stateAndNavigationForm.setVisible(true);
+        
+        //обновляем все лейблы и поля в форме stateAndNavigationForm
+        
     }
     
 }

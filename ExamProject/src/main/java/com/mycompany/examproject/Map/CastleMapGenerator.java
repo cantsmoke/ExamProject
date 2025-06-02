@@ -367,9 +367,17 @@ public class CastleMapGenerator {
         return floors;
     }
 
-    // Main method for testing
-    public static void main(String[] args) {
-        CastleMapGenerator generator = new CastleMapGenerator();
-        generator.generateMap();
+    public Room getStartRoom() {
+        if (floors.isEmpty()) {
+            throw new IllegalStateException("Map has not been generated yet! Call generateMap() first.");
+        }
+        Floor firstFloor = floors.get(0); // Floor 1 is at index 0
+        Room startRoom = firstFloor.getStartRoom();
+        if (startRoom == null) {
+            throw new IllegalStateException("Start room not found on floor 1!");
+        }
+        return startRoom;
     }
+    
+    
 }

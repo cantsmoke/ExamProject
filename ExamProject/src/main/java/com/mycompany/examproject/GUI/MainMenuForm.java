@@ -4,7 +4,7 @@
  */
 package com.mycompany.examproject.GUI;
 
-import com.mycompany.examproject.Map.CastleMapGenerator;
+import com.mycompany.examproject.GUIandLogicIntermediary;
 import java.awt.Color;
 
 /**
@@ -121,11 +121,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
-        StateAndNavigationForm stateAndNavigationForm = new StateAndNavigationForm();
-        stateAndNavigationForm.setVisible(true);
-        
-        CastleMapGenerator castleMapGenerator = new CastleMapGenerator();
-        castleMapGenerator.generateMap();
+        GUIandLogicIntermediary.handleNewGameButtonPressed();
     }//GEN-LAST:event_NewGameButtonActionPerformed
 
     private void LoadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadGameButtonActionPerformed

@@ -8,7 +8,7 @@ package com.mycompany.examproject.Map;
  *
  * @author Arseniy
  */
-class Floor {
+public class Floor {
     private int floorNumber; // Floor index (1 to 10)
     private int width, height; // Dimensions of the floor
     private Room[][] rooms; // 2D grid of rooms

@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Arseniy
  */
-class Room {
+public class Room {
     private int x, y, floor; // Coordinates and floor number
     private RoomType type;   // Type of the room
     private List<Room> connections; // Adjacent rooms (for navigation)

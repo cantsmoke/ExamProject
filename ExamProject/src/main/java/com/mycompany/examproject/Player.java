@@ -55,8 +55,10 @@ public class Player {
     // Ghost system
     private List<String> messagesForFuture; // Messages left for future playthroughs
     private List<String> pastActions; // Actions recorded for ghost system on death
-
-    public Player(Room room) {
+    
+    private static Player instance = null;
+    
+    private Player(Room room) {
         // Initial stats
         this.hp = 100;
         this.maxHp = 100;
@@ -97,7 +99,22 @@ public class Player {
 //        equipItem("Rusty Sword");
 //        equipItem("Leather Armor");
     }
-
+    
+    public static Player getInstance(Room room) {
+        if (instance == null) {
+            instance = new Player(room);
+        }
+        return instance;
+    }
+    
+    // Перегруженный метод если нужно обращаться к уже созданному одиночке без передачи комнаты:
+    public static Player getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException("Player is not initialized! Call getInstance(Room) first.");
+        }
+        return instance;
+    }
+    
     // Getters for core stats
     public int getHp() { return hp; }
     public int getMaxHp() { return maxHp; }

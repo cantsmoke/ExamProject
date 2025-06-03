@@ -40,4 +40,8 @@ public class Room {
     public boolean isVisited() { return visited; }
     public void setVisited(boolean visited) { this.visited = visited; }
     public void addConnection(Room room) { connections.add(room); }
+    
+    public String getRoomPictureSource(){
+        return this.roomPictureSource;
+    }
 }

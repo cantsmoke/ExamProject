@@ -55,12 +55,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="GameLogoLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="gameLogoLabel" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="ExitGameButton" min="-2" pref="205" max="-2" attributes="0"/>
-                              <Component id="LoadGameButton" min="-2" pref="205" max="-2" attributes="0"/>
-                              <Component id="NewGameButton" min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="exitGameButton" min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="loadGameButton" min="-2" pref="205" max="-2" attributes="0"/>
+                              <Component id="newGameButton" min="-2" pref="205" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="26" max="32767" attributes="0"/>
                       </Group>
@@ -73,27 +73,27 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="GameLogoLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="gameLogoLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="NewGameButton" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="newGameButton" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="LoadGameButton" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="loadGameButton" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace pref="20" max="32767" attributes="0"/>
-                  <Component id="ExitGameButton" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="exitGameButton" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="GameLogoLabel">
+        <Component class="javax.swing.JLabel" name="gameLogoLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 2 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 15_06_09 (1).png"/>
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="NewGameButton">
+        <Component class="javax.swing.JButton" name="newGameButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -108,10 +108,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NewGameButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newGameButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="LoadGameButton">
+        <Component class="javax.swing.JButton" name="loadGameButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -125,10 +125,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoadGameButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loadGameButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ExitGameButton">
+        <Component class="javax.swing.JButton" name="exitGameButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -142,7 +142,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitGameButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitGameButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -31,10 +31,10 @@ public class MainMenuForm extends javax.swing.JFrame {
     private void initComponents() {
 
         MainMenuPanel = new javax.swing.JPanel();
-        GameLogoLabel = new javax.swing.JLabel();
-        NewGameButton = new javax.swing.JButton();
-        LoadGameButton = new javax.swing.JButton();
-        ExitGameButton = new javax.swing.JButton();
+        gameLogoLabel = new javax.swing.JLabel();
+        newGameButton = new javax.swing.JButton();
+        loadGameButton = new javax.swing.JButton();
+        exitGameButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -43,36 +43,36 @@ public class MainMenuForm extends javax.swing.JFrame {
         MainMenuPanel.setBackground(new java.awt.Color(0, 0, 0));
         MainMenuPanel.setPreferredSize(new java.awt.Dimension(275, 412));
 
-        GameLogoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 2 июн. 2025 г., 15_06_09 (1).png")); // NOI18N
+        gameLogoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 2 июн. 2025 г., 15_06_09 (1).png")); // NOI18N
 
-        NewGameButton.setBackground(new java.awt.Color(51, 51, 51));
-        NewGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        NewGameButton.setText("Новая игра");
-        NewGameButton.setToolTipText("");
-        NewGameButton.setBorder(null);
-        NewGameButton.addActionListener(new java.awt.event.ActionListener() {
+        newGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        newGameButton.setForeground(new java.awt.Color(255, 255, 255));
+        newGameButton.setText("Новая игра");
+        newGameButton.setToolTipText("");
+        newGameButton.setBorder(null);
+        newGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewGameButtonActionPerformed(evt);
+                newGameButtonActionPerformed(evt);
             }
         });
 
-        LoadGameButton.setBackground(new java.awt.Color(51, 51, 51));
-        LoadGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        LoadGameButton.setText("Загрузить сохранение");
-        LoadGameButton.setBorder(null);
-        LoadGameButton.addActionListener(new java.awt.event.ActionListener() {
+        loadGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        loadGameButton.setForeground(new java.awt.Color(255, 255, 255));
+        loadGameButton.setText("Загрузить сохранение");
+        loadGameButton.setBorder(null);
+        loadGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoadGameButtonActionPerformed(evt);
+                loadGameButtonActionPerformed(evt);
             }
         });
 
-        ExitGameButton.setBackground(new java.awt.Color(51, 51, 51));
-        ExitGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        ExitGameButton.setText("Выход");
-        ExitGameButton.setBorder(null);
-        ExitGameButton.addActionListener(new java.awt.event.ActionListener() {
+        exitGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        exitGameButton.setForeground(new java.awt.Color(255, 255, 255));
+        exitGameButton.setText("Выход");
+        exitGameButton.setBorder(null);
+        exitGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ExitGameButtonActionPerformed(evt);
+                exitGameButtonActionPerformed(evt);
             }
         });
 
@@ -83,12 +83,12 @@ public class MainMenuForm extends javax.swing.JFrame {
             .addGroup(MainMenuPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(MainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(GameLogoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gameLogoLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(MainMenuPanelLayout.createSequentialGroup()
                         .addGroup(MainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ExitGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LoadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(NewGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(exitGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(loadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(newGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 26, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -96,13 +96,13 @@ public class MainMenuForm extends javax.swing.JFrame {
             MainMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MainMenuPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(GameLogoLabel)
+                .addComponent(gameLogoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NewGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(newGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(LoadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(loadGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(ExitGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(exitGameButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
@@ -120,24 +120,24 @@ public class MainMenuForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewGameButtonActionPerformed
+    private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         GUIandLogicIntermediary.handleNewGameButtonPressed();
-    }//GEN-LAST:event_NewGameButtonActionPerformed
+    }//GEN-LAST:event_newGameButtonActionPerformed
 
-    private void LoadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadGameButtonActionPerformed
+    private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_LoadGameButtonActionPerformed
+    }//GEN-LAST:event_loadGameButtonActionPerformed
 
-    private void ExitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitGameButtonActionPerformed
+    private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitGameButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ExitGameButtonActionPerformed
+    }//GEN-LAST:event_exitGameButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ExitGameButton;
-    private javax.swing.JLabel GameLogoLabel;
-    private javax.swing.JButton LoadGameButton;
     private javax.swing.JPanel MainMenuPanel;
-    private javax.swing.JButton NewGameButton;
+    private javax.swing.JButton exitGameButton;
+    private javax.swing.JLabel gameLogoLabel;
+    private javax.swing.JButton loadGameButton;
+    private javax.swing.JButton newGameButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -32,7 +32,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="PlayerInfoAndBasicButtonsPanel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="LocationInfoPanel" min="-2" max="-2" attributes="0"/>
+              <Component id="LocationInfoPanel" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="NavigationPanel" min="-2" max="-2" attributes="0"/>
           </Group>
@@ -41,8 +41,8 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Component id="PlayerInfoAndBasicButtonsPanel" alignment="0" max="32767" attributes="0"/>
-          <Component id="NavigationPanel" alignment="0" max="32767" attributes="0"/>
           <Component id="LocationInfoPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="NavigationPanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -60,21 +60,21 @@
               <Group type="102" alignment="0" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="InventoryButton" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
+                          <Component id="inventoryButton" alignment="1" min="-2" pref="254" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="SaveButton" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="UpgradeMenu" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="ExitToMainMenuButton" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="StaminaBar" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
-                                  <Component id="HealthBar" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="saveButton" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="upgradeMenu" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="exitToMainMenuButton" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="staminaBar" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
+                                  <Component id="healthBar" alignment="0" min="-2" pref="254" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PlayerIconLabel" min="-2" pref="254" max="-2" attributes="0"/>
+                          <Component id="playerIconLabel" min="-2" pref="254" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -85,30 +85,30 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="HealthBar" min="-2" pref="30" max="-2" attributes="0"/>
+                  <Component id="healthBar" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="StaminaBar" min="-2" pref="31" max="-2" attributes="0"/>
+                  <Component id="staminaBar" min="-2" pref="31" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="PlayerIconLabel" min="-2" pref="232" max="-2" attributes="0"/>
+                  <Component id="playerIconLabel" min="-2" pref="232" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="InventoryButton" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="inventoryButton" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="UpgradeMenu" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="upgradeMenu" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="SaveButton" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="saveButton" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="ExitToMainMenuButton" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="exitToMainMenuButton" min="-2" pref="39" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JProgressBar" name="HealthBar">
+        <Component class="javax.swing.JProgressBar" name="healthBar">
         </Component>
-        <Component class="javax.swing.JProgressBar" name="StaminaBar">
+        <Component class="javax.swing.JProgressBar" name="staminaBar">
         </Component>
-        <Component class="javax.swing.JButton" name="InventoryButton">
+        <Component class="javax.swing.JButton" name="inventoryButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -122,10 +122,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InventoryButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inventoryButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ExitToMainMenuButton">
+        <Component class="javax.swing.JButton" name="exitToMainMenuButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -139,10 +139,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitToMainMenuButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitToMainMenuButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="UpgradeMenu">
+        <Component class="javax.swing.JButton" name="upgradeMenu">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -156,10 +156,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UpgradeMenuActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="upgradeMenuActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="SaveButton">
+        <Component class="javax.swing.JButton" name="saveButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -173,10 +173,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="PlayerIconLabel">
+        <Component class="javax.swing.JLabel" name="playerIconLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -202,8 +202,8 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="LocationImageLabel" max="32767" attributes="0"/>
-                      <Component id="LocationDescriptionScrollPane" pref="455" max="32767" attributes="0"/>
+                      <Component id="locationImageLabel" max="32767" attributes="0"/>
+                      <Component id="LocationDescriptionScrollPane" pref="513" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -212,8 +212,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="117" max="-2" attributes="0"/>
-                  <Component id="LocationImageLabel" min="-2" pref="210" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                  <Component id="locationImageLabel" min="-2" pref="267" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="LocationDescriptionScrollPane" min="-2" pref="266" max="-2" attributes="0"/>
                   <EmptySpace pref="134" max="32767" attributes="0"/>
@@ -222,7 +222,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="LocationImageLabel">
+        <Component class="javax.swing.JLabel" name="locationImageLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -230,12 +230,14 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="LocationDescriptionScrollPane">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
@@ -245,15 +247,19 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="LocationDescriptionArea">
+            <Component class="javax.swing.JTextArea" name="locationDescriptionArea">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Yu Mincho Light" size="18" style="0"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="cc" green="cc" red="cc" type="rgb"/>
                 </Property>
+                <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="null"/>
@@ -279,22 +285,22 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                  <Component id="CurrentFloorLabel" max="32767" attributes="0"/>
+                  <Component id="currentFloorLabel" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="ToTheLeftButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="toTheLeftButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="ToTheRightButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="toTheRightButton" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="MapLabel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="mapLabel" alignment="1" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="PreviousFloorButton" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace pref="152" max="32767" attributes="0"/>
-                          <Component id="NextFloorButton" min="-2" pref="150" max="-2" attributes="0"/>
+                          <Component id="previousFloorButton" min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace pref="158" max="32767" attributes="0"/>
+                          <Component id="nextFloorButton" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
@@ -302,8 +308,8 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="207" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="BackWardsButton" min="-2" max="-2" attributes="0"/>
-                      <Component id="ForwardButton" min="-2" pref="75" max="-2" attributes="0"/>
+                      <Component id="backWardsButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="forwardButton" min="-2" pref="75" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -313,30 +319,30 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="CurrentFloorLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="currentFloorLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                  <Component id="MapLabel" min="-2" pref="368" max="-2" attributes="0"/>
+                  <Component id="mapLabel" min="-2" pref="368" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="PreviousFloorButton" pref="18" max="32767" attributes="0"/>
-                      <Component id="NextFloorButton" max="32767" attributes="0"/>
+                      <Component id="previousFloorButton" pref="18" max="32767" attributes="0"/>
+                      <Component id="nextFloorButton" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                  <Component id="ForwardButton" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="forwardButton" min="-2" pref="75" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ToTheLeftButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ToTheRightButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="toTheLeftButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="toTheRightButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="BackWardsButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="backWardsButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="MapLabel">
+        <Component class="javax.swing.JLabel" name="mapLabel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -354,7 +360,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="PreviousFloorButton">
+        <Component class="javax.swing.JButton" name="previousFloorButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -368,10 +374,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreviousFloorButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previousFloorButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="NextFloorButton">
+        <Component class="javax.swing.JButton" name="nextFloorButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -385,15 +391,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NextFloorButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextFloorButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="CurrentFloorLabel">
+        <Component class="javax.swing.JLabel" name="currentFloorLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="jLabel1"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="ForwardButton">
+        <Component class="javax.swing.JButton" name="forwardButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -409,10 +415,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ForwardButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="forwardButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ToTheLeftButton">
+        <Component class="javax.swing.JButton" name="toTheLeftButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -431,10 +437,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ToTheLeftButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toTheLeftButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ToTheRightButton">
+        <Component class="javax.swing.JButton" name="toTheRightButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -453,10 +459,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ToTheRightButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="toTheRightButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="BackWardsButton">
+        <Component class="javax.swing.JButton" name="backWardsButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -475,7 +481,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackWardsButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backWardsButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -13,15 +13,19 @@ import com.mycompany.examproject.Map.CastleMapGenerator;
  */
 public class GUIandLogicIntermediary {
     
+    private static StateAndNavigationForm stateAndNavigationForm;
+    private static Player player;
+    
     private GUIandLogicIntermediary(){}
     
     public static void handleNewGameButtonPressed(){ 
         CastleMapGenerator castleMapGenerator = new CastleMapGenerator();
         castleMapGenerator.generateMap();
         
-        Player player = new Player(castleMapGenerator.getStartRoom());
+        player = Player.getInstance(castleMapGenerator.getStartRoom());
         
-        StateAndNavigationForm stateAndNavigationForm = new StateAndNavigationForm();
+        stateAndNavigationForm = new StateAndNavigationForm();
+        stateAndNavigationForm.updateLabels();
         stateAndNavigationForm.setVisible(true);
         
         //обновляем все лейблы и поля в форме stateAndNavigationForm

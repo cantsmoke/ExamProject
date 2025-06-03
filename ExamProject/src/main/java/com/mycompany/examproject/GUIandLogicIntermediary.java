@@ -15,21 +15,66 @@ public class GUIandLogicIntermediary {
     
     private static StateAndNavigationForm stateAndNavigationForm;
     private static Player player;
+    private static CastleMapGenerator castleMapGenerator;
     
     private GUIandLogicIntermediary(){}
     
     public static void handleNewGameButtonPressed(){ 
-        CastleMapGenerator castleMapGenerator = new CastleMapGenerator();
+        castleMapGenerator = new CastleMapGenerator();
         castleMapGenerator.generateMap();
         
         player = Player.getInstance(castleMapGenerator.getStartRoom());
         
         stateAndNavigationForm = new StateAndNavigationForm();
+        
+        player.getCurrentRoom().setVisitedByPlayer(true);
+        
         stateAndNavigationForm.updateLabels();
         stateAndNavigationForm.setVisible(true);
+    }
+    
+    public static void handlePLayerGoingSouth() {
+        int x = player.getCurrentRoom().getX();
+        int y = player.getCurrentRoom().getY();
+        int floorNumber = player.getCurrentRoom().getFloor();
         
-        //обновляем все лейблы и поля в форме stateAndNavigationForm
+        player.setCurrentRoom(castleMapGenerator.getRoomSouth(x, y, floorNumber));
+        player.getCurrentRoom().setVisitedByPlayer(true);
         
+        stateAndNavigationForm.updateLabels();
+    }
+    
+    public static void handlePLayerGoingEast() {
+        int x = player.getCurrentRoom().getX();
+        int y = player.getCurrentRoom().getY();
+        int floorNumber = player.getCurrentRoom().getFloor();
+        
+        player.setCurrentRoom(castleMapGenerator.getRoomToEast(x, y, floorNumber));
+        player.getCurrentRoom().setVisitedByPlayer(true);
+        
+        stateAndNavigationForm.updateLabels();
+    }
+    
+    public static void handlePLayerGoingWest() {
+        int x = player.getCurrentRoom().getX();
+        int y = player.getCurrentRoom().getY();
+        int floorNumber = player.getCurrentRoom().getFloor();
+        
+        player.setCurrentRoom(castleMapGenerator.getRoomToWest(x, y, floorNumber));
+        player.getCurrentRoom().setVisitedByPlayer(true);
+        
+        stateAndNavigationForm.updateLabels();
+    }
+    
+    public static void handlePLayerGoingNorth() {
+        int x = player.getCurrentRoom().getX();
+        int y = player.getCurrentRoom().getY();
+        int floorNumber = player.getCurrentRoom().getFloor();
+        
+        player.setCurrentRoom(castleMapGenerator.getRoomNorth(x, y, floorNumber));
+        player.getCurrentRoom().setVisitedByPlayer(true);
+        
+        stateAndNavigationForm.updateLabels();
     }
     
 }

@@ -4,6 +4,8 @@
  */
 package com.mycompany.examproject.Map;
 
+import java.util.List;
+
 /**
  *
  * @author Arseniy
@@ -17,6 +19,7 @@ public class Floor {
     private Room restRoom; // Room for resting
     private Room bossRoom; // Room with the boss
     private Room startRoom; // Starting room (only on floor 1)
+    //private Room[][] visitedRooms;
 
     public Floor(int floorNumber, int width, int height) {
         this.floorNumber = floorNumber;

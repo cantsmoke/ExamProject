@@ -18,6 +18,7 @@ public class Room {
     private String description; // Textual description of the room
     private boolean visited; // Tracks if the room has been visited
     private String roomPictureSource;
+    private boolean visitedByPlayer;
 
     public Room(int x, int y, int floor, RoomType type, String description, String roomPictureSource) {
         this.x = x;
@@ -28,8 +29,12 @@ public class Room {
         this.connections = new ArrayList<>();
         this.visited = false;
         this.roomPictureSource = roomPictureSource;
+        this.visitedByPlayer = false;
     }
 
+    public boolean isVisitedByPlayer() { return visitedByPlayer; }
+    public void setVisitedByPlayer(boolean visitedByPlayer) { this.visitedByPlayer = visitedByPlayer; }
+    
     // Getters and setters
     public int getX() { return x; }
     public int getY() { return y; }

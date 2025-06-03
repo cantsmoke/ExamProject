@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject.Map;
 
+import com.mycompany.examproject.Player;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,7 +16,7 @@ import java.util.Stack;
  */
 public class CastleMapGenerator {
     private static final int TOTAL_FLOORS = 10;
-    private List<Floor> floors;
+    private static List<Floor> floors;
     private Random random;
 
     public CastleMapGenerator() {
@@ -291,42 +292,42 @@ public class CastleMapGenerator {
     // Generates a description for a normal room
     private String generateRoomDescription(int floor, int x, int y) {
         String[] descriptions = {
-            "Ты входишь в пространство забытое временем — каменные своды дрожат под напором тишины. " +
-            "Пыль веков оседает на ржавых доспехах, что стоят на страже пустоты. " +
-            "Кажется, что-то наблюдает из теней...  ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png",
+            "You enter a space forgotten by time — the stone vaults tremble under the pressure of silence. " +
+            "The dust of centuries settles on the rusty armor that guards the void. " +
+            "It seems that something is watching from the shadows...  ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png",
 
-            "Здесь воздух густой от холода и страха. Каменные стены покрыты трещинами, " +
-            "словно сам замок кричит от боли. Где-то вдалеке капает вода — но это не вода. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_34_41.png",
+            "The air here is thick with cold and fear. The stone walls are covered with cracks, " +
+            "It's like the castle itself is screaming in pain. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_34_41.png",
 
-            "Сводчатый зал, где даже пламя факелов боится гореть ярко. Тени ползут по стенам, " +
-            "как будто они живые. Воздух пропитан запахом гнили и старого железа. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_38_37.png" ,
+            "A vaulted hall where even the flame of torches is afraid to burn brightly. Shadows creep across the walls, " +
+            "It's like they're alive. The air is saturated with the smell of rot and old iron. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_38_37.png" ,
 
-            "Длинный коридор без конца и начала. Стены украшены треснувшими барельефами древних богов, " +
-            "их лица искажены скорбью. Пол усыпан осколками чего-то… или кого-то.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_45_28.png",
+            "A long corridor with no end and no beginning. The walls are decorated with cracked bas-reliefs of ancient gods, " +
+            "their faces are distorted with grief. The floor is strewn with shards of something...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_45_28.png",
 
-            "Тронный зал, теперь лишь развалины величия. Чёрные балки обрушены, " +
-            "а на полу остались следы когтей. Их ведёт к трону, где давным-давно ничего не сидит.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_46_14.png",
+            "The throne room is now just a ruin of grandeur. Black beams collapsed, " +
+            "and there were claw marks on the floor. They lead to a throne where no one has sat for a long time.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_46_14.png",
 
-            "Пыльное хранилище знаний, что забыло свои секреты. Папирусы рассыпаются в прах, " +
-            "а книги шепчут слова на языке, который никто не помнит. Но ты всё равно слышишь их.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_51_31.png",
+            "A dusty repository of knowledge, keeping its secrets. Papyri crumble to dust, " +
+            "and books whisper words in a language that has long been forgotten...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_51_31.png",
 
-            "Подземелье, где эхо отзывается слишком быстро. Стены покрыты цепями, " +
-            "все ржавые, кроме одной — она блестит так, словно ею пользовались совсем недавно.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_55_11.png",
+            "A dungeon where the echo reverberates too fast. The walls are covered with chains, " +
+            "all are rusty, except for one — it glitters as if it had been used recently.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_55_11.png",
 
-            "Чердак, где крыша обрушилась под тяжестью времени. Лучи лунного света пробиваются сквозь щели, " +
-            "освещая то, что лучше бы оставалось во тьме.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_57_06.png",
+            "An attic where the roof collapsed under the weight of time. Rays of moonlight break through the cracks, " +
+            "illuminating what would have been better left in the dark.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_57_06.png",
 
-            "Храм, забытый даже богами. Алтарь разбит, статуи повалены. Однако в центре зала всё ещё теплится огонь — " +
-            "неестественно синий и без дыма.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_12_35.png",
+            "A temple forgotten even by the gods. The altar is smashed, the statues are toppled. However, there is still a fire burning in the center of the hall — " +
+            "unnaturally blue and smoke-free.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_12_35.png",
 
-            "Большая зала, когда-то полная жизни. Теперь здесь только призраки смеха, " +
-            "что эхом отдаются в ушах. На стенах висят портреты, глаза которых следят за каждым шагом.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_15_01.png",
+            "A large hall, once full of life. There are only ghosts here now, " +
+            "flying in search of peace. There are portraits on the walls, their eyes following every step.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_15_01.png",
 
-            "Подвал, наполненный запахом сырости и разложения. Бочки валяются в беспорядке, " +
-            "а в углу кто-то явно пытался вырыть выход. Он вёл в никуда.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_20_01.png",
+            "The basement is filled with the smell of dampness and decay, barrels are lying in disarray." +
+            "///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_20_01.png",
 
-            "Галерея, где каждый шаг отзванивается множеством голосов. Зеркала покрыты паутиной, " +
-            "а в некоторых отражается не совсем ты.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_21_50.png"
+            "A gallery where every step is echoed by many voices. The mirrors are covered with cobwebs, " +
+            "and the reflections in them don't look like you at all...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_21_50.png"
         };
         return descriptions[random.nextInt(descriptions.length)];
     }
@@ -406,7 +407,7 @@ public class CastleMapGenerator {
     }
 
     // Getter for floors
-    public List<Floor> getFloors() {
+    public static List<Floor> getFloors() {
         return floors;
     }
 
@@ -422,5 +423,48 @@ public class CastleMapGenerator {
         return startRoom;
     }
     
+    public static Room getRoomToEast(int x, int y, int currentFloor) {
+        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Room[][] rooms = currentFloorObj.getRooms();
+        int newX = x + 1;
+        int newY = y;
+        if (newX < currentFloorObj.getWidth() && rooms[newX][newY] != null && Player.getInstance().getCurrentRoom().getConnections().contains(rooms[newX][newY])) {
+            return rooms[newX][newY];
+        }
+        return null;
+    }
+
+    public static Room getRoomToWest(int x, int y, int currentFloor) {
+        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Room[][] rooms = currentFloorObj.getRooms();
+        int newX = x - 1;
+        int newY = y;
+        if (newX >= 0 && rooms[newX][newY] != null && Player.getInstance().getCurrentRoom().getConnections().contains(rooms[newX][newY])) {
+            return rooms[newX][newY];
+        }
+        return null;
+    }
+
+    public static Room getRoomNorth(int x, int y, int currentFloor) {
+        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Room[][] rooms = currentFloorObj.getRooms();
+        int newX = x;
+        int newY = y - 1;
+        if (newY >= 0 && rooms[newX][newY] != null && Player.getInstance().getCurrentRoom().getConnections().contains(rooms[newX][newY])) {
+            return rooms[newX][newY];
+        }
+        return null;
+    }
+
+    public static Room getRoomSouth(int x, int y, int currentFloor) {
+        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Room[][] rooms = currentFloorObj.getRooms();
+        int newX = x;
+        int newY = y + 1;
+        if (newY < currentFloorObj.getHeight() && rooms[newX][newY] != null && Player.getInstance().getCurrentRoom().getConnections().contains(rooms[newX][newY])) {
+            return rooms[newX][newY];
+        }
+        return null;
+    }
     
 }

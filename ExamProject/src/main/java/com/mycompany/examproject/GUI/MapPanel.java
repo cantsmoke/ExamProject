@@ -30,24 +30,6 @@ public class MapPanel extends JPanel {
 
         // Сначала отрисуем соединения между посещёнными комнатами
         g.setColor(Color.BLACK);
-//        for (int x = 0; x < floor.getWidth(); x++) {
-//            for (int y = 0; y < floor.getHeight(); y++) {
-//                Room room = rooms[x][y];
-//                if (room == null || !room.isVisited()) continue;
-//
-//                int startX = x * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//                int startY = y * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//
-//                for (Room connected : room.getConnections()) {
-//                    if (!connected.isVisited()) continue;
-//
-//                    int endX = connected.getX() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//                    int endY = connected.getY() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//
-//                    g.drawLine(startX, startY, endX, endY);
-//                }
-//            }
-//        }
 
         // Теперь отрисуем сами комнаты
         for (int x = 0; x < floor.getWidth(); x++) {

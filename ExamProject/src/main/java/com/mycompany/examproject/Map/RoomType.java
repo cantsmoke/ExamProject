@@ -9,5 +9,5 @@ package com.mycompany.examproject.Map;
  * @author Arseniy
  */
 public enum RoomType {
-    NORMAL, STAIRCASE_UP, STAIRCASE_DOWN, REST, START, BOSS
+    NORMAL, STAIRCASE_UP, STAIRCASE_DOWN, REST, ENTRANCE_HALL, BOSS
 }

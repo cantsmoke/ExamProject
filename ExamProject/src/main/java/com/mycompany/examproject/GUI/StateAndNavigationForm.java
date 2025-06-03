@@ -6,12 +6,12 @@ package com.mycompany.examproject.GUI;
 
 import com.mycompany.examproject.GUIandLogicIntermediary;
 import com.mycompany.examproject.Map.CastleMapGenerator;
-import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
+import com.mycompany.examproject.Map.RoomType;
 import com.mycompany.examproject.Player;
 import java.awt.Color;
-import java.awt.Graphics;
 import javax.swing.ImageIcon;
+import javax.swing.UIManager;
 
 /**
  *
@@ -48,25 +48,28 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationImageLabel = new javax.swing.JLabel();
         LocationDescriptionScrollPane = new javax.swing.JScrollPane();
         locationDescriptionArea = new javax.swing.JTextArea();
+        useLadderButton = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
-        previousFloorButton = new javax.swing.JButton();
-        nextFloorButton = new javax.swing.JButton();
         currentFloorLabel = new javax.swing.JLabel();
         moveNorthButton = new javax.swing.JButton();
         moveWestButton = new javax.swing.JButton();
         moveEastButton = new javax.swing.JButton();
         moveSouthButton = new javax.swing.JButton();
         mapPanel = new MapPanel();
+        mapLabel = new javax.swing.JLabel();
+        floorNumber = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(0, 0, 0));
+        setPreferredSize(new java.awt.Dimension(1530, 800));
 
         PlayerInfoAndBasicButtonsPanel.setBackground(new java.awt.Color(0, 0, 0));
 
         inventoryButton.setBackground(new java.awt.Color(51, 51, 51));
-        inventoryButton.setForeground(new java.awt.Color(255, 255, 255));
-        inventoryButton.setText("Инвентарь");
+        inventoryButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        inventoryButton.setForeground(new java.awt.Color(204, 204, 204));
+        inventoryButton.setText("Inventory");
         inventoryButton.setBorder(null);
         inventoryButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,8 +78,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         exitToMainMenuButton.setBackground(new java.awt.Color(51, 51, 51));
-        exitToMainMenuButton.setForeground(new java.awt.Color(255, 255, 255));
-        exitToMainMenuButton.setText("Выйти в главное меню");
+        exitToMainMenuButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        exitToMainMenuButton.setForeground(new java.awt.Color(204, 204, 204));
+        exitToMainMenuButton.setText("Leave to menu");
         exitToMainMenuButton.setBorder(null);
         exitToMainMenuButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,8 +89,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         upgradeMenu.setBackground(new java.awt.Color(51, 51, 51));
-        upgradeMenu.setForeground(new java.awt.Color(255, 255, 255));
-        upgradeMenu.setText("Меню прокачки");
+        upgradeMenu.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        upgradeMenu.setForeground(new java.awt.Color(204, 204, 204));
+        upgradeMenu.setText("Upgrade menu");
         upgradeMenu.setBorder(null);
         upgradeMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,8 +100,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         saveButton.setBackground(new java.awt.Color(51, 51, 51));
-        saveButton.setForeground(new java.awt.Color(255, 255, 255));
-        saveButton.setText("Сохранить прогресс");
+        saveButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        saveButton.setForeground(new java.awt.Color(204, 204, 204));
+        saveButton.setText("Save game");
         saveButton.setBorder(null);
         saveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -167,6 +173,16 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationDescriptionArea.setCaretColor(new java.awt.Color(204, 204, 204));
         LocationDescriptionScrollPane.setViewportView(locationDescriptionArea);
 
+        useLadderButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        useLadderButton.setForeground(new java.awt.Color(0, 0, 0));
+        useLadderButton.setText("Use ladder");
+        useLadderButton.setBorder(null);
+        useLadderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useLadderButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout LocationInfoPanelLayout = new javax.swing.GroupLayout(LocationInfoPanel);
         LocationInfoPanel.setLayout(LocationInfoPanelLayout);
         LocationInfoPanelLayout.setHorizontalGroup(
@@ -175,8 +191,12 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE))
+                    .addComponent(LocationDescriptionScrollPane))
                 .addContainerGap())
+            .addGroup(LocationInfoPanelLayout.createSequentialGroup()
+                .addGap(155, 155, 155)
+                .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         LocationInfoPanelLayout.setVerticalGroup(
             LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,35 +205,20 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addComponent(locationImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
         );
 
         NavigationPanel.setBackground(new java.awt.Color(0, 0, 0));
 
-        previousFloorButton.setBackground(new java.awt.Color(51, 51, 51));
-        previousFloorButton.setForeground(new java.awt.Color(255, 255, 255));
-        previousFloorButton.setText("Предыдущий этаж");
-        previousFloorButton.setBorder(null);
-        previousFloorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                previousFloorButtonActionPerformed(evt);
-            }
-        });
-
-        nextFloorButton.setBackground(new java.awt.Color(51, 51, 51));
-        nextFloorButton.setForeground(new java.awt.Color(255, 255, 255));
-        nextFloorButton.setText("Следующий этаж");
-        nextFloorButton.setBorder(null);
-        nextFloorButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextFloorButtonActionPerformed(evt);
-            }
-        });
-
-        currentFloorLabel.setText("jLabel1");
+        currentFloorLabel.setBackground(new java.awt.Color(0, 0, 0));
+        currentFloorLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        currentFloorLabel.setForeground(new java.awt.Color(204, 204, 204));
+        currentFloorLabel.setText("Current floor: ");
 
         moveNorthButton.setBackground(new java.awt.Color(51, 51, 51));
-        moveNorthButton.setForeground(new java.awt.Color(255, 255, 255));
+        moveNorthButton.setForeground(new java.awt.Color(204, 204, 204));
         moveNorthButton.setText("🡹");
         moveNorthButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         moveNorthButton.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +228,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         moveWestButton.setBackground(new java.awt.Color(51, 51, 51));
-        moveWestButton.setForeground(new java.awt.Color(255, 255, 255));
+        moveWestButton.setForeground(new java.awt.Color(204, 204, 204));
         moveWestButton.setText("🡸");
         moveWestButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         moveWestButton.setPreferredSize(new java.awt.Dimension(75, 75));
@@ -234,7 +239,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         moveEastButton.setBackground(new java.awt.Color(51, 51, 51));
-        moveEastButton.setForeground(new java.awt.Color(255, 255, 255));
+        moveEastButton.setForeground(new java.awt.Color(204, 204, 204));
         moveEastButton.setText("🡺");
         moveEastButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         moveEastButton.setPreferredSize(new java.awt.Dimension(75, 75));
@@ -245,7 +250,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         });
 
         moveSouthButton.setBackground(new java.awt.Color(51, 51, 51));
-        moveSouthButton.setForeground(new java.awt.Color(255, 255, 255));
+        moveSouthButton.setForeground(new java.awt.Color(204, 204, 204));
         moveSouthButton.setText("🡻");
         moveSouthButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         moveSouthButton.setPreferredSize(new java.awt.Dimension(75, 75));
@@ -268,49 +273,64 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
             .addGap(0, 358, Short.MAX_VALUE)
         );
 
+        mapLabel.setBackground(new java.awt.Color(0, 0, 0));
+        mapLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        mapLabel.setForeground(new java.awt.Color(204, 204, 204));
+        mapLabel.setText("Floor map");
+
+        floorNumber.setForeground(new java.awt.Color(204, 204, 204));
+
         javax.swing.GroupLayout NavigationPanelLayout = new javax.swing.GroupLayout(NavigationPanel);
         NavigationPanel.setLayout(NavigationPanelLayout);
         NavigationPanelLayout.setHorizontalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(currentFloorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(moveSouthButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(moveNorthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NavigationPanelLayout.createSequentialGroup()
-                        .addComponent(moveWestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NavigationPanelLayout.createSequentialGroup()
-                        .addComponent(previousFloorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nextFloorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(17, 17, 17))
+                        .addGap(19, 19, 19)
+                        .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(floorNumber)
+                            .addComponent(moveWestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(NavigationPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(currentFloorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
-                .addContainerGap(149, Short.MAX_VALUE)
-                .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(moveSouthButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(moveNorthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(186, 186, 186))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addComponent(mapLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(154, 154, 154))))
         );
         NavigationPanelLayout.setVerticalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(currentFloorLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(previousFloorButton, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
-                    .addComponent(nextFloorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NavigationPanelLayout.createSequentialGroup()
+                        .addGap(185, 185, 185)
+                        .addComponent(currentFloorLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(floorNumber)
+                        .addGap(227, 227, 227))
+                    .addGroup(NavigationPanelLayout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(mapLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(moveNorthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -318,7 +338,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                     .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(moveSouthButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,10 +370,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_saveButtonActionPerformed
 
-    private void nextFloorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextFloorButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nextFloorButtonActionPerformed
-
     private void moveWestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveWestButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingWest();
     }//GEN-LAST:event_moveWestButtonActionPerformed
@@ -370,10 +386,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_upgradeMenuActionPerformed
 
-    private void previousFloorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousFloorButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_previousFloorButtonActionPerformed
-
     private void moveEastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingEast();
     }//GEN-LAST:event_moveEastButtonActionPerformed
@@ -382,13 +394,38 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         GUIandLogicIntermediary.handlePLayerGoingSouth();
     }//GEN-LAST:event_moveSouthButtonActionPerformed
 
+    private void useLadderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useLadderButtonActionPerformed
+        System.out.println(Player.getInstance().getCurrentRoom().getFloor());
+        GUIandLogicIntermediary.handlePLayerUsingStairs();
+        System.out.println(Player.getInstance().getCurrentRoom().getFloor());
+    }//GEN-LAST:event_useLadderButtonActionPerformed
+
     public void updateLabels(){
         locationImageLabel.setIcon(new ImageIcon(Player.getInstance().getCurrentRoom().getRoomPictureSource()));
         locationDescriptionArea.setText(Player.getInstance().getCurrentRoom().getDescription());
         
+        checkIfLadder();
+
         mapPanel.repaint();
         
+        floorNumber.setText(String.valueOf(Player.getInstance().getCurrentRoom().getFloor()));
+        
         checkNavigationButtonsAvailability();
+        //checkFloorMapButtonAvailability();
+        
+        UIManager.put("Button.disabledText", Color.BLACK);
+    }
+    
+    private void checkIfLadder() {
+        if (Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_DOWN || Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_UP){
+            useLadderButton.setForeground(new Color(204, 204, 204));
+            useLadderButton.setBackground(new Color(51, 51, 51));
+            useLadderButton.setEnabled(true);
+        } else {
+            useLadderButton.setBackground(new Color(0, 0, 0));
+            useLadderButton.setEnabled(false);
+            useLadderButton.setForeground(new Color(0, 0, 0));
+        }
     }
     
     private void checkNavigationButtonsAvailability() {
@@ -425,64 +462,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
             moveSouthButton.setEnabled(true);
         }
     }
-    
-//    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//
-//        Room currentRoom = Player.getInstance().getCurrentRoom();
-//        int currentFloorNumber = currentRoom.getFloor();
-//        Floor floor = CastleMapGenerator.getFloors().get(currentFloorNumber - 1);
-//        Room[][] rooms = floor.getRooms();
-//
-//        final int ROOM_SIZE = 30;
-//        final int GAP = 10;
-//
-//        // Сначала отрисуем соединения между посещёнными комнатами
-//        g.setColor(Color.GRAY);
-//        for (int x = 0; x < floor.getWidth(); x++) {
-//            for (int y = 0; y < floor.getHeight(); y++) {
-//                Room room = rooms[x][y];
-//                if (room == null || !room.isVisited()) continue;
-//
-//                int startX = x * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//                int startY = y * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//
-//                for (Room connected : room.getConnections()) {
-//                    if (!connected.isVisited()) continue;
-//
-//                    int endX = connected.getX() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//                    int endY = connected.getY() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
-//
-//                    g.drawLine(startX, startY, endX, endY);
-//                }
-//            }
-//        }
-//
-//        // Теперь отрисуем сами комнаты
-//        for (int x = 0; x < floor.getWidth(); x++) {
-//            for (int y = 0; y < floor.getHeight(); y++) {
-//                Room room = rooms[x][y];
-//                if (room == null || !room.isVisited()) continue;
-//
-//                int drawX = x * (ROOM_SIZE + GAP);
-//                int drawY = y * (ROOM_SIZE + GAP);
-//
-//                // Цвет текущей комнаты
-//                if (room == currentRoom) {
-//                    g.setColor(Color.RED);
-//                } else {
-//                    g.setColor(Color.LIGHT_GRAY);
-//                }
-//
-//                g.fillRect(drawX, drawY, ROOM_SIZE, ROOM_SIZE);
-//                g.setColor(Color.BLACK);
-//                g.drawRect(drawX, drawY, ROOM_SIZE, ROOM_SIZE);
-//
-//                // Первая буква типа комнаты
-//                g.drawString(room.getType().name().substring(0, 1), drawX + 10, drawY + 20);
-//            }
-//        }
-//    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -492,21 +471,23 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     private javax.swing.JPanel PlayerInfoAndBasicButtonsPanel;
     private javax.swing.JLabel currentFloorLabel;
     private javax.swing.JButton exitToMainMenuButton;
+    private javax.swing.JLabel floorNumber;
     private javax.swing.JProgressBar healthBar;
     private javax.swing.JButton inventoryButton;
     private javax.swing.JTextArea locationDescriptionArea;
     private javax.swing.JLabel locationImageLabel;
+    private javax.swing.JLabel mapLabel;
     private javax.swing.JPanel mapPanel;
     private javax.swing.JButton moveEastButton;
     private javax.swing.JButton moveNorthButton;
     private javax.swing.JButton moveSouthButton;
     private javax.swing.JButton moveWestButton;
-    private javax.swing.JButton nextFloorButton;
     private javax.swing.JLabel playerIconLabel;
-    private javax.swing.JButton previousFloorButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JProgressBar staminaBar;
     private javax.swing.JButton upgradeMenu;
+    private javax.swing.JButton useLadderButton;
     // End of variables declaration//GEN-END:variables
+
 
 }

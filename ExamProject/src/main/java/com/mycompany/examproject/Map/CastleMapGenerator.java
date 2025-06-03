@@ -81,11 +81,11 @@ public class CastleMapGenerator {
         if (floorNum == TOTAL_FLOORS) {
             // Floor 10: Exactly 3 rooms (staircase down, rest, boss)
             floor.setRoom(0, 0, new Room(0, 0, floorNum, RoomType.STAIRCASE_DOWN, "A spiral of broken stone descends into the abyss below. The air rises thick with the scent of blood long dried. \n" +
-                "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
             floor.setRoom(1, 0, new Room(1, 0, floorNum, RoomType.REST, "A forgotten sanctuary untouched by decay. A pale light filters through unseen cracks, warming the cold flagstones. \n" +
-                "Here, the weight of the curse lifts — if only for a moment. But silence is never eternal in these halls.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                "Here, the weight of the curse lifts — if only for a moment. But silence is never eternal in these halls.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_33_23.png"));
             floor.setRoom(2, 0, new Room(2, 0, floorNum, RoomType.BOSS, "A vast hall of blackened marble, where time itself seems to halt. The air hums with dread anticipation. \n" +
-                "This is where the cycle must end — or begin anew. The very walls whisper of inevitable confrontation.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                "This is where the cycle must end — or begin anew. The very walls whisper of inevitable confrontation.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_36_54.png"));
             floor.setStaircaseDownRoom(floor.getRooms()[0][0]);
             floor.setRestRoom(floor.getRooms()[1][0]);
             floor.setBossRoom(floor.getRooms()[2][0]);
@@ -113,7 +113,7 @@ public class CastleMapGenerator {
                 int[] staircaseUpPos = getAdjacentPosition(floor, bossX, bossY);
                 if (staircaseUpPos != null) {
                     floor.setRoom(staircaseUpPos[0], staircaseUpPos[1], new Room(staircaseUpPos[0], staircaseUpPos[1], floorNum, RoomType.STAIRCASE_UP, "A narrow ascent carved from jagged bone. The steps tremble underfoot, as if the castle itself resists your climb. \n" +
-                        "Beyond lies more than just another floor — it is a deeper wound upon the world.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                        "Beyond lies more than just another floor — it is a deeper wound upon the world.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
                     floor.setStaircaseUpRoom(floor.getRooms()[staircaseUpPos[0]][staircaseUpPos[1]]);
                 }
             }
@@ -128,7 +128,7 @@ public class CastleMapGenerator {
                     downY = random.nextInt(height);
                 }
                 floor.setRoom(downX, downY, new Room(downX, downY, floorNum, RoomType.STAIRCASE_DOWN, "A spiral of broken stone descends into the abyss below. The air rises thick with the scent of blood long dried. \n" +
-                    "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                    "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
                 floor.setStaircaseDownRoom(floor.getRooms()[downX][downY]);
             }
 
@@ -141,7 +141,7 @@ public class CastleMapGenerator {
                     startX = random.nextInt(width);
                     startY = random.nextInt(height);
                 }
-                floor.setRoom(startX, startY, new Room(startX, startY, floorNum, RoomType.START, "A gate of rusted iron, forged in an age when men still believed they could keep horrors at bay. \n" +
+                floor.setRoom(startX, startY, new Room(startX, startY, floorNum, RoomType.ENTRANCE_HALL, "A gate of rusted iron, forged in an age when men still believed they could keep horrors at bay. \n" +
                     "The stones weep, the wind howls names you almost remember. This is where the nightmare begins — again.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
                 floor.setStartRoom(floor.getRooms()[startX][startY]);
             }
@@ -360,7 +360,7 @@ public class CastleMapGenerator {
                         case REST:
                             System.out.print("[ R ]");
                             break;
-                        case START:
+                        case ENTRANCE_HALL:
                             System.out.print("[ T ]");
                             break;
                         case BOSS:

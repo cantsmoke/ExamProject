@@ -46,8 +46,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         gameLogoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 2 июн. 2025 г., 15_06_09 (1).png")); // NOI18N
 
         newGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        newGameButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         newGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        newGameButton.setText("Новая игра");
+        newGameButton.setText("New game");
         newGameButton.setToolTipText("");
         newGameButton.setBorder(null);
         newGameButton.addActionListener(new java.awt.event.ActionListener() {
@@ -57,8 +58,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         });
 
         loadGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        loadGameButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         loadGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        loadGameButton.setText("Загрузить сохранение");
+        loadGameButton.setText("Load game");
         loadGameButton.setBorder(null);
         loadGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,8 +69,9 @@ public class MainMenuForm extends javax.swing.JFrame {
         });
 
         exitGameButton.setBackground(new java.awt.Color(51, 51, 51));
+        exitGameButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         exitGameButton.setForeground(new java.awt.Color(255, 255, 255));
-        exitGameButton.setText("Выход");
+        exitGameButton.setText("Close game");
         exitGameButton.setBorder(null);
         exitGameButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

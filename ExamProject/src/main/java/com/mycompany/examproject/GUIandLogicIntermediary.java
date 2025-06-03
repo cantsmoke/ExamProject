@@ -6,6 +6,9 @@ package com.mycompany.examproject;
 
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.Map.CastleMapGenerator;
+import com.mycompany.examproject.Map.Floor;
+import com.mycompany.examproject.Map.Room;
+import com.mycompany.examproject.Map.RoomType;
 
 /**
  *
@@ -16,7 +19,7 @@ public class GUIandLogicIntermediary {
     private static StateAndNavigationForm stateAndNavigationForm;
     private static Player player;
     private static CastleMapGenerator castleMapGenerator;
-    
+
     private GUIandLogicIntermediary(){}
     
     public static void handleNewGameButtonPressed(){ 
@@ -76,5 +79,33 @@ public class GUIandLogicIntermediary {
         
         stateAndNavigationForm.updateLabels();
     }
+    
+    public static void handlePLayerUsingStairs() {
+        Room current = player.getCurrentRoom();
+
+        if (current.getType() == RoomType.STAIRCASE_UP) {
+            int nextFloorNumber = current.getFloor() + 1;
+            Floor nextFloor = CastleMapGenerator.getFloors().get(nextFloorNumber - 1);
+
+            Room targetRoom = nextFloor.getStaircaseDownRoom();
+            if (targetRoom != null) {
+                player.setCurrentRoom(targetRoom);
+                targetRoom.setVisitedByPlayer(true);
+            }
+
+        } else if (current.getType() == RoomType.STAIRCASE_DOWN) {
+            int previousFloorNumber = current.getFloor() - 1;
+            Floor prevFloor = CastleMapGenerator.getFloors().get(previousFloorNumber - 1);
+
+            Room targetRoom = prevFloor.getStaircaseUpRoom();
+            if (targetRoom != null) {
+                player.setCurrentRoom(targetRoom);
+                targetRoom.setVisitedByPlayer(true);
+            }
+        }
+
+        stateAndNavigationForm.updateLabels();
+    }
+
     
 }

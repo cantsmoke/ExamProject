@@ -132,7 +132,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
     private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitGameButtonActionPerformed
-        // TODO add your handling code here:
+        System.exit(0);
     }//GEN-LAST:event_exitGameButtonActionPerformed
 
 

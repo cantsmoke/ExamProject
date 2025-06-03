@@ -68,9 +68,11 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
 
         healthBar.setForeground(new java.awt.Color(0, 153, 0));
         healthBar.setMaximum(Player.getInstance().getMaxHp());
+        healthBar.setValue(Player.getInstance().getMaxHp());
 
         staminaBar.setForeground(new java.awt.Color(0, 102, 204));
         staminaBar.setMaximum(Player.getInstance().getMaxStamina());
+        staminaBar.setValue(Player.getInstance().getMaxStamina());
 
         inventoryButton.setBackground(new java.awt.Color(51, 51, 51));
         inventoryButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -413,9 +415,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         
         locationDescriptionArea.setEnabled(false);
         
-        healthBar.setValue(Player.getInstance().getMaxHp());
-        staminaBar.setValue(Player.getInstance().getMaxStamina());
-        
         checkIfLadder();
 
         mapPanel.repaint();
@@ -423,7 +422,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         floorNumber.setText(String.valueOf(Player.getInstance().getCurrentRoom().getFloor()));
         
         checkNavigationButtonsAvailability();
-        //checkFloorMapButtonAvailability();
         
         UIManager.put("Button.disabledText", Color.BLACK);
     }

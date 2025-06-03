@@ -48,7 +48,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationImageLabel = new javax.swing.JLabel();
         LocationDescriptionScrollPane = new javax.swing.JScrollPane();
         locationDescriptionArea = new javax.swing.JTextArea();
-        useLadderButton = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
         currentFloorLabel = new javax.swing.JLabel();
         moveNorthButton = new javax.swing.JButton();
@@ -58,6 +57,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         mapPanel = new MapPanel();
         mapLabel = new javax.swing.JLabel();
         floorNumber = new javax.swing.JLabel();
+        useLadderButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -65,6 +65,12 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1530, 800));
 
         PlayerInfoAndBasicButtonsPanel.setBackground(new java.awt.Color(0, 0, 0));
+
+        healthBar.setForeground(new java.awt.Color(0, 153, 0));
+        healthBar.setMaximum(Player.getInstance().getMaxHp());
+
+        staminaBar.setForeground(new java.awt.Color(0, 102, 204));
+        staminaBar.setMaximum(Player.getInstance().getMaxStamina());
 
         inventoryButton.setBackground(new java.awt.Color(51, 51, 51));
         inventoryButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -112,7 +118,8 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
 
         playerIconLabel.setBackground(new java.awt.Color(0, 0, 0));
         playerIconLabel.setForeground(new java.awt.Color(255, 255, 255));
-        playerIconLabel.setText("jLabel1");
+        playerIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 17_52_59 (1).png")); // NOI18N
+        playerIconLabel.setBorder(new AntiqueBorder());
 
         javax.swing.GroupLayout PlayerInfoAndBasicButtonsPanelLayout = new javax.swing.GroupLayout(PlayerInfoAndBasicButtonsPanel);
         PlayerInfoAndBasicButtonsPanel.setLayout(PlayerInfoAndBasicButtonsPanelLayout);
@@ -124,12 +131,12 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                         .addComponent(inventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
                             .addGap(12, 12, 12)
-                            .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(upgradeMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(staminaBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(healthBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(upgradeMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(staminaBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(healthBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -150,15 +157,16 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addComponent(upgradeMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(100, 100, 100)
                 .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         LocationInfoPanel.setBackground(new java.awt.Color(0, 0, 0));
 
         locationImageLabel.setBackground(new java.awt.Color(0, 0, 0));
         locationImageLabel.setForeground(new java.awt.Color(255, 255, 255));
+        locationImageLabel.setBorder(new AntiqueBorder());
 
         LocationDescriptionScrollPane.setBackground(new java.awt.Color(0, 0, 0));
         LocationDescriptionScrollPane.setForeground(new java.awt.Color(0, 0, 0));
@@ -169,19 +177,10 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationDescriptionArea.setForeground(new java.awt.Color(204, 204, 204));
         locationDescriptionArea.setLineWrap(true);
         locationDescriptionArea.setRows(5);
-        locationDescriptionArea.setBorder(null);
+        locationDescriptionArea.setWrapStyleWord(true);
+        locationDescriptionArea.setBorder(new AntiqueBorder());
         locationDescriptionArea.setCaretColor(new java.awt.Color(204, 204, 204));
         LocationDescriptionScrollPane.setViewportView(locationDescriptionArea);
-
-        useLadderButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
-        useLadderButton.setForeground(new java.awt.Color(0, 0, 0));
-        useLadderButton.setText("Use ladder");
-        useLadderButton.setBorder(null);
-        useLadderButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                useLadderButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout LocationInfoPanelLayout = new javax.swing.GroupLayout(LocationInfoPanel);
         LocationInfoPanel.setLayout(LocationInfoPanelLayout);
@@ -190,24 +189,18 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LocationInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LocationDescriptionScrollPane))
+                    .addComponent(locationImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(LocationInfoPanelLayout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(223, Short.MAX_VALUE))
         );
         LocationInfoPanelLayout.setVerticalGroup(
             LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LocationInfoPanelLayout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(locationImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45))
+                .addGap(113, 113, 113))
         );
 
         NavigationPanel.setBackground(new java.awt.Color(0, 0, 0));
@@ -278,7 +271,18 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         mapLabel.setForeground(new java.awt.Color(204, 204, 204));
         mapLabel.setText("Floor map");
 
+        floorNumber.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         floorNumber.setForeground(new java.awt.Color(204, 204, 204));
+
+        useLadderButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        useLadderButton.setForeground(new java.awt.Color(0, 0, 0));
+        useLadderButton.setText("Use ladder");
+        useLadderButton.setBorder(null);
+        useLadderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useLadderButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout NavigationPanelLayout = new javax.swing.GroupLayout(NavigationPanel);
         NavigationPanel.setLayout(NavigationPanelLayout);
@@ -288,21 +292,20 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NavigationPanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(floorNumber)
-                            .addComponent(moveWestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(floorNumber)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(NavigationPanelLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(currentFloorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                        .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(NavigationPanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(moveWestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(currentFloorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
-                        .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(17, 17, 17))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
-                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64))))
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,32 +316,36 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                         .addGap(186, 186, 186))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
                         .addComponent(mapLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(154, 154, 154))))
+                        .addGap(154, 154, 154))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavigationPanelLayout.createSequentialGroup()
+                        .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(127, 127, 127))))
         );
         NavigationPanelLayout.setVerticalGroup(
             NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavigationPanelLayout.createSequentialGroup()
-                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NavigationPanelLayout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(currentFloorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(floorNumber)
-                        .addGap(227, 227, 227))
-                    .addGroup(NavigationPanelLayout.createSequentialGroup()
+                        .addComponent(floorNumber))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NavigationPanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(mapLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addComponent(moveNorthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mapPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
+                .addComponent(moveNorthButton, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(NavigationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(moveWestButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(moveEastButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(moveSouthButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -403,6 +410,11 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     public void updateLabels(){
         locationImageLabel.setIcon(new ImageIcon(Player.getInstance().getCurrentRoom().getRoomPictureSource()));
         locationDescriptionArea.setText(Player.getInstance().getCurrentRoom().getDescription());
+        
+        locationDescriptionArea.setEnabled(false);
+        
+        healthBar.setValue(Player.getInstance().getMaxHp());
+        staminaBar.setValue(Player.getInstance().getMaxStamina());
         
         checkIfLadder();
 

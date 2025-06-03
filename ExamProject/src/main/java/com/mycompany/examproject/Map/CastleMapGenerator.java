@@ -94,7 +94,7 @@ public class CastleMapGenerator {
             int restX = random.nextInt(width);
             int restY = random.nextInt(height);
             floor.setRoom(restX, restY, new Room(restX, restY, floorNum, RoomType.REST, "A chamber of stillness and ancient grace. Moss creeps gently over statues of forgotten saints, \n" +
-                "and a faint glow lingers around the altar. It soothes not the body, but the soul — a rare mercy in this cursed place.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                "and a faint glow lingers around the altar. It soothes not the body, but the soul — a rare mercy in this cursed place.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_06_21.png"));
             floor.setRestRoom(floor.getRooms()[restX][restY]);
 
             // Place boss room
@@ -105,7 +105,7 @@ public class CastleMapGenerator {
                 bossY = random.nextInt(height);
             }
             floor.setRoom(bossX, bossY, new Room(bossX, bossY, floorNum, RoomType.BOSS, "A void without stars, where even shadows fear to tread. Something waits here — something aware. \n" +
-                "The air shivers with malice. Whatever sleeps in this darkness is no mere beast. It dreams of your death.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                "The air shivers with malice. Whatever sleeps in this darkness is no mere beast. It dreams of your death.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_10_08.png"));
             floor.setBossRoom(floor.getRooms()[bossX][bossY]);
 
             // Place staircase up room adjacent to boss room (except on last floor)
@@ -142,7 +142,7 @@ public class CastleMapGenerator {
                     startY = random.nextInt(height);
                 }
                 floor.setRoom(startX, startY, new Room(startX, startY, floorNum, RoomType.ENTRANCE_HALL, "A gate of rusted iron, forged in an age when men still believed they could keep horrors at bay. \n" +
-                    "The stones weep, the wind howls names you almost remember. This is where the nightmare begins — again.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png"));
+                    "The stones weep, the wind howls names you almost remember. This is where the nightmare begins — again.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_57_53.png"));
                 floor.setStartRoom(floor.getRooms()[startX][startY]);
             }
         }

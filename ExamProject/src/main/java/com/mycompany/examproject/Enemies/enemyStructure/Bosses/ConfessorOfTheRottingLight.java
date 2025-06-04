@@ -25,7 +25,7 @@ public class ConfessorOfTheRottingLight extends Boss{
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.HEAVY_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_22_09.png";
+        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 18_34_45.png";
     }
     
     @Override

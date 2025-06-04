@@ -135,12 +135,11 @@ public class GUIandLogicIntermediary {
                 targetRoom.setVisitedByPlayer(true);
             }
         }
-
         stateAndNavigationForm.updateLabels();
     }
     
     private static void handleEnemyEncounter(Room currentRoom) {
-        double encounterProbability = 0/*0.15 + currentRoom.getFloor() * 0.05*/; //для теста боссов
+        double encounterProbability = 0.2 + currentRoom.getFloor() * 0.05;
         double randomValue = Math.random();
         
         if (encounterProbability > randomValue && currentRoom.getType() != RoomType.STAIRCASE_DOWN

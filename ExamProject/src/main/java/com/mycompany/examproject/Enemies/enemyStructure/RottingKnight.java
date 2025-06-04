@@ -5,28 +5,29 @@
 package com.mycompany.examproject.Enemies.enemyStructure;
 
 import com.mycompany.examproject.EntityActionType;
+
 /**
  *
  * @author Arseniy
  */
-public class KingSkeleton extends Enemy implements Skeleton {
-    
+public class RottingKnight extends Enemy implements Knight{
     private EntityActionType[] pattern;
     private String iconSource;
     
-    public KingSkeleton(String name, int health, int damage, int floorNum) {
+    public RottingKnight(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = new EntityActionType[] {
+            EntityActionType.HEAVY_ATTACK,
+            EntityActionType.HEAVY_ATTACK,
             EntityActionType.LIGHT_ATTACK,
-            EntityActionType.LIGHT_ATTACK,
-            EntityActionType.HEAVY_ATTACK
+            EntityActionType.HEAVY_ATTACK,
+            EntityActionType.LIGHT_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_10_31.png";
+        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_39_05.png";
     }
     
     @Override
     public String getIconSource(){
         return this.iconSource;
     }
-
 }

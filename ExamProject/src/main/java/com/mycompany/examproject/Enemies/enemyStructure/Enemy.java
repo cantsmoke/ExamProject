@@ -44,5 +44,7 @@ public abstract class Enemy {
     public void setDamage(int damage) {
         this.damage = damage;
     }
-
+    
+    public abstract String getIconSource();
+    
 }

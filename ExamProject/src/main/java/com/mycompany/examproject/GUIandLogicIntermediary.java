@@ -8,6 +8,7 @@ import com.mycompany.examproject.Enemies.EnemySection1Factory;
 import com.mycompany.examproject.Enemies.EnemySection2Factory;
 import com.mycompany.examproject.Enemies.EnemySection3Factory;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
+import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
@@ -55,11 +56,13 @@ public class GUIandLogicIntermediary {
         int floorNumber = player.getCurrentRoom().getFloor();
         
         player.setCurrentRoom(castleMapGenerator.getRoomSouth(x, y, floorNumber));
+        
+        stateAndNavigationForm.updateLabels();
+        handleEnemyEncounter(player.getCurrentRoom());
+        
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
-        
-        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingEast() {
@@ -68,11 +71,13 @@ public class GUIandLogicIntermediary {
         int floorNumber = player.getCurrentRoom().getFloor();
         
         player.setCurrentRoom(castleMapGenerator.getRoomToEast(x, y, floorNumber));
+        
+        stateAndNavigationForm.updateLabels();
+        handleEnemyEncounter(player.getCurrentRoom());
+        
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
-        
-        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingWest() {
@@ -81,11 +86,13 @@ public class GUIandLogicIntermediary {
         int floorNumber = player.getCurrentRoom().getFloor();
         
         player.setCurrentRoom(castleMapGenerator.getRoomToWest(x, y, floorNumber));
+        
+        stateAndNavigationForm.updateLabels();
+        handleEnemyEncounter(player.getCurrentRoom());
+        
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
-        
-        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingNorth() {
@@ -94,11 +101,13 @@ public class GUIandLogicIntermediary {
         int floorNumber = player.getCurrentRoom().getFloor();
         
         player.setCurrentRoom(castleMapGenerator.getRoomNorth(x, y, floorNumber));
+        
+        stateAndNavigationForm.updateLabels();
+        handleEnemyEncounter(player.getCurrentRoom());
+        
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
-        
-        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerUsingStairs() {
@@ -131,15 +140,21 @@ public class GUIandLogicIntermediary {
     private static void handleEnemyEncounter(Room currentRoom) {
         double encounterProbability = 0.15 + currentRoom.getFloor() * 0.05;
         double randomValue = Math.random();
+        
         if (encounterProbability > randomValue && currentRoom.getType() != RoomType.STAIRCASE_DOWN
-            && currentRoom.getType() != RoomType.STAIRCASE_UP && currentRoom.getType() != RoomType.REST){
-            JOptionPane.showMessageDialog(null, "Enemy encountered!");
-            Enemy enemy = generateEnemy();
+        && currentRoom.getType() != RoomType.STAIRCASE_UP && currentRoom.getType() != RoomType.REST 
+        && currentRoom.getType() != RoomType.BOSS && currentRoom.getFloor() != 10 && currentRoom.getType() != RoomType.ENTRANCE_HALL
+        && currentRoom.isVisitedByPlayer() == false){
+            EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
+            enemyEncounteredDialog.setVisible(true);
+            Enemy enemy = generateBasicEnemy();
             Fight fight = new Fight(player, enemy);
+        } else if (currentRoom.getType() != RoomType.BOSS){
+            //тут будет генерироваться босс через фабричные методы для конкретного этажа
         }
     }
     
-    private static Enemy generateEnemy(){
+    private static Enemy generateBasicEnemy(){
         Enemy enemy = null;
         if (player.getCurrentRoom().getFloor() <= 3) {
             enemy = enemySection1Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
@@ -147,8 +162,6 @@ public class GUIandLogicIntermediary {
             enemy = enemySection2Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
         } else if (player.getCurrentRoom().getFloor() <= 9) {
             enemy = enemySection3Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
-        } else { // Floor 10
-            
         }
         return enemy;
     }

@@ -14,18 +14,18 @@ public class EnemySection1Factory implements EnemyFactory{
 
     @Override
     public Skeleton createSkeleton(int floorNum) {
-        return new CursedSkeleton("Проклятый скелет", 100, 20, floorNum);
+        return new CursedSkeleton("Cursed skeleton", 100, 20, floorNum);
     }
 
-//    @Override
-//    public Hound createHound(int floorNum) {
-//        return new ShadowHound(floorNum);
-//    }
-//
-//    @Override
-//    public Knight createKnight(int floorNum) {
-//        return new RottingKnight(floorNum);
-//    }
+    @Override
+    public Hound createHound(int floorNum) {
+        return new ShadowHound("Shadow hound", 80, 25, floorNum);
+    }
+
+    @Override
+    public Knight createKnight(int floorNum) {
+        return new RottingKnight("Rotting knight", 120, 30, floorNum);
+    }
     
     public Enemy createRandomEnemy(int floorNum) {
         Random random = new Random();
@@ -34,9 +34,9 @@ public class EnemySection1Factory implements EnemyFactory{
             case 0:
                 return (Enemy) createSkeleton(floorNum);
             case 1:
-                return (Enemy) createSkeleton(floorNum)/*createHound(floorNum)*/;
+                return (Enemy) createHound(floorNum);
             case 2:
-                return (Enemy) createSkeleton(floorNum)/*createKnight(floorNum)*/;
+                return (Enemy) createSkeleton(floorNum);
             default:
                 throw new IllegalArgumentException("Unknown enemy type");
         }

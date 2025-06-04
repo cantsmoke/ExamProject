@@ -21,7 +21,7 @@ public class Fight {
         this.enemy = enemy;
         
         BattleForm battleForm = new BattleForm();
-        battleForm.updateLabels();
+        battleForm.updateLabels(player, enemy);
         battleForm.setVisible(true);
     }
     

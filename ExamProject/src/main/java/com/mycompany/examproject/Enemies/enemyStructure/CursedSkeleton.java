@@ -21,7 +21,12 @@ public class CursedSkeleton extends Enemy implements Skeleton {
             EntityActionType.LIGHT_ATTACK,
             EntityActionType.HEAVY_ATTACK
         };
-        this.iconSource = "";
+        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_03_51.png";
+    }
+    
+    @Override
+    public String getIconSource(){
+        return this.iconSource;
     }
     
 }

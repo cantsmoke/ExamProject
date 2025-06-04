@@ -12,6 +12,6 @@ import com.mycompany.examproject.Enemies.enemyStructure.*;
  */
 interface EnemyFactory {
     Skeleton createSkeleton(int floorNum);
-//    Hound createHound(int floorNum);
-//    Knight createKnight(int floorNum);
+    Hound createHound(int floorNum);
+    Knight createKnight(int floorNum);
 }

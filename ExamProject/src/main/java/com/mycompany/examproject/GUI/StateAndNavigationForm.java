@@ -25,6 +25,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     public StateAndNavigationForm() {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
+        setLocationRelativeTo(null);
     }
 
     /**

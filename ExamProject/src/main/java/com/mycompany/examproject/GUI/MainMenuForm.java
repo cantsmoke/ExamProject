@@ -19,6 +19,7 @@ public class MainMenuForm extends javax.swing.JFrame {
     public MainMenuForm() {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
+        setLocationRelativeTo(null);
     }
 
     /**

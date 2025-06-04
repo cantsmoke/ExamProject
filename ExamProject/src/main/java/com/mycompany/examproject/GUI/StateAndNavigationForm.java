@@ -174,6 +174,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         LocationDescriptionScrollPane.setBackground(new java.awt.Color(0, 0, 0));
         LocationDescriptionScrollPane.setForeground(new java.awt.Color(0, 0, 0));
 
+        locationDescriptionArea.setEditable(false);
         locationDescriptionArea.setBackground(new java.awt.Color(0, 0, 0));
         locationDescriptionArea.setColumns(20);
         locationDescriptionArea.setFont(new java.awt.Font("Yu Mincho Light", 0, 18)); // NOI18N

@@ -4,9 +4,12 @@
  */
 package com.mycompany.examproject;
 
+import com.mycompany.examproject.Enemies.BossFactory;
 import com.mycompany.examproject.Enemies.EnemySection1Factory;
 import com.mycompany.examproject.Enemies.EnemySection2Factory;
 import com.mycompany.examproject.Enemies.EnemySection3Factory;
+import com.mycompany.examproject.Enemies.enemyStructure.Bosses.Boss;
+import com.mycompany.examproject.Enemies.enemyStructure.Bosses.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
@@ -14,7 +17,6 @@ import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,19 +140,28 @@ public class GUIandLogicIntermediary {
     }
     
     private static void handleEnemyEncounter(Room currentRoom) {
-        double encounterProbability = 0.15 + currentRoom.getFloor() * 0.05;
+        double encounterProbability = 0/*0.15 + currentRoom.getFloor() * 0.05*/; //для теста боссов
         double randomValue = Math.random();
         
         if (encounterProbability > randomValue && currentRoom.getType() != RoomType.STAIRCASE_DOWN
         && currentRoom.getType() != RoomType.STAIRCASE_UP && currentRoom.getType() != RoomType.REST 
         && currentRoom.getType() != RoomType.BOSS && currentRoom.getFloor() != 10 && currentRoom.getType() != RoomType.ENTRANCE_HALL
         && currentRoom.isVisitedByPlayer() == false){
+            
             EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
             enemyEncounteredDialog.setVisible(true);
             Enemy enemy = generateBasicEnemy();
             Fight fight = new Fight(player, enemy);
-        } else if (currentRoom.getType() != RoomType.BOSS){
-            //тут будет генерироваться босс через фабричные методы для конкретного этажа
+            
+        } else if (currentRoom.getType() == RoomType.BOSS && currentRoom.isVisitedByPlayer() == false){
+            int floor = currentRoom.getFloor();
+            if (floor >= 1 && floor <= 10) {
+                EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
+                enemyEncounteredDialog.setVisible(true);
+                BossType bossType = BossType.values()[floor - 1];
+                Boss boss = BossFactory.createBoss(bossType);
+                Fight fight = new Fight(player, boss);
+            }
         }
     }
     

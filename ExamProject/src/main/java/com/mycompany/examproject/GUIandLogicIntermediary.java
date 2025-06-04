@@ -4,11 +4,16 @@
  */
 package com.mycompany.examproject;
 
+import com.mycompany.examproject.Enemies.EnemySection1Factory;
+import com.mycompany.examproject.Enemies.EnemySection2Factory;
+import com.mycompany.examproject.Enemies.EnemySection3Factory;
+import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,12 +24,20 @@ public class GUIandLogicIntermediary {
     private static StateAndNavigationForm stateAndNavigationForm;
     private static Player player;
     private static CastleMapGenerator castleMapGenerator;
+    
+    private static EnemySection1Factory enemySection1Factory;
+    private static EnemySection2Factory enemySection2Factory;
+    private static EnemySection3Factory enemySection3Factory;
 
     private GUIandLogicIntermediary(){}
     
     public static void handleNewGameButtonPressed(){ 
         castleMapGenerator = new CastleMapGenerator();
         castleMapGenerator.generateMap();
+        
+        enemySection1Factory = new EnemySection1Factory();
+        enemySection2Factory = new EnemySection2Factory();
+        enemySection3Factory = new EnemySection3Factory();
         
         player = Player.getInstance(castleMapGenerator.getStartRoom());
         
@@ -45,6 +58,8 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        
+        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingEast() {
@@ -56,6 +71,8 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        
+        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingWest() {
@@ -67,6 +84,8 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        
+        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerGoingNorth() {
@@ -78,6 +97,8 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        
+        handleEnemyEncounter(player.getCurrentRoom());
     }
     
     public static void handlePLayerUsingStairs() {
@@ -105,6 +126,31 @@ public class GUIandLogicIntermediary {
         }
 
         stateAndNavigationForm.updateLabels();
+    }
+    
+    private static void handleEnemyEncounter(Room currentRoom) {
+        double encounterProbability = 0.15 + currentRoom.getFloor() * 0.05;
+        double randomValue = Math.random();
+        if (encounterProbability > randomValue && currentRoom.getType() != RoomType.STAIRCASE_DOWN
+            && currentRoom.getType() != RoomType.STAIRCASE_UP && currentRoom.getType() != RoomType.REST){
+            JOptionPane.showMessageDialog(null, "Enemy encountered!");
+            Enemy enemy = generateEnemy();
+            Fight fight = new Fight(player, enemy);
+        }
+    }
+    
+    private static Enemy generateEnemy(){
+        Enemy enemy = null;
+        if (player.getCurrentRoom().getFloor() <= 3) {
+            enemy = enemySection1Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
+        } else if (player.getCurrentRoom().getFloor() <= 5) {
+            enemy = enemySection2Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
+        } else if (player.getCurrentRoom().getFloor() <= 9) {
+            enemy = enemySection3Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
+        } else { // Floor 10
+            
+        }
+        return enemy;
     }
     
 }

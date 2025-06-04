@@ -5,6 +5,7 @@
 package com.mycompany.examproject.Enemies.enemyStructure.Bosses;
 
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
+import com.mycompany.examproject.EntityActionType;
 
 /**
  *
@@ -18,6 +19,16 @@ public class Boss extends Enemy{
 
     @Override
     public String getIconSource() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setPattern(EntityActionType[] newPattern) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void setIconSource(String url) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     

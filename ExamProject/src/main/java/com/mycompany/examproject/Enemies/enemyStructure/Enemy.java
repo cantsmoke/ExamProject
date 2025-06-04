@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.examproject.Enemies.enemyStructure;
+
+import com.mycompany.examproject.EntityActionType;
+
 /**
  *
  * @author Arseniy
@@ -46,5 +49,9 @@ public abstract class Enemy {
     }
     
     public abstract String getIconSource();
+    
+    public abstract void setIconSource(String url);
+    
+    public abstract void setPattern(EntityActionType[] newPattern);
     
 }

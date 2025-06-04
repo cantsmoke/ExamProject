@@ -11,16 +11,17 @@ import com.mycompany.examproject.EntityActionType;
  */
 public class CursedSkeleton extends Enemy implements Skeleton {
     
+    private static EntityActionType[] defaultPattern = new EntityActionType[] {
+            EntityActionType.LIGHT_ATTACK,
+            EntityActionType.LIGHT_ATTACK,
+            EntityActionType.HEAVY_ATTACK
+        };
     private EntityActionType[] pattern;
     private String iconSource;
     
     public CursedSkeleton(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
-        this.pattern = new EntityActionType[] {
-            EntityActionType.LIGHT_ATTACK,
-            EntityActionType.LIGHT_ATTACK,
-            EntityActionType.HEAVY_ATTACK
-        };
+        this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_03_51.png";
     }
     
@@ -29,4 +30,18 @@ public class CursedSkeleton extends Enemy implements Skeleton {
         return this.iconSource;
     }
     
+    @Override
+    public void setIconSource(String url) {
+        this.iconSource = url;
+    }
+    
+    @Override
+    public void setPattern(EntityActionType[] newPattern){
+        this.pattern = newPattern;
+    }
+    
+    public static EntityActionType[] getDefaultPattern() {
+        return defaultPattern;
+    }
+
 }

@@ -11,18 +11,20 @@ import com.mycompany.examproject.EntityActionType;
  * @author Arseniy
  */
 public class ShadowHound extends Enemy implements Hound{
-    private EntityActionType[] pattern;
-    private String iconSource;
     
-    public ShadowHound(String name, int health, int damage, int floorNum) {
-        super(name, health, damage, floorNum);
-        this.pattern = new EntityActionType[] {
+    private static EntityActionType[] defaultPattern = new EntityActionType[] {
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.LIGHT_ATTACK,
             EntityActionType.LIGHT_ATTACK,
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.LIGHT_ATTACK
         };
+    private EntityActionType[] pattern;
+    private String iconSource;
+    
+    public ShadowHound(String name, int health, int damage, int floorNum) {
+        super(name, health, damage, floorNum);
+        this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_28_02.png";
     }
     
@@ -30,4 +32,19 @@ public class ShadowHound extends Enemy implements Hound{
     public String getIconSource(){
         return this.iconSource;
     }
+    
+    @Override
+    public void setIconSource(String url) {
+        this.iconSource = url;
+    }
+    
+    @Override
+    public void setPattern(EntityActionType[] newPattern){
+        this.pattern = newPattern;
+    }
+    
+    public static EntityActionType[] getDefaultPattern() {
+        return defaultPattern;
+    }
+    
 }

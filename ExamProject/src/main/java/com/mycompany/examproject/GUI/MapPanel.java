@@ -68,6 +68,8 @@ public class MapPanel extends JPanel {
 
                 for (Room connected : room.getConnections()) {
                     if (!connected.isVisitedByPlayer()) continue;
+                    
+                    if (connected.getFloor() != currentFloorNumber) continue;
 
                     int endX = connected.getX() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
                     int endY = connected.getY() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;

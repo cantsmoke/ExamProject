@@ -263,6 +263,7 @@ public class Fight {
         }
         
         battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
         checkWinLoseConditions();
     }
     

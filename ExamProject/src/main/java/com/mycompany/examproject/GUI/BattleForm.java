@@ -51,6 +51,7 @@ public class BattleForm extends javax.swing.JFrame {
         playerNameLabel = new javax.swing.JLabel();
         playerBaseDamageLabel = new javax.swing.JLabel();
         enemyBaseDamageLabel = new javax.swing.JLabel();
+        skipTurnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(966, 580));
@@ -143,6 +144,17 @@ public class BattleForm extends javax.swing.JFrame {
         enemyBaseDamageLabel.setForeground(new java.awt.Color(204, 204, 204));
         enemyBaseDamageLabel.setText("jLabel2");
 
+        skipTurnButton.setBackground(new java.awt.Color(51, 51, 51));
+        skipTurnButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        skipTurnButton.setForeground(new java.awt.Color(204, 204, 204));
+        skipTurnButton.setText("SKIP TURN");
+        skipTurnButton.setBorder(null);
+        skipTurnButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                skipTurnButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BattleFramePanelLayout = new javax.swing.GroupLayout(BattleFramePanel);
         BattleFramePanel.setLayout(BattleFramePanelLayout);
         BattleFramePanelLayout.setHorizontalGroup(
@@ -170,7 +182,11 @@ public class BattleForm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BattleFramePanelLayout.createSequentialGroup()
                                 .addGap(97, 97, 97)
                                 .addComponent(playerNameLabel)))
-                        .addComponent(logScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(logScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BattleFramePanelLayout.createSequentialGroup()
+                                .addComponent(skipTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
                         .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(BattleFramePanelLayout.createSequentialGroup()
                                 .addGap(57, 57, 57)
@@ -182,11 +198,11 @@ public class BattleForm extends javax.swing.JFrame {
                                 .addComponent(enemyNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(51, 51, 51)
                 .addComponent(playerBaseDamageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enemyBaseDamageLabel)
-                .addGap(135, 135, 135))
+                .addGap(67, 67, 67))
         );
         BattleFramePanelLayout.setVerticalGroup(
             BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,15 +223,20 @@ public class BattleForm extends javax.swing.JFrame {
                         .addComponent(enemyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(playerBaseDamageLabel)
-                    .addComponent(enemyBaseDamageLabel, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(playerHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(enemyHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(playerStaminaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                    .addComponent(enemyBaseDamageLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(playerBaseDamageLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(playerHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(enemyHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(playerStaminaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(skipTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(attackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(blockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -251,12 +272,38 @@ public class BattleForm extends javax.swing.JFrame {
     private void dodgeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dodgeButtonActionPerformed
         GUIandLogicIntermediary.handlePlayerDodgeAction();
     }//GEN-LAST:event_dodgeButtonActionPerformed
+
+    private void skipTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipTurnButtonActionPerformed
+        GUIandLogicIntermediary.handlePlayerSkipAction();
+    }//GEN-LAST:event_skipTurnButtonActionPerformed
     
     public void appendToLogArea(String message) {
         battleLogArea.append(message + "\n" + "-----------" + "\n");
     }
     
+    public void updateButtonAvaibility(Player player){
+        if(player.getStamina() > 0){
+            skipTurnButton.setVisible(false);
+            skipTurnButton.setEnabled(false);
+            attackButton.setEnabled(true);
+            blockButton.setEnabled(true);
+            dodgeButton.setEnabled(true);
+            inventoryButton.setEnabled(true);
+        }
+        if(player.getStamina() <= 0){
+            skipTurnButton.setVisible(true);
+            skipTurnButton.setEnabled(true);
+            attackButton.setEnabled(false);
+            blockButton.setEnabled(false);
+            dodgeButton.setEnabled(false);
+            inventoryButton.setEnabled(false);
+        }
+    }
+    
     public void updateLabels(Player player, Enemy enemy){
+        skipTurnButton.setVisible(false);
+        skipTurnButton.setEnabled(false);
+        
         enemyIconLabel.setIcon(new ImageIcon(enemy.getIconSource()));
         enemyNameLabel.setText(enemy.getName());
         enemyHpBar.setMaximum(enemy.getMaxHealth());
@@ -289,6 +336,13 @@ public class BattleForm extends javax.swing.JFrame {
         } else {
             enemyHpBar.setForeground(new Color(0, 153, 0));
         }
+        
+        if(player.getHp() < 0){
+            playerHpBar.setString(0 + "/" + enemy.getMaxHealth());
+        }
+        if(enemy.getHealth() < 0){
+            enemyHpBar.setString(0 + "/" + enemy.getMaxHealth());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -308,5 +362,6 @@ public class BattleForm extends javax.swing.JFrame {
     private javax.swing.JLabel playerIconLabel;
     private javax.swing.JLabel playerNameLabel;
     private javax.swing.JProgressBar playerStaminaBar;
+    private javax.swing.JButton skipTurnButton;
     // End of variables declaration//GEN-END:variables
 }

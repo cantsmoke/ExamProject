@@ -7,7 +7,10 @@ package com.mycompany.examproject;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
+import com.mycompany.examproject.GUI.FightLoseForm;
+import com.mycompany.examproject.GUI.FightWinDialog;
 import java.util.Random;
+import javax.swing.JFrame;
 /**
  *
  * @author Arseniy
@@ -97,6 +100,8 @@ public class Fight {
         }
         
         battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
+        checkWinLoseConditions();
     }
 
     private void handlePlayerHeavyAttack() {
@@ -134,6 +139,8 @@ public class Fight {
         }
         
         battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
+        checkWinLoseConditions();
     }
 
     void handlePlayerBlockAction() {
@@ -170,6 +177,8 @@ public class Fight {
         }
         
         battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
+        checkWinLoseConditions();
     }
 
     void handlePlayerDodgeAction() {
@@ -190,8 +199,6 @@ public class Fight {
                 player.setHp((int) (player.getHp() - enemy.getDamage() * 1.2));
                 String logPart = "You took " + enemy.getDamage() * 1.2 + " damage!";
                 battleForm.appendToLogArea(logPart);
-                
-                System.out.println(player.getHp());
             }
         } else if (enemyActionForPlayersDodge == EntityActionType.LIGHT_ATTACK){
             double playerDodgePossibility = player.getDodgeP() - 0.05;
@@ -202,12 +209,61 @@ public class Fight {
                 player.setHp((int) (player.getHp() - enemy.getDamage() * 0.8));
                 String logPart = "You took " + enemy.getDamage() * 0.8 + " damage!";
                 battleForm.appendToLogArea(logPart);
-                
-                System.out.println(player.getHp());
             }
         }
         
         battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
+        checkWinLoseConditions();
+    }
+    
+    private void checkPlayerStamina(){
+        battleForm.updateButtonAvaibility(player);
+    }
+ 
+    private void checkWinLoseConditions(){
+        if(enemy.getHealth() <= 0){
+            FightWinDialog winDialog = new FightWinDialog(battleForm, true);
+            winDialog.setVisible(true);
+            battleForm.dispose();
+            
+            player.setStamina(player.getMaxStamina());
+            
+            GUIandLogicIntermediary.showNavigationForm();
+        } else if (player.getHp() <= 0){
+            FightLoseForm loseForm = new FightLoseForm();
+            loseForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            loseForm.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent e) {
+                    battleForm.dispose();
+                }
+            });
+            loseForm.setVisible(true);
+        }
+    }
+
+    void handlePlayerSkipAction() {
+        EntityActionType enemyActionForPlayersDodge = enemy.getPattern()[currentEnemyActionPattern];
+        currentEnemyActionPattern++;
+        if (currentEnemyActionPattern >= enemy.getPattern().length) {
+            currentEnemyActionPattern = 0;
+        }
+        
+        player.setStamina(player.getStamina() + 20);
+        
+        if (enemyActionForPlayersDodge == EntityActionType.HEAVY_ATTACK){
+            player.setHp((int) (player.getHp() - enemy.getDamage() * 1.2));
+            String logPart = "You skipped turn and took " + enemy.getDamage() * 1.2 + " damage!";
+            battleForm.appendToLogArea(logPart);
+        } else if (enemyActionForPlayersDodge == EntityActionType.LIGHT_ATTACK){
+            player.setHp((int) (player.getHp() - enemy.getDamage() * 0.8));
+            String logPart = "You skipped turn and took " + enemy.getDamage() * 0.8 + " damage!";
+            battleForm.appendToLogArea(logPart);
+        }
+        
+        battleForm.updateLabels(player, enemy);
+        checkWinLoseConditions();
     }
     
 }

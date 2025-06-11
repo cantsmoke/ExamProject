@@ -63,17 +63,19 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1530, 800));
+        setPreferredSize(new java.awt.Dimension(1500, 800));
 
         PlayerInfoAndBasicButtonsPanel.setBackground(new java.awt.Color(0, 0, 0));
 
+        healthBar.setBackground(new java.awt.Color(0, 20, 0));
+        healthBar.setFont(new java.awt.Font("Castellar", 0, 10)); // NOI18N
         healthBar.setForeground(new java.awt.Color(0, 153, 0));
-        healthBar.setMaximum(Player.getInstance().getMaxHp());
-        healthBar.setValue(Player.getInstance().getMaxHp());
+        healthBar.setStringPainted(true);
 
+        staminaBar.setBackground(new java.awt.Color(0, 51, 102));
+        staminaBar.setFont(new java.awt.Font("Castellar", 0, 10)); // NOI18N
         staminaBar.setForeground(new java.awt.Color(0, 102, 204));
-        staminaBar.setMaximum(Player.getInstance().getMaxStamina());
-        staminaBar.setValue(Player.getInstance().getMaxStamina());
+        staminaBar.setStringPainted(true);
 
         inventoryButton.setBackground(new java.awt.Color(51, 51, 51));
         inventoryButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -374,7 +376,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitToMainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitToMainMenuButtonActionPerformed
-        // TODO add your handling code here:
+        MainMenuForm mainMenu = new MainMenuForm();
+        mainMenu.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_exitToMainMenuButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
@@ -419,6 +423,21 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         
         if(Player.getInstance().getHp() < Player.getInstance().getMaxHp() * 0.2){
             healthBar.setForeground(Color.red);
+        }
+        
+        healthBar.setMaximum(Player.getInstance().getMaxHp());
+        healthBar.setValue(Player.getInstance().getHp());
+        healthBar.setString(Player.getInstance().getHp() + "/" + Player.getInstance().getMaxHp());
+        staminaBar.setMaximum(Player.getInstance().getMaxStamina());
+        staminaBar.setValue(Player.getInstance().getStamina());
+        staminaBar.setString(Player.getInstance().getStamina()+ "/" + Player.getInstance().getMaxStamina());
+        healthBar.repaint();
+        staminaBar.repaint();
+        if(Player.getInstance().getHp() < Player.getInstance().getMaxHp() * 0.25){
+            healthBar.setForeground(Color.red);
+            healthBar.setBackground(new Color(50, 0, 0));
+        } else {
+            healthBar.setForeground(new Color(0, 153, 0));
         }
         
         checkIfLadder();

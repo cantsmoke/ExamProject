@@ -44,6 +44,7 @@ public class GUIandLogicIntermediary {
         enemySection2Factory = new EnemySection2Factory();
         enemySection3Factory = new EnemySection3Factory();
         
+        Player.resetInstance();
         player = Player.getInstance(castleMapGenerator.getStartRoom());
         
         stateAndNavigationForm = new StateAndNavigationForm();
@@ -153,6 +154,7 @@ public class GUIandLogicIntermediary {
             enemyEncounteredDialog.setVisible(true);
             Enemy enemy = generateBasicEnemy();
             fight = new Fight(player, enemy);
+            stateAndNavigationForm.setVisible(false);
             
         } else if (currentRoom.getType() == RoomType.BOSS && currentRoom.isVisitedByPlayer() == false){
             int floor = currentRoom.getFloor();
@@ -162,6 +164,7 @@ public class GUIandLogicIntermediary {
                 BossType bossType = BossType.values()[floor - 1];
                 Boss boss = BossFactory.createBoss(bossType);
                 fight = new Fight(player, boss);
+                stateAndNavigationForm.setVisible(false);
             }
         }
     }
@@ -188,6 +191,15 @@ public class GUIandLogicIntermediary {
 
     public static void handlePlayerDodgeAction() {
         fight.handlePlayerDodgeAction();
+    }
+    
+    public static void handlePlayerSkipAction() {
+        fight.handlePlayerSkipAction();
+    }
+    
+    static void showNavigationForm() {
+        stateAndNavigationForm.updateLabels();
+        stateAndNavigationForm.setVisible(true);
     }
 
 }

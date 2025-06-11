@@ -123,6 +123,11 @@ public class Player {
         return instance;
     }
     
+    public static void resetInstance() {
+        instance = null;
+    }
+
+    
     // Getters for core stats
     public int getHp() { return hp; }
     public void setHp(int hp){

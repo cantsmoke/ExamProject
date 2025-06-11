@@ -126,6 +126,7 @@ public class MainMenuForm extends javax.swing.JFrame {
 
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         GUIandLogicIntermediary.handleNewGameButtonPressed();
+        this.dispose();
     }//GEN-LAST:event_newGameButtonActionPerformed
 
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed

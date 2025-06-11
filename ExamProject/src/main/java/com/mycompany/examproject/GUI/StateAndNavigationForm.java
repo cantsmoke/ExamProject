@@ -417,6 +417,10 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         
         locationDescriptionArea.setEnabled(false);
         
+        if(Player.getInstance().getHp() < Player.getInstance().getMaxHp() * 0.2){
+            healthBar.setForeground(Color.red);
+        }
+        
         checkIfLadder();
 
         mapPanel.repaint();

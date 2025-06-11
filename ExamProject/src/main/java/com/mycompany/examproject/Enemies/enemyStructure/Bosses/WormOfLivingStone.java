@@ -15,6 +15,9 @@ public class WormOfLivingStone extends Boss{
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public WormOfLivingStone(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = new EntityActionType[] {
@@ -26,11 +29,29 @@ public class WormOfLivingStone extends Boss{
             EntityActionType.HEAVY_ATTACK
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 18_31_30.png";
+        
+        this.dodgeP = 0.5;
+        this.blockP = 0.6;
+    }
+    
+    @Override
+    public EntityActionType[] getPattern() {
+        return pattern;
     }
     
     @Override
     public String getIconSource(){
         return this.iconSource;
+    }
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
     }
     
 }

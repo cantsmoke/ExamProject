@@ -14,11 +14,13 @@ public abstract class Enemy {
     
     private String name;
     private int health;
+    private int maxHealth;
     private int damage;
 
     public Enemy(String name, int health, int damage, int floorNum) {
         this.name = name;
         this.health = health + floorNum * 10; // усиливаем от этажа
+        this.maxHealth = this.health;
         this.damage = damage + floorNum * 2;
     }
     
@@ -29,6 +31,10 @@ public abstract class Enemy {
 
     public int getHealth() {
         return health;
+    }
+    
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
     public int getDamage() {
@@ -53,5 +59,10 @@ public abstract class Enemy {
     public abstract void setIconSource(String url);
     
     public abstract void setPattern(EntityActionType[] newPattern);
+    
+    public abstract double getDodgeP();
+    public abstract double getBlockP();
+    
+    public abstract EntityActionType[] getPattern();
     
 }

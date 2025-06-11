@@ -19,10 +19,16 @@ public class CursedSkeleton extends Enemy implements Skeleton {
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public CursedSkeleton(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_03_51.png";
+        
+        this.dodgeP = 0.1;
+        this.blockP = 0.4;
     }
     
     @Override
@@ -40,8 +46,23 @@ public class CursedSkeleton extends Enemy implements Skeleton {
         this.pattern = newPattern;
     }
     
+    @Override
+    public EntityActionType[] getPattern() {
+        return defaultPattern;
+    }
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
+    }
+    
     public static EntityActionType[] getDefaultPattern() {
         return defaultPattern;
     }
-
+    
 }

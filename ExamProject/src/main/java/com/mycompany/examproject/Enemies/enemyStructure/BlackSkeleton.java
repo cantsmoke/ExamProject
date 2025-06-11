@@ -19,10 +19,16 @@ public class BlackSkeleton extends Enemy implements Skeleton {
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public BlackSkeleton(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_08_29.png";
+        
+        this.dodgeP = 0.15;
+        this.blockP = 0.5;
     }
     
     @Override
@@ -38,6 +44,21 @@ public class BlackSkeleton extends Enemy implements Skeleton {
     @Override
     public void setPattern(EntityActionType[] newPattern){
         this.pattern = newPattern;
+    }
+    
+    @Override
+    public EntityActionType[] getPattern() {
+        return defaultPattern;
+    }
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
     }
     
     public static EntityActionType[] getDefaultPattern() {

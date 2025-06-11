@@ -21,10 +21,16 @@ public class SaintKnight extends Enemy implements Knight{
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public SaintKnight(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_56_25.png";
+        
+        this.dodgeP = 0.2;
+        this.blockP = 0.6;
     }
     
     @Override
@@ -37,7 +43,8 @@ public class SaintKnight extends Enemy implements Knight{
         this.iconSource = url;
     }
     
-    public static EntityActionType[] getDefaultPattern() {
+    @Override
+    public EntityActionType[] getPattern() {
         return defaultPattern;
     }
 
@@ -45,5 +52,19 @@ public class SaintKnight extends Enemy implements Knight{
     public void setPattern(EntityActionType[] newPattern){
         this.pattern = newPattern;
     }
-
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
+    }
+    
+    public static EntityActionType[] getDefaultPattern() {
+        return defaultPattern;
+    }
+    
 }

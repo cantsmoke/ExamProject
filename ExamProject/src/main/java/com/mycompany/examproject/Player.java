@@ -27,6 +27,10 @@ public class Player {
     private int maxStamina;
     private int souls;
     private int level;
+    private int damage;
+    
+    private double dodgeP;
+    private double blockP;
 
     // Skills
     private int strength;
@@ -60,12 +64,16 @@ public class Player {
     
     private Player(Room room) {
         // Initial stats
-        this.hp = 100;
-        this.maxHp = 100;
-        this.stamina = 50;
-        this.maxStamina = 50;
+        this.hp = 200;
+        this.maxHp = 200;
+        this.stamina = 100;
+        this.maxStamina = 100;
+        this.damage = 45;
         this.souls = 0;
         this.level = 1;
+        
+        this.dodgeP = 0.2;
+        this.blockP = 0.2;
 
         // Initial skills
         this.strength = 5;
@@ -117,12 +125,29 @@ public class Player {
     
     // Getters for core stats
     public int getHp() { return hp; }
+    public void setHp(int hp){
+        this.hp = hp;
+    }
     public int getMaxHp() { return maxHp; }
     public int getStamina() { return stamina; }
+    public void setStamina(int stamina){
+        this.stamina = stamina;
+    }
     public int getMaxStamina() { return maxStamina; }
     public int getSouls() { return souls; }
     public int getLevel() { return level; }
+    public int getDamage(){
+        return damage;
+    }
 
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    public double getBlockP(){
+        return this.blockP;
+    }
+    
     // Getters for skills
     public int getStrength() { return strength; }
     public int getDexterity() { return dexterity; }

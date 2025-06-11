@@ -22,10 +22,16 @@ public class GiantHound extends Enemy implements Hound{
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public GiantHound(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_33_26.png";
+        
+        this.dodgeP = 0.35;
+        this.blockP = 0.6;
     }
     
     @Override
@@ -43,7 +49,23 @@ public class GiantHound extends Enemy implements Hound{
         this.pattern = newPattern;
     }
     
+    @Override
+    public EntityActionType[] getPattern() {
+        return defaultPattern;
+    }
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
+    }
+    
     public static EntityActionType[] getDefaultPattern() {
         return defaultPattern;
     }
+    
 }

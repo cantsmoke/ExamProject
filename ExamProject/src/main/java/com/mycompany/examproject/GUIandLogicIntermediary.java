@@ -31,6 +31,8 @@ public class GUIandLogicIntermediary {
     private static EnemySection1Factory enemySection1Factory;
     private static EnemySection2Factory enemySection2Factory;
     private static EnemySection3Factory enemySection3Factory;
+    
+    private static Fight fight;
 
     private GUIandLogicIntermediary(){}
     
@@ -150,7 +152,7 @@ public class GUIandLogicIntermediary {
             EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
             enemyEncounteredDialog.setVisible(true);
             Enemy enemy = generateBasicEnemy();
-            Fight fight = new Fight(player, enemy);
+            fight = new Fight(player, enemy);
             
         } else if (currentRoom.getType() == RoomType.BOSS && currentRoom.isVisitedByPlayer() == false){
             int floor = currentRoom.getFloor();
@@ -159,7 +161,7 @@ public class GUIandLogicIntermediary {
                 enemyEncounteredDialog.setVisible(true);
                 BossType bossType = BossType.values()[floor - 1];
                 Boss boss = BossFactory.createBoss(bossType);
-                Fight fight = new Fight(player, boss);
+                fight = new Fight(player, boss);
             }
         }
     }
@@ -176,4 +178,16 @@ public class GUIandLogicIntermediary {
         return enemy;
     }
     
+    public static void handlePlayerAttackAction() {
+        fight.handlePlayerAttackAction();
+    }
+    
+    public static void handlePlayerBlockAction() {
+        fight.handlePlayerBlockAction();
+    }
+
+    public static void handlePlayerDodgeAction() {
+        fight.handlePlayerDodgeAction();
+    }
+
 }

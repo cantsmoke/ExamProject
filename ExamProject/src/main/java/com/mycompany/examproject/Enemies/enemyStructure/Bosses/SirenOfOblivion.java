@@ -15,6 +15,9 @@ public class SirenOfOblivion extends Boss{
     private EntityActionType[] pattern;
     private String iconSource;
     
+    private double dodgeP;
+    private double blockP;
+    
     public SirenOfOblivion(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = new EntityActionType[] {
@@ -24,11 +27,29 @@ public class SirenOfOblivion extends Boss{
             EntityActionType.LIGHT_ATTACK,
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_14_31.png";
+        
+        this.dodgeP = 0.3;
+        this.blockP = 0.4;
+    }
+    
+    @Override
+    public EntityActionType[] getPattern() {
+        return pattern;
     }
     
     @Override
     public String getIconSource(){
         return this.iconSource;
+    }
+    
+    @Override
+    public double getDodgeP(){
+        return this.dodgeP;
+    }
+    
+    @Override
+    public double getBlockP(){
+        return this.blockP;
     }
     
 }

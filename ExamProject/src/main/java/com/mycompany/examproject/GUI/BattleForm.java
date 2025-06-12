@@ -291,6 +291,8 @@ public class BattleForm extends javax.swing.JFrame {
             inventoryButton.setEnabled(true);
         }
         if(player.getStamina() <= 0){
+            player.setStamina(0);
+            playerStaminaBar.setValue(player.getStamina());
             skipTurnButton.setVisible(true);
             skipTurnButton.setEnabled(true);
             attackButton.setEnabled(false);

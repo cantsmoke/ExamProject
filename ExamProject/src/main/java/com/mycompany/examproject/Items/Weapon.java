@@ -8,16 +8,54 @@ package com.mycompany.examproject.Items;
  *
  * @author Arseniy
  */
-public class Weapon extends Item {
-    private int damage;
-    private double bossDamageBonus; // E.g., +10% damage against bosses
+public abstract class Weapon implements Equipment{
+    protected String name;
+    protected int weight;
+    protected int damage;
+    protected int durability;
+    protected int maxDurability;
+    
+    protected String imageURL;
 
-    public Weapon(String name, int durability, int weight, int damage, double bossDamageBonus, String description) {
-        super(name, ItemType.WEAPON, durability, weight, description);
+    public Weapon(String name, int weight, int damage, int durability) {
+        this.name = name;
+        this.weight = weight;
         this.damage = damage;
-        this.bossDamageBonus = bossDamageBonus;
+        this.durability = durability;
+        this.maxDurability = durability;
     }
 
-    public int getDamage() { return damage; }
-    public double getBossDamageBonus() { return bossDamageBonus; }
+    public String getName() {
+        return name;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    public int getDamage(){
+        return this.damage;
+    }
+    
+    public int getDurability(){
+        return this.durability;
+    }
+    
+    public void setDurability(int newDurability){
+        this.durability = newDurability;
+    }
+    
+    public int getMaxDurability(){
+        return this.maxDurability;
+    }
+    
+    public String getImageUrl() {
+        return imageURL;
+    }
+    
+    @Override
+    public String toString() {
+        return name;
+    }
+    
 }

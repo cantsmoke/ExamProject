@@ -4,10 +4,13 @@
  */
 package com.mycompany.examproject.Enemies.enemyStructure;
 
+import com.mycompany.examproject.Items.Weapon;
+
 /**
  *
  * @author Arseniy
  */
 public interface Hound {
-    
+    String getName();
+    void takeDamage(Weapon selectedWeapon);
 }

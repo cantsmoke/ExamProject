@@ -12,6 +12,7 @@ import com.mycompany.examproject.Enemies.enemyStructure.Bosses.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.Bosses.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
+import com.mycompany.examproject.GUI.InventoryForm;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
@@ -200,6 +201,13 @@ public class GUIandLogicIntermediary {
     static void showNavigationForm() {
         stateAndNavigationForm.updateLabels();
         stateAndNavigationForm.setVisible(true);
+    }
+    
+    
+    public static void openInventory() {
+        InventoryForm inventoryForm = new InventoryForm();
+        inventoryForm.setVisible(true);
+        inventoryForm.UpdateLabels();
     }
 
 }

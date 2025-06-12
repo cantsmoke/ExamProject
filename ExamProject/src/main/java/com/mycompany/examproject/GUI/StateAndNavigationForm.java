@@ -394,7 +394,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_moveNorthButtonActionPerformed
 
     private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryButtonActionPerformed
-        // TODO add your handling code here:
+        GUIandLogicIntermediary.openInventory();
     }//GEN-LAST:event_inventoryButtonActionPerformed
 
     private void upgradeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeMenuActionPerformed

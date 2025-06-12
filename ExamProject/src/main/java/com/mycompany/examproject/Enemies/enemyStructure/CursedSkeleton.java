@@ -5,6 +5,10 @@
 package com.mycompany.examproject.Enemies.enemyStructure;
 
 import com.mycompany.examproject.EntityActionType;
+import com.mycompany.examproject.Items.Weapon;
+import com.mycompany.examproject.Items.Weapons.Axe;
+import com.mycompany.examproject.Items.Weapons.Bow;
+import com.mycompany.examproject.Items.Weapons.Hammer;
 /**
  *
  * @author Arseniy
@@ -63,6 +67,32 @@ public class CursedSkeleton extends Enemy implements Skeleton {
     
     public static EntityActionType[] getDefaultPattern() {
         return defaultPattern;
+    }
+
+    @Override
+    public String takeHeavyDamage(Weapon selectedWeapon, int baseDamage) {
+        int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
+
+        if (selectedWeapon instanceof Bow) {
+            damage /= 2;
+        } else if (selectedWeapon instanceof Hammer) {
+            damage *= 2;
+        }
+        this.health -= damage;
+        return "Enemy took " + damage + " damage!";
+    }
+
+    @Override
+    public String takeLightDamage(Weapon selectedWeapon, int baseDamage) {
+        int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
+
+        if (selectedWeapon instanceof Bow) {
+            damage /= 2;
+        } else if (selectedWeapon instanceof Hammer) {
+            damage *= 2;
+        }
+        this.health -= damage;
+        return "Enemy took " + damage + " damage!";
     }
     
 }

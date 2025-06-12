@@ -5,6 +5,7 @@
 package com.mycompany.examproject.Enemies.enemyStructure;
 
 import com.mycompany.examproject.EntityActionType;
+import com.mycompany.examproject.Items.Weapon;
 
 /**
  *
@@ -13,7 +14,7 @@ import com.mycompany.examproject.EntityActionType;
 public abstract class Enemy {
     
     private String name;
-    private int health;
+    int health;
     private int maxHealth;
     private int damage;
 
@@ -64,5 +65,8 @@ public abstract class Enemy {
     public abstract double getBlockP();
     
     public abstract EntityActionType[] getPattern();
+
+    public abstract String takeHeavyDamage(Weapon selectedWeapon, int baseDamage);
+    public abstract String takeLightDamage(Weapon selectedWeapon, int baseDamage);
     
 }

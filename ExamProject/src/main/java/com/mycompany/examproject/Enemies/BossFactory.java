@@ -4,9 +4,18 @@
  */
 package com.mycompany.examproject.Enemies;
 
-import com.mycompany.examproject.Enemies.enemyStructure.Bosses.*;
-import com.mycompany.examproject.Enemies.enemyStructure.Bosses.Boss;
-import com.mycompany.examproject.Enemies.enemyStructure.Bosses.BossType;
+import com.mycompany.examproject.Enemies.enemyStructure.WormOfLivingStone;
+import com.mycompany.examproject.Enemies.enemyStructure.WardenOfDeathSands;
+import com.mycompany.examproject.Enemies.enemyStructure.TheUnhallowedArchon;
+import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
+import com.mycompany.examproject.Enemies.enemyStructure.LordOfLabyrinthineShadows;
+import com.mycompany.examproject.Enemies.enemyStructure.ExecutionerOfTheLastCreed;
+import com.mycompany.examproject.Enemies.enemyStructure.ConfessorOfTheRottingLight;
+import com.mycompany.examproject.Enemies.enemyStructure.BroodmotherOfTheHollowedWeb;
+import com.mycompany.examproject.Enemies.enemyStructure.BloodHeirOfTheMark;
+import com.mycompany.examproject.Enemies.enemyStructure.AshenGatekeeper;
+import com.mycompany.examproject.Enemies.enemyStructure.Boss;
+import com.mycompany.examproject.Enemies.enemyStructure.BossType;
 
 /**
  *

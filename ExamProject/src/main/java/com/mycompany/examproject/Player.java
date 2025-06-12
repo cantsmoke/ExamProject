@@ -31,6 +31,9 @@ public class Player {
     private int level;
     private int damage;
     
+    private int repairComponents;
+    private int baseDamage;
+    
     private double dodgeP;
     private double blockP;
     
@@ -53,32 +56,61 @@ public class Player {
     private static Player instance = null;
     
     private Player(Room room) {
-        // Initial stats
-        this.hp = 200;
-        this.maxHp = 200;
+        this.hp = 150;
+        this.maxHp = 150;
         this.stamina = 100;
         this.maxStamina = 100;
-        //this.damage = 45;//electedWeapon.getDamage();
+        
+        this.baseDamage = 15;
+        this.repairComponents = 0;
         this.souls = 0;
         this.level = 1;   
         this.dodgeP = 0.2;
         this.blockP = 0.2;
-        // Initial skills
+        
         this.strength = 5;
         this.dexterity = 5;
         this.endurance = 5;
+        
         this.inventory = new ArrayList<>();
         this.selectedWeapon = null;
         this.selectedArmor = null;        
-        // Set initial position
+        
         this.currentRoom = room;       
+        
+        setStartingEquipment();
+        
+        this.damage = selectedWeapon.getDamage();
+    }
+    
+    public int getRepairComponents() {
+        return repairComponents;
+    }
+
+    public void setRepairComponents(int repairComponents) {
+        this.repairComponents = repairComponents;
+    }
+    
+    public void setStartingEquipment(){
         Sword swordTemplate = WeaponsStorage.swords.get(0);
         addItemToInventory(new Sword(swordTemplate.getName(), swordTemplate.getWeight(), swordTemplate.getDamage(), swordTemplate.getDurability()));      
         TrooperArmor trooperArmorTemplate = ArmorStorage.trooperArmor.get(0);
         addItemToInventory(new TrooperArmor(trooperArmorTemplate.getName(), trooperArmorTemplate.getWeight(), trooperArmorTemplate.getDamageReduction(), trooperArmorTemplate.getDurability())); 
         this.selectedWeapon = (Weapon) inventory.get(0);
         this.selectedArmor = (Armor) inventory.get(1);
-        this.damage = selectedWeapon.getDamage();
+        this.selectedArmor.setSelected(true);
+        this.selectedWeapon.setSelected(true);
+        
+        Sword swordTemplate1 = WeaponsStorage.swords.get(5);
+        addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
+    }
+    
+    public void setBaseDamage(int newBaseDamage){
+        this.baseDamage = newBaseDamage;
+    }
+
+    public int getBaseDamage() {
+        return baseDamage;
     }
     
     public Weapon getSelectedWeapon() {
@@ -86,7 +118,9 @@ public class Player {
     }
 
     public void setSelectedWeapon(Weapon selectedWeapon) {
+        this.selectedWeapon.setSelected(false);
         this.selectedWeapon = selectedWeapon;
+        this.selectedWeapon.setSelected(true);
     }
 
     public Armor getSelectedArmor() {
@@ -94,10 +128,14 @@ public class Player {
     }
 
     public void setSelectedArmor(Armor selectedArmor) {
+        this.selectedArmor.setSelected(false);
         this.selectedArmor = selectedArmor;
+        this.selectedArmor.setSelected(true);
     }
     
     public void takeDamage(int enemyDamage){
+        this.getSelectedArmor().setDurability(this.getSelectedArmor().getDurability() - 7);
+        this.getSelectedArmor().checkStatus();
         this.setHp((int) (this.hp - enemyDamage*(1 - this.getSelectedArmor().getDamageReduction())));
     }
     

@@ -9,5 +9,5 @@ package com.mycompany.examproject.Items;
  * @author Arseniy
  */
 public interface Equipment {
-    
+    void checkStatus();
 }

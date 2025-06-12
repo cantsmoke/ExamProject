@@ -12,5 +12,6 @@ import com.mycompany.examproject.Items.Weapon;
  */
 public interface Hound {
     String getName();
-    void takeDamage(Weapon selectedWeapon);
+    String takeHeavyDamage(Weapon selectedWeapon, int baseDamage);
+    String takeLightDamage(Weapon selectedWeapon, int baseDamage);
 }

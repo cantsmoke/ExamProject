@@ -4,6 +4,9 @@
  */
 package com.mycompany.examproject.Items;
 
+import com.mycompany.examproject.Player;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Arseniy
@@ -12,8 +15,14 @@ public abstract class Armor implements Equipment{
     protected String name;
     protected int weight;
     protected double damageReduction;
+    protected double maxDamageReduction;
     protected int durability;
     protected int maxDurability;
+    protected boolean isBroken = false;
+    
+    protected boolean isSelected = false;
+    
+    protected boolean wasStatusWindowShowed = false;
     
     protected String imageURL;
 
@@ -21,8 +30,17 @@ public abstract class Armor implements Equipment{
         this.name = name;
         this.weight = weight;
         this.damageReduction = damageReduction;
+        this.maxDamageReduction = damageReduction;
         this.durability = durability;
         this.maxDurability = durability;
+    }
+    
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        this.isSelected = selected;
     }
 
     public String getName() {
@@ -55,7 +73,28 @@ public abstract class Armor implements Equipment{
     
     @Override
     public String toString() {
-        return name;
+        String result = name;
+        if (isBroken) result += " (b)";
+        if (isSelected) result += " (***)";
+        return result;
+    }
+    
+    @Override
+    public void checkStatus(){
+        if(this.durability <= 0){
+            this.durability = 0;
+            this.isBroken = true;
+            if(!wasStatusWindowShowed){
+                JOptionPane.showMessageDialog(null, "Armor broke!");
+                this.wasStatusWindowShowed = true;
+            }
+            this.damageReduction = 0;
+        }
+    }
+    
+    public void repair(){
+        this.durability = this.maxDurability;
+        this.damageReduction = this.maxDamageReduction;
     }
     
 }

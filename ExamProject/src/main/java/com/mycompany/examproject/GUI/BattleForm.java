@@ -105,6 +105,11 @@ public class BattleForm extends javax.swing.JFrame {
         inventoryButton.setForeground(new java.awt.Color(204, 204, 204));
         inventoryButton.setText("Inventory");
         inventoryButton.setBorder(null);
+        inventoryButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventoryButtonActionPerformed(evt);
+            }
+        });
 
         dodgeButton.setBackground(new java.awt.Color(51, 51, 51));
         dodgeButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -198,11 +203,11 @@ public class BattleForm extends javax.swing.JFrame {
                                 .addComponent(enemyNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(74, 74, 74)
                 .addComponent(playerBaseDamageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enemyBaseDamageLabel)
-                .addGap(67, 67, 67))
+                .addGap(104, 104, 104))
         );
         BattleFramePanelLayout.setVerticalGroup(
             BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,6 +281,10 @@ public class BattleForm extends javax.swing.JFrame {
     private void skipTurnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_skipTurnButtonActionPerformed
         GUIandLogicIntermediary.handlePlayerSkipAction();
     }//GEN-LAST:event_skipTurnButtonActionPerformed
+
+    private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryButtonActionPerformed
+        GUIandLogicIntermediary.handlePlayerOpenDialogFromBattle();
+    }//GEN-LAST:event_inventoryButtonActionPerformed
     
     public void appendToLogArea(String message) {
         battleLogArea.append(message + "\n" + "-----------" + "\n");
@@ -311,7 +320,7 @@ public class BattleForm extends javax.swing.JFrame {
         enemyHpBar.setMaximum(enemy.getMaxHealth());
         enemyHpBar.setValue(enemy.getHealth());
         enemyHpBar.setString(enemy.getHealth() + "/" + enemy.getMaxHealth());
-        enemyBaseDamageLabel.setText("Base damage: " + enemy.getDamage());
+        enemyBaseDamageLabel.setText("Damage: " + enemy.getDamage());
         
         playerHpBar.setMaximum(player.getMaxHp());
         playerHpBar.setValue(player.getHp());
@@ -324,8 +333,8 @@ public class BattleForm extends javax.swing.JFrame {
         playerHpBar.repaint();
         playerStaminaBar.repaint();
 
-        playerBaseDamageLabel.setText("Base damage: " + player.getDamage());
-        
+        playerBaseDamageLabel.setText("Damage: " + (player.getBaseDamage() + player.getSelectedWeapon().getDamage()));
+
         if(player.getHp() < player.getMaxHp() * 0.25){
             playerHpBar.setForeground(Color.red);
             playerHpBar.setBackground(new Color(50, 0, 0));

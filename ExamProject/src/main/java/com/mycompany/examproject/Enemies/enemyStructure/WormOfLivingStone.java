@@ -2,9 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.examproject.Enemies.enemyStructure.Bosses;
+package com.mycompany.examproject.Enemies.enemyStructure;
 
+import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.EntityActionType;
+import com.mycompany.examproject.Items.Weapon;
+import com.mycompany.examproject.Items.Weapons.Bow;
+import com.mycompany.examproject.Items.Weapons.Hammer;
+import com.mycompany.examproject.Items.Weapons.Sword;
 
 /**
  *
@@ -52,6 +57,32 @@ public class WormOfLivingStone extends Boss{
     @Override
     public double getBlockP(){
         return this.blockP;
+    }
+    
+    @Override
+    public String takeHeavyDamage(Weapon selectedWeapon, int baseDamage) {
+        int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
+
+        if (selectedWeapon instanceof Sword || selectedWeapon instanceof Bow) {
+            damage /= 2;
+        } else if (selectedWeapon instanceof Hammer) {
+            damage *= 2;
+        }
+        this.health -= damage;
+        return "Enemy took " + damage + " damage!";
+    }
+
+    @Override
+    public String takeLightDamage(Weapon selectedWeapon, int baseDamage) {
+        int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
+
+        if (selectedWeapon instanceof Sword || selectedWeapon instanceof Bow) {
+            damage /= 2;
+        } else if (selectedWeapon instanceof Hammer) {
+            damage *= 2;
+        }
+        this.health -= damage;
+        return "Enemy took " + damage + " damage!";
     }
     
 }

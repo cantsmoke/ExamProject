@@ -8,8 +8,8 @@ import com.mycompany.examproject.Enemies.BossFactory;
 import com.mycompany.examproject.Enemies.EnemySection1Factory;
 import com.mycompany.examproject.Enemies.EnemySection2Factory;
 import com.mycompany.examproject.Enemies.EnemySection3Factory;
-import com.mycompany.examproject.Enemies.enemyStructure.Bosses.Boss;
-import com.mycompany.examproject.Enemies.enemyStructure.Bosses.BossType;
+import com.mycompany.examproject.Enemies.enemyStructure.Boss;
+import com.mycompany.examproject.Enemies.enemyStructure.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
 import com.mycompany.examproject.GUI.InventoryForm;
@@ -210,4 +210,11 @@ public class GUIandLogicIntermediary {
         inventoryForm.UpdateLabels();
     }
 
+    public static void handlePlayerOpenDialogFromBattle() {
+        InventoryForm inventoryForm = new InventoryForm();
+        inventoryForm.setVisible(true);
+        inventoryForm.UpdateLabels();
+        inventoryForm.UpdateAvaibility();
+    }
+    
 }

@@ -57,7 +57,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
 
         textLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         textLabel.setForeground(new java.awt.Color(204, 204, 204));
-        textLabel.setText("OR SELECTED ITEM IS BROKE!");
+        textLabel.setText("OR SELECTED ITEM IS BROKEN!");
 
         javax.swing.GroupLayout choosePanelLayout = new javax.swing.GroupLayout(choosePanel);
         choosePanel.setLayout(choosePanelLayout);
@@ -72,7 +72,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
                         .addGap(72, 72, 72)
                         .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(choosePanelLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(22, 22, 22)
                         .addComponent(textLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );

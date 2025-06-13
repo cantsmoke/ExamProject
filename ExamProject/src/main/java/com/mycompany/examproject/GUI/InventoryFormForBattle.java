@@ -302,7 +302,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
 
         Player player = Player.getInstance(); // Получаем текущего игрока
 
-        if (selectedWeapon != null) {
+        if (selectedWeapon != null && !selectedWeapon.isBroken()) {
             player.setSelectedWeapon(selectedWeapon);
         } else if (selectedPotion != null){
             

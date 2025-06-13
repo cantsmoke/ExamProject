@@ -34,6 +34,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
         choosePanel = new javax.swing.JPanel();
         warningLabel = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
+        textLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -41,7 +42,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
 
         warningLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         warningLabel.setForeground(new java.awt.Color(204, 204, 204));
-        warningLabel.setText("YOU NEED to choose item first!");
+        warningLabel.setText("YOU NEED to choose item first");
 
         okButton.setBackground(new java.awt.Color(102, 102, 102));
         okButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -54,6 +55,10 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
             }
         });
 
+        textLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        textLabel.setForeground(new java.awt.Color(204, 204, 204));
+        textLabel.setText("OR SELECTED ITEM IS BROKE!");
+
         javax.swing.GroupLayout choosePanelLayout = new javax.swing.GroupLayout(choosePanel);
         choosePanel.setLayout(choosePanelLayout);
         choosePanelLayout.setHorizontalGroup(
@@ -65,7 +70,10 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
                         .addComponent(warningLabel))
                     .addGroup(choosePanelLayout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(choosePanelLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(textLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         choosePanelLayout.setVerticalGroup(
@@ -73,7 +81,9 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
             .addGroup(choosePanelLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(warningLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -84,8 +94,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(choosePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(choosePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,6 +115,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel choosePanel;
     private javax.swing.JButton okButton;
+    private javax.swing.JLabel textLabel;
     private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 }

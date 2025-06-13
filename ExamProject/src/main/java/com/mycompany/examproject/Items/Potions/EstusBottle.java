@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject.Items.Potions;
 
+import com.mycompany.examproject.GUI.HealthFullOrNoEstusDialog;
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Player;
 import javax.swing.JOptionPane;
@@ -57,7 +58,8 @@ public class EstusBottle extends Potion {
             player.setHp(newHp);
             this.usesLeft--;
         } else {
-            JOptionPane.showMessageDialog(null, "Your health is full or there is no estus left!");
+            HealthFullOrNoEstusDialog healthFullOrNoEstusDialog = new HealthFullOrNoEstusDialog(null, true);
+            healthFullOrNoEstusDialog.setVisible(true);
         }
     }
     

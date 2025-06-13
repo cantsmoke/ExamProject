@@ -13,9 +13,11 @@ import com.mycompany.examproject.Items.Weapon;
  * @author Arseniy
  */
 public class Boss extends Enemy{
-
+    private int floorNum;
+    
     public Boss(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
+        this.floorNum = floorNum;
     }
 
     @Override
@@ -57,6 +59,10 @@ public class Boss extends Enemy{
     public String takeLightDamage(Weapon selectedWeapon, int baseDamage) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
+    
+    @Override
+    public int getSouls() {
+        return 500 + 50 * floorNum;
+    }
     
 }

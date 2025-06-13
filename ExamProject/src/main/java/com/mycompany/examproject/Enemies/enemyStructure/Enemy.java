@@ -69,4 +69,6 @@ public abstract class Enemy {
     public abstract String takeHeavyDamage(Weapon selectedWeapon, int baseDamage);
     public abstract String takeLightDamage(Weapon selectedWeapon, int baseDamage);
     
+    public abstract int getSouls();
+    
 }

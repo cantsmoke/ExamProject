@@ -33,10 +33,18 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        armorBrokePanel = new javax.swing.JPanel();
-        okButton = new javax.swing.JButton();
         armorBrokeLabel = new javax.swing.JLabel();
         iconLabel = new javax.swing.JLabel();
+        armorBrokePanel = new javax.swing.JPanel();
+        okButton = new javax.swing.JButton();
+        warningLabel = new javax.swing.JLabel();
+        iconLabell = new javax.swing.JLabel();
+
+        armorBrokeLabel.setFont(new java.awt.Font("Castellar", 0, 24)); // NOI18N
+        armorBrokeLabel.setForeground(new java.awt.Color(204, 204, 204));
+        armorBrokeLabel.setText("ARMOR broke!");
+
+        iconLabel.setText("jLabel1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -53,38 +61,39 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
             }
         });
 
-        armorBrokeLabel.setFont(new java.awt.Font("Castellar", 0, 24)); // NOI18N
-        armorBrokeLabel.setForeground(new java.awt.Color(204, 204, 204));
-        armorBrokeLabel.setText("ARMOR broke!");
+        warningLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
+        warningLabel.setForeground(new java.awt.Color(204, 204, 204));
+        warningLabel.setText("Armor broke!");
 
-        iconLabel.setText("jLabel1");
+        iconLabell.setText("jLabel2");
+        iconLabell.setPreferredSize(new java.awt.Dimension(130, 130));
 
         javax.swing.GroupLayout armorBrokePanelLayout = new javax.swing.GroupLayout(armorBrokePanel);
         armorBrokePanel.setLayout(armorBrokePanelLayout);
         armorBrokePanelLayout.setHorizontalGroup(
             armorBrokePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(armorBrokePanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, armorBrokePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(armorBrokePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, armorBrokePanelLayout.createSequentialGroup()
-                        .addGap(0, 14, Short.MAX_VALUE)
-                        .addComponent(armorBrokeLabel)
-                        .addGap(11, 11, 11)))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)))
                 .addContainerGap())
             .addGroup(armorBrokePanelLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(iconLabell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         armorBrokePanelLayout.setVerticalGroup(
             armorBrokePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, armorBrokePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(armorBrokeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(iconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addComponent(warningLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(iconLabell, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -104,7 +113,7 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setIcon(String iconUrl){
-        armorBrokeLabel.setIcon(new ImageIcon(iconUrl));
+        iconLabell.setIcon(new ImageIcon(iconUrl));
     }
     
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
@@ -116,6 +125,8 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
     private javax.swing.JLabel armorBrokeLabel;
     private javax.swing.JPanel armorBrokePanel;
     private javax.swing.JLabel iconLabel;
+    private javax.swing.JLabel iconLabell;
     private javax.swing.JButton okButton;
+    private javax.swing.JLabel warningLabel;
     // End of variables declaration//GEN-END:variables
 }

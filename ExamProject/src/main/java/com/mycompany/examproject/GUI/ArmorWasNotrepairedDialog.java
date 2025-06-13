@@ -56,6 +56,7 @@ public class ArmorWasNotrepairedDialog extends javax.swing.JDialog {
         });
 
         requiredAmountLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        requiredAmountLabel.setForeground(new java.awt.Color(204, 204, 204));
         requiredAmountLabel.setText("(30 required)");
 
         javax.swing.GroupLayout choosePanelLayout = new javax.swing.GroupLayout(choosePanel);

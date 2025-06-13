@@ -413,8 +413,16 @@ public class InventoryForm extends javax.swing.JFrame {
             youNeedToChooseItemDialog.setVisible(true);
         }
 
+        checkSelectedEquipmentWeight();
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
+    
+    public void checkSelectedEquipmentWeight(){
+        if(Player.getInstance().getTotalEquipmentWeight() >= Player.getInstance().getBearableWeight()){
+            WeightAttentionDialog weightAttentionDialog = new WeightAttentionDialog(null, true);
+            weightAttentionDialog.setVisible(true);
+        }
+    }
     
     public void UpdateLabels(){
         List<Equipment> inventory = Player.getInstance().getInventory();

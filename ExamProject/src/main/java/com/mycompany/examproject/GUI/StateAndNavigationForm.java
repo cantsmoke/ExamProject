@@ -45,6 +45,8 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         upgradeMenu = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         playerIconLabel = new javax.swing.JLabel();
+        soulsLabel = new javax.swing.JLabel();
+        lvlLabel = new javax.swing.JLabel();
         LocationInfoPanel = new javax.swing.JPanel();
         locationImageLabel = new javax.swing.JLabel();
         LocationDescriptionScrollPane = new javax.swing.JScrollPane();
@@ -126,25 +128,39 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         playerIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 17_52_59 (1).png")); // NOI18N
         playerIconLabel.setBorder(new AntiqueBorder());
 
+        soulsLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        soulsLabel.setForeground(new java.awt.Color(204, 204, 204));
+        soulsLabel.setText("CUrreNT souls amount:");
+
+        lvlLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        lvlLabel.setForeground(new java.awt.Color(204, 204, 204));
+        lvlLabel.setText("LEVEL:");
+
         javax.swing.GroupLayout PlayerInfoAndBasicButtonsPanelLayout = new javax.swing.GroupLayout(PlayerInfoAndBasicButtonsPanel);
         PlayerInfoAndBasicButtonsPanel.setLayout(PlayerInfoAndBasicButtonsPanelLayout);
         PlayerInfoAndBasicButtonsPanelLayout.setHorizontalGroup(
             PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
                 .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(inventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
+                    .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
                             .addGap(12, 12, 12)
-                            .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(upgradeMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(staminaBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(healthBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
-                                .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(inventoryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(saveButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(upgradeMenu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(staminaBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(healthBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+                                    .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(PlayerInfoAndBasicButtonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lvlLabel)
+                            .addComponent(soulsLabel))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         PlayerInfoAndBasicButtonsPanelLayout.setVerticalGroup(
@@ -156,13 +172,17 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addComponent(staminaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(soulsLabel)
+                .addGap(9, 9, 9)
+                .addComponent(lvlLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(inventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(upgradeMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100)
+                .addGap(39, 39, 39)
                 .addComponent(exitToMainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -449,6 +469,9 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         
         checkNavigationButtonsAvailability();
         
+        soulsLabel.setText("Current souls amount: " + Player.getInstance().getCurrentSoulsAmount());
+        lvlLabel.setText("Level: " + Player.getInstance().getLevel());
+        
         UIManager.put("Button.disabledText", Color.BLACK);
     }
     
@@ -511,6 +534,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     private javax.swing.JButton inventoryButton;
     private javax.swing.JTextArea locationDescriptionArea;
     private javax.swing.JLabel locationImageLabel;
+    private javax.swing.JLabel lvlLabel;
     private javax.swing.JLabel mapLabel;
     private javax.swing.JPanel mapPanel;
     private javax.swing.JButton moveEastButton;
@@ -519,6 +543,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     private javax.swing.JButton moveWestButton;
     private javax.swing.JLabel playerIconLabel;
     private javax.swing.JButton saveButton;
+    private javax.swing.JLabel soulsLabel;
     private javax.swing.JProgressBar staminaBar;
     private javax.swing.JButton upgradeMenu;
     private javax.swing.JButton useLadderButton;

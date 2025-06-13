@@ -97,4 +97,9 @@ public class SaintKnight extends Enemy implements Knight{
         return "Enemy took " + damage + " damage!";
     }
     
+    @Override
+    public int getSouls() {
+        return 250;
+    }
+    
 }

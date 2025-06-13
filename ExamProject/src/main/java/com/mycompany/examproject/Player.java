@@ -4,8 +4,10 @@
  */
 package com.mycompany.examproject;
 
+import com.mycompany.examproject.GUI.LevelUpdateDialog;
 import com.mycompany.examproject.Items.Armor;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
+import com.mycompany.examproject.Items.Armors.HeavyArmor;
 import com.mycompany.examproject.Items.Armors.TrooperArmor;
 import com.mycompany.examproject.Items.Equipment;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
@@ -28,8 +30,6 @@ public class Player {
     private int maxHp;
     private int stamina;
     private int maxStamina;
-    private int souls;
-    private int level;
     private int damage;
     
     private int repairComponents;
@@ -41,6 +41,12 @@ public class Player {
     private List<Equipment> inventory;
     private Weapon selectedWeapon;
     private Armor selectedArmor;
+    private int bearableWeight;
+    
+    private int totalSoulsAmount;
+    private int currentSoulsAmount;
+    
+    private int level;
 
     // Skills
     private int strength;
@@ -64,8 +70,6 @@ public class Player {
         
         this.baseDamage = 15;
         this.repairComponents = 0;
-        this.souls = 0;
-        this.level = 1;   
         this.dodgeP = 0.2;
         this.blockP = 0.2;
         
@@ -75,13 +79,73 @@ public class Player {
         
         this.inventory = new ArrayList<>();
         this.selectedWeapon = null;
-        this.selectedArmor = null;        
+        this.selectedArmor = null;    
+        
+        this.totalSoulsAmount = 0;
+        this.currentSoulsAmount = 0;
+        this.level = 1;
         
         this.currentRoom = room;       
         
         setStartingEquipment();
         
+        this.bearableWeight = 50;
+        
         this.damage = selectedWeapon.getDamage();
+    }
+    
+    public int getBearableWeight() {
+        return bearableWeight;
+    }
+
+    public void setBearableWeight(int bearableWeight) {
+        this.bearableWeight = bearableWeight;
+    }
+
+    public int getLevel(){
+        return this.level;
+    }
+    
+    public void updateLevel(){
+        this.level++;
+        LevelUpdateDialog levelUpdateDialog = new LevelUpdateDialog(null, true);
+        levelUpdateDialog.setVisible(true);
+        updateParametrsBasesOnLVL();
+    }
+    
+    public void updateParametrsBasesOnLVL() {
+        double hpRatio = (double) this.hp / this.maxHp;
+        double staminaRatio = (double) this.stamina / this.maxStamina;
+
+        this.maxHp = this.maxHp + 25 * this.level;
+        this.maxStamina = this.maxStamina + 15 * this.level;
+
+        this.hp = (int) (this.maxHp * hpRatio);
+        this.stamina = (int) (this.maxStamina * staminaRatio);
+        
+        this.bearableWeight = this.bearableWeight + 6;
+    }
+    
+    public int getTotalSoulsAmount(){
+        return this.totalSoulsAmount;
+    }
+    
+    public void addSoulsToTotal(int souls){
+        this.totalSoulsAmount = this.totalSoulsAmount + souls;
+        int newLevel = this.totalSoulsAmount / 500; // например, при 1200 душах — это 2
+        
+        if (newLevel > getLevel()) {
+            updateLevel();
+        }
+    }
+    
+    public int getCurrentSoulsAmount(){
+        return this.totalSoulsAmount;
+    }
+    
+    public void addCurrentSoulsAmount(int souls){
+        this.currentSoulsAmount = this.currentSoulsAmount + souls;
+        addSoulsToTotal(souls);
     }
     
     public int getRepairComponents() {
@@ -104,6 +168,9 @@ public class Player {
         
         Sword swordTemplate1 = WeaponsStorage.swords.get(5);
         addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
+        
+        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(10);
+        addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
         
         addItemToInventory(new EstusBottle());
     }
@@ -170,8 +237,6 @@ public class Player {
         this.stamina = stamina;
     }
     public int getMaxStamina() { return maxStamina; }
-    public int getSouls() { return souls; }
-    public int getLevel() { return level; }
     public int getDamage(){
         return damage;
     }
@@ -202,4 +267,9 @@ public class Player {
         return inventory;
     }
 
+    public int getTotalEquipmentWeight(){
+        int totalWeight = this.selectedArmor.getWeight() + this.selectedWeapon.getWeight();
+        return totalWeight;
+    }
+    
 }

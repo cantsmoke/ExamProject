@@ -25,7 +25,7 @@ public class EstusBottle extends Potion {
         super("Estus", "Regens your health.");
         this.healRegenPercentage = 0.25;
         this.maxUses = 10;
-        this.usesLeft = maxUses;
+        this.usesLeft = 5;
     }
 
     public double getHealthRegenPercentage(){

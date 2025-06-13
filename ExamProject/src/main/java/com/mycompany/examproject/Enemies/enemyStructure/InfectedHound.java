@@ -98,4 +98,9 @@ public class InfectedHound extends Enemy implements Hound{
         return "Enemy took " + damage + " damage!";
     }
     
+    @Override
+    public int getSouls() {
+        return 100;
+    }
+    
 }

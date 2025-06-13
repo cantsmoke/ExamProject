@@ -92,10 +92,10 @@
                                   <Component id="repairComponentsAmountLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="equipeUseButton" min="-2" pref="190" max="-2" attributes="0"/>
-                              <Component id="closeInventoryButton" alignment="1" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="closeInventoryButton" alignment="0" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -107,16 +107,20 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="weaponLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="potionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="closeInventoryButton" min="-2" pref="59" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="potionsScrollPane" min="-2" pref="301" max="-2" attributes="0"/>
-                              <Component id="weaponScrollPane" min="-2" pref="301" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="weaponLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="potionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="equipeUseButton" min="-2" pref="59" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="potionsScrollPane" min="-2" pref="301" max="-2" attributes="0"/>
+                                  <Component id="weaponScrollPane" min="-2" pref="301" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -133,11 +137,6 @@
                           </Group>
                           <EmptySpace min="21" pref="21" max="-2" attributes="0"/>
                           <Component id="repairComponentsAmountLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="equipeUseButton" min="-2" pref="59" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="closeInventoryButton" min="-2" pref="59" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="0" pref="23" max="32767" attributes="0"/>

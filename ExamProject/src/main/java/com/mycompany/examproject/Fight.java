@@ -249,6 +249,8 @@ public class Fight {
             
             player.setStamina(player.getMaxStamina());
             
+            player.addCurrentSoulsAmount(enemy.getSouls());
+            
             if(enemy instanceof Boss){
                 player.setRepairComponents(player.getRepairComponents() + 12);
             } else {

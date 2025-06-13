@@ -98,4 +98,9 @@ public class FireKnight extends Enemy implements Knight{
         return "Enemy took " + damage + " damage!";
     }
     
+    @Override
+    public int getSouls() {
+        return 200;
+    }
+    
 }

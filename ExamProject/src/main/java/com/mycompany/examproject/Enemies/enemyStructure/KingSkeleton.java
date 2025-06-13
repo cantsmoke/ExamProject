@@ -95,4 +95,9 @@ public class KingSkeleton extends Enemy implements Skeleton {
         return "Enemy took " + damage + " damage!";
     }
     
+    @Override
+    public int getSouls() {
+        return 200;
+    }
+    
 }

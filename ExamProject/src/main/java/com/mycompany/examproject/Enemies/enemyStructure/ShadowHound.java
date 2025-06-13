@@ -98,4 +98,9 @@ public class ShadowHound extends Enemy implements Hound{
         return "Enemy took " + damage + " damage!";
     }
     
+    @Override
+    public int getSouls() {
+        return 70;
+    }
+    
 }

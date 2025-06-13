@@ -5,6 +5,7 @@
 package com.mycompany.examproject.GUI;
 
 import com.mycompany.examproject.EntityActionType;
+import com.mycompany.examproject.Player;
 import java.awt.Color;
 
 /**
@@ -24,6 +25,10 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
         initComponents();
+        
+        if (Player.getInstance().getTotalEquipmentWeight() >= Player.getInstance().getBearableWeight()){
+            lightAttackButton.setEnabled(false);
+        }
     }
     
     public EntityActionType getAttackType(){
@@ -55,6 +60,7 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
         lightAttackButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         lightAttackButton.setForeground(new java.awt.Color(204, 204, 204));
         lightAttackButton.setText("LIGHT ATTACK");
+        lightAttackButton.setBorder(null);
         lightAttackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lightAttackButtonActionPerformed(evt);
@@ -65,6 +71,7 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
         heavyAttackButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         heavyAttackButton.setForeground(new java.awt.Color(204, 204, 204));
         heavyAttackButton.setText("HEAVY ATTACK");
+        heavyAttackButton.setBorder(null);
         heavyAttackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 heavyAttackButtonActionPerformed(evt);

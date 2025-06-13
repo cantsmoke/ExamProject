@@ -438,6 +438,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
             healthBar.setBackground(new Color(50, 0, 0));
         } else {
             healthBar.setForeground(new Color(0, 153, 0));
+            healthBar.setBackground(new Color(0, 20, 0));
         }
         
         checkIfLadder();
@@ -498,7 +499,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane LocationDescriptionScrollPane;
     private javax.swing.JPanel LocationInfoPanel;
@@ -523,6 +523,5 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     private javax.swing.JButton upgradeMenu;
     private javax.swing.JButton useLadderButton;
     // End of variables declaration//GEN-END:variables
-
 
 }

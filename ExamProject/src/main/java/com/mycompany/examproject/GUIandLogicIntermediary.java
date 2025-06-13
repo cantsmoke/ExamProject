@@ -13,6 +13,7 @@ import com.mycompany.examproject.Enemies.enemyStructure.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
 import com.mycompany.examproject.GUI.InventoryForm;
+import com.mycompany.examproject.GUI.InventoryFormForBattle;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
@@ -198,23 +199,29 @@ public class GUIandLogicIntermediary {
         fight.handlePlayerSkipAction();
     }
     
-    static void showNavigationForm() {
+    public static void showNavigationForm() {
         stateAndNavigationForm.updateLabels();
         stateAndNavigationForm.setVisible(true);
     }
     
+    public static void showBattleForm() {
+        fight.showBattleForm();
+    }
     
     public static void openInventory() {
+        stateAndNavigationForm.setVisible(false);
+        
         InventoryForm inventoryForm = new InventoryForm();
         inventoryForm.setVisible(true);
         inventoryForm.UpdateLabels();
     }
 
     public static void handlePlayerOpenDialogFromBattle() {
-        InventoryForm inventoryForm = new InventoryForm();
-        inventoryForm.setVisible(true);
-        inventoryForm.UpdateLabels();
-        inventoryForm.UpdateAvaibility();
+        fight.hideBattleForm();
+        
+        InventoryFormForBattle inventoryFormForBattle = new InventoryFormForBattle();
+        inventoryFormForBattle.setVisible(true);
+        inventoryFormForBattle.UpdateLabels();
     }
     
 }

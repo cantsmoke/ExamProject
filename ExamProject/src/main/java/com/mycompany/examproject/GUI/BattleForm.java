@@ -207,7 +207,7 @@ public class BattleForm extends javax.swing.JFrame {
                 .addComponent(playerBaseDamageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enemyBaseDamageLabel)
-                .addGap(104, 104, 104))
+                .addGap(81, 81, 81))
         );
         BattleFramePanelLayout.setVerticalGroup(
             BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,6 +340,7 @@ public class BattleForm extends javax.swing.JFrame {
             playerHpBar.setBackground(new Color(50, 0, 0));
         } else {
             playerHpBar.setForeground(new Color(0, 153, 0));
+            playerHpBar.setBackground(new Color(0, 20, 0));
         }
         if(enemy.getHealth() < enemy.getMaxHealth() * 0.25){
             enemyHpBar.setForeground(Color.red);

@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject.Items;
 
+import com.mycompany.examproject.GUI.ArmorBrokeDialog;
 import com.mycompany.examproject.Player;
 import javax.swing.JOptionPane;
 
@@ -33,6 +34,10 @@ public abstract class Armor implements Equipment{
         this.maxDamageReduction = damageReduction;
         this.durability = durability;
         this.maxDurability = durability;
+    }
+    
+    public boolean isBroken() {
+        return isBroken;
     }
     
     public boolean isSelected() {
@@ -85,7 +90,8 @@ public abstract class Armor implements Equipment{
             this.durability = 0;
             this.isBroken = true;
             if(!wasStatusWindowShowed){
-                JOptionPane.showMessageDialog(null, "Armor broke!");
+                ArmorBrokeDialog armorBrokeDialog = new ArmorBrokeDialog(null, true);
+                armorBrokeDialog.setVisible(true);
                 this.wasStatusWindowShowed = true;
             }
             this.damageReduction = 0;

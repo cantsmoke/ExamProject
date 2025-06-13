@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject.Items;
 
+import com.mycompany.examproject.GUI.WeaponBrokeDialog;
 import com.mycompany.examproject.Player;
 import javax.swing.JOptionPane;
 
@@ -89,7 +90,8 @@ public abstract class Weapon implements Equipment{
             this.durability = 0;
             this.isBroken = true;
             if(!wasStatusWindowShowed){
-                JOptionPane.showMessageDialog(null, "Weapon broke!");
+                WeaponBrokeDialog weaponBrokeDialog = new WeaponBrokeDialog(null, true);
+                weaponBrokeDialog.setVisible(true);
                 this.wasStatusWindowShowed = true;
             }
             this.damage = 0;

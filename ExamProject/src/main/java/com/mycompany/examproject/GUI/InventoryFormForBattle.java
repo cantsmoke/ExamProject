@@ -22,12 +22,12 @@ import javax.swing.JOptionPane;
  *
  * @author Arseniy
  */
-public class InventoryForm extends javax.swing.JFrame {
+public class InventoryFormForBattle extends javax.swing.JFrame {
 
     /**
      * Creates new form InventoryForm
      */
-    public InventoryForm() {
+    public InventoryFormForBattle() {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
@@ -52,14 +52,11 @@ public class InventoryForm extends javax.swing.JFrame {
 
         jScrollPane4 = new javax.swing.JScrollPane();
         inventoryPanel = new javax.swing.JPanel();
-        armorScrollPane = new javax.swing.JScrollPane();
-        armorList = new javax.swing.JList<>();
         potionsScrollPane = new javax.swing.JScrollPane();
         potionList = new javax.swing.JList<>();
         weaponScrollPane = new javax.swing.JScrollPane();
         weaponList = new javax.swing.JList<>();
         weaponLabel = new javax.swing.JLabel();
-        armorLabel = new javax.swing.JLabel();
         potionLabel = new javax.swing.JLabel();
         equipeUseButton = new javax.swing.JButton();
         itemIconLabel = new javax.swing.JLabel();
@@ -67,25 +64,12 @@ public class InventoryForm extends javax.swing.JFrame {
         itemWeightLabel = new javax.swing.JLabel();
         itemDamageOrDamageReductionLabel = new javax.swing.JLabel();
         itemDurabilityLabel = new javax.swing.JLabel();
-        repairButton = new javax.swing.JButton();
         closeInventoryButton = new javax.swing.JButton();
         repairComponentsAmountLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         inventoryPanel.setBackground(new java.awt.Color(0, 0, 0));
-
-        armorList.setBackground(new java.awt.Color(51, 51, 51));
-        armorList.setFont(new java.awt.Font("Yu Mincho Light", 0, 12)); // NOI18N
-        armorList.setForeground(new java.awt.Color(204, 204, 204));
-        armorList.setSelectionBackground(new java.awt.Color(102, 0, 153));
-        armorList.setSelectionForeground(new java.awt.Color(204, 204, 204));
-        armorList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                armorListValueChanged(evt);
-            }
-        });
-        armorScrollPane.setViewportView(armorList);
 
         potionList.setBackground(new java.awt.Color(51, 51, 51));
         potionList.setFont(new java.awt.Font("Yu Mincho Light", 0, 12)); // NOI18N
@@ -116,10 +100,6 @@ public class InventoryForm extends javax.swing.JFrame {
         weaponLabel.setForeground(new java.awt.Color(204, 204, 204));
         weaponLabel.setText("Weapons");
 
-        armorLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
-        armorLabel.setForeground(new java.awt.Color(204, 204, 204));
-        armorLabel.setText("ARMOR");
-
         potionLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         potionLabel.setForeground(new java.awt.Color(204, 204, 204));
         potionLabel.setText("POTIONS");
@@ -135,31 +115,21 @@ public class InventoryForm extends javax.swing.JFrame {
             }
         });
 
-        itemNameLabel.setFont(new java.awt.Font("Castellar", 0, 11)); // NOI18N
+        itemNameLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
         itemNameLabel.setForeground(new java.awt.Color(204, 204, 204));
         itemNameLabel.setText("Item name: unknown");
 
-        itemWeightLabel.setFont(new java.awt.Font("Castellar", 0, 11)); // NOI18N
+        itemWeightLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
         itemWeightLabel.setForeground(new java.awt.Color(204, 204, 204));
         itemWeightLabel.setText("Item weight: unknown");
 
-        itemDamageOrDamageReductionLabel.setFont(new java.awt.Font("Castellar", 0, 11)); // NOI18N
+        itemDamageOrDamageReductionLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
         itemDamageOrDamageReductionLabel.setForeground(new java.awt.Color(204, 204, 204));
         itemDamageOrDamageReductionLabel.setText("Item parametr: unknown");
 
-        itemDurabilityLabel.setFont(new java.awt.Font("Castellar", 0, 11)); // NOI18N
+        itemDurabilityLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
         itemDurabilityLabel.setForeground(new java.awt.Color(204, 204, 204));
         itemDurabilityLabel.setText("Item durability: unknown");
-
-        repairButton.setBackground(new java.awt.Color(102, 102, 102));
-        repairButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
-        repairButton.setForeground(new java.awt.Color(204, 204, 204));
-        repairButton.setText("REPAIR");
-        repairButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                repairButtonActionPerformed(evt);
-            }
-        });
 
         closeInventoryButton.setBackground(new java.awt.Color(102, 102, 102));
         closeInventoryButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -172,7 +142,7 @@ public class InventoryForm extends javax.swing.JFrame {
             }
         });
 
-        repairComponentsAmountLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        repairComponentsAmountLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         repairComponentsAmountLabel.setForeground(new java.awt.Color(204, 204, 204));
         repairComponentsAmountLabel.setText("AMOUNT OF REPAIRING COMPONENTS:");
 
@@ -185,9 +155,7 @@ public class InventoryForm extends javax.swing.JFrame {
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(weaponLabel)
-                        .addGap(192, 192, 192)
-                        .addComponent(armorLabel)
-                        .addGap(194, 194, 194)
+                        .addGap(186, 186, 186)
                         .addComponent(potionLabel))
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,44 +163,39 @@ public class InventoryForm extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(inventoryPanelLayout.createSequentialGroup()
-                                        .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(armorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(inventoryPanelLayout.createSequentialGroup()
                                         .addComponent(itemIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(itemDurabilityLabel)
                                             .addComponent(itemDamageOrDamageReductionLabel)
                                             .addComponent(itemWeightLabel)
-                                            .addComponent(itemNameLabel)))))
+                                            .addComponent(itemNameLabel)))
+                                    .addGroup(inventoryPanelLayout.createSequentialGroup()
+                                        .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(inventoryPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(repairComponentsAmountLabel)))
                         .addGap(18, 18, 18)
-                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(repairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         inventoryPanelLayout.setVerticalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(inventoryPanelLayout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(armorLabel)
-                        .addComponent(weaponLabel))
+                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(weaponLabel)
                     .addComponent(potionLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(armorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
+                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, inventoryPanelLayout.createSequentialGroup()
@@ -241,19 +204,16 @@ public class InventoryForm extends javax.swing.JFrame {
                                 .addComponent(itemWeightLabel)
                                 .addGap(18, 18, 18)
                                 .addComponent(itemDamageOrDamageReductionLabel)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(itemDurabilityLabel))
-                            .addComponent(itemIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(itemIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addComponent(repairComponentsAmountLabel))
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(repairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(repairComponentsAmountLabel))))
-                .addGap(0, 22, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,34 +251,13 @@ public class InventoryForm extends javax.swing.JFrame {
                 }
                 itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()) {});
             }
-            armorList.clearSelection();
             potionList.clearSelection();
         }
     }//GEN-LAST:event_weaponListValueChanged
 
-    private void armorListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_armorListValueChanged
-        if (!evt.getValueIsAdjusting()) { // чтобы обработка была только по завершении выбора (а не при каждом смене выделения)
-            Armor selected = (Armor) armorList.getSelectedValue();
-            if (selected != null) {
-                itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
-                itemWeightLabel.setText("Item weight: " + selected.getWeight());
-                itemDamageOrDamageReductionLabel.setText("Item damage reduction(%) : " + selected.getDamageReduction()*100 + "%");
-                itemDurabilityLabel.setText("Item's durability left: " + selected.getDurability() + "/" + selected.getMaxDurability());
-                if(selected.getDurability() < selected.getMaxDurability() * 0.2){
-                    itemDurabilityLabel.setForeground(Color.RED);
-                } else {
-                    itemDurabilityLabel.setForeground(new Color(204, 204, 204));
-                }
-                itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
-            }
-            weaponList.clearSelection();
-            potionList.clearSelection();
-        }
-    }//GEN-LAST:event_armorListValueChanged
-
     private void closeInventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_closeInventoryButtonActionPerformed
         this.dispose();
-        GUIandLogicIntermediary.showNavigationForm();
+        GUIandLogicIntermediary.showBattleForm();
     }//GEN-LAST:event_closeInventoryButtonActionPerformed
 
     private void potionListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_potionListValueChanged
@@ -350,58 +289,22 @@ public class InventoryForm extends javax.swing.JFrame {
                 }
             }
             weaponList.clearSelection();
-            armorList.clearSelection();
         }
     }//GEN-LAST:event_potionListValueChanged
 
     public void closeInventoryButtonActionPerformed() {                                                     
         this.dispose();
-        GUIandLogicIntermediary.showNavigationForm();
+        GUIandLogicIntermediary.showBattleForm();
     } 
     
-    private void repairButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_repairButtonActionPerformed
-        Weapon selectedWeapon = weaponList.getSelectedValue();
-        Armor selectedArmor = armorList.getSelectedValue();
-
-        if (selectedWeapon != null && selectedWeapon.isBroken()) {
-            if(Player.getInstance().getRepairComponents() >= 20){
-                selectedWeapon.repair();
-                Player.getInstance().setRepairComponents(Player.getInstance().getRepairComponents() - 20);
-                WeaponRepairedDialog weaponRepairedDialog = new WeaponRepairedDialog(null, true);
-                weaponRepairedDialog.setVisible(true);
-            } else {
-                WeaponWasNotrepairedDialog weaponWasNotrepairedDialog = new WeaponWasNotrepairedDialog(null,true);
-                weaponWasNotrepairedDialog.setVisible(true);
-            }
-        } else if (selectedArmor != null && selectedArmor.isBroken()) {
-            if(Player.getInstance().getRepairComponents() >= 30){
-                selectedArmor.repair();
-                Player.getInstance().setRepairComponents(Player.getInstance().getRepairComponents() - 30);
-                ArmorRepairedDialog ArmorRepairedDialog = new ArmorRepairedDialog(null, true);
-                ArmorRepairedDialog.setVisible(true);
-            } else {
-                ArmorWasNotrepairedDialog armorWasNotrepairedDialog = new ArmorWasNotrepairedDialog(null,true);
-                armorWasNotrepairedDialog.setVisible(true);
-            }
-        } else {
-            ChooseOrDoesNotNeedRepairingDialog chooseOrDoesNotNeedRepairingDialog = new ChooseOrDoesNotNeedRepairingDialog(null, true);
-            chooseOrDoesNotNeedRepairingDialog.setVisible(true);
-        }
-
-        UpdateLabels();
-    }//GEN-LAST:event_repairButtonActionPerformed
-
     private void equipeUseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipeUseButtonActionPerformed
         Weapon selectedWeapon = weaponList.getSelectedValue();
-        Armor selectedArmor = armorList.getSelectedValue();
         Potion selectedPotion = potionList.getSelectedValue();
 
         Player player = Player.getInstance(); // Получаем текущего игрока
 
         if (selectedWeapon != null) {
             player.setSelectedWeapon(selectedWeapon);
-        } else if (selectedArmor != null) {
-            player.setSelectedArmor(selectedArmor);
         } else if (selectedPotion != null){
             
             if(selectedPotion instanceof EstusBottle){
@@ -412,7 +315,7 @@ public class InventoryForm extends javax.swing.JFrame {
             YouNeedToChooseItemDialog youNeedToChooseItemDialog = new YouNeedToChooseItemDialog(null, true);
             youNeedToChooseItemDialog.setVisible(true);
         }
-
+        
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
     
@@ -427,14 +330,6 @@ public class InventoryForm extends javax.swing.JFrame {
         }
         weaponList.setModel(weaponModel);
         
-        DefaultListModel<Armor> armorModel = new DefaultListModel<>();
-        for (Equipment eq : inventory) {
-            if (eq instanceof Armor) {
-                armorModel.addElement((Armor) eq);
-            }
-        }
-        armorList.setModel(armorModel);
-        
         DefaultListModel<Potion> potionModel = new DefaultListModel<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Potion) {
@@ -447,9 +342,6 @@ public class InventoryForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel armorLabel;
-    private javax.swing.JList<Armor> armorList;
-    private javax.swing.JScrollPane armorScrollPane;
     private javax.swing.JButton closeInventoryButton;
     private javax.swing.JButton equipeUseButton;
     private javax.swing.JPanel inventoryPanel;
@@ -462,7 +354,6 @@ public class InventoryForm extends javax.swing.JFrame {
     private javax.swing.JLabel potionLabel;
     private javax.swing.JList<Potion> potionList;
     private javax.swing.JScrollPane potionsScrollPane;
-    private javax.swing.JButton repairButton;
     private javax.swing.JLabel repairComponentsAmountLabel;
     private javax.swing.JLabel weaponLabel;
     private javax.swing.JList<Weapon> weaponList;

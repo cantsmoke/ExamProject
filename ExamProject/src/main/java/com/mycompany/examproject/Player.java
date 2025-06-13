@@ -8,6 +8,7 @@ import com.mycompany.examproject.Items.Armor;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
 import com.mycompany.examproject.Items.Armors.TrooperArmor;
 import com.mycompany.examproject.Items.Equipment;
+import com.mycompany.examproject.Items.Potions.EstusBottle;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Items.Weapons.Sword;
 import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
@@ -103,6 +104,8 @@ public class Player {
         
         Sword swordTemplate1 = WeaponsStorage.swords.get(5);
         addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
+        
+        addItemToInventory(new EstusBottle());
     }
     
     public void setBaseDamage(int newBaseDamage){

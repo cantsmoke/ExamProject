@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject;
 
+import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
@@ -33,6 +34,16 @@ public class Fight {
         battleForm.setVisible(true);
         
         this.battleForm = battleForm;
+    }
+    
+    public void hideBattleForm(){
+        this.battleForm.setVisible(false);
+        this.battleForm.updateLabels(player, enemy);
+    }
+    
+    public void showBattleForm(){
+        this.battleForm.setVisible(true);
+        this.battleForm.updateLabels(player, enemy);
     }
     
     public void handlePlayerAttackAction() {
@@ -238,7 +249,11 @@ public class Fight {
             
             player.setStamina(player.getMaxStamina());
             
-            player.setRepairComponents(player.getRepairComponents() + 6);
+            if(enemy instanceof Boss){
+                player.setRepairComponents(player.getRepairComponents() + 12);
+            } else {
+                player.setRepairComponents(player.getRepairComponents() + 6);
+            }
             
             GUIandLogicIntermediary.showNavigationForm();
         } else if (player.getHp() <= 0){

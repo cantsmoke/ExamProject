@@ -5,12 +5,14 @@
 package com.mycompany.examproject.GUI;
 
 import com.mycompany.examproject.Fight;
+import com.mycompany.examproject.GUI.ThisItemAlreadySelectedDialog;
 import com.mycompany.examproject.GUIandLogicIntermediary;
 import com.mycompany.examproject.Items.Armor;
 import com.mycompany.examproject.Items.Equipment;
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
+import com.mycompany.examproject.Items.Potions.Poison;
 import com.mycompany.examproject.Items.Potions.StaminaPotion;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Player;
@@ -125,7 +127,7 @@ public class InventoryForm extends javax.swing.JFrame {
 
         potionLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         potionLabel.setForeground(new java.awt.Color(204, 204, 204));
-        potionLabel.setText("POTIONS");
+        potionLabel.setText("POTIONS/Throwable");
 
         equipeUseButton.setBackground(new java.awt.Color(102, 102, 102));
         equipeUseButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -186,39 +188,38 @@ public class InventoryForm extends javax.swing.JFrame {
             .addGroup(inventoryPanelLayout.createSequentialGroup()
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(weaponLabel)
-                        .addGap(192, 192, 192)
-                        .addComponent(armorLabel)
-                        .addGap(194, 194, 194)
-                        .addComponent(potionLabel))
-                    .addGroup(inventoryPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inventoryPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(inventoryPanelLayout.createSequentialGroup()
-                                        .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(armorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(inventoryPanelLayout.createSequentialGroup()
-                                        .addComponent(itemIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(itemDurabilityLabel)
-                                            .addComponent(itemDamageOrDamageReductionLabel)
-                                            .addComponent(itemWeightLabel)
-                                            .addComponent(itemNameLabel)))))
-                            .addGroup(inventoryPanelLayout.createSequentialGroup()
+                                .addComponent(weaponScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(repairComponentsAmountLabel)))
+                                .addComponent(armorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(inventoryPanelLayout.createSequentialGroup()
+                                .addComponent(itemIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(itemDurabilityLabel)
+                                    .addComponent(itemDamageOrDamageReductionLabel)
+                                    .addComponent(itemWeightLabel)
+                                    .addComponent(itemNameLabel)))))
+                    .addGroup(inventoryPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(repairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(repairComponentsAmountLabel)))
+                .addGap(18, 18, 18)
+                .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(repairButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(potionsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(inventoryPanelLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(weaponLabel)
+                .addGap(192, 192, 192)
+                .addComponent(armorLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(potionLabel)
+                .addGap(41, 41, 41))
         );
         inventoryPanelLayout.setVerticalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -332,7 +333,7 @@ public class InventoryForm extends javax.swing.JFrame {
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item health regeneration(%): " + ((EstusBottle) selected).getHealthRegenPercentage()*100 + "%");
-                    itemDurabilityLabel.setText("Item's durability left: " + ((EstusBottle) selected).getUsesLeft()+ "/" + ((EstusBottle) selected).getMaxUses());
+                    itemDurabilityLabel.setText("Item's uses left: " + ((EstusBottle) selected).getUsesLeft()+ "/" + ((EstusBottle) selected).getMaxUses());
                     if(((EstusBottle) selected).getUsesLeft() <= ((EstusBottle) selected).getMaxUses() * 0.3){
                         itemDurabilityLabel.setForeground(Color.RED);
                     } else {
@@ -342,26 +343,21 @@ public class InventoryForm extends javax.swing.JFrame {
                 } else if (selected instanceof StaminaPotion){
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
-                    itemDamageOrDamageReductionLabel.setText("Item stamina regen points : " + ((StaminaPotion) selected).getStaminaRegenAmount());
+                    itemDamageOrDamageReductionLabel.setText("Item stamina regen points: " + ((StaminaPotion) selected).getStaminaRegenAmount());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((StaminaPotion) selected).getImageURL()));
                 } else if (selected instanceof Bomb){
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
-                    itemDamageOrDamageReductionLabel.setText("Item damage : " + ((Bomb) selected).getDamage());
+                    itemDamageOrDamageReductionLabel.setText("Item damage: " + ((Bomb) selected).getDamage());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((Bomb) selected).getImageURL()));
-                } else {
-//                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
-//                    itemWeightLabel.setText("Item weight: " + selected.getWeight());
-//                    itemDamageOrDamageReductionLabel.setText("Item damage reduction(%) : " + selected.getDamageReduction()*100 + "%");
-//                    itemDurabilityLabel.setText("Item's durability left: " + selected.getDurability() + "/" + selected.getMaxDurability());
-//                    if(selected.getDurability() < selected.getMaxDurability() * 0.2){
-//                        itemDurabilityLabel.setForeground(Color.RED);
-//                    } else {
-//                        itemDurabilityLabel.setForeground(new Color(204, 204, 204));
-//                    }
-//                    itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
+                } else if (selected instanceof Poison){
+                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemWeightLabel.setText("Item weight: no weight");
+                    itemDamageOrDamageReductionLabel.setText("Item damage/duration: " + ((Poison) selected).getDamage() + "/" + ((Poison) selected).getDuration());
+                    itemDurabilityLabel.setText("Item's durability left: no durability, single use");
+                    itemIconLabel.setIcon(new ImageIcon(((Poison) selected).getImageURL()));
                 }
             }
             weaponList.clearSelection();
@@ -414,23 +410,45 @@ public class InventoryForm extends javax.swing.JFrame {
         Player player = Player.getInstance(); // Получаем текущего игрока
 
         if (selectedWeapon != null && !selectedWeapon.isBroken()) {
-            player.setSelectedWeapon(selectedWeapon);
-            checkSelectedEquipmentWeight();
+            if (selectedWeapon != Player.getInstance().getSelectedWeapon()){
+                player.setSelectedWeapon(selectedWeapon);
+                WeaponSelectedDialog weaponSelectedDialog = new WeaponSelectedDialog(null, true, selectedWeapon.getName());
+                weaponSelectedDialog.setVisible(true);
+                checkSelectedEquipmentWeight();
+            } else {
+                ThisItemAlreadySelectedDialog thisItemAlreadySelectedDialog = new ThisItemAlreadySelectedDialog(null, true);
+                thisItemAlreadySelectedDialog.setVisible(true);
+            }
         } else if (selectedArmor != null && !selectedArmor.isBroken()) {
-            player.setSelectedArmor(selectedArmor);
-            checkSelectedEquipmentWeight();
+            if (selectedArmor != Player.getInstance().getSelectedArmor()){
+                player.setSelectedArmor(selectedArmor);
+                ArmorSelectedDialog armorSelectedDialog = new ArmorSelectedDialog(null, true, selectedArmor.getName());
+                armorSelectedDialog.setVisible(true);
+                checkSelectedEquipmentWeight();
+            } else {
+                ThisItemAlreadySelectedDialog thisItemAlreadySelectedDialog = new ThisItemAlreadySelectedDialog(null, true);
+                thisItemAlreadySelectedDialog.setVisible(true);
+            }
         } else if (selectedPotion != null){
             
             if(selectedPotion instanceof EstusBottle){
+                int healthBefore = Player.getInstance().getHp();
+                int maxHealth = Player.getInstance().getMaxHp();
                 ((EstusBottle) selectedPotion).heal(Player.getInstance());
+                int newHealth = Player.getInstance().getHp();
+                if (healthBefore != maxHealth) {
+                    PlayerHealedDialog playerHealedDialog = new PlayerHealedDialog(null, true, newHealth, healthBefore, maxHealth);
+                    playerHealedDialog.setVisible(true);
+                }
             }
             if(selectedPotion instanceof StaminaPotion){
                 ((StaminaPotion) selectedPotion).addStamina(Player.getInstance());
             }
-            if(selectedPotion instanceof Bomb){
+            if(selectedPotion instanceof Bomb || selectedPotion instanceof Poison){
                 YouNeedToChooseItemDialog youNeedToChooseItemDialog = new YouNeedToChooseItemDialog(null, true);
                 youNeedToChooseItemDialog.setVisible(true);
             }
+            
             
         } else {
             YouNeedToChooseItemDialog youNeedToChooseItemDialog = new YouNeedToChooseItemDialog(null, true);

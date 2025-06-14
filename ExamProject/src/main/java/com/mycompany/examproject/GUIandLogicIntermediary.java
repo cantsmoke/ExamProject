@@ -17,6 +17,7 @@ import com.mycompany.examproject.GUI.InventoryFormForBattle;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.GUI.UpgradeMenu;
 import com.mycompany.examproject.Items.Potions.Bomb;
+import com.mycompany.examproject.Items.Potions.Poison;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
@@ -225,8 +226,7 @@ public class GUIandLogicIntermediary {
         inventoryFormForBattle.setVisible(true);
         inventoryFormForBattle.UpdateLabels();
     }
-    
-    
+
     public static void openUpgradeMenu() {
         UpgradeMenu upgradeMenu = new UpgradeMenu();
         upgradeMenu.setVisible(true);
@@ -236,6 +236,15 @@ public class GUIandLogicIntermediary {
     
     public static void handlePlayerUsingBomb(Bomb bomb) {
         fight.handlePlayerUsingBomb(bomb);
+    }
+    
+    public static void handlePlayerUsingPoison(Poison poison) {
+        fight.handlePlayerUsingPoison(poison);
+    }
+    
+    public static int checkEnemyHealth() {
+        int enemyHealth = fight.getEnemy().getHealth();
+        return enemyHealth;
     }
     
 }

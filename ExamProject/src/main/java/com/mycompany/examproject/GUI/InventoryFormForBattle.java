@@ -10,6 +10,7 @@ import com.mycompany.examproject.Items.Equipment;
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
+import com.mycompany.examproject.Items.Potions.Poison;
 import com.mycompany.examproject.Items.Potions.StaminaPotion;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Player;
@@ -104,7 +105,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
 
         potionLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         potionLabel.setForeground(new java.awt.Color(204, 204, 204));
-        potionLabel.setText("POTIONS");
+        potionLabel.setText("POTIONS/Throwable");
 
         equipeUseButton.setBackground(new java.awt.Color(102, 102, 102));
         equipeUseButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -157,8 +158,9 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addComponent(weaponLabel)
-                        .addGap(186, 186, 186)
-                        .addComponent(potionLabel))
+                        .addGap(139, 139, 139)
+                        .addComponent(potionLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(inventoryPanelLayout.createSequentialGroup()
@@ -179,11 +181,11 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                             .addGroup(inventoryPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(repairComponentsAmountLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(equipeUseButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(closeInventoryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         inventoryPanelLayout.setVerticalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,7 +271,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item health regeneration(%): " + ((EstusBottle) selected).getHealthRegenPercentage()*100 + "%");
-                    itemDurabilityLabel.setText("Item's durability left: " + ((EstusBottle) selected).getUsesLeft()+ "/" + ((EstusBottle) selected).getMaxUses());
+                    itemDurabilityLabel.setText("Item's uses left: " + ((EstusBottle) selected).getUsesLeft()+ "/" + ((EstusBottle) selected).getMaxUses());
                     if(((EstusBottle) selected).getUsesLeft() <= ((EstusBottle) selected).getMaxUses() * 0.3){
                         itemDurabilityLabel.setForeground(Color.RED);
                     } else {
@@ -279,26 +281,21 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                 } else if (selected instanceof StaminaPotion){
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
-                    itemDamageOrDamageReductionLabel.setText("Item stamina regen points : " + ((StaminaPotion) selected).getStaminaRegenAmount());
+                    itemDamageOrDamageReductionLabel.setText("Item stamina regen points: " + ((StaminaPotion) selected).getStaminaRegenAmount());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((StaminaPotion) selected).getImageURL()));
                 } else if (selected instanceof Bomb){
                     itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
                     itemWeightLabel.setText("Item weight: no weight");
-                    itemDamageOrDamageReductionLabel.setText("Item damage : " + ((Bomb) selected).getDamage());
+                    itemDamageOrDamageReductionLabel.setText("Item damage: " + ((Bomb) selected).getDamage());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((Bomb) selected).getImageURL()));
-                } else {
-//                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
-//                    itemWeightLabel.setText("Item weight: " + selected.getWeight());
-//                    itemDamageOrDamageReductionLabel.setText("Item damage reduction(%) : " + selected.getDamageReduction()*100 + "%");
-//                    itemDurabilityLabel.setText("Item's durability left: " + selected.getDurability() + "/" + selected.getMaxDurability());
-//                    if(selected.getDurability() < selected.getMaxDurability() * 0.2){
-//                        itemDurabilityLabel.setForeground(Color.RED);
-//                    } else {
-//                        itemDurabilityLabel.setForeground(new Color(204, 204, 204));
-//                    }
-//                    itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
+                } else if (selected instanceof Poison){
+                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemWeightLabel.setText("Item weight: no weight");
+                    itemDamageOrDamageReductionLabel.setText("Item damage/duration: " + ((Poison) selected).getDamage() + "/" + ((Poison) selected).getDuration());
+                    itemDurabilityLabel.setText("Item's durability left: no durability, single use");
+                    itemIconLabel.setIcon(new ImageIcon(((Poison) selected).getImageURL()));
                 }
             }
             weaponList.clearSelection();
@@ -317,21 +314,54 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         Player player = Player.getInstance(); // Получаем текущего игрока
 
         if (selectedWeapon != null && !selectedWeapon.isBroken()) {
-            player.setSelectedWeapon(selectedWeapon);
-            checkSelectedEquipmentWeight();
+            if (selectedWeapon != Player.getInstance().getSelectedWeapon()){
+                player.setSelectedWeapon(selectedWeapon);
+                WeaponSelectedDialog weaponSelectedDialog = new WeaponSelectedDialog(null, true, selectedWeapon.getName());
+                weaponSelectedDialog.setVisible(true);
+                checkSelectedEquipmentWeight();
+            } else {
+                ThisItemAlreadySelectedDialog thisItemAlreadySelectedDialog = new ThisItemAlreadySelectedDialog(null, true);
+                thisItemAlreadySelectedDialog.setVisible(true);
+            }
         } else if (selectedPotion != null){
             
             if(selectedPotion instanceof EstusBottle){
+                int healthBefore = Player.getInstance().getHp();
+                int maxHealth = Player.getInstance().getMaxHp();
                 ((EstusBottle) selectedPotion).heal(Player.getInstance());
+                int newHealth = Player.getInstance().getHp();
+                if (healthBefore != maxHealth) {
+                    PlayerHealedDialog playerHealedDialog = new PlayerHealedDialog(null, true, newHealth, healthBefore, maxHealth);
+                    playerHealedDialog.setVisible(true);
+                }
             }
             if(selectedPotion instanceof StaminaPotion){
+                int staminaBefore = Player.getInstance().getStamina();
+                int maxStamina = Player.getInstance().getMaxStamina();
                 ((StaminaPotion) selectedPotion).addStamina(Player.getInstance());
+                int newStamina = Player.getInstance().getStamina();
+                if (staminaBefore != maxStamina) {
+                    PlayerHealedDialog playerHealedDialog = new PlayerHealedDialog(null, true, newStamina, staminaBefore, maxStamina);
+                    playerHealedDialog.setVisible(true);
+                }
             }
             if(selectedPotion instanceof Bomb){
+                BombUsedDialog bombUsedDialog = new BombUsedDialog(null, true);
+                bombUsedDialog.setVisible(true);
+                
                 GUIandLogicIntermediary.handlePlayerUsingBomb((Bomb) selectedPotion);
                 Player.getInstance().getInventory().remove((Bomb) selectedPotion);
+                if (GUIandLogicIntermediary.checkEnemyHealth() != 0){
+                    closeInventoryButtonActionPerformed();
+                } else if (GUIandLogicIntermediary.checkEnemyHealth() == 0){
+                    this.dispose();
+                }
             }
-            
+            if(selectedPotion instanceof Poison){
+                GUIandLogicIntermediary.handlePlayerUsingPoison((Poison) selectedPotion);
+                closeInventoryButtonActionPerformed();
+            }
+
         } else {
             YouNeedToChooseItemDialog youNeedToChooseItemDialog = new YouNeedToChooseItemDialog(null, true);
             youNeedToChooseItemDialog.setVisible(true);

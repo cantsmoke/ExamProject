@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author Arseniy
  */
-public class LevelUpdateDialog extends javax.swing.JDialog {
+public class BombUsedDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form LevelUpdateDialog
      */
-    public LevelUpdateDialog(java.awt.Frame parent, boolean modal) {
+    public BombUsedDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         getContentPane().setBackground(Color.BLACK);
         initComponents();
@@ -31,17 +31,17 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        levelUpPanel = new javax.swing.JPanel();
-        levelUpLabel = new javax.swing.JLabel();
+        bombUsedPanel = new javax.swing.JPanel();
+        bombUsedLabel = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        levelUpPanel.setBackground(new java.awt.Color(0, 0, 0));
+        bombUsedPanel.setBackground(new java.awt.Color(0, 0, 0));
 
-        levelUpLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
-        levelUpLabel.setForeground(new java.awt.Color(204, 204, 204));
-        levelUpLabel.setText("YOU LEVELED UP!");
+        bombUsedLabel.setFont(new java.awt.Font("Castellar", 0, 20)); // NOI18N
+        bombUsedLabel.setForeground(new java.awt.Color(204, 204, 204));
+        bombUsedLabel.setText("BOMB USED!");
 
         okButton.setBackground(new java.awt.Color(102, 102, 102));
         okButton.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
@@ -54,25 +54,26 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout levelUpPanelLayout = new javax.swing.GroupLayout(levelUpPanel);
-        levelUpPanel.setLayout(levelUpPanelLayout);
-        levelUpPanelLayout.setHorizontalGroup(
-            levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelUpPanelLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-            .addGroup(levelUpPanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout bombUsedPanelLayout = new javax.swing.GroupLayout(bombUsedPanel);
+        bombUsedPanel.setLayout(bombUsedPanelLayout);
+        bombUsedPanelLayout.setHorizontalGroup(
+            bombUsedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bombUsedPanelLayout.createSequentialGroup()
+                .addGroup(bombUsedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bombUsedPanelLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(bombUsedPanelLayout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(bombUsedLabel)))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
-        levelUpPanelLayout.setVerticalGroup(
-            levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(levelUpPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+        bombUsedPanelLayout.setVerticalGroup(
+            bombUsedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bombUsedPanelLayout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(bombUsedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -83,14 +84,14 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(levelUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bombUsedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(levelUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bombUsedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -103,8 +104,8 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel levelUpLabel;
-    private javax.swing.JPanel levelUpPanel;
+    private javax.swing.JLabel bombUsedLabel;
+    private javax.swing.JPanel bombUsedPanel;
     private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 }

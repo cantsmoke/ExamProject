@@ -6,11 +6,15 @@ package com.mycompany.examproject;
 
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
+import com.mycompany.examproject.Enemies.enemyStructure.PotionAlreadyUsedDialog;
+import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
+import com.mycompany.examproject.Enemies.enemyStructure.Skeleton;
 import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
 import com.mycompany.examproject.GUI.FightLoseForm;
 import com.mycompany.examproject.GUI.FightWinDialog;
 import com.mycompany.examproject.Items.Potions.Bomb;
+import com.mycompany.examproject.Items.Potions.Poison;
 import java.util.Random;
 import javax.swing.JFrame;
 /**
@@ -24,9 +28,21 @@ public class Fight {
     private static BattleForm battleForm;
     private int currentEnemyActionPattern = 0;
     
+    private int poisonDuration = 0;
+    private Poison poison = null;
+    
     public Fight(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
+        
+        Player.getInstance().addItemToInventory(new Poison());
+        Player.getInstance().addItemToInventory(new Poison());
+        
+        Player.getInstance().addItemToInventory(new Bomb());
+        Player.getInstance().addItemToInventory(new Bomb());
+        Player.getInstance().addItemToInventory(new Bomb());
+        Player.getInstance().addItemToInventory(new Bomb());
+        Player.getInstance().addItemToInventory(new Bomb());
         
         Random random = new Random();
         
@@ -130,6 +146,7 @@ public class Fight {
             battleForm.appendToLogArea(logPart);
         }
         
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
@@ -174,6 +191,7 @@ public class Fight {
             battleForm.appendToLogArea(logPart);
         }
         
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
@@ -213,6 +231,7 @@ public class Fight {
             }
         }
         
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
@@ -250,6 +269,7 @@ public class Fight {
             }
         }
         
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
@@ -274,6 +294,9 @@ public class Fight {
             } else {
                 player.setRepairComponents(player.getRepairComponents() + 6);
             }
+            
+            this.poisonDuration = 0;
+            this.poison = null;
             
             GUIandLogicIntermediary.showNavigationForm();
         } else if (player.getHp() <= 0){
@@ -308,6 +331,7 @@ public class Fight {
             battleForm.appendToLogArea(logPart);
         }
         
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
@@ -316,11 +340,53 @@ public class Fight {
     void handlePlayerUsingBomb(Bomb bomb) {
         enemy.takeBombDamage(bomb);
         
-        String logPart = "Player used bomb; enemy took " + bomb.getDamage() + " damage!";
+        String logPart = "You used bomb; enemy took " + bomb.getDamage() + " damage!";
         battleForm.appendToLogArea(logPart);
+        String logPart1 = "Enemy skips turn because of bomb!";
+        battleForm.appendToLogArea(logPart1);
+        
+        checkPoison();
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();
+    }
+
+    void handlePlayerUsingPoison(Poison poison) {
+        if (this.poison == null){
+            if (enemy instanceof Skeleton || enemy instanceof SirenOfOblivion){
+                String logPart = "You used poison but enemy is immune to it!";
+                battleForm.appendToLogArea(logPart);
+            } else {
+                this.poisonDuration = poison.getDuration() - 1;
+                this.poison = poison;
+                enemy.takePoisonDamage(poison);
+                String logPart = "You used poison! Enemy took " + poison.getDamage() + " damage from poison!";
+                battleForm.appendToLogArea(logPart);
+                String logPart1 = "Enemy skips turn because of poison!";
+                battleForm.appendToLogArea(logPart1);
+                checkWinLoseConditions();
+            }
+            Player.getInstance().getInventory().remove((Poison) poison);
+        } else {
+            PotionAlreadyUsedDialog potionAlreadyUsedDialog = new PotionAlreadyUsedDialog(null,true);
+            potionAlreadyUsedDialog.setVisible(true);
+        }
+    }
+    
+    void checkPoison(){
+        if (this.poisonDuration != 0){
+            this.poisonDuration--;
+            enemy.takePoisonDamage(this.poison);
+            String logPart = "Enemy took " + poison.getDamage() + " damage from poison!";
+            battleForm.appendToLogArea(logPart);
+        } else {
+            this.poisonDuration = 0;
+            this.poison = null;
+        }
+    }
+
+    Enemy getEnemy() {
+        return this.enemy;
     }
     
 }

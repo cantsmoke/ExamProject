@@ -6,6 +6,7 @@ package com.mycompany.examproject.Enemies.enemyStructure;
 
 import com.mycompany.examproject.EntityActionType;
 import com.mycompany.examproject.Items.Potions.Bomb;
+import com.mycompany.examproject.Items.Potions.Poison;
 import com.mycompany.examproject.Items.Weapon;
 
 /**
@@ -73,6 +74,16 @@ public abstract class Enemy {
 
     public void takeBombDamage(Bomb bomb) {
         this.health -= bomb.getDamage();
+        if (this.health < 0) {
+            this.health = 0;
+        }
     }
-    
+
+    public void takePoisonDamage(Poison poison) {
+        this.health -= poison.getDamage();
+        if (this.health < 0) {
+            this.health = 0;
+        }
+    }
+ 
 }

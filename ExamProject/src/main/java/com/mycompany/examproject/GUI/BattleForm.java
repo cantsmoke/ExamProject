@@ -348,13 +348,14 @@ public class BattleForm extends javax.swing.JFrame {
         } else {
             enemyHpBar.setForeground(new Color(0, 153, 0));
         }
-        
         if(player.getHp() < 0){
             playerHpBar.setString(0 + "/" + enemy.getMaxHealth());
         }
         if(enemy.getHealth() < 0){
             enemyHpBar.setString(0 + "/" + enemy.getMaxHealth());
         }
+        
+        updateButtonAvaibility(Player.getInstance());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

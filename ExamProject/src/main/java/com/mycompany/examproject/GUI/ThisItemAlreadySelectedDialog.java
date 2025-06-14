@@ -10,12 +10,12 @@ import java.awt.Color;
  *
  * @author Arseniy
  */
-public class LevelUpdateDialog extends javax.swing.JDialog {
+public class ThisItemAlreadySelectedDialog extends javax.swing.JDialog {
 
     /**
      * Creates new form LevelUpdateDialog
      */
-    public LevelUpdateDialog(java.awt.Frame parent, boolean modal) {
+    public ThisItemAlreadySelectedDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         getContentPane().setBackground(Color.BLACK);
         initComponents();
@@ -31,17 +31,17 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        levelUpPanel = new javax.swing.JPanel();
-        levelUpLabel = new javax.swing.JLabel();
+        thisItemSelectedPanel = new javax.swing.JPanel();
+        thisItemIsSelectedLabel = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        levelUpPanel.setBackground(new java.awt.Color(0, 0, 0));
+        thisItemSelectedPanel.setBackground(new java.awt.Color(0, 0, 0));
 
-        levelUpLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
-        levelUpLabel.setForeground(new java.awt.Color(204, 204, 204));
-        levelUpLabel.setText("YOU LEVELED UP!");
+        thisItemIsSelectedLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
+        thisItemIsSelectedLabel.setForeground(new java.awt.Color(204, 204, 204));
+        thisItemIsSelectedLabel.setText("this item is already selected!");
 
         okButton.setBackground(new java.awt.Color(102, 102, 102));
         okButton.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
@@ -54,27 +54,27 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
             }
         });
 
-        javax.swing.GroupLayout levelUpPanelLayout = new javax.swing.GroupLayout(levelUpPanel);
-        levelUpPanel.setLayout(levelUpPanelLayout);
-        levelUpPanelLayout.setHorizontalGroup(
-            levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelUpPanelLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-            .addGroup(levelUpPanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
+        javax.swing.GroupLayout thisItemSelectedPanelLayout = new javax.swing.GroupLayout(thisItemSelectedPanel);
+        thisItemSelectedPanel.setLayout(thisItemSelectedPanelLayout);
+        thisItemSelectedPanelLayout.setHorizontalGroup(
+            thisItemSelectedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(thisItemSelectedPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(thisItemIsSelectedLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(thisItemSelectedPanelLayout.createSequentialGroup()
+                .addGap(90, 90, 90)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        levelUpPanelLayout.setVerticalGroup(
-            levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(levelUpPanelLayout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+        thisItemSelectedPanelLayout.setVerticalGroup(
+            thisItemSelectedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(thisItemSelectedPanelLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(thisItemIsSelectedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -83,14 +83,13 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(levelUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(thisItemSelectedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(levelUpPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(thisItemSelectedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -103,8 +102,8 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel levelUpLabel;
-    private javax.swing.JPanel levelUpPanel;
     private javax.swing.JButton okButton;
+    private javax.swing.JLabel thisItemIsSelectedLabel;
+    private javax.swing.JPanel thisItemSelectedPanel;
     // End of variables declaration//GEN-END:variables
 }

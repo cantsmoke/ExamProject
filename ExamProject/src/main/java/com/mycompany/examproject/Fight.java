@@ -46,6 +46,20 @@ public class Fight {
         this.battleForm.updateLabels(player, enemy);
     }
     
+    public static double calculateEquipmentDodgePenalty(double currentWeight) {
+        double minWeight = 6.0;
+        double maxWeight = 80.0;
+        double maxPenalty = 0.3;
+        if (currentWeight <= minWeight) {
+            return 0.0;
+        }
+        if (currentWeight >= maxWeight) {
+            return maxPenalty;
+        }
+        double penaltyPerKg = maxPenalty / (maxWeight - minWeight);
+        return (currentWeight - minWeight) * penaltyPerKg;
+    }
+    
     public void handlePlayerAttackAction() {
         AttackVariantsDialog attackVariantDialog = new AttackVariantsDialog(battleForm, true);
         attackVariantDialog.setVisible(true);
@@ -89,7 +103,7 @@ public class Fight {
         }
         
         if (enemyActionForPlayersAttack == EntityActionType.DODGE){
-            double enemyDodgePossibility = enemy.getDodgeP() - 0.05;
+            double enemyDodgePossibility = enemy.getDodgeP() - 0.1  + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
             if(Math.random() < enemyDodgePossibility){
                 String logPart = "Enemy dodged your attack!";
                 battleForm.appendToLogArea(logPart);
@@ -130,7 +144,7 @@ public class Fight {
             player.setStamina(0);
         }
         if (enemyActionForPlayersAttack == EntityActionType.DODGE){
-            double enemyDodgePossibility = enemy.getDodgeP() + 0.1;
+            double enemyDodgePossibility = enemy.getDodgeP() + 0.1 + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
             if(Math.random() < enemyDodgePossibility){
                 String logPart = "Enemy dodged your attack!";
                 battleForm.appendToLogArea(logPart);
@@ -167,7 +181,7 @@ public class Fight {
         if (currentEnemyActionPattern >= enemy.getPattern().length) {
             currentEnemyActionPattern = 0;
         }
-        player.setStamina(player.getStamina() - 7);
+        player.setStamina(player.getStamina() - 10);
         if(player.getStamina() <= 0){
             player.setStamina(0);
         }
@@ -206,9 +220,9 @@ public class Fight {
         if (currentEnemyActionPattern >= enemy.getPattern().length) {
             currentEnemyActionPattern = 0;
         }
-        player.setStamina(player.getStamina() - 10);
-        if(player.getStamina() <= 0){
-            player.setStamina(0);
+        player.setStamina(player.getStamina() + 5);
+        if (player.getStamina() >= player.getMaxStamina()){
+            player.setStamina(player.getMaxStamina());
         }
         if (enemyActionForPlayersDodge == EntityActionType.HEAVY_ATTACK){
             double playerDodgePossibility = player.getDodgeP() + 0.1;
@@ -278,7 +292,7 @@ public class Fight {
             currentEnemyActionPattern = 0;
         }
         
-        player.setStamina(player.getStamina() + 20);
+        player.setStamina(player.getStamina() + 10);
         
         if (enemyActionForPlayersDodge == EntityActionType.HEAVY_ATTACK){
             player.takeDamage((int) (enemy.getDamage() * 1.2));

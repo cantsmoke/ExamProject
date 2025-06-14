@@ -34,7 +34,7 @@ public class SirenOfOblivion extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_14_31.png";
         
-        this.dodgeP = 0.3;
+        this.dodgeP = 0.9;
         this.blockP = 0.4;
     }
     

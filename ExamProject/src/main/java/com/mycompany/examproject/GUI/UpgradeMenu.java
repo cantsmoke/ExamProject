@@ -24,6 +24,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
         updateLable();
+        setLocationRelativeTo(null);
         
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new WindowAdapter() {
@@ -228,19 +229,19 @@ public class UpgradeMenu extends javax.swing.JFrame {
     
     private void upgradeStrengthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeStrengthButtonActionPerformed
         Player.getInstance().boostStrength(requiredSoulsStrength);
-        requiredSoulsStrength += 50;
+        requiredSoulsStrength += 25;
         updateLable();
     }//GEN-LAST:event_upgradeStrengthButtonActionPerformed
 
     private void upgradeAgilityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeAgilityButtonActionPerformed
         Player.getInstance().boostAgility(requiredSoulsAgility);
-        requiredSoulsAgility += 50;
+        requiredSoulsAgility += 25;
         updateLable();
     }//GEN-LAST:event_upgradeAgilityButtonActionPerformed
 
     private void upgradeEnduranceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeEnduranceButtonActionPerformed
         Player.getInstance().boostEndurance(requiredSoulsEndurance);
-        requiredSoulsEndurance += 50;
+        requiredSoulsEndurance += 25;
         updateLable();
     }//GEN-LAST:event_upgradeEnduranceButtonActionPerformed
     

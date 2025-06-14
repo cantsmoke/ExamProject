@@ -35,8 +35,8 @@ public class BroodmotherOfTheHollowedWeb extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_42_12.png";
         
-        this.dodgeP = 0.7;
-        this.blockP = 0.4;
+        this.dodgeP = 0.8;
+        this.blockP = 0.5;
     }
     
     @Override

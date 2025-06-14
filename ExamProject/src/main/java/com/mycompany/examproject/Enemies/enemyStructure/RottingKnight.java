@@ -34,7 +34,7 @@ public class RottingKnight extends Enemy implements Knight{
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_39_05.png";
         
-        this.dodgeP = 0.2;
+        this.dodgeP = 0.3;
         this.blockP = 0.5;
     }
     

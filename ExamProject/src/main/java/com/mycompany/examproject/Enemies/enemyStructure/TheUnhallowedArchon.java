@@ -33,8 +33,8 @@ public class TheUnhallowedArchon extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_52_25.png";
         
-        this.dodgeP = 0.8;
-        this.blockP = 0.8;
+        this.dodgeP = 0.95;
+        this.blockP = 0.95;
     }
     
     @Override

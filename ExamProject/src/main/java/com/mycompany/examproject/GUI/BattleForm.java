@@ -306,8 +306,8 @@ public class BattleForm extends javax.swing.JFrame {
             skipTurnButton.setEnabled(true);
             attackButton.setEnabled(false);
             blockButton.setEnabled(false);
-            dodgeButton.setEnabled(false);
-            inventoryButton.setEnabled(false);
+            dodgeButton.setEnabled(true);
+            inventoryButton.setEnabled(true);
         }
     }
     

@@ -34,8 +34,8 @@ public class InfectedHound extends Enemy implements Hound{
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_30_37.png";
         
-        this.dodgeP = 0.25;
-        this.blockP = 0.55;
+        this.dodgeP = 0.6;
+        this.blockP = 0.2;
     }
     
     @Override

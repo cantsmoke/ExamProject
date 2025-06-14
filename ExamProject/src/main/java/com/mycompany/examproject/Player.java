@@ -62,8 +62,8 @@ public class Player {
         
 
         this.repairComponents = 0;
-        this.dodgeP = 0.2;
-        this.blockP = 0.2;
+        
+        this.blockP = 0.7;
         
         this.strength = 2;
         this.agility = 2;
@@ -73,8 +73,8 @@ public class Player {
         this.selectedWeapon = null;
         this.selectedArmor = null;    
         
-        this.totalSoulsAmount = 10000;
-        this.currentSoulsAmount = 10000;
+        this.totalSoulsAmount = 0;
+        this.currentSoulsAmount = 0;
         this.level = 1;
         
         this.currentRoom = room;       
@@ -88,6 +88,21 @@ public class Player {
         
         this.stamina = 90 + this.endurance * 5;
         this.maxStamina = stamina;
+        
+        updateDodgeProbability();
+    }
+    
+    public void updateDodgeProbability() {
+        int enduranceLevel = this.endurance; // или getEndurance(), если геттер
+        int equipmentWeight = getTotalEquipmentWeight(); // или getEquipmentWeight()
+        double baseDodge = 0.5;
+        double dodge = baseDodge
+                + (enduranceLevel * 0.025)
+                - (equipmentWeight * 0.005);
+        if (dodge < 0) dodge = 0;
+        if (dodge > 1) dodge = 1;
+
+        this.dodgeP = dodge;
     }
     
     public int getBearableWeight() {
@@ -188,7 +203,7 @@ public class Player {
         this.selectedWeapon = selectedWeapon;
         this.selectedWeapon.setSelected(true);
         
-        //вызов метода, которыйобновляет шанс уклонения
+        updateDodgeProbability();
     }
 
     public Armor getSelectedArmor() {
@@ -200,7 +215,7 @@ public class Player {
         this.selectedArmor = selectedArmor;
         this.selectedArmor.setSelected(true);
         
-        //вызов метода, которыйобновляет шанс уклонения
+        updateDodgeProbability();
     }
     
     public void takeDamage(int enemyDamage){
@@ -263,7 +278,7 @@ public class Player {
     public void boostAgility(int soulsSpended) {
         this.agility = Math.min(this.agility + 1, 10);
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;        
-        this.dodgeP += 0.025;
+        updateDodgeProbability();
     }
 
     public void boostEndurance(int soulsSpended) {

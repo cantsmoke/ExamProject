@@ -35,8 +35,8 @@ public class WormOfLivingStone extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 18_31_30.png";
         
-        this.dodgeP = 0.5;
-        this.blockP = 0.6;
+        this.dodgeP = 0.45;
+        this.blockP = 0.8;
     }
     
     @Override

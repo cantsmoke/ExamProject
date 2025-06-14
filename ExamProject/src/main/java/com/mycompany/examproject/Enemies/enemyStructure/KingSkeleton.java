@@ -31,7 +31,7 @@ public class KingSkeleton extends Enemy implements Skeleton {
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_10_31.png";
         
-        this.dodgeP = 0.25;
+        this.dodgeP = 0.4;
         this.blockP = 0.7;
     }
     

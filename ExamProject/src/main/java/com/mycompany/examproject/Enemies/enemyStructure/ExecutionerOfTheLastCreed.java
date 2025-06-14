@@ -38,8 +38,8 @@ public class ExecutionerOfTheLastCreed extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_49_13.png";
         
-        this.dodgeP = 0.4;
-        this.blockP = 0.5;
+        this.dodgeP = 0.5;
+        this.blockP = 0.6;
     }
     
     @Override

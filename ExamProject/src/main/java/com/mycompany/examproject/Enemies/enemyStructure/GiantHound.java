@@ -36,8 +36,8 @@ public class GiantHound extends Enemy implements Hound{
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_33_26.png";
         
-        this.dodgeP = 0.35;
-        this.blockP = 0.6;
+        this.dodgeP = 0.7;
+        this.blockP = 0.2;
     }
     
     @Override

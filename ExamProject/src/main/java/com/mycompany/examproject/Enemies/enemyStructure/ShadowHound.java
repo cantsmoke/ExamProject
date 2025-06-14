@@ -34,8 +34,8 @@ public class ShadowHound extends Enemy implements Hound{
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_28_02.png";
         
-        this.dodgeP = 0.2;
-        this.blockP = 0.5;
+        this.dodgeP = 0.5;
+        this.blockP = 0.2;
     }
     
     @Override

@@ -36,8 +36,8 @@ public class LordOfLabyrinthineShadows extends Boss{
         };
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_46_44.png";
         
-        this.dodgeP = 0.6;
-        this.blockP = 0.6;
+        this.dodgeP = 0.65;
+        this.blockP = 0.65;
     }
     
     @Override

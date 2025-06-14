@@ -33,8 +33,8 @@ public class SaintKnight extends Enemy implements Knight{
         this.pattern = defaultPattern;
         this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_56_25.png";
         
-        this.dodgeP = 0.2;
-        this.blockP = 0.6;
+        this.dodgeP = 0.4;
+        this.blockP = 0.65;
     }
     
     @Override

@@ -48,34 +48,26 @@ public class Player {
     
     private int level;
 
-    // Skills
     private int strength;
     private int agility;
     private int endurance;
 
-    // Inventory and equipment
-    
-    // Position tracking
     private Room currentRoom;
 
-   
-    
     private static Player instance = null;
     
     private Player(Room room) {
         this.hp = 150;
         this.maxHp = 150;
-        this.stamina = 100;
-        this.maxStamina = 100;
         
-        this.baseDamage = 15;
+
         this.repairComponents = 0;
         this.dodgeP = 0.2;
         this.blockP = 0.2;
         
-        this.strength = 5;
-        this.agility = 5;
-        this.endurance = 5;
+        this.strength = 2;
+        this.agility = 2;
+        this.endurance = 2;
         
         this.inventory = new ArrayList<>();
         this.selectedWeapon = null;
@@ -92,6 +84,10 @@ public class Player {
         this.bearableWeight = 50;
         
         this.damage = selectedWeapon.getDamage();
+        this.baseDamage = 15 + this.strength * 3;
+        
+        this.stamina = 90 + this.endurance * 5;
+        this.maxStamina = stamina;
     }
     
     public int getBearableWeight() {
@@ -123,7 +119,7 @@ public class Player {
         this.hp = (int) (this.maxHp * hpRatio);
         this.stamina = (int) (this.maxStamina * staminaRatio);
         
-        this.bearableWeight = this.bearableWeight + 6;
+        this.bearableWeight = this.bearableWeight + 4;
     }
     
     public int getTotalSoulsAmount(){
@@ -166,10 +162,10 @@ public class Player {
         this.selectedArmor.setSelected(true);
         this.selectedWeapon.setSelected(true);
         
-        Sword swordTemplate1 = WeaponsStorage.swords.get(5);
+        Sword swordTemplate1 = WeaponsStorage.swords.get(10);
         addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
         
-        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(10);
+        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(14);
         addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
         
         addItemToInventory(new EstusBottle());
@@ -260,16 +256,21 @@ public class Player {
     public void boostStrength(int soulsSpended) {
         this.strength = Math.min(this.strength + 1, 10);
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+        this.baseDamage += 3;
+        this.bearableWeight += 1;
     }
 
     public void boostAgility(int soulsSpended) {
         this.agility = Math.min(this.agility + 1, 10);
-        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;        
+        this.dodgeP += 0.025;
     }
 
     public void boostEndurance(int soulsSpended) {
         this.endurance = Math.min(this.endurance + 1, 10);
-        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;      
+        this.stamina += 5;
+        this.bearableWeight += 1;
     }
 
     public void setCurrentRoom(Room room){

@@ -400,8 +400,10 @@ public class InventoryForm extends javax.swing.JFrame {
 
         if (selectedWeapon != null && !selectedWeapon.isBroken()) {
             player.setSelectedWeapon(selectedWeapon);
-        } else if (selectedArmor != null && !selectedWeapon.isBroken()) {
+            checkSelectedEquipmentWeight();
+        } else if (selectedArmor != null && !selectedArmor.isBroken()) {
             player.setSelectedArmor(selectedArmor);
+            checkSelectedEquipmentWeight();
         } else if (selectedPotion != null){
             
             if(selectedPotion instanceof EstusBottle){
@@ -413,7 +415,6 @@ public class InventoryForm extends javax.swing.JFrame {
             youNeedToChooseItemDialog.setVisible(true);
         }
 
-        checkSelectedEquipmentWeight();
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
     

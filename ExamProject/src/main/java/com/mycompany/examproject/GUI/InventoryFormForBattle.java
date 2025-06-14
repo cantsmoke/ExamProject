@@ -304,6 +304,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
 
         if (selectedWeapon != null && !selectedWeapon.isBroken()) {
             player.setSelectedWeapon(selectedWeapon);
+            checkSelectedEquipmentWeight();
         } else if (selectedPotion != null){
             
             if(selectedPotion instanceof EstusBottle){
@@ -314,8 +315,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
             YouNeedToChooseItemDialog youNeedToChooseItemDialog = new YouNeedToChooseItemDialog(null, true);
             youNeedToChooseItemDialog.setVisible(true);
         }
-        
-        checkSelectedEquipmentWeight();
+
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
     

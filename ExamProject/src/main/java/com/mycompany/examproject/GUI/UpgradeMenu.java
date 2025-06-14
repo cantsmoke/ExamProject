@@ -263,7 +263,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
             upgradeAgilityButton.setText("Agility is maxed out!");
         }
         
-        if (Player.getInstance().getAgility() != 10){
+        if (Player.getInstance().getEndurance() != 10){
             upgradeEnduranceButton.setText("Boost endurance; Souls required: " + requiredSoulsEndurance);
         } else {
             upgradeEnduranceButton.setText("Endurance is maxed out!");

@@ -10,6 +10,7 @@ import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
 import com.mycompany.examproject.GUI.FightLoseForm;
 import com.mycompany.examproject.GUI.FightWinDialog;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import java.util.Random;
 import javax.swing.JFrame;
 /**
@@ -307,6 +308,16 @@ public class Fight {
             battleForm.appendToLogArea(logPart);
         }
         
+        battleForm.updateLabels(player, enemy);
+        checkPlayerStamina();
+        checkWinLoseConditions();
+    }
+
+    void handlePlayerUsingBomb(Bomb bomb) {
+        enemy.takeBombDamage(bomb);
+        
+        String logPart = "Player used bomb; enemy took " + bomb.getDamage() + " damage!";
+        battleForm.appendToLogArea(logPart);
         battleForm.updateLabels(player, enemy);
         checkPlayerStamina();
         checkWinLoseConditions();

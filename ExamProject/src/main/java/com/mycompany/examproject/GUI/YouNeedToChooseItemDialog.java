@@ -57,7 +57,7 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
 
         textLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         textLabel.setForeground(new java.awt.Color(204, 204, 204));
-        textLabel.setText("OR SELECTED ITEM IS BROKEN!");
+        textLabel.setText("OR SELECTED ITEM IS BROKEN/CAN'T BE USED!");
 
         javax.swing.GroupLayout choosePanelLayout = new javax.swing.GroupLayout(choosePanel);
         choosePanel.setLayout(choosePanelLayout);
@@ -67,25 +67,25 @@ public class YouNeedToChooseItemDialog extends javax.swing.JDialog {
                 .addGroup(choosePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(choosePanelLayout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(textLabel))
+                    .addGroup(choosePanelLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
                         .addComponent(warningLabel))
                     .addGroup(choosePanelLayout.createSequentialGroup()
-                        .addGap(72, 72, 72)
-                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(choosePanelLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(textLabel)))
+                        .addGap(111, 111, 111)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         choosePanelLayout.setVerticalGroup(
             choosePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(choosePanelLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(12, 12, 12)
                 .addComponent(warningLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

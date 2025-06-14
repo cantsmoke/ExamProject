@@ -16,6 +16,7 @@ import com.mycompany.examproject.GUI.InventoryForm;
 import com.mycompany.examproject.GUI.InventoryFormForBattle;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
 import com.mycompany.examproject.GUI.UpgradeMenu;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
@@ -231,6 +232,10 @@ public class GUIandLogicIntermediary {
         upgradeMenu.setVisible(true);
         
         stateAndNavigationForm.setVisible(false);
+    }
+    
+    public static void handlePlayerUsingBomb(Bomb bomb) {
+        fight.handlePlayerUsingBomb(bomb);
     }
     
 }

@@ -5,6 +5,7 @@
 package com.mycompany.examproject.Enemies.enemyStructure;
 
 import com.mycompany.examproject.EntityActionType;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Weapon;
 
 /**
@@ -56,7 +57,6 @@ public abstract class Enemy {
     }
     
     public abstract String getIconSource();
-    
     public abstract void setIconSource(String url);
     
     public abstract void setPattern(EntityActionType[] newPattern);
@@ -70,5 +70,9 @@ public abstract class Enemy {
     public abstract String takeLightDamage(Weapon selectedWeapon, int baseDamage);
     
     public abstract int getSouls();
+
+    public void takeBombDamage(Bomb bomb) {
+        this.health -= bomb.getDamage();
+    }
     
 }

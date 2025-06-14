@@ -10,7 +10,9 @@ import com.mycompany.examproject.Items.Armors.ArmorStorage;
 import com.mycompany.examproject.Items.Armors.HeavyArmor;
 import com.mycompany.examproject.Items.Armors.TrooperArmor;
 import com.mycompany.examproject.Items.Equipment;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
+import com.mycompany.examproject.Items.Potions.StaminaPotion;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Items.Weapons.Sword;
 import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
@@ -86,7 +88,7 @@ public class Player {
         this.damage = selectedWeapon.getDamage();
         this.baseDamage = 15 + this.strength * 3;
         
-        this.stamina = 90 + this.endurance * 5;
+        this.stamina = 50 + this.endurance * 5;
         this.maxStamina = stamina;
         
         updateDodgeProbability();
@@ -184,6 +186,9 @@ public class Player {
         addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
         
         addItemToInventory(new EstusBottle());
+        addItemToInventory(new StaminaPotion());
+        addItemToInventory(new StaminaPotion());
+        addItemToInventory(new StaminaPotion());
     }
     
     public void setBaseDamage(int newBaseDamage){

@@ -8,7 +8,9 @@ import com.mycompany.examproject.GUIandLogicIntermediary;
 import com.mycompany.examproject.Items.Armor;
 import com.mycompany.examproject.Items.Equipment;
 import com.mycompany.examproject.Items.Potion;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
+import com.mycompany.examproject.Items.Potions.StaminaPotion;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Player;
 import java.awt.Color;
@@ -177,11 +179,11 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                             .addGroup(inventoryPanelLayout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(repairComponentsAmountLabel)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(equipeUseButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(closeInventoryButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         inventoryPanelLayout.setVerticalGroup(
             inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,6 +276,18 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                         itemDurabilityLabel.setForeground(new Color(204, 204, 204));
                     }
                     itemIconLabel.setIcon(new ImageIcon(((EstusBottle)selected).getImageURL()));
+                } else if (selected instanceof StaminaPotion){
+                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemWeightLabel.setText("Item weight: no weight");
+                    itemDamageOrDamageReductionLabel.setText("Item stamina regen points : " + ((StaminaPotion) selected).getStaminaRegenAmount());
+                    itemDurabilityLabel.setText("Item's durability left: no durability, single use");
+                    itemIconLabel.setIcon(new ImageIcon(((StaminaPotion) selected).getImageURL()));
+                } else if (selected instanceof Bomb){
+                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemWeightLabel.setText("Item weight: no weight");
+                    itemDamageOrDamageReductionLabel.setText("Item damage : " + ((Bomb) selected).getDamage());
+                    itemDurabilityLabel.setText("Item's durability left: no durability, single use");
+                    itemIconLabel.setIcon(new ImageIcon(((Bomb) selected).getImageURL()));
                 } else {
 //                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
 //                    itemWeightLabel.setText("Item weight: " + selected.getWeight());
@@ -309,6 +323,13 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
             
             if(selectedPotion instanceof EstusBottle){
                 ((EstusBottle) selectedPotion).heal(Player.getInstance());
+            }
+            if(selectedPotion instanceof StaminaPotion){
+                ((StaminaPotion) selectedPotion).addStamina(Player.getInstance());
+            }
+            if(selectedPotion instanceof Bomb){
+                GUIandLogicIntermediary.handlePlayerUsingBomb((Bomb) selectedPotion);
+                Player.getInstance().getInventory().remove((Bomb) selectedPotion);
             }
             
         } else {

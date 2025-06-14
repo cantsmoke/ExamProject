@@ -17,6 +17,8 @@ import com.mycompany.examproject.Player;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -194,9 +196,9 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                 .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(closeInventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(inventoryPanelLayout.createSequentialGroup()
-                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(weaponLabel)
-                            .addComponent(potionLabel))
+                        .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(potionLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(weaponLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(inventoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(equipeUseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,7 +361,17 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
             }
             if(selectedPotion instanceof Poison){
                 GUIandLogicIntermediary.handlePlayerUsingPoison((Poison) selectedPotion);
-                closeInventoryButtonActionPerformed();
+                
+                if(!GUIandLogicIntermediary.isPoisoned()){
+                    PoisonUsedDialog poisonUsedDialog = new PoisonUsedDialog(null, true);
+                    poisonUsedDialog.setVisible(true);
+                }
+                
+                if(GUIandLogicIntermediary.checkEnemyHealth() > 0){
+                    closeInventoryButtonActionPerformed();
+                } else {
+                    this.dispose();
+                }
             }
 
         } else {
@@ -380,21 +392,50 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
     public void UpdateLabels(){
         List<Equipment> inventory = Player.getInstance().getInventory();
         
-        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+        List<Weapon> weapons = new ArrayList<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Weapon) {
-                weaponModel.addElement((Weapon) eq);
+                weapons.add((Weapon) eq);
             }
+        }
+
+        // Сортировка по алфавиту по названию
+        weapons.sort(Comparator.comparing(Weapon::getName)); // предположим, что есть getName()
+
+        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+        for (Weapon w : weapons) {
+            weaponModel.addElement(w);
         }
         weaponList.setModel(weaponModel);
-        
-        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+
+        List<Potion> potions = new ArrayList<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Potion) {
-                potionModel.addElement((Potion) eq);
+                potions.add((Potion) eq);
             }
         }
+        potions.sort(Comparator.comparing(Potion::getName));
+        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+        for (Potion p : potions) {
+            potionModel.addElement(p);
+        }
         potionList.setModel(potionModel);
+        
+//        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+//        for (Equipment eq : inventory) {
+//            if (eq instanceof Weapon) {
+//                weaponModel.addElement((Weapon) eq);
+//            }
+//        }
+//        weaponList.setModel(weaponModel);
+//        
+//        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+//        for (Equipment eq : inventory) {
+//            if (eq instanceof Potion) {
+//                potionModel.addElement((Potion) eq);
+//            }
+//        }
+//        potionList.setModel(potionModel);
         
         repairComponentsAmountLabel.setText("AMOUNT OF REPAIRING COMPONENTS: " + Player.getInstance().getRepairComponents());
     }

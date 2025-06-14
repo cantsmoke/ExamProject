@@ -19,9 +19,12 @@ import com.mycompany.examproject.Player;
 import java.awt.Color;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 /**
  *
@@ -468,29 +471,71 @@ public class InventoryForm extends javax.swing.JFrame {
     public void UpdateLabels(){
         List<Equipment> inventory = Player.getInstance().getInventory();
         
-        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+        List<Weapon> weapons = new ArrayList<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Weapon) {
-                weaponModel.addElement((Weapon) eq);
+                weapons.add((Weapon) eq);
             }
+        }
+
+        // Сортировка по алфавиту по названию
+        weapons.sort(Comparator.comparing(Weapon::getName)); // предположим, что есть getName()
+
+        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+        for (Weapon w : weapons) {
+            weaponModel.addElement(w);
         }
         weaponList.setModel(weaponModel);
-        
-        DefaultListModel<Armor> armorModel = new DefaultListModel<>();
+
+        List<Armor> armors = new ArrayList<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Armor) {
-                armorModel.addElement((Armor) eq);
+                armors.add((Armor) eq);
             }
+        }
+        armors.sort(Comparator.comparing(Armor::getName));
+        DefaultListModel<Armor> armorModel = new DefaultListModel<>();
+        for (Armor a : armors) {
+            armorModel.addElement(a);
         }
         armorList.setModel(armorModel);
-        
-        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+
+        List<Potion> potions = new ArrayList<>();
         for (Equipment eq : inventory) {
             if (eq instanceof Potion) {
-                potionModel.addElement((Potion) eq);
+                potions.add((Potion) eq);
             }
         }
+        potions.sort(Comparator.comparing(Potion::getName));
+        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+        for (Potion p : potions) {
+            potionModel.addElement(p);
+        }
         potionList.setModel(potionModel);
+
+//        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
+//        for (Equipment eq : inventory) {
+//            if (eq instanceof Weapon) {
+//                weaponModel.addElement((Weapon) eq);
+//            }
+//        }
+//        weaponList.setModel(weaponModel);
+//        
+//        DefaultListModel<Armor> armorModel = new DefaultListModel<>();
+//        for (Equipment eq : inventory) {
+//            if (eq instanceof Armor) {
+//                armorModel.addElement((Armor) eq);
+//            }
+//        }
+//        armorList.setModel(armorModel);
+//        
+//        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
+//        for (Equipment eq : inventory) {
+//            if (eq instanceof Potion) {
+//                potionModel.addElement((Potion) eq);
+//            }
+//        }
+//        potionList.setModel(potionModel);
         
         repairComponentsAmountLabel.setText("AMOUNT OF REPAIRING COMPONENTS: " + Player.getInstance().getRepairComponents());
     }

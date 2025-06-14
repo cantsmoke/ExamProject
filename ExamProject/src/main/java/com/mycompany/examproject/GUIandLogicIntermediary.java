@@ -247,4 +247,8 @@ public class GUIandLogicIntermediary {
         return enemyHealth;
     }
     
+    public static boolean isPoisoned() {
+        return fight.isPoisoned();
+    }
+    
 }

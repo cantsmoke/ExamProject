@@ -13,6 +13,7 @@ import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
 import com.mycompany.examproject.GUI.FightLoseForm;
 import com.mycompany.examproject.GUI.FightWinDialog;
+import com.mycompany.examproject.GUI.NotEnoughStaminaDialog;
 import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.Poison;
 import java.util.Random;
@@ -110,6 +111,13 @@ public class Fight {
     
     private void handlePlayerLightAttack() {
         EntityActionType enemyActionForPlayersAttack = chooseEnemyActionForPlayersAttack();
+        
+        if (player.getStamina() < 5){
+            NotEnoughStaminaDialog notEnoughStaminaDialog = new NotEnoughStaminaDialog(null, true, 5);
+            notEnoughStaminaDialog.setVisible(true);
+            return;
+        }
+        
         player.setStamina(player.getStamina() - 5);
         
         player.getSelectedWeapon().setDurability(player.getSelectedWeapon().getDurability() - 2);
@@ -154,6 +162,13 @@ public class Fight {
 
     private void handlePlayerHeavyAttack() {
         EntityActionType enemyActionForPlayersAttack = chooseEnemyActionForPlayersAttack();
+        
+        if (player.getStamina() < 10){
+            NotEnoughStaminaDialog notEnoughStaminaDialog = new NotEnoughStaminaDialog(null, true, 10);
+            notEnoughStaminaDialog.setVisible(true);
+            return;
+        }
+        
         player.setStamina(player.getStamina() - 10);
         
         player.getSelectedWeapon().setDurability(player.getSelectedWeapon().getDurability() - 4);
@@ -198,6 +213,13 @@ public class Fight {
     }
 
     void handlePlayerBlockAction() {
+        
+        if (player.getStamina() < 10){
+            NotEnoughStaminaDialog notEnoughStaminaDialog = new NotEnoughStaminaDialog(null, true, 10);
+            notEnoughStaminaDialog.setVisible(true);
+            return;
+        }
+        
         EntityActionType enemyActionForPlayersBlock = enemy.getPattern()[currentEnemyActionPattern];
         currentEnemyActionPattern++;
         if (currentEnemyActionPattern >= enemy.getPattern().length) {
@@ -387,6 +409,16 @@ public class Fight {
 
     Enemy getEnemy() {
         return this.enemy;
+    }
+
+    boolean isPoisoned() {
+        boolean isPoisoned = false;
+        if (this.poison == null){
+            isPoisoned = false;
+        } else if (this.poison != null){
+            isPoisoned = true;
+        }
+        return isPoisoned;
     }
     
 }

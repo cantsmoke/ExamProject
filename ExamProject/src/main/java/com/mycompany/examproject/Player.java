@@ -50,7 +50,7 @@ public class Player {
 
     // Skills
     private int strength;
-    private int dexterity;
+    private int agility;
     private int endurance;
 
     // Inventory and equipment
@@ -74,15 +74,15 @@ public class Player {
         this.blockP = 0.2;
         
         this.strength = 5;
-        this.dexterity = 5;
+        this.agility = 5;
         this.endurance = 5;
         
         this.inventory = new ArrayList<>();
         this.selectedWeapon = null;
         this.selectedArmor = null;    
         
-        this.totalSoulsAmount = 0;
-        this.currentSoulsAmount = 0;
+        this.totalSoulsAmount = 10000;
+        this.currentSoulsAmount = 10000;
         this.level = 1;
         
         this.currentRoom = room;       
@@ -140,7 +140,7 @@ public class Player {
     }
     
     public int getCurrentSoulsAmount(){
-        return this.totalSoulsAmount;
+        return this.currentSoulsAmount;
     }
     
     public void addCurrentSoulsAmount(int souls){
@@ -191,6 +191,8 @@ public class Player {
         this.selectedWeapon.setSelected(false);
         this.selectedWeapon = selectedWeapon;
         this.selectedWeapon.setSelected(true);
+        
+        //вызов метода, которыйобновляет шанс уклонения
     }
 
     public Armor getSelectedArmor() {
@@ -201,6 +203,8 @@ public class Player {
         this.selectedArmor.setSelected(false);
         this.selectedArmor = selectedArmor;
         this.selectedArmor.setSelected(true);
+        
+        //вызов метода, которыйобновляет шанс уклонения
     }
     
     public void takeDamage(int enemyDamage){
@@ -250,9 +254,24 @@ public class Player {
     }
     
     public int getStrength() { return strength; }
-    public int getDexterity() { return dexterity; }
+    public int getAgility() { return agility; }
     public int getEndurance() { return endurance; }
     
+    public void boostStrength(int soulsSpended) {
+        this.strength = Math.min(this.strength + 1, 10);
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+    }
+
+    public void boostAgility(int soulsSpended) {
+        this.agility = Math.min(this.agility + 1, 10);
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+    }
+
+    public void boostEndurance(int soulsSpended) {
+        this.endurance = Math.min(this.endurance + 1, 10);
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
+    }
+
     public void setCurrentRoom(Room room){
         this.currentRoom = room;
     }

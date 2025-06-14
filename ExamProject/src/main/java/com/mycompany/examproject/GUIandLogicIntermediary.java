@@ -15,6 +15,7 @@ import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
 import com.mycompany.examproject.GUI.InventoryForm;
 import com.mycompany.examproject.GUI.InventoryFormForBattle;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
+import com.mycompany.examproject.GUI.UpgradeMenu;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
@@ -222,6 +223,14 @@ public class GUIandLogicIntermediary {
         InventoryFormForBattle inventoryFormForBattle = new InventoryFormForBattle();
         inventoryFormForBattle.setVisible(true);
         inventoryFormForBattle.UpdateLabels();
+    }
+    
+    
+    public static void openUpgradeMenu() {
+        UpgradeMenu upgradeMenu = new UpgradeMenu();
+        upgradeMenu.setVisible(true);
+        
+        stateAndNavigationForm.setVisible(false);
     }
     
 }

@@ -418,7 +418,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_inventoryButtonActionPerformed
 
     private void upgradeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeMenuActionPerformed
-        // TODO add your handling code here:
+        GUIandLogicIntermediary.openUpgradeMenu();
     }//GEN-LAST:event_upgradeMenuActionPerformed
 
     private void moveEastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastButtonActionPerformed

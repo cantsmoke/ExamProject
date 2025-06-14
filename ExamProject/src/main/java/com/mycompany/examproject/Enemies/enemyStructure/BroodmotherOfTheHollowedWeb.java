@@ -64,9 +64,9 @@ public class BroodmotherOfTheHollowedWeb extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Hammer || selectedWeapon instanceof Axe) {
-            damage /= 2;
+            damage /= 1.1;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.1;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -77,9 +77,9 @@ public class BroodmotherOfTheHollowedWeb extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Hammer || selectedWeapon instanceof Axe) {
-            damage /= 2;
+            damage /= 1.4;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.4;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

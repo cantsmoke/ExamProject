@@ -77,9 +77,9 @@ public class FireKnight extends Enemy implements Knight{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Bow) {
-            damage /= 2;
+            damage /= 1.2;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.2;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -90,9 +90,9 @@ public class FireKnight extends Enemy implements Knight{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Bow) {
-            damage /= 2;
+            damage /= 1.1;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.1;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

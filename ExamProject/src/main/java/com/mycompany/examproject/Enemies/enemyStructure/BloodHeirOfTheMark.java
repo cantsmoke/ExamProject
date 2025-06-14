@@ -64,9 +64,9 @@ public class BloodHeirOfTheMark extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Spear || selectedWeapon instanceof Axe) {
-            damage /= 2;
+            damage /= 1.2;
         } else if (selectedWeapon instanceof Sword) {
-            damage *= 2;
+            damage *= 1.2;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -77,9 +77,9 @@ public class BloodHeirOfTheMark extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Spear || selectedWeapon instanceof Axe) {
-            damage /= 2;
+            damage /= 1.3;
         } else if (selectedWeapon instanceof Sword) {
-            damage *= 2;
+            damage *= 1.3;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

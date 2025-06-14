@@ -65,9 +65,9 @@ public class ConfessorOfTheRottingLight extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Bow || selectedWeapon instanceof Spear) {
-            damage /= 2;
+            damage /= 1.2;
         } else if (selectedWeapon instanceof Axe) {
-            damage *= 2;
+            damage *= 1.2;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -78,9 +78,9 @@ public class ConfessorOfTheRottingLight extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Bow || selectedWeapon instanceof Spear) {
-            damage /= 2;
+            damage /= 1.2;
         } else if (selectedWeapon instanceof Axe) {
-            damage *= 2;
+            damage *= 1.2;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

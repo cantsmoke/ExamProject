@@ -62,7 +62,7 @@ public class TheUnhallowedArchon extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Spear || selectedWeapon instanceof Hammer || selectedWeapon instanceof Bow) {
-            damage /= 2;
+            damage /= 1.1;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -73,7 +73,7 @@ public class TheUnhallowedArchon extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Spear || selectedWeapon instanceof Hammer || selectedWeapon instanceof Bow) {
-            damage /= 2;
+            damage /= 1.1;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

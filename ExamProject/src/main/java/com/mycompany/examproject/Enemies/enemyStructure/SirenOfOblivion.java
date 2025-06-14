@@ -63,9 +63,9 @@ public class SirenOfOblivion extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
 
         if (selectedWeapon instanceof Axe || selectedWeapon instanceof Hammer) {
-            damage /= 2;
+            damage /= 1.3;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.3;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";
@@ -76,9 +76,9 @@ public class SirenOfOblivion extends Boss{
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
 
         if (selectedWeapon instanceof Axe || selectedWeapon instanceof Hammer) {
-            damage /= 2;
+            damage /= 1.3;
         } else if (selectedWeapon instanceof Spear) {
-            damage *= 2;
+            damage *= 1.3;
         }
         this.health -= damage;
         return "Enemy took " + damage + " damage!";

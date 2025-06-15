@@ -16,7 +16,7 @@ public class Poison extends Potion implements Serializable{
     
     private static final long serialVersionUID = 1L;
 
-    private String imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 17_07_56 (1).png";
+    private String imageURL = "/ChatGPT Image 14 июн. 2025 г., 17_07_56 (1).png";
     
     private int damage;
     private int duration;

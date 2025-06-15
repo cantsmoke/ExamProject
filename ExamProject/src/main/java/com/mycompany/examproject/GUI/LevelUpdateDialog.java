@@ -36,6 +36,7 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
         levelUpPanel = new javax.swing.JPanel();
         levelUpLabel = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
+        levelUpIconLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,25 +57,32 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
             }
         });
 
+        levelUpIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 22_55_50 (1).png"))); // NOI18N
+        levelUpIconLabel.setBorder(new AntiqueBorder());
+
         javax.swing.GroupLayout levelUpPanelLayout = new javax.swing.GroupLayout(levelUpPanel);
         levelUpPanel.setLayout(levelUpPanelLayout);
         levelUpPanelLayout.setHorizontalGroup(
             levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelUpPanelLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
             .addGroup(levelUpPanelLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, levelUpPanelLayout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addGroup(levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(levelUpIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(levelUpLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(54, 54, 54))
         );
         levelUpPanelLayout.setVerticalGroup(
             levelUpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(levelUpPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(levelUpLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(levelUpIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
         );
@@ -105,6 +113,7 @@ public class LevelUpdateDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel levelUpIconLabel;
     private javax.swing.JLabel levelUpLabel;
     private javax.swing.JPanel levelUpPanel;
     private javax.swing.JButton okButton;

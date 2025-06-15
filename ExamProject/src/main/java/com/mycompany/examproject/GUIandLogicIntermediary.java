@@ -546,6 +546,7 @@ public class GUIandLogicIntermediary {
         boolean giveArmor = random.nextBoolean();
 
         String chosenType = null;
+        
         if (giveArmor) {
             String[] armorTypes = {"LightArmor", "TrooperArmor", "HeavyArmor"};
             chosenType = armorTypes[random.nextInt(armorTypes.length)];

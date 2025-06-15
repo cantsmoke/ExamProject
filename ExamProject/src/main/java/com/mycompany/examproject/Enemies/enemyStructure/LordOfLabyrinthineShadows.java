@@ -34,7 +34,7 @@ public class LordOfLabyrinthineShadows extends Boss{
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.HEAVY_ATTACK,
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_46_44.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 17_46_44.png";
         
         this.dodgeP = 0.65;
         this.blockP = 0.65;

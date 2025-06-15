@@ -29,7 +29,7 @@ public class CursedSkeleton extends Enemy implements Skeleton {
     public CursedSkeleton(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_03_51.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 14_03_51.png";
         
         this.dodgeP = 0.2;
         this.blockP = 0.4;

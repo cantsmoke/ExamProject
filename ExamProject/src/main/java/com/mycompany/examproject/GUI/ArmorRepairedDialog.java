@@ -21,7 +21,7 @@ public class ArmorRepairedDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
         setLocationRelativeTo(null);
-        setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 14_35_20.png");
+        setIcon("/ChatGPT Image 13 июн. 2025 г., 14_35_20.png");
         
         this.setResizable(false);
     }
@@ -106,7 +106,7 @@ public class ArmorRepairedDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setIcon(String iconUrl){
-        iconLabel.setIcon(new ImageIcon(iconUrl));
+        iconLabel.setIcon(new ImageIcon(getClass().getResource(iconUrl)));
     }
     
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed

@@ -22,7 +22,7 @@ public class WeightAttentionDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
         setLocationRelativeTo(null);
-        setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 1.png");
+        setIcon("/ChatGPT Image 13 июн. 2025 г., 1.png");
         
         textLabel3.setText(Player.getInstance().getBearableWeight() + " KG");
         
@@ -173,7 +173,7 @@ public class WeightAttentionDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void setIcon(String iconUrl){
-        iconLabel.setIcon(new ImageIcon(iconUrl));
+        iconLabel.setIcon(new ImageIcon(getClass().getResource(iconUrl)));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -298,7 +298,8 @@ public class InventoryForm extends javax.swing.JFrame {
                 } else {
                     itemDurabilityLabel.setForeground(new Color(204, 204, 204));
                 }
-                itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
+                
+                itemIconLabel.setIcon(new ImageIcon(getClass().getResource(selected.getImageUrl())));
             }
             armorList.clearSelection();
             potionList.clearSelection();
@@ -318,7 +319,8 @@ public class InventoryForm extends javax.swing.JFrame {
                 } else {
                     itemDurabilityLabel.setForeground(new Color(204, 204, 204));
                 }
-                itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
+                
+                itemIconLabel.setIcon(new ImageIcon(getClass().getResource(selected.getImageUrl())));
             }
             weaponList.clearSelection();
             potionList.clearSelection();
@@ -344,25 +346,29 @@ public class InventoryForm extends javax.swing.JFrame {
                     } else {
                         itemDurabilityLabel.setForeground(new Color(204, 204, 204));
                     }
-                    itemIconLabel.setIcon(new ImageIcon(((EstusBottle)selected).getImageURL()));
+
+                    itemIconLabel.setIcon(new ImageIcon(getClass().getResource(((EstusBottle)selected).getImageURL())));
                 } else if (selected instanceof StaminaPotion){
                     itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item stamina regen points: " + ((StaminaPotion) selected).getStaminaRegenAmount());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
-                    itemIconLabel.setIcon(new ImageIcon(((StaminaPotion) selected).getImageURL()));
+                    
+                    itemIconLabel.setIcon(new ImageIcon(getClass().getResource(((StaminaPotion)selected).getImageURL())));
                 } else if (selected instanceof Bomb){
                     itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item damage: " + ((Bomb) selected).getDamage());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
-                    itemIconLabel.setIcon(new ImageIcon(((Bomb) selected).getImageURL()));
+                    
+                    itemIconLabel.setIcon(new ImageIcon(getClass().getResource(((Bomb)selected).getImageURL())));
                 } else if (selected instanceof Poison){
                     itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item damage/duration: " + ((Poison) selected).getDamage() + "/" + ((Poison) selected).getDuration());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
-                    itemIconLabel.setIcon(new ImageIcon(((Poison) selected).getImageURL()));
+                    
+                    itemIconLabel.setIcon(new ImageIcon(getClass().getResource(((Poison)selected).getImageURL())));
                 }
             }
             weaponList.clearSelection();

@@ -46,7 +46,7 @@ public class MainMenuForm extends javax.swing.JFrame {
         MainMenuPanel.setBackground(new java.awt.Color(0, 0, 0));
         MainMenuPanel.setPreferredSize(new java.awt.Dimension(275, 412));
 
-        gameLogoLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 2 июн. 2025 г., 15_06_09 (1).png")); // NOI18N
+        gameLogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 2 июн. 2025 г., 15_06_09 (1).png"))); // NOI18N
 
         newGameButton.setBackground(new java.awt.Color(51, 51, 51));
         newGameButton.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N

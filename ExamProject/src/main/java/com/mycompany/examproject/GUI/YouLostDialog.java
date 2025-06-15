@@ -56,7 +56,7 @@ public class YouLostDialog extends javax.swing.JDialog {
             }
         });
 
-        loseIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 11 июн. 2025 г., 15_09_46 (1).png")); // NOI18N
+        loseIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 11 июн. 2025 г., 15_09_46 (1).png"))); // NOI18N
 
         javax.swing.GroupLayout youLostPanelLayout = new javax.swing.GroupLayout(youLostPanel);
         youLostPanel.setLayout(youLostPanelLayout);

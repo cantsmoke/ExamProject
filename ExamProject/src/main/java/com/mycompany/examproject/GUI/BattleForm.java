@@ -88,8 +88,7 @@ public class BattleForm extends javax.swing.JFrame {
         });
 
         playerIconLabel.setBackground(new java.awt.Color(0, 0, 0));
-        playerIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 17_05_41 (1).png")); // NOI18N
-        playerIconLabel.setText("jLabel1");
+        playerIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 3 июн. 2025 г., 17_05_41 (1).png"))); // NOI18N
 
         playerHpBar.setBackground(new java.awt.Color(0, 20, 0));
         playerHpBar.setForeground(new java.awt.Color(0, 153, 0));
@@ -181,39 +180,39 @@ public class BattleForm extends javax.swing.JFrame {
                         .addComponent(dodgeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(inventoryButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                        .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(playerHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(playerStaminaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(56, 56, 56))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BattleFramePanelLayout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(playerNameLabel)))
-                        .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(logScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BattleFramePanelLayout.createSequentialGroup()
-                                .addComponent(skipTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)))
-                        .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(enemyIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(enemyHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(BattleFramePanelLayout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(enemyNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(enemyHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                            .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                                    .addGap(21, 21, 21)
+                                    .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(playerHpBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(playerIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(playerStaminaBar, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(56, 56, 56))
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BattleFramePanelLayout.createSequentialGroup()
+                                    .addGap(97, 97, 97)
+                                    .addComponent(playerNameLabel)))
+                            .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(logScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BattleFramePanelLayout.createSequentialGroup()
+                                    .addComponent(skipTurnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(33, 33, 33)))
+                            .addGroup(BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                                    .addGap(57, 57, 57)
+                                    .addComponent(enemyIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(BattleFramePanelLayout.createSequentialGroup()
+                                    .addGap(47, 47, 47)
+                                    .addComponent(enemyNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(52, Short.MAX_VALUE))
             .addGroup(BattleFramePanelLayout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addComponent(playerBaseDamageLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(enemyBaseDamageLabel)
-                .addGap(81, 81, 81))
+                .addGap(143, 143, 143))
         );
         BattleFramePanelLayout.setVerticalGroup(
             BattleFramePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,7 +320,7 @@ public class BattleForm extends javax.swing.JFrame {
         skipTurnButton.setVisible(false);
         skipTurnButton.setEnabled(false);
         
-        enemyIconLabel.setIcon(new ImageIcon(enemy.getIconSource()));
+        enemyIconLabel.setIcon(new ImageIcon(getClass().getResource(enemy.getIconSource())));
         enemyNameLabel.setText(enemy.getName());
         enemyHpBar.setMaximum(enemy.getMaxHealth());
         enemyHpBar.setValue(enemy.getHealth());

@@ -36,7 +36,7 @@ public class ExecutionerOfTheLastCreed extends Boss{
             EntityActionType.LIGHT_ATTACK,
             EntityActionType.HEAVY_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_49_13.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 17_49_13.png";
         
         this.dodgeP = 0.5;
         this.blockP = 0.6;

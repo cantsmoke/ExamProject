@@ -63,7 +63,8 @@ public class YouAreRestingDialog extends javax.swing.JDialog {
             }
         });
 
-        restIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 17_07_03 (1).png")); // NOI18N
+        restIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 17_07_03 (1).png"))); // NOI18N
+        restIconLabel.setBorder(new AntiqueBorder());
 
         javax.swing.GroupLayout restPanelLayout = new javax.swing.GroupLayout(restPanel);
         restPanel.setLayout(restPanelLayout);

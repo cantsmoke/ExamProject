@@ -23,7 +23,7 @@ public class EstusBottle extends Potion implements Serializable{
     private int maxUses;
     private int usesLeft;
     
-    private String imageURL = "C:\\Users\\Arseniy\\Downloads\\imgonline-com-ua-BrightnessContrast-DWdgxay1HD3Nqm.png";
+    private String imageURL = "/imgonline-com-ua-BrightnessContrast-DWdgxay1HD3Nqm.png";
 
     public EstusBottle() {
         super("Estus", "Regens your health.");

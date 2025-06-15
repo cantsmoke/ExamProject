@@ -26,7 +26,6 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="mimicKilledYouPanel" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,17 +51,16 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="mimicKilledLabel" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="120" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel1" max="32767" attributes="0"/>
-                              <Component id="okButton" max="32767" attributes="0"/>
+                      <Component id="mimicKilledLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="okButton" min="-2" pref="190" max="-2" attributes="0"/>
+                              <Component id="jLabel2" min="-2" pref="190" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="31" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -74,11 +72,19 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                   <Component id="mimicKilledLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="285" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="285" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" pref="285" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="26" max="32767" attributes="0"/>
                   <Component id="okButton" min="-2" pref="55" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -96,11 +102,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 15 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 15_48_48 (1).png"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="okButton">
           <Properties>
@@ -121,6 +122,13 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ChatGPT Image 15 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 15_48_48 (1).png"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

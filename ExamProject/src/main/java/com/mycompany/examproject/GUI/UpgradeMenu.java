@@ -76,13 +76,13 @@ public class UpgradeMenu extends javax.swing.JFrame {
         currentSoulsAmountLabel.setForeground(new java.awt.Color(204, 204, 204));
         currentSoulsAmountLabel.setText("jLabel1");
 
-        agilityIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 10_34_18.png")); // NOI18N
+        agilityIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 14 июн. 2025 г., 10_34_18.png"))); // NOI18N
         agilityIconLabel.setBorder(new AntiqueBorder());
 
-        enduranceIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 10_41_46.png")); // NOI18N
+        enduranceIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 14 июн. 2025 г., 10_41_46.png"))); // NOI18N
         enduranceIconLabel.setBorder(new AntiqueBorder());
 
-        strenghtIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 10_28_48.png")); // NOI18N
+        strenghtIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 14 июн. 2025 г., 10_28_48.png"))); // NOI18N
         strenghtIconLabel.setBorder(new AntiqueBorder());
 
         currentStrengthLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -184,13 +184,13 @@ public class UpgradeMenu extends javax.swing.JFrame {
                                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                                         .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
+                                            .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(agilityIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(upgradeAgilityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(18, 18, 18)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(enduranceIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(upgradeEnduranceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -208,7 +208,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
                                     .addComponent(counterAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addComponent(specialAbilityCrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 266, Short.MAX_VALUE)))
+                        .addGap(0, 280, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         upgradeMenuPanelLayout.setVerticalGroup(

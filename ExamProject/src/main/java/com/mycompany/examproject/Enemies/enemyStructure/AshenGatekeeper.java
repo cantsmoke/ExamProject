@@ -33,7 +33,7 @@ public class AshenGatekeeper extends Boss{
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.LIGHT_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 18_10_11 (1).png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 18_10_11 (1).png";
         
         this.dodgeP = 0.7;
         this.blockP = 0.5;

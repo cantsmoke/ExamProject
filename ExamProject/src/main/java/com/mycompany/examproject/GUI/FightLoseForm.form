@@ -118,7 +118,7 @@
         <Component class="javax.swing.JLabel" name="loseIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 11 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 15_09_46 (1).png"/>
+              <Image iconType="3" name="/ChatGPT Image 11 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 15_09_46 (1).png"/>
             </Property>
           </Properties>
         </Component>

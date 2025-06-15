@@ -32,7 +32,7 @@ public class InfectedHound extends Enemy implements Hound{
     public InfectedHound(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_30_37.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 14_30_37.png";
         
         this.dodgeP = 0.6;
         this.blockP = 0.2;

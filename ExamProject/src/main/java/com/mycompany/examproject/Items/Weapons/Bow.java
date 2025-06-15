@@ -17,12 +17,12 @@ public class Bow extends Weapon implements Serializable{
     
     public Bow(String name, int weight, int damage, int durability) {
         super(name, weight, damage, durability);
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_56_08.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 11_56_08.png";
     }
     
     public Bow(Bow other) {
         super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_56_08.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 11_56_08.png";
     }
     
 }

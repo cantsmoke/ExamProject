@@ -17,12 +17,12 @@ public class HeavyArmor extends Armor implements Serializable{
     
     public HeavyArmor(String name, int weight, double damageReduction, int durability) {
         super(name, weight, damageReduction, durability);
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 1.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 1.png";
     }
     
     public HeavyArmor(HeavyArmor other) {
         super(other.getName(), other.getWeight(), other.getDamageReduction(), other.getDurability());
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 1.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 1.png";
     }
     
 }

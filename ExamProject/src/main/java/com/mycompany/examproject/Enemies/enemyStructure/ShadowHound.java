@@ -32,7 +32,7 @@ public class ShadowHound extends Enemy implements Hound{
     public ShadowHound(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_28_02.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 14_28_02.png";
         
         this.dodgeP = 0.5;
         this.blockP = 0.2;

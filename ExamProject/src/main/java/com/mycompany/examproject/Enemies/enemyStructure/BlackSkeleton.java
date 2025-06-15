@@ -28,7 +28,7 @@ public class BlackSkeleton extends Enemy implements Skeleton {
     public BlackSkeleton(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 14_08_29.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 14_08_29.png";
         
         this.dodgeP = 0.3;
         this.blockP = 0.5;

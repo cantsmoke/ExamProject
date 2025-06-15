@@ -18,7 +18,7 @@ public class Bomb extends Potion implements Serializable{
 
     private int damage;
     
-    private String imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 15_51_32 (1).png";
+    private String imageURL = "/ChatGPT Image 14 июн. 2025 г., 15_51_32 (1).png";
     
     public Bomb() {
         super("Bomb", "Deals damage to enemy.");

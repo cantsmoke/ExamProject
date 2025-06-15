@@ -49,7 +49,7 @@ public class ForewordDialog extends javax.swing.JDialog {
         forwardLabel.setText("foreword");
         forwardLabel.setPreferredSize(new java.awt.Dimension(310, 58));
 
-        forewordIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 17_42_29 (1).png")); // NOI18N
+        forewordIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 17_42_29 (1).png"))); // NOI18N
         forewordIconLabel.setBorder(new AntiqueBorder());
 
         forewordScrollPane.setBackground(new java.awt.Color(0, 0, 0));

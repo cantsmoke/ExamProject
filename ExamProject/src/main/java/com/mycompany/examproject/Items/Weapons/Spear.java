@@ -17,12 +17,12 @@ public class Spear extends Weapon implements Serializable{
     
     public Spear(String name, int weight, int damage, int durability) {
         super(name, weight, damage, durability);
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
     }
     
     public Spear(Spear other) {
         super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
     }
     
 }

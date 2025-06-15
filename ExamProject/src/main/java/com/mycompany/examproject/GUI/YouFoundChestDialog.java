@@ -53,8 +53,8 @@ public class YouFoundChestDialog extends javax.swing.JDialog {
         chestFoundLabel.setText("you found chest!");
         chestFoundLabel.setPreferredSize(new java.awt.Dimension(200, 22));
 
-        chestIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 15_17_56 (1).png")); // NOI18N
-        chestIconLabel.setText("jLabel2");
+        chestIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 15_17_56 (1).png"))); // NOI18N
+        chestIconLabel.setBorder(new AntiqueBorder());
 
         passChestButton.setBackground(new java.awt.Color(102, 102, 102));
         passChestButton.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N

@@ -51,15 +51,18 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
-                  <Component id="levelUpLabel" min="-2" pref="174" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-              </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   <Component id="okButton" min="-2" pref="150" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="60" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Component id="levelUpIconLabel" max="32767" attributes="0"/>
+                      <Component id="levelUpLabel" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -68,7 +71,9 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   <Component id="levelUpLabel" min="-2" pref="47" max="-2" attributes="0"/>
-                  <EmptySpace pref="33" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="levelUpIconLabel" min="-2" pref="175" max="-2" attributes="0"/>
+                  <EmptySpace pref="39" max="32767" attributes="0"/>
                   <Component id="okButton" min="-2" pref="55" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
@@ -106,6 +111,16 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="okButtonActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="levelUpIconLabel">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/ChatGPT Image 15 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 22_55_50 (1).png"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new AntiqueBorder()" type="code"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

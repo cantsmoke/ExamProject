@@ -32,7 +32,7 @@ public class SirenOfOblivion extends Boss{
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.LIGHT_ATTACK,
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17_14_31.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 17_14_31.png";
         
         this.dodgeP = 0.9;
         this.blockP = 0.4;

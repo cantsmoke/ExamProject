@@ -37,6 +37,7 @@ public class GameSavedDialog extends javax.swing.JDialog {
         gameSavedLabel = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         saveIconLabel = new javax.swing.JLabel();
+        gameSavedIconLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -57,23 +58,28 @@ public class GameSavedDialog extends javax.swing.JDialog {
             }
         });
 
-        saveIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\db71b1d8-d169-4984-9e5d-c2ea92838a9c (1).png")); // NOI18N
         saveIconLabel.setBorder(new AntiqueBorder());
+
+        gameSavedIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/db71b1d8-d169-4984-9e5d-c2ea92838a9c (1).png"))); // NOI18N
+        gameSavedIconLabel.setBorder(new AntiqueBorder());
 
         javax.swing.GroupLayout gameSavedPanelLayout = new javax.swing.GroupLayout(gameSavedPanel);
         gameSavedPanel.setLayout(gameSavedPanelLayout);
         gameSavedPanelLayout.setHorizontalGroup(
             gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gameSavedPanelLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
-                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameSavedPanelLayout.createSequentialGroup()
-                .addContainerGap(43, Short.MAX_VALUE)
-                .addGroup(gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(saveIconLabel)
-                    .addComponent(gameSavedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addGroup(gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gameSavedPanelLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gameSavedPanelLayout.createSequentialGroup()
+                        .addContainerGap(43, Short.MAX_VALUE)
+                        .addGroup(gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gameSavedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gameSavedIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)))
+                .addComponent(saveIconLabel))
         );
         gameSavedPanelLayout.setVerticalGroup(
             gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -81,7 +87,9 @@ public class GameSavedDialog extends javax.swing.JDialog {
                 .addGap(31, 31, 31)
                 .addComponent(gameSavedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(saveIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(gameSavedPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(saveIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(gameSavedIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(25, 25, 25))
@@ -113,6 +121,7 @@ public class GameSavedDialog extends javax.swing.JDialog {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel gameSavedIconLabel;
     private javax.swing.JLabel gameSavedLabel;
     private javax.swing.JPanel gameSavedPanel;
     private javax.swing.JButton okButton;

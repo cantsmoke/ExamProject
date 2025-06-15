@@ -30,7 +30,7 @@ public class BloodHeirOfTheMark extends Boss{
             EntityActionType.LIGHT_ATTACK,
             EntityActionType.HEAVY_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 17.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 17.png";
         
         this.dodgeP = 0.4;
         this.blockP = 0.4;

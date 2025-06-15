@@ -46,7 +46,7 @@ public class ChestIsEmptyDialog extends javax.swing.JDialog {
         chestEmptyLabel.setForeground(new java.awt.Color(204, 204, 204));
         chestEmptyLabel.setText("chest is empty!");
 
-        emptyChestIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 15_50_48 (1).png")); // NOI18N
+        emptyChestIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 15_50_48 (1).png"))); // NOI18N
 
         okButton.setBackground(new java.awt.Color(102, 102, 102));
         okButton.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
@@ -66,9 +66,8 @@ public class ChestIsEmptyDialog extends javax.swing.JDialog {
                 .addGap(58, 58, 58)
                 .addGroup(chestIsEmptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(chestIsEmptyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(emptyChestIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(chestEmptyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(emptyChestIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(chestEmptyLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         chestIsEmptyPanelLayout.setVerticalGroup(

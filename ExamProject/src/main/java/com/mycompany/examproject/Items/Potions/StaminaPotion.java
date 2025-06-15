@@ -30,11 +30,11 @@ public class StaminaPotion extends Potion implements Serializable{
         if (new Random().nextBoolean()) {
             this.size = "Big";
             this.staminaRegenAmount = 30;
-            imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 15_27_27.png";
+            imageURL = "/ChatGPT Image 14 июн. 2025 г., 15_27_27.png";
         } else {
             this.size = "Small";
             this.staminaRegenAmount = 15;
-            imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 15_25_39.png";
+            imageURL = "/ChatGPT Image 14 июн. 2025 г., 15_25_39.png";
         }
     }
     

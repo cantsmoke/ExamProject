@@ -68,7 +68,6 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
         setForeground(new java.awt.Color(0, 0, 0));
-        setPreferredSize(new java.awt.Dimension(1500, 800));
 
         PlayerInfoAndBasicButtonsPanel.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -128,7 +127,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
 
         playerIconLabel.setBackground(new java.awt.Color(0, 0, 0));
         playerIconLabel.setForeground(new java.awt.Color(255, 255, 255));
-        playerIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 17_52_59 (1).png")); // NOI18N
+        playerIconLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 3 июн. 2025 г., 17_52_59 (1).png"))); // NOI18N
         playerIconLabel.setBorder(new AntiqueBorder());
 
         soulsLabel.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
@@ -231,7 +230,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(locationImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
+                    .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 643, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(LocationInfoPanelLayout.createSequentialGroup()
                 .addGap(128, 128, 128)
@@ -463,7 +462,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_exploreLocationButtonActionPerformed
 
     public void updateLabels(){
-        locationImageLabel.setIcon(new ImageIcon(Player.getInstance().getCurrentRoom().getRoomPictureSource()));
+        locationImageLabel.setIcon(new ImageIcon(getClass().getResource(Player.getInstance().getCurrentRoom().getRoomPictureSource())));
         locationDescriptionArea.setText(Player.getInstance().getCurrentRoom().getDescription());
         
         locationDescriptionArea.setEnabled(false);

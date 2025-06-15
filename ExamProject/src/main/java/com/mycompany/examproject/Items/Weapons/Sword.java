@@ -17,12 +17,12 @@ public class Sword extends Weapon implements Serializable{
     
     public Sword(String name, int weight, int damage, int durability) {
         super(name, weight, damage, durability);
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
     }
     
     public Sword(Sword other) {
         super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
     }
     
 }

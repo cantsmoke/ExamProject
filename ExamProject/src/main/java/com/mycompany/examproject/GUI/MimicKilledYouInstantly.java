@@ -37,6 +37,7 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
         mimicKilledLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -45,8 +46,6 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
         mimicKilledLabel.setFont(new java.awt.Font("Castellar", 0, 24)); // NOI18N
         mimicKilledLabel.setForeground(new java.awt.Color(204, 204, 204));
         mimicKilledLabel.setText("mimic killed you instantly!");
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 15_48_48 (1).png")); // NOI18N
 
         okButton.setBackground(new java.awt.Color(102, 102, 102));
         okButton.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
@@ -59,20 +58,22 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ChatGPT Image 15 июн. 2025 г., 15_48_48 (1).png"))); // NOI18N
+
         javax.swing.GroupLayout mimicKilledYouPanelLayout = new javax.swing.GroupLayout(mimicKilledYouPanel);
         mimicKilledYouPanel.setLayout(mimicKilledYouPanelLayout);
         mimicKilledYouPanelLayout.setHorizontalGroup(
             mimicKilledYouPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(mimicKilledYouPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(mimicKilledLabel))
-                    .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addGroup(mimicKilledYouPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(okButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(mimicKilledLabel)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mimicKilledYouPanelLayout.createSequentialGroup()
+                        .addGroup(mimicKilledYouPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(94, 94, 94)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         mimicKilledYouPanelLayout.setVerticalGroup(
@@ -80,11 +81,16 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
             .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(mimicKilledLabel)
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(mimicKilledYouPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(mimicKilledYouPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -93,8 +99,7 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mimicKilledYouPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(mimicKilledYouPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,6 +121,7 @@ public class MimicKilledYouInstantly extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel mimicKilledLabel;
     private javax.swing.JPanel mimicKilledYouPanel;
     private javax.swing.JButton okButton;

@@ -125,11 +125,11 @@ public class EnemySection2Factory implements EnemyFactory{
         String imagePath;
 
         if (name.equalsIgnoreCase("knight-skeleton")) {
-            imagePath = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 5 июн. 2025 г., 17_38_03.png";
+            imagePath = "/ChatGPT Image 5 июн. 2025 г., 17_38_03.png";
         } else if (name.equalsIgnoreCase("hound-skeleton")) {
-            imagePath = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 5 июн. 2025 г., 17_34_29.png";
+            imagePath = "/ChatGPT Image 5 июн. 2025 г., 17_34_29.png";
         } else if (name.equalsIgnoreCase("hound-knight")) {
-            imagePath = "C:\\Users\\Arseniy\\Downloads\\imgonline-com-ua-BrightnessContrast-PHkCRxJEidj.jpg";
+            imagePath = "/imgonline-com-ua-BrightnessContrast-PHkCRxJEidj.jpg";
         } else {
             throw new IllegalArgumentException("Unknown combination: " + name);
         }

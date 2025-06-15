@@ -77,15 +77,15 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="upgradeStrengthButton" max="32767" attributes="0"/>
                                               <Component id="strenghtIconLabel" max="32767" attributes="0"/>
+                                              <Component id="upgradeStrengthButton" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="agilityIconLabel" max="32767" attributes="0"/>
                                               <Component id="upgradeAgilityButton" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                               <Component id="enduranceIconLabel" max="32767" attributes="0"/>
                                               <Component id="upgradeEnduranceButton" max="32767" attributes="0"/>
@@ -112,7 +112,7 @@
                                   <Component id="specialAbilityCrollPane" min="-2" pref="343" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="0" pref="266" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="280" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -189,7 +189,7 @@
         <Component class="javax.swing.JLabel" name="agilityIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_34_18.png"/>
+              <Image iconType="3" name="/ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_34_18.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new AntiqueBorder()" type="code"/>
@@ -199,7 +199,7 @@
         <Component class="javax.swing.JLabel" name="enduranceIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_41_46.png"/>
+              <Image iconType="3" name="/ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_41_46.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new AntiqueBorder()" type="code"/>
@@ -209,7 +209,7 @@
         <Component class="javax.swing.JLabel" name="strenghtIconLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Arseniy\Downloads\ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_28_48.png"/>
+              <Image iconType="3" name="/ChatGPT Image 14 &#x438;&#x44e;&#x43d;. 2025 &#x433;., 10_28_48.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
               <Connection code="new AntiqueBorder()" type="code"/>

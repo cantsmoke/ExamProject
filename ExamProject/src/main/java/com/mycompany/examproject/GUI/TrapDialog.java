@@ -117,12 +117,12 @@ public class TrapDialog extends javax.swing.JDialog {
 
     private void updateLabel() {
         String[] iconPaths = {
-            "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 13_02_49.png",
-            "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 13_05_02.png",
-            "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 13_06_03.png"
+            "/ChatGPT Image 15 июн. 2025 г., 13_02_49.png",
+            "/ChatGPT Image 15 июн. 2025 г., 13_05_02.png",
+            "/ChatGPT Image 15 июн. 2025 г., 13_06_03.png"
         };
         int index = (int)(Math.random() * iconPaths.length);
-        trapImageLabel.setIcon(new ImageIcon(iconPaths[index]));
+        trapImageLabel.setIcon(new ImageIcon(getClass().getResource(iconPaths[index])));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

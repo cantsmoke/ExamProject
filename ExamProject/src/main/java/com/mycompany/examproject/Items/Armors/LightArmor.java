@@ -17,12 +17,12 @@ public class LightArmor extends Armor implements Serializable{
     
     public LightArmor(String name, int weight, double damageReduction, int durability) {
         super(name, weight, damageReduction, durability);
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
     }
     
     public LightArmor(LightArmor other) {
         super(other.getName(), other.getWeight(), other.getDamageReduction(), other.getDurability());
-        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
+        this.imageURL = "/ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
     }
     
 }

@@ -34,7 +34,7 @@ public class Mimic extends Enemy implements Skeleton {
     public Mimic(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 15 июн. 2025 г., 15_48_48 (1).png";
+        this.iconSource = "/ChatGPT Image 15 июн. 2025 г., 15_48_48 (1).png";
         
         this.dodgeP = 0.3;
         this.blockP = 0.5;

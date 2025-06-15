@@ -33,7 +33,7 @@ public class WormOfLivingStone extends Boss{
             EntityActionType.HEAVY_ATTACK,
             EntityActionType.HEAVY_ATTACK
         };
-        this.iconSource = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 4 июн. 2025 г., 18_31_30.png";
+        this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 18_31_30.png";
         
         this.dodgeP = 0.45;
         this.blockP = 0.8;

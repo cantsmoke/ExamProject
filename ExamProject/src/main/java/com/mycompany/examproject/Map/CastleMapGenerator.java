@@ -76,7 +76,7 @@ public class CastleMapGenerator implements Serializable{
         for (int x = 0; x < floor.getWidth(); x++) {
             for (int y = 0; y < floor.getHeight(); y++) {
                 String descriptionAndURL = generateRoomDescription(floor.getFloorNumber(), x, y);
-                String[] parts = descriptionAndURL.split("///");
+                String[] parts = descriptionAndURL.split("\\|\\|\\|");
                 String roomDescription = parts[0];
                 String roomPictureSource = parts[1];
                 floor.setRoom(x, y, new Room(x, y, floor.getFloorNumber(), RoomType.NORMAL, roomDescription, roomPictureSource));
@@ -91,11 +91,11 @@ public class CastleMapGenerator implements Serializable{
 
         if (floorNum == TOTAL_FLOORS) {
             floor.setRoom(0, 0, new Room(0, 0, floorNum, RoomType.STAIRCASE_DOWN, "A spiral of broken stone descends into the abyss below. The air rises thick with the scent of blood long dried. \n" +
-                "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
+                "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "/ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
             floor.setRoom(1, 0, new Room(1, 0, floorNum, RoomType.REST, "A forgotten sanctuary untouched by decay. A pale light filters through unseen cracks, warming the cold flagstones. \n" +
-                "Here, the weight of the curse lifts — if only for a moment. But silence is never eternal in these halls.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_33_23.png"));
+                "Here, the weight of the curse lifts — if only for a moment. But silence is never eternal in these halls.", "/ChatGPT Image 3 июн. 2025 г., 11_33_23.png"));
             floor.setRoom(2, 0, new Room(2, 0, floorNum, RoomType.BOSS, "A vast hall of blackened marble, where time itself seems to halt. The air hums with dread anticipation. \n" +
-                "This is where the cycle must end — or begin anew. The very walls whisper of inevitable confrontation.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_36_54.png"));
+                "This is where the cycle must end — or begin anew. The very walls whisper of inevitable confrontation.", "/ChatGPT Image 3 июн. 2025 г., 11_36_54.png"));
             floor.setStaircaseDownRoom(floor.getRooms()[0][0]);
             floor.setRestRoom(floor.getRooms()[1][0]);
             floor.setBossRoom(floor.getRooms()[2][0]);
@@ -103,7 +103,7 @@ public class CastleMapGenerator implements Serializable{
             int restX = random.nextInt(width);
             int restY = random.nextInt(height);
             floor.setRoom(restX, restY, new Room(restX, restY, floorNum, RoomType.REST, "A chamber of stillness and ancient grace. Moss creeps gently over statues of forgotten saints, \n" +
-                "and a faint glow lingers around the altar. It soothes not the body, but the soul — a rare mercy in this cursed place.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_06_21.png"));
+                "and a faint glow lingers around the altar. It soothes not the body, but the soul — a rare mercy in this cursed place.", "/ChatGPT Image 3 июн. 2025 г., 16_06_21.png"));
             floor.setRestRoom(floor.getRooms()[restX][restY]);
 
             int bossX = random.nextInt(width);
@@ -113,14 +113,14 @@ public class CastleMapGenerator implements Serializable{
                 bossY = random.nextInt(height);
             }
             floor.setRoom(bossX, bossY, new Room(bossX, bossY, floorNum, RoomType.BOSS, "A void without stars, where even shadows fear to tread. Something waits here — something aware. \n" +
-                "The air shivers with malice. Whatever sleeps in this darkness is no mere beast. It dreams of your death.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_10_08.png"));
+                "The air shivers with malice. Whatever sleeps in this darkness is no mere beast. It dreams of your death.", "/ChatGPT Image 3 июн. 2025 г., 16_10_08.png"));
             floor.setBossRoom(floor.getRooms()[bossX][bossY]);
 
             if (floorNum < TOTAL_FLOORS) {
                 int[] staircaseUpPos = getAdjacentPosition(floor, bossX, bossY);
                 if (staircaseUpPos != null) {
                     floor.setRoom(staircaseUpPos[0], staircaseUpPos[1], new Room(staircaseUpPos[0], staircaseUpPos[1], floorNum, RoomType.STAIRCASE_UP, "A narrow ascent carved from jagged bone. The steps tremble underfoot, as if the castle itself resists your climb. \n" +
-                        "Beyond lies more than just another floor — it is a deeper wound upon the world.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
+                        "Beyond lies more than just another floor — it is a deeper wound upon the world.", "/ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
                     floor.setStaircaseUpRoom(floor.getRooms()[staircaseUpPos[0]][staircaseUpPos[1]]);
                 }
             }
@@ -134,7 +134,7 @@ public class CastleMapGenerator implements Serializable{
                     downY = random.nextInt(height);
                 }
                 floor.setRoom(downX, downY, new Room(downX, downY, floorNum, RoomType.STAIRCASE_DOWN, "A spiral of broken stone descends into the abyss below. The air rises thick with the scent of blood long dried. \n" +
-                    "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
+                    "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "/ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
                 floor.setStaircaseDownRoom(floor.getRooms()[downX][downY]);
             }
 
@@ -147,7 +147,7 @@ public class CastleMapGenerator implements Serializable{
                     startY = random.nextInt(height);
                 }
                 floor.setRoom(startX, startY, new Room(startX, startY, floorNum, RoomType.ENTRANCE_HALL, "A gate of rusted iron, forged in an age when men still believed they could keep horrors at bay. \n" +
-                    "The stones weep, the wind howls names you almost remember. This is where the nightmare begins — again.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_57_53.png"));
+                    "The stones weep, the wind howls names you almost remember. This is where the nightmare begins — again.", "/ChatGPT Image 3 июн. 2025 г., 16_57_53.png"));
                 floor.setStartRoom(floor.getRooms()[startX][startY]);
             }
         }
@@ -276,50 +276,50 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
-    // Generates a description for a normal room
     private String generateRoomDescription(int floor, int x, int y) {
         String[] descriptions = {
             "You enter a space forgotten by time — the stone vaults tremble under the pressure of silence. " +
             "The dust of centuries settles on the rusty armor that guards the void. " +
-            "It seems that something is watching from the shadows...  ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_11_01.png",
+            "It seems that something is watching from the shadows...  |||/ChatGPT Image 3 июн. 2025 г., 10_11_01.png",
 
             "The air here is thick with cold and fear. The stone walls are covered with cracks, " +
-            "It's like the castle itself is screaming in pain. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_34_41.png",
+            "It's like the castle itself is screaming in pain. |||/ChatGPT Image 3 июн. 2025 г., 10_34_41.png",
 
             "A vaulted hall where even the flame of torches is afraid to burn brightly. Shadows creep across the walls, " +
-            "It's like they're alive. The air is saturated with the smell of rot and old iron. ///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_38_37.png" ,
+            "It's like they're alive. The air is saturated with the smell of rot and old iron. |||/ChatGPT Image 3 июн. 2025 г., 10_38_37.png" ,
 
             "A long corridor with no end and no beginning. The walls are decorated with cracked bas-reliefs of ancient gods, " +
-            "their faces are distorted with grief. The floor is strewn with shards of something...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_45_28.png",
+            "their faces are distorted with grief. The floor is strewn with shards of something...|||/ChatGPT Image 3 июн. 2025 г., 10_45_28.png",
 
             "The throne room is now just a ruin of grandeur. Black beams collapsed, " +
-            "and there were claw marks on the floor. They lead to a throne where no one has sat for a long time.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_46_14.png",
+            "and there were claw marks on the floor. They lead to a throne where no one has sat for a long time.|||/ChatGPT Image 3 июн. 2025 г., 10_46_14.png",
 
             "A dusty repository of knowledge, keeping its secrets. Papyri crumble to dust, " +
-            "and books whisper words in a language that has long been forgotten...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_51_31.png",
+            "and books whisper words in a language that has long been forgotten...|||/ChatGPT Image 3 июн. 2025 г., 10_51_31.png",
 
             "A dungeon where the echo reverberates too fast. The walls are covered with chains, " +
-            "all are rusty, except for one — it glitters as if it had been used recently.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_55_11.png",
+            "all are rusty, except for one — it glitters as if it had been used recently.|||/ChatGPT Image 3 июн. 2025 г., 10_55_11.png",
 
             "An attic where the roof collapsed under the weight of time. Rays of moonlight break through the cracks, " +
-            "illuminating what would have been better left in the dark.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 10_57_06.png",
+            "illuminating what would have been better left in the dark.|||/ChatGPT Image 3 июн. 2025 г., 10_57_06.png",
 
             "A temple forgotten even by the gods. The altar is smashed, the statues are toppled. However, there is still a fire burning in the center of the hall — " +
-            "unnaturally blue and smoke-free.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_12_35.png",
+            "unnaturally blue and smoke-free.|||/ChatGPT Image 3 июн. 2025 г., 11_12_35.png",
 
             "A large hall, once full of life. There are only ghosts here now, " +
-            "flying in search of peace. There are portraits on the walls, their eyes following every step.///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_15_01.png",
+            "flying in search of peace. There are portraits on the walls, their eyes following every step.|||/ChatGPT Image 3 июн. 2025 г., 11_15_01.png",
 
             "The basement is filled with the smell of dampness and decay, barrels are lying in disarray." +
-            "///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_20_01.png",
+            "|||/ChatGPT Image 3 июн. 2025 г., 11_20_01.png",
 
             "A gallery where every step is echoed by many voices. The mirrors are covered with cobwebs, " +
-            "and the reflections in them don't look like you at all...///C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_21_50.png"
+            "and the reflections in them don't look like you at all...|||/ChatGPT Image 3 июн. 2025 г., 11_21_50.png"
         };
         return descriptions[random.nextInt(descriptions.length)];
     }
 
     private void printFloor(Floor floor) {
+        
         System.out.println("\n=== Floor " + floor.getFloorNumber() + " ===");
         int width = floor.getWidth();
         int height = floor.getHeight();

@@ -21,7 +21,7 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
         setLocationRelativeTo(null);
-        setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 13_59_53.png");
+        setIcon("/ChatGPT Image 13 июн. 2025 г., 13_59_53.png");
         
         this.setResizable(false);
     }
@@ -67,7 +67,6 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
         warningLabel.setForeground(new java.awt.Color(204, 204, 204));
         warningLabel.setText("Armor broke!");
 
-        iconLabell.setText("jLabel2");
         iconLabell.setPreferredSize(new java.awt.Dimension(130, 130));
 
         javax.swing.GroupLayout armorBrokePanelLayout = new javax.swing.GroupLayout(armorBrokePanel);
@@ -115,7 +114,7 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setIcon(String iconUrl){
-        iconLabell.setIcon(new ImageIcon(iconUrl));
+        iconLabell.setIcon(new ImageIcon(getClass().getResource(iconUrl)));
     }
     
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed

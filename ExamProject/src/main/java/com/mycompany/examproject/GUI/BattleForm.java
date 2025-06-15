@@ -56,7 +56,6 @@ public class BattleForm extends javax.swing.JFrame {
         skipTurnButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(966, 580));
 
         BattleFramePanel.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -68,7 +67,9 @@ public class BattleForm extends javax.swing.JFrame {
         battleLogArea.setColumns(20);
         battleLogArea.setFont(new java.awt.Font("Yu Mincho Light", 0, 13)); // NOI18N
         battleLogArea.setForeground(new java.awt.Color(204, 204, 204));
+        battleLogArea.setLineWrap(true);
         battleLogArea.setRows(5);
+        battleLogArea.setWrapStyleWord(true);
         battleLogArea.setBorder(null);
         battleLogArea.setCaretColor(new java.awt.Color(0, 0, 0));
         logScrollPane.setViewportView(battleLogArea);

@@ -209,7 +209,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationDescriptionArea.setRows(5);
         locationDescriptionArea.setWrapStyleWord(true);
         locationDescriptionArea.setBorder(null);
-        locationDescriptionArea.setCaretColor(new java.awt.Color(204, 204, 204));
+        locationDescriptionArea.setCaretColor(new java.awt.Color(255, 255, 255));
         LocationDescriptionScrollPane.setViewportView(locationDescriptionArea);
 
         exploreLocationButton.setBackground(new java.awt.Color(51, 51, 51));
@@ -233,21 +233,21 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                     .addComponent(locationImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LocationInfoPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(LocationInfoPanelLayout.createSequentialGroup()
+                .addGap(128, 128, 128)
                 .addComponent(exploreLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(143, 143, 143))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         LocationInfoPanelLayout.setVerticalGroup(
             LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LocationInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                .addComponent(locationImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exploreLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(155, 155, 155))
+                .addGap(147, 147, 147))
         );
 
         NavigationPanel.setBackground(new java.awt.Color(0, 0, 0));

@@ -23,7 +23,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
     public UpgradeMenu() {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
-        updateLable();
+        updateLabels();
         setLocationRelativeTo(null);
         
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -57,6 +57,10 @@ public class UpgradeMenu extends javax.swing.JFrame {
         upgradeAgilityButton = new javax.swing.JButton();
         upgradeEnduranceButton = new javax.swing.JButton();
         closeButton = new javax.swing.JButton();
+        counterAttackButton = new javax.swing.JButton();
+        specialAbilitiesLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        counterAttackDescriptionArea = new javax.swing.JTextArea();
 
         currentStrengthLabel1.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
         currentStrengthLabel1.setForeground(new java.awt.Color(204, 204, 204));
@@ -135,6 +139,31 @@ public class UpgradeMenu extends javax.swing.JFrame {
             }
         });
 
+        counterAttackButton.setBackground(new java.awt.Color(102, 102, 102));
+        counterAttackButton.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        counterAttackButton.setForeground(new java.awt.Color(204, 204, 204));
+        counterAttackButton.setText("jButton1");
+        counterAttackButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                counterAttackButtonActionPerformed(evt);
+            }
+        });
+
+        specialAbilitiesLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
+        specialAbilitiesLabel.setForeground(new java.awt.Color(204, 204, 204));
+        specialAbilitiesLabel.setText("Special abilities:");
+
+        counterAttackDescriptionArea.setBackground(new java.awt.Color(0, 0, 0));
+        counterAttackDescriptionArea.setColumns(20);
+        counterAttackDescriptionArea.setFont(new java.awt.Font("Yu Mincho Light", 0, 12)); // NOI18N
+        counterAttackDescriptionArea.setForeground(new java.awt.Color(204, 204, 204));
+        counterAttackDescriptionArea.setLineWrap(true);
+        counterAttackDescriptionArea.setRows(5);
+        counterAttackDescriptionArea.setText("If you successfully block an enemy attack, you automatically deal a counterattack, which deals 20 to 30 percent of your light attack damage. Note that a counterattack costs 5 stamina points and spends them accordingly. You also won't be able to counterattack if your equipment weight is one and a half times your tolerable weight.");
+        counterAttackDescriptionArea.setWrapStyleWord(true);
+        counterAttackDescriptionArea.setEnabled(false);
+        jScrollPane1.setViewportView(counterAttackDescriptionArea);
+
         javax.swing.GroupLayout upgradeMenuPanelLayout = new javax.swing.GroupLayout(upgradeMenuPanel);
         upgradeMenuPanel.setLayout(upgradeMenuPanelLayout);
         upgradeMenuPanelLayout.setHorizontalGroup(
@@ -147,11 +176,13 @@ public class UpgradeMenu extends javax.swing.JFrame {
                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(currentSoulsAmountLabel)
                             .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(specialAbilitiesLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(currentSoulsAmountLabel, javax.swing.GroupLayout.Alignment.LEADING))
                                 .addGap(18, 18, 18)
                                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(agilityIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -164,7 +195,11 @@ public class UpgradeMenu extends javax.swing.JFrame {
                                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(currentStrengthLabel)
                                     .addComponent(currentAgilityLabel)
-                                    .addComponent(currentEnduranceLabel))))
+                                    .addComponent(currentEnduranceLabel)))
+                            .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                                .addComponent(counterAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 266, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -173,9 +208,9 @@ public class UpgradeMenu extends javax.swing.JFrame {
             .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                        .addGap(15, 15, 15)
                         .addComponent(currentSoulsAmountLabel)
-                        .addGap(30, 30, 30)
+                        .addGap(45, 45, 45)
                         .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(enduranceIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(agilityIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,8 +227,17 @@ public class UpgradeMenu extends javax.swing.JFrame {
                     .addComponent(upgradeEnduranceButton, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
                     .addComponent(upgradeAgilityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
-                .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                        .addComponent(specialAbilitiesLabel)
+                        .addGap(28, 28, 28)
+                        .addComponent(counterAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -230,22 +274,27 @@ public class UpgradeMenu extends javax.swing.JFrame {
     private void upgradeStrengthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeStrengthButtonActionPerformed
         Player.getInstance().boostStrength(requiredSoulsStrength);
         requiredSoulsStrength += 25;
-        updateLable();
+        updateLabels();
     }//GEN-LAST:event_upgradeStrengthButtonActionPerformed
 
     private void upgradeAgilityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeAgilityButtonActionPerformed
         Player.getInstance().boostAgility(requiredSoulsAgility);
         requiredSoulsAgility += 25;
-        updateLable();
+        updateLabels();
     }//GEN-LAST:event_upgradeAgilityButtonActionPerformed
 
     private void upgradeEnduranceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeEnduranceButtonActionPerformed
         Player.getInstance().boostEndurance(requiredSoulsEndurance);
         requiredSoulsEndurance += 25;
-        updateLable();
+        updateLabels();
     }//GEN-LAST:event_upgradeEnduranceButtonActionPerformed
+
+    private void counterAttackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counterAttackButtonActionPerformed
+        Player.getInstance().unlockCounterAttack(requiredSoulsCounterAttack);
+        updateLabels();
+    }//GEN-LAST:event_counterAttackButtonActionPerformed
     
-    private void updateLable() {
+    private void updateLabels() {
         currentSoulsAmountLabel.setText("Your current souls amount is " + Player.getInstance().getCurrentSoulsAmount() + "!");
         
         currentStrengthLabel.setText("Your current strength level: " + Player.getInstance().getStrength() + "/10");
@@ -270,6 +319,12 @@ public class UpgradeMenu extends javax.swing.JFrame {
             upgradeEnduranceButton.setText("Endurance is maxed out!");
         }
         
+        if(!Player.getInstance().hasCounterAttack()){
+            counterAttackButton.setText("Unlock counter attack; Souls required: " + requiredSoulsCounterAttack);
+        } else {
+            counterAttackButton.setText("You unlocked counter attack!");
+        }
+        
         updateButtonAvaibility();
     }
     
@@ -289,17 +344,26 @@ public class UpgradeMenu extends javax.swing.JFrame {
         } else {
             upgradeEnduranceButton.setEnabled(true);
         }
+        if (Player.getInstance().getCurrentSoulsAmount() < requiredSoulsCounterAttack || Player.getInstance().hasCounterAttack() == true){
+            counterAttackButton.setEnabled(false);
+        } else {
+            counterAttackButton.setEnabled(true);
+        }
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel agilityIconLabel;
     private javax.swing.JButton closeButton;
+    private javax.swing.JButton counterAttackButton;
+    private javax.swing.JTextArea counterAttackDescriptionArea;
     private javax.swing.JLabel currentAgilityLabel;
     private javax.swing.JLabel currentEnduranceLabel;
     private javax.swing.JLabel currentSoulsAmountLabel;
     private javax.swing.JLabel currentStrengthLabel;
     private javax.swing.JLabel currentStrengthLabel1;
     private javax.swing.JLabel enduranceIconLabel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel specialAbilitiesLabel;
     private javax.swing.JLabel strenghtIconLabel;
     private javax.swing.JButton upgradeAgilityButton;
     private javax.swing.JButton upgradeEnduranceButton;
@@ -310,5 +374,5 @@ public class UpgradeMenu extends javax.swing.JFrame {
     private int requiredSoulsStrength = 300 + Player.getInstance().getStrength() * 25;
     private int requiredSoulsAgility = 300 + Player.getInstance().getAgility() * 25;
     private int requiredSoulsEndurance = 300 + Player.getInstance().getEndurance() * 25;
-    
+    private int requiredSoulsCounterAttack = 2500;
 }

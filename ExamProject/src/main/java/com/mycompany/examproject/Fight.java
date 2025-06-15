@@ -36,14 +36,14 @@ public class Fight {
         this.player = player;
         this.enemy = enemy;
         
-        Player.getInstance().addItemToInventory(new Poison());
-        Player.getInstance().addItemToInventory(new Poison());
-        
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
+//        Player.getInstance().addItemToInventory(new Poison());
+//        Player.getInstance().addItemToInventory(new Poison());
+//        
+//        Player.getInstance().addItemToInventory(new Bomb());
+//        Player.getInstance().addItemToInventory(new Bomb());
+//        Player.getInstance().addItemToInventory(new Bomb());
+//        Player.getInstance().addItemToInventory(new Bomb());
+//        Player.getInstance().addItemToInventory(new Bomb());
         
         Random random = new Random();
         
@@ -232,9 +232,25 @@ public class Fight {
         if (enemyActionForPlayersBlock == EntityActionType.HEAVY_ATTACK){
             double playerBlockPossibility = player.getBlockP() - 0.05;
             if(Math.random() < playerBlockPossibility){
-                //player.takeDamage((int) (enemy.getDamage() * 0.2));
-                String logPart = "You blocked enemy heavy attack!"/* + " and took " + (int)(enemy.getDamage() * 0.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
-                battleForm.appendToLogArea(logPart);
+                
+                
+                if(player.hasCounterAttack() && player.getStamina() >= 5 && player.getTotalEquipmentWeight() < player.getBearableWeight() * 1.5){
+                    String logPart1 = "You blocked enemy heavy attack and counter-attacked him!";
+                    player.setStamina(player.getStamina() - 5);
+                    
+                    if(player.getStamina() <= 0){
+                        player.setStamina(0);
+                    }
+                    
+                    battleForm.appendToLogArea(logPart1);
+                    String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), (int) (player.getBaseDamage() * 0.3));
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    //player.takeDamage((int) (enemy.getDamage() * 0.2));
+                    String logPart = "You blocked enemy heavy attack!"/* + " and took " + (int)(enemy.getDamage() * 0.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    battleForm.appendToLogArea(logPart);
+                }
+                
             } else {
                 player.takeDamage((int) (enemy.getDamage() * 1.2));
                 String logPart = "You tried to block but took " + (int)(enemy.getDamage() * 1.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!";
@@ -243,9 +259,24 @@ public class Fight {
         } else if (enemyActionForPlayersBlock == EntityActionType.LIGHT_ATTACK){
             double playerBlockPossibility = player.getBlockP() + 0.1;
             if(Math.random() < playerBlockPossibility){
-                player.takeDamage((int) (enemy.getDamage() * 0.1));
-                String logPart = "You blocked enemy light attack!"/* + " and took " + (int)(enemy.getDamage() * 0.1 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
-                battleForm.appendToLogArea(logPart);
+                
+                if(player.hasCounterAttack() && player.getStamina() >= 5 && player.getTotalEquipmentWeight() < player.getBearableWeight() * 1.5){
+                    String logPart1 = "You blocked enemy light attack and counter-attacked him!";
+                    player.setStamina(player.getStamina() - 5);
+                    
+                    if(player.getStamina() <= 0){
+                        player.setStamina(0);
+                    }
+                    
+                    battleForm.appendToLogArea(logPart1);
+                    String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), (int) (player.getBaseDamage() * 0.2));
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    player.takeDamage((int) (enemy.getDamage() * 0.1));
+                    String logPart = "You blocked enemy light attack!"/* + " and took " + (int)(enemy.getDamage() * 0.1 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    battleForm.appendToLogArea(logPart);
+                }
+                
             } else {
                 player.takeDamage((int) (enemy.getDamage() * 0.8));
                 String logPart = "You tried to block but took " + (int)(enemy.getDamage() * 0.8 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!";

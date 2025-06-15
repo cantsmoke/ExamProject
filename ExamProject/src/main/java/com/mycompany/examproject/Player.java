@@ -53,6 +53,8 @@ public class Player {
     private int strength;
     private int agility;
     private int endurance;
+    
+    private boolean hasCounterAttack;
 
     private Room currentRoom;
 
@@ -70,6 +72,8 @@ public class Player {
         this.strength = 2;
         this.agility = 2;
         this.endurance = 2;
+        
+        this.hasCounterAttack = false;
         
         this.inventory = new ArrayList<>();
         this.selectedWeapon = null;
@@ -92,6 +96,15 @@ public class Player {
         this.maxStamina = stamina;
         
         updateDodgeProbability();
+    }
+    
+    public boolean hasCounterAttack() {
+        return this.hasCounterAttack;
+    }
+    
+    public void unlockCounterAttack(int soulsSpended) {
+        this.hasCounterAttack = true;
+        this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
     }
     
     public void updateDodgeProbability() {
@@ -179,16 +192,16 @@ public class Player {
         this.selectedArmor.setSelected(true);
         this.selectedWeapon.setSelected(true);
         
-        Sword swordTemplate1 = WeaponsStorage.swords.get(10);
-        addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
-        
-        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(14);
-        addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
+//        Sword swordTemplate1 = WeaponsStorage.swords.get(10);
+//        addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
+//        
+//        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(14);
+//        addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
         
         addItemToInventory(new EstusBottle());
-        addItemToInventory(new StaminaPotion());
-        addItemToInventory(new StaminaPotion());
-        addItemToInventory(new StaminaPotion());
+//        addItemToInventory(new StaminaPotion());
+//        addItemToInventory(new StaminaPotion());
+//        addItemToInventory(new StaminaPotion());
     }
     
     public void setBaseDamage(int newBaseDamage){
@@ -311,5 +324,5 @@ public class Player {
         int totalWeight = this.selectedArmor.getWeight() + this.selectedWeapon.getWeight();
         return totalWeight;
     }
-    
+
 }

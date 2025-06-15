@@ -72,7 +72,7 @@ public class ExecutionerOfTheLastCreed extends Boss{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -85,7 +85,7 @@ public class ExecutionerOfTheLastCreed extends Boss{
             damage *= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

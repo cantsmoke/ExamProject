@@ -79,7 +79,7 @@ public class CursedSkeleton extends Enemy implements Skeleton {
             damage *= 1.4;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -92,7 +92,7 @@ public class CursedSkeleton extends Enemy implements Skeleton {
             damage *= 1.3;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
     @Override

@@ -6,7 +6,7 @@ package com.mycompany.examproject;
 
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
-import com.mycompany.examproject.Enemies.enemyStructure.PotionAlreadyUsedDialog;
+import com.mycompany.examproject.GUI.PotionAlreadyUsedDialog;
 import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
 import com.mycompany.examproject.Enemies.enemyStructure.Skeleton;
 import com.mycompany.examproject.GUI.AttackVariantsDialog;
@@ -130,28 +130,53 @@ public class Fight {
         if (enemyActionForPlayersAttack == EntityActionType.DODGE){
             double enemyDodgePossibility = enemy.getDodgeP() - 0.1  + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
             if(Math.random() < enemyDodgePossibility){
-                String logPart = "Enemy dodged your attack!";
+                String logPart = enemy.getName() + " dodged your attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
-                String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                battleForm.appendToLogArea(logPart);
+                if (Math.random() < player.getCritP()){
+                    String logPart1 = "You landed critical hit on the " + enemy.getName() + " when he tried to dodge!";
+                    String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage() * 4);
+                    battleForm.appendToLogArea(logPart1);
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
+                    battleForm.appendToLogArea(logPart);
+                }
             }
         } else if (enemyActionForPlayersAttack == EntityActionType.BLOCK){
             double enemyBlockPossibility = enemy.getBlockP() + 0.1;
             if(Math.random() < enemyBlockPossibility){
                 //String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                String logPart = "Enemy blocked your light attack!";
+                String logPart = enemy.getName() + " blocked your light attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
-                String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                battleForm.appendToLogArea(logPart);
+                if (Math.random() < player.getCritP()){
+                    String logPart1 = "You landed critical hit on the " + enemy.getName() + " when he tried to block!";
+                    String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage() * 4);
+                    battleForm.appendToLogArea(logPart1);
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
+                    battleForm.appendToLogArea(logPart);
+                }
             }
         } else if (enemyActionForPlayersAttack == EntityActionType.LIGHT_ATTACK){
             String logPart = "Both decided to use light attack and nobody took damage!";
             battleForm.appendToLogArea(logPart);
         } else if (enemyActionForPlayersAttack == EntityActionType.HEAVY_ATTACK){
-            String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
-            battleForm.appendToLogArea(logPart);
+            if (Math.random() < player.getCritP()){
+                String logPart1 = enemy.getName() + " used heavy attack, but your light attack was faster!";
+                String logPart2 = "You landed critical hit on the " + enemy.getName() + " when he tried to use heavy attack!";
+                String logPart3 = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage() * 4);
+                battleForm.appendToLogArea(logPart1);
+                battleForm.appendToLogArea(logPart2);
+                battleForm.appendToLogArea(logPart3);
+            } else {
+                String logPart1 = enemy.getName() + " used heavy attack, but your light attack was faster!";
+                String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
+                battleForm.appendToLogArea(logPart1);
+                battleForm.appendToLogArea(logPart2);
+            }
         }
         
         checkPoison();
@@ -181,28 +206,42 @@ public class Fight {
         if (enemyActionForPlayersAttack == EntityActionType.DODGE){
             double enemyDodgePossibility = enemy.getDodgeP() + 0.1 + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
             if(Math.random() < enemyDodgePossibility){
-                String logPart = "Enemy dodged your attack!";
+                String logPart = enemy.getName() + " dodged your attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
-                String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                battleForm.appendToLogArea(logPart);
+                if (Math.random() < player.getCritP()){
+                    String logPart1 = "You landed critical hit on the " + enemy.getName() + " when he tried to dodge!";
+                    String logPart2 = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage() * 4);
+                    battleForm.appendToLogArea(logPart1);
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
+                    battleForm.appendToLogArea(logPart);
+                }
             }
         } else if (enemyActionForPlayersAttack == EntityActionType.BLOCK){
             double enemyBlockPossibility = enemy.getBlockP() - 0.05;
             if(Math.random() < enemyBlockPossibility){
                 //String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                String logPart = "Enemy blocked your heavy attack!";
+                String logPart = enemy.getName() + " blocked your heavy attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
-                String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
-                battleForm.appendToLogArea(logPart);
+                if (Math.random() < player.getCritP()){
+                    String logPart1 = "You landed critical hit on the " + enemy.getName() + " when he tried to block!";
+                    String logPart2 = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage() * 4);
+                    battleForm.appendToLogArea(logPart1);
+                    battleForm.appendToLogArea(logPart2);
+                } else {
+                    String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
+                    battleForm.appendToLogArea(logPart);
+                }
             }
         } else if (enemyActionForPlayersAttack == EntityActionType.HEAVY_ATTACK){
             String logPart = "Both decided to use heavy attack and nobody took damage!";
             battleForm.appendToLogArea(logPart);
         } else if (enemyActionForPlayersAttack == EntityActionType.LIGHT_ATTACK){
             player.takeDamage((int) (enemy.getDamage() * 0.8));
-            String logPart = "You used heavy attack but enemy light attack was faster!" + "\n" + "You took " + (int)(enemy.getDamage() * 0.8 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!";
+            String logPart = "You used heavy attack but " + enemy.getName() + " light attack was faster!" + "\n" + "You took " + (int)(enemy.getDamage() * 0.8 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!";
             battleForm.appendToLogArea(logPart);
         }
         
@@ -235,7 +274,7 @@ public class Fight {
                 
                 
                 if(player.hasCounterAttack() && player.getStamina() >= 5 && player.getTotalEquipmentWeight() < player.getBearableWeight() * 1.5){
-                    String logPart1 = "You blocked enemy heavy attack and counter-attacked him!";
+                    String logPart1 = "You blocked " + enemy.getName() + " heavy attack and counter-attacked him!";
                     player.setStamina(player.getStamina() - 5);
                     
                     if(player.getStamina() <= 0){
@@ -247,7 +286,7 @@ public class Fight {
                     battleForm.appendToLogArea(logPart2);
                 } else {
                     //player.takeDamage((int) (enemy.getDamage() * 0.2));
-                    String logPart = "You blocked enemy heavy attack!"/* + " and took " + (int)(enemy.getDamage() * 0.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    String logPart = "You blocked " + enemy.getName() + " heavy attack!"/* + " and took " + (int)(enemy.getDamage() * 0.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
                     battleForm.appendToLogArea(logPart);
                 }
                 
@@ -261,7 +300,7 @@ public class Fight {
             if(Math.random() < playerBlockPossibility){
                 
                 if(player.hasCounterAttack() && player.getStamina() >= 5 && player.getTotalEquipmentWeight() < player.getBearableWeight() * 1.5){
-                    String logPart1 = "You blocked enemy light attack and counter-attacked him!";
+                    String logPart1 = "You blocked " + enemy.getName() + " light attack and counter-attacked him!";
                     player.setStamina(player.getStamina() - 5);
                     
                     if(player.getStamina() <= 0){
@@ -273,7 +312,7 @@ public class Fight {
                     battleForm.appendToLogArea(logPart2);
                 } else {
                     player.takeDamage((int) (enemy.getDamage() * 0.1));
-                    String logPart = "You blocked enemy light attack!"/* + " and took " + (int)(enemy.getDamage() * 0.1 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    String logPart = "You blocked " + enemy.getName() + " light attack!"/* + " and took " + (int)(enemy.getDamage() * 0.1 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
                     battleForm.appendToLogArea(logPart);
                 }
                 
@@ -303,7 +342,7 @@ public class Fight {
         if (enemyActionForPlayersDodge == EntityActionType.HEAVY_ATTACK){
             double playerDodgePossibility = player.getDodgeP() + 0.1;
             if(Math.random() < playerDodgePossibility){
-                String logPart = "You dodged enemy heavy attack!";
+                String logPart = "You dodged " + enemy.getName() + " heavy attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
                 player.takeDamage((int) (enemy.getDamage() * 1.2 * 1.5));
@@ -313,7 +352,7 @@ public class Fight {
         } else if (enemyActionForPlayersDodge == EntityActionType.LIGHT_ATTACK){
             double playerDodgePossibility = player.getDodgeP() - 0.05;
             if(Math.random() < playerDodgePossibility){
-                String logPart = "You dodged enemy light attack!";
+                String logPart = "You dodged " + enemy.getName() + " light attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
                 player.takeDamage((int) (enemy.getDamage() * 0.8 * 1.5));
@@ -393,9 +432,9 @@ public class Fight {
     void handlePlayerUsingBomb(Bomb bomb) {
         enemy.takeBombDamage(bomb);
         
-        String logPart = "You used bomb; enemy took " + bomb.getDamage() + " damage!";
+        String logPart = "You used bomb; " + enemy.getName() + " took " + bomb.getDamage() + " damage!";
         battleForm.appendToLogArea(logPart);
-        String logPart1 = "Enemy skips turn because of bomb!";
+        String logPart1 = enemy.getName() + " skips turn because of bomb!";
         battleForm.appendToLogArea(logPart1);
         
         checkPoison();
@@ -407,15 +446,15 @@ public class Fight {
     void handlePlayerUsingPoison(Poison poison) {
         if (this.poison == null){
             if (enemy instanceof Skeleton || enemy instanceof SirenOfOblivion){
-                String logPart = "You used poison but enemy is immune to it!";
+                String logPart = "You used poison but " + enemy.getName() + " is immune to it!";
                 battleForm.appendToLogArea(logPart);
             } else {
                 this.poisonDuration = poison.getDuration() - 1;
                 this.poison = poison;
                 enemy.takePoisonDamage(poison);
-                String logPart = "You used poison! Enemy took " + poison.getDamage() + " damage from poison!";
+                String logPart = "You used poison! " + enemy.getName() + " took " + poison.getDamage() + " damage from poison!";
                 battleForm.appendToLogArea(logPart);
-                String logPart1 = "Enemy skips turn because of poison!";
+                String logPart1 = enemy.getName() + " skips turn because of poison!";
                 battleForm.appendToLogArea(logPart1);
                 checkWinLoseConditions();
             }
@@ -430,7 +469,7 @@ public class Fight {
         if (this.poisonDuration != 0){
             this.poisonDuration--;
             enemy.takePoisonDamage(this.poison);
-            String logPart = "Enemy took " + poison.getDamage() + " damage from poison!";
+            String logPart = enemy.getName() + " took " + poison.getDamage() + " damage from poison!";
             battleForm.appendToLogArea(logPart);
         } else {
             this.poisonDuration = 0;

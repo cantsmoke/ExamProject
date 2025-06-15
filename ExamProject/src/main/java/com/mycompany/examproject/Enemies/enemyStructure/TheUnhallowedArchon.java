@@ -65,7 +65,7 @@ public class TheUnhallowedArchon extends Boss{
             damage /= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -76,7 +76,7 @@ public class TheUnhallowedArchon extends Boss{
             damage /= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

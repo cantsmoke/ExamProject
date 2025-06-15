@@ -69,7 +69,7 @@ public class WardenOfDeathSands extends Boss{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -82,7 +82,7 @@ public class WardenOfDeathSands extends Boss{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

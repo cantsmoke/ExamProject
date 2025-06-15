@@ -82,7 +82,7 @@ public class ShadowHound extends Enemy implements Hound{
             damage *= 1.4;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -95,7 +95,7 @@ public class ShadowHound extends Enemy implements Hound{
             damage *= 1.3;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
     @Override

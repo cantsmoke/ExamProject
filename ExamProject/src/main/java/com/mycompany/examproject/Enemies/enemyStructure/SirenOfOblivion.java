@@ -68,7 +68,7 @@ public class SirenOfOblivion extends Boss{
             damage *= 1.3;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -81,7 +81,7 @@ public class SirenOfOblivion extends Boss{
             damage *= 1.3;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

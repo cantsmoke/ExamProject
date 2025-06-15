@@ -15,7 +15,7 @@ import com.mycompany.examproject.Items.Weapon;
  */
 public abstract class Enemy {
     
-    private String name;
+    String name;
     int health;
     private int maxHealth;
     private int damage;

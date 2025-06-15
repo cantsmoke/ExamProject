@@ -84,7 +84,7 @@ public class GiantHound extends Enemy implements Hound{
             damage *= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -97,7 +97,7 @@ public class GiantHound extends Enemy implements Hound{
             damage *= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
     @Override

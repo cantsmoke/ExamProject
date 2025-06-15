@@ -82,7 +82,7 @@ public class FireKnight extends Enemy implements Knight{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -95,7 +95,7 @@ public class FireKnight extends Enemy implements Knight{
             damage *= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
     @Override

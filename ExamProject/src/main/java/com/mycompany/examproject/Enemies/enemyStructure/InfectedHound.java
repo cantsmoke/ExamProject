@@ -82,7 +82,7 @@ public class InfectedHound extends Enemy implements Hound{
             damage *= 1.3;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -95,7 +95,7 @@ public class InfectedHound extends Enemy implements Hound{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
     @Override

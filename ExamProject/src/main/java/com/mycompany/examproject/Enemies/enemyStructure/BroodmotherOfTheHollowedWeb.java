@@ -69,7 +69,7 @@ public class BroodmotherOfTheHollowedWeb extends Boss{
             damage *= 1.1;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -82,7 +82,7 @@ public class BroodmotherOfTheHollowedWeb extends Boss{
             damage *= 1.4;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

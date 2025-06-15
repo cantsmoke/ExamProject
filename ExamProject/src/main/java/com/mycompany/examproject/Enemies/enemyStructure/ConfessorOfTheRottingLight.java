@@ -70,7 +70,7 @@ public class ConfessorOfTheRottingLight extends Boss{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
 
     @Override
@@ -83,7 +83,7 @@ public class ConfessorOfTheRottingLight extends Boss{
             damage *= 1.2;
         }
         this.health -= damage;
-        return "Enemy took " + damage + " damage!";
+        return this.name + " took " + damage + " damage!";
     }
     
 }

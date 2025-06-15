@@ -39,6 +39,7 @@ public class Player {
     
     private double dodgeP;
     private double blockP;
+    private double critP;
     
     private List<Equipment> inventory;
     private Weapon selectedWeapon;
@@ -79,8 +80,8 @@ public class Player {
         this.selectedWeapon = null;
         this.selectedArmor = null;    
         
-        this.totalSoulsAmount = 0;
-        this.currentSoulsAmount = 0;
+        this.totalSoulsAmount = 450;
+        this.currentSoulsAmount = 450;
         this.level = 1;
         
         this.currentRoom = room;       
@@ -96,6 +97,17 @@ public class Player {
         this.maxStamina = stamina;
         
         updateDodgeProbability();
+        
+        calcCritPossibility();
+    }
+    
+    public double getCritP(){
+        return this.critP;
+    }
+    
+    public void calcCritPossibility(){
+        int sumSkills = this.strength + this.agility + this.endurance;
+        this.critP = 0.025 + 0.05 * (sumSkills - 3) / 27.0;
     }
     
     public boolean hasCounterAttack() {
@@ -143,8 +155,8 @@ public class Player {
         double hpRatio = (double) this.hp / this.maxHp;
         double staminaRatio = (double) this.stamina / this.maxStamina;
 
-        this.maxHp = this.maxHp + 25 * this.level;
-        this.maxStamina = this.maxStamina + 15 * this.level;
+        this.maxHp = this.maxHp + 25;
+        this.maxStamina = this.maxStamina + 15;
 
         this.hp = (int) (this.maxHp * hpRatio);
         this.stamina = (int) (this.maxStamina * staminaRatio);
@@ -291,12 +303,18 @@ public class Player {
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;
         this.baseDamage += 3;
         this.bearableWeight += 1;
+        calcCritPossibility();
+        
+        System.out.println(this.critP);
     }
 
     public void boostAgility(int soulsSpended) {
         this.agility = Math.min(this.agility + 1, 10);
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;        
         updateDodgeProbability();
+        calcCritPossibility();
+        
+        System.out.println(this.critP);
     }
 
     public void boostEndurance(int soulsSpended) {
@@ -304,6 +322,9 @@ public class Player {
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;      
         this.stamina += 5;
         this.bearableWeight += 1;
+        calcCritPossibility();
+        
+        System.out.println(this.critP);
     }
 
     public void setCurrentRoom(Room room){

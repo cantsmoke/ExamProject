@@ -46,11 +46,20 @@ import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
+import java.awt.Color;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.UIDefaults;
+import javax.swing.UIManager;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.filechooser.FileSystemView;
 
 /**
  *
@@ -69,6 +78,94 @@ public class GUIandLogicIntermediary {
     private static Fight fight;
 
     private GUIandLogicIntermediary(){}
+    
+    public static void saveCurrentGame() {
+        File fixedDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
+        JFileChooser fileChooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Файлы сохранения (*.dat)", "dat");
+        fileChooser.setFileFilter(filter);
+        applyDarkTheme(fileChooser);
+
+        int result = fileChooser.showSaveDialog(null);
+        
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            String filePath = selectedFile.getAbsolutePath();
+
+            if (!filePath.toLowerCase().endsWith(".dat")) {
+                filePath += ".dat";
+            }
+
+            File fileToSave = new File(filePath);
+            if (fileToSave.exists()) {
+                int confirm = JOptionPane.showConfirmDialog(
+                    null,
+                    "Файл уже существует. Перезаписать?",
+                    "Подтверждение перезаписи",
+                    JOptionPane.YES_NO_OPTION
+                );
+                if (confirm != JOptionPane.YES_OPTION) return;
+            }
+
+            GameState gameState = new GameState(player, castleMapGenerator);
+            SaveManager.saveGame(gameState, filePath);
+        }
+    }
+
+    public static void loadGame() {
+        File fixedDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
+        JFileChooser fileChooser = new JFileChooser(fixedDir, fsv);
+
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Файлы сохранения (*.dat)", "dat");
+        fileChooser.setFileFilter(filter);
+        applyDarkTheme(fileChooser);
+
+        int result = fileChooser.showOpenDialog(null);
+
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File selectedFile = fileChooser.getSelectedFile();
+            GameState gameState = SaveManager.loadGame(selectedFile.getAbsolutePath());
+
+            if (gameState != null) {
+                player = gameState.player;
+                Player.setInstance(player);
+                castleMapGenerator = gameState.castleMap;
+
+                // 🔥 Вставить вот здесь:
+                CastleMapGenerator.setFloors(castleMapGenerator.getFloorsInstance());
+
+                stateAndNavigationForm = new StateAndNavigationForm();
+                stateAndNavigationForm.updateLabels();
+                stateAndNavigationForm.setVisible(true);
+            }
+        }
+    }
+
+    private static void applyDarkTheme(JFileChooser chooser) {
+        UIDefaults defaults = UIManager.getLookAndFeelDefaults();
+
+        Color bg = new Color(40, 40, 40);
+        Color fg = new Color(220, 220, 220);
+
+        defaults.put("Panel.background", bg);
+        defaults.put("FileChooser.background", bg);
+        defaults.put("FileChooser.foreground", fg);
+        defaults.put("FileChooser.textBackground", bg);
+        defaults.put("FileChooser.textForeground", fg);
+        defaults.put("Button.background", bg);
+        defaults.put("Button.foreground", fg);
+        defaults.put("Label.foreground", fg);
+        defaults.put("List.background", new Color(50, 50, 50));
+        defaults.put("List.foreground", fg);
+        defaults.put("TextField.background", new Color(60, 60, 60));
+        defaults.put("TextField.foreground", fg);
+        defaults.put("ComboBox.background", new Color(60, 60, 60));
+        defaults.put("ComboBox.foreground", fg);
+
+        SwingUtilities.updateComponentTreeUI(chooser);
+    }
     
     public static void handleNewGameButtonPressed(){ 
         ForewordDialog forewordDialog = new ForewordDialog(null, true);
@@ -224,6 +321,8 @@ public class GUIandLogicIntermediary {
             
             YouAreRestingDialog youAreRestingDialog = new YouAreRestingDialog(null, true);
             youAreRestingDialog.setVisible(true); 
+            
+            stateAndNavigationForm.setVisible(true);
         }
     }
     
@@ -505,5 +604,5 @@ public class GUIandLogicIntermediary {
             return 10 + random.nextInt(5);
         }
     }
-    
+
 }

@@ -7,6 +7,7 @@ package com.mycompany.examproject.Items.Potions;
 import com.mycompany.examproject.GUI.HealthFullOrNoEstusDialog;
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +15,10 @@ import javax.swing.JOptionPane;
  * @author Arseniy
  */
 
-public class EstusBottle extends Potion {
+public class EstusBottle extends Potion implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private double healRegenPercentage;   // Количество восстанавливаемого HP
     private int maxUses;      // Лимит глотков на обновление (как в Dark Souls)
     private int usesLeft;     // Осталось глотков

@@ -6,12 +6,15 @@ package com.mycompany.examproject.Items.Potions;
 
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 
 /**
  *
  * @author Arseniy
  */
-public class Bomb extends Potion{
+public class Bomb extends Potion implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     private int damage;
     

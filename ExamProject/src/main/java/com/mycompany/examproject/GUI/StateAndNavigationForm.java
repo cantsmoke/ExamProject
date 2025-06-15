@@ -425,7 +425,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     }//GEN-LAST:event_exitToMainMenuButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+        GUIandLogicIntermediary.saveCurrentGame();
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void moveWestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveWestButtonActionPerformed

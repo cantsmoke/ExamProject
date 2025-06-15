@@ -4,13 +4,17 @@
  */
 package com.mycompany.examproject.Map;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Arseniy
  */
-public class Floor {
+public class Floor implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private int floorNumber; // Floor index (1 to 10)
     private int width, height; // Dimensions of the floor
     private Room[][] rooms; // 2D grid of rooms

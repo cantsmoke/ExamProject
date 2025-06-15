@@ -6,13 +6,17 @@ package com.mycompany.examproject.Items;
 
 import com.mycompany.examproject.GUI.WeaponBrokeDialog;
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author Arseniy
  */
-public abstract class Weapon implements Equipment{
+public abstract class Weapon implements Equipment, Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     protected String name;
     protected int weight;
     protected int damage;

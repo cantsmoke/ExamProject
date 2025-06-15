@@ -48,20 +48,20 @@ public class ArmorStorage {
     );
 
     public static final List<HeavyArmor> heavyArmor = List.of(
-        new HeavyArmor("Titan's Warplate", 35, 0.60, 250),
-        new HeavyArmor("Cataclysm Greatplate", 38, 0.62, 260),
-        new HeavyArmor("Obsidian Juggernaut", 40, 0.65, 270),
-        new HeavyArmor("Hellfire Bastion", 42, 0.67, 280),
-        new HeavyArmor("Ironclad Colossus", 43, 0.68, 290),
-        new HeavyArmor("Doomhammer Plate", 45, 0.70, 300),
-        new HeavyArmor("Eclipse Defender", 44, 0.72, 310),
-        new HeavyArmor("Voidbreaker Armor", 46, 0.74, 320),
-        new HeavyArmor("Blacksteel Siegeplate", 47, 0.75, 330),
-        new HeavyArmor("Stormwall Armor", 48, 0.77, 340),
-        new HeavyArmor("Gravewarden’s Bulk", 49, 0.78, 350),
-        new HeavyArmor("Sunforged Greatplate", 50, 0.80, 360),
-        new HeavyArmor("Frostbane Armor", 52, 0.82, 370),
-        new HeavyArmor("Dreadnought Bastion", 53, 0.85, 380),
-        new HeavyArmor("Colossus of the Abyss", 55, 0.88, 400)
+        new HeavyArmor("Titan's Warplate", 48, 0.4, 250),
+        new HeavyArmor("Cataclysm Greatplate", 49, 0.42, 260),
+        new HeavyArmor("Obsidian Juggernaut", 49, 0.45, 270),
+        new HeavyArmor("Hellfire Bastion", 50, 0.43, 280),
+        new HeavyArmor("Ironclad Colossus", 52, 0.44, 290),
+        new HeavyArmor("Doomhammer Plate", 52, 0.46, 300),
+        new HeavyArmor("Eclipse Defender", 54, 0.47, 310),
+        new HeavyArmor("Voidbreaker Armor", 54, 0.48, 320),
+        new HeavyArmor("Blacksteel Siegeplate", 56, 0.5, 330),
+        new HeavyArmor("Stormwall Armor", 56, 0.52, 340),
+        new HeavyArmor("Gravewarden’s Bulk", 60, 0.54, 350),
+        new HeavyArmor("Sunforged Greatplate", 65, 0.56, 360),
+        new HeavyArmor("Frostbane Armor", 65, 0.58, 370),
+        new HeavyArmor("Dreadnought Bastion", 70, 0.6, 380),
+        new HeavyArmor("Colossus of the Abyss", 75, 0.65, 400)
     );
 }

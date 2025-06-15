@@ -5,6 +5,7 @@
 package com.mycompany.examproject.Map;
 
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
@@ -14,16 +15,30 @@ import java.util.Stack;
  *
  * @author Arseniy
  */
-public class CastleMapGenerator {
+public class CastleMapGenerator implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private static final int TOTAL_FLOORS = 10;
-    private static List<Floor> floors;
+    
+    private static List<Floor> floorsShared;
+    private List<Floor> floors;
+    
     private Random random;
 
     public CastleMapGenerator() {
         this.floors = new ArrayList<>();
         this.random = new Random();
     }
-
+    
+    public static void setFloors(List<Floor> loadedFloors) {
+        floorsShared = loadedFloors;
+    }
+    
+    public List<Floor> getFloorsInstance() {
+        return this.floors;
+    }
+    
     // Generates the entire castle map and prints each floor
     public List<Floor> generateMap() {
         for (int floorNum = 1; floorNum <= TOTAL_FLOORS; floorNum++) {
@@ -32,6 +47,7 @@ public class CastleMapGenerator {
             printFloor(floor); // Print the ASCII map for this floor
         }
         connectFloors();
+        floorsShared = this.floors;
         return floors;
     }
 
@@ -408,7 +424,7 @@ public class CastleMapGenerator {
 
     // Getter for floors
     public static List<Floor> getFloors() {
-        return floors;
+        return floorsShared;
     }
 
     public Room getStartRoom() {
@@ -424,7 +440,7 @@ public class CastleMapGenerator {
     }
     
     public static Room getRoomToEast(int x, int y, int currentFloor) {
-        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
         int newX = x + 1;
         int newY = y;
@@ -435,7 +451,7 @@ public class CastleMapGenerator {
     }
 
     public static Room getRoomToWest(int x, int y, int currentFloor) {
-        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
         int newX = x - 1;
         int newY = y;
@@ -446,7 +462,7 @@ public class CastleMapGenerator {
     }
 
     public static Room getRoomNorth(int x, int y, int currentFloor) {
-        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
         int newX = x;
         int newY = y - 1;
@@ -457,7 +473,7 @@ public class CastleMapGenerator {
     }
 
     public static Room getRoomSouth(int x, int y, int currentFloor) {
-        Floor currentFloorObj = floors.get(currentFloor - 1);
+        Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
         int newX = x;
         int newY = y + 1;

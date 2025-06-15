@@ -3,11 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.examproject.Items;
+
+import java.io.Serializable;
+
 /**
  *
  * @author Arseniy
  */
-public abstract class Potion implements Equipment{
+public abstract class Potion implements Equipment, Serializable{
+
+    private static final long serialVersionUID = 1L;
+
     protected String name;
     protected String description;
 

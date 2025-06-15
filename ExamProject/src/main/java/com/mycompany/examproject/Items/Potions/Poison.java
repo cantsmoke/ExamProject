@@ -6,12 +6,15 @@ package com.mycompany.examproject.Items.Potions;
 
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 
 /**
  *
  * @author Arseniy
  */
-public class Poison extends Potion{
+public class Poison extends Potion implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
 
     private String imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 14 июн. 2025 г., 17_07_56 (1).png";
     

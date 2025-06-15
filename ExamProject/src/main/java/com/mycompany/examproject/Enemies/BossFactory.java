@@ -26,13 +26,13 @@ public class BossFactory {
     public static Boss createBoss(BossType bossType){
         switch (bossType) {
             case FLOOR_ONE_BOSS:
-                return new AshenGatekeeper("Ashen Gatekeeper", 300, 30, 0);
+                return new AshenGatekeeper("Ashen Gatekeeper", 300, 50, 0);
             case FLOOR_TWO_BOSS:
-                return new SirenOfOblivion("Siren of Oblivion", 400, 60, 0);
+                return new SirenOfOblivion("Siren of Oblivion", 400, 70, 0);
             case FLOOR_THREE_BOSS:
-                return new WormOfLivingStone("Worm of Living Stone", 500, 70, 0);
+                return new WormOfLivingStone("Worm of Living Stone", 500, 80, 0);
             case FLOOR_FOUR_BOSS:
-                return new ConfessorOfTheRottingLight("Confessor of the Rotting Light", 550, 80, 0);
+                return new ConfessorOfTheRottingLight("Confessor of the Rotting Light", 550, 85, 0);
             case FLOOR_FIVE_BOSS:
                 return new BloodHeirOfTheMark("Blood Heir of the Mark", 600, 90, 0);
             case FLOOR_SIX_BOSS:
@@ -44,7 +44,7 @@ public class BossFactory {
             case FLOOR_NINE_BOSS:
                 return new ExecutionerOfTheLastCreed("Executioner of the Last Creed", 600, 120, 0);
             case FLOOR_TEN_BOSS:
-                return new TheUnhallowedArchon("The Unhallowed Archon", 1000, 100, 0);
+                return new TheUnhallowedArchon("The Unhallowed Archon", 1300, 130, 0);
             default:
                 throw new IllegalArgumentException("Такого типа босса нет: " + bossType);
         }

@@ -18,6 +18,7 @@ import com.mycompany.examproject.Items.Weapons.Sword;
 import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -26,7 +27,9 @@ import java.util.Random;
  *
  * @author Arseniy
  */
-public class Player {
+public class Player implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     // Core stats
     private int hp;
     private int maxHp;
@@ -101,6 +104,10 @@ public class Player {
         calcCritPossibility();
     }
     
+    public static void setInstance(Player p) {
+        instance = p;
+    }
+
     public double getCritP(){
         return this.critP;
     }

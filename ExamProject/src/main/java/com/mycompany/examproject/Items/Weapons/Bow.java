@@ -5,12 +5,15 @@
 package com.mycompany.examproject.Items.Weapons;
 
 import com.mycompany.examproject.Items.Weapon;
+import java.io.Serializable;
 
 /**
  *
  * @author Arseniy
  */
-public class Bow extends Weapon{
+public class Bow extends Weapon implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     public Bow(String name, int weight, int damage, int durability) {
         super(name, weight, damage, durability);

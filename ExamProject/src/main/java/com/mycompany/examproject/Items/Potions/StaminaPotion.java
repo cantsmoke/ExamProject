@@ -8,13 +8,16 @@ import com.mycompany.examproject.GUI.HealthFullOrNoEstusDialog;
 import com.mycompany.examproject.GUI.StaminaIsFullDialog;
 import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Player;
+import java.io.Serializable;
 import java.util.Random;
 
 /**
  *
  * @author Arseniy
  */
-public class StaminaPotion extends Potion{
+public class StaminaPotion extends Potion implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     private String size;
     private int staminaRegenAmount;

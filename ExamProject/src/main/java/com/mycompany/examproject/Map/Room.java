@@ -4,6 +4,7 @@
  */
 package com.mycompany.examproject.Map;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -11,7 +12,10 @@ import java.util.ArrayList;
  *
  * @author Arseniy
  */
-public class Room {
+public class Room implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
+    
     private int x, y, floor; // Coordinates and floor number
     private RoomType type;   // Type of the room
     private List<Room> connections; // Adjacent rooms (for navigation)

@@ -4,11 +4,13 @@
  */
 package com.mycompany.examproject.Items;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Arseniy
  */
-public interface Equipment {
+public interface Equipment extends Serializable{
     void checkStatus();
     String getName();
 }

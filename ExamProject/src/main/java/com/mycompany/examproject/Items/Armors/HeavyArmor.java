@@ -5,12 +5,15 @@
 package com.mycompany.examproject.Items.Armors;
 
 import com.mycompany.examproject.Items.Armor;
+import java.io.Serializable;
 
 /**
  *
  * @author Arseniy
  */
-public class HeavyArmor extends Armor{
+public class HeavyArmor extends Armor implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     public HeavyArmor(String name, int weight, double damageReduction, int durability) {
         super(name, weight, damageReduction, durability);

@@ -11,11 +11,29 @@ import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
 import com.mycompany.examproject.Enemies.enemyStructure.Skeleton;
 import com.mycompany.examproject.GUI.AttackVariantsDialog;
 import com.mycompany.examproject.GUI.BattleForm;
+import com.mycompany.examproject.GUI.BossItemDropDialog;
+import com.mycompany.examproject.GUI.DefaultEnemyDropDialog;
 import com.mycompany.examproject.GUI.FightLoseForm;
 import com.mycompany.examproject.GUI.FightWinDialog;
 import com.mycompany.examproject.GUI.NotEnoughStaminaDialog;
+import com.mycompany.examproject.Items.Armors.ArmorStorage;
+import com.mycompany.examproject.Items.Armors.HeavyArmor;
+import com.mycompany.examproject.Items.Armors.LightArmor;
+import com.mycompany.examproject.Items.Armors.TrooperArmor;
+import com.mycompany.examproject.Items.Equipment;
+import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.Poison;
+import com.mycompany.examproject.Items.Potions.StaminaPotion;
+import com.mycompany.examproject.Items.Weapons.Axe;
+import com.mycompany.examproject.Items.Weapons.Bow;
+import com.mycompany.examproject.Items.Weapons.Hammer;
+import com.mycompany.examproject.Items.Weapons.Spear;
+import com.mycompany.examproject.Items.Weapons.Sword;
+import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
 /**
@@ -375,6 +393,10 @@ public class Fight {
         if(enemy.getHealth() <= 0){
             FightWinDialog winDialog = new FightWinDialog(battleForm, true);
             winDialog.setVisible(true);
+            
+            processEnemyItemDrop();
+            //обработка выпадения вещей
+
             battleForm.dispose();
             
             player.setStamina(player.getMaxStamina());
@@ -402,6 +424,77 @@ public class Fight {
                 }
             });
             loseForm.setVisible(true);
+        }
+    }
+    
+    private void processEnemyItemDrop() {
+        if (enemy instanceof Boss){
+            
+            ArrayList<Equipment> foundItems = processBossItemDrop(player.getCurrentRoom().getFloor());
+            BossItemDropDialog bossItemDropDialog = new BossItemDropDialog(null, true, foundItems);
+            bossItemDropDialog.setVisible(true);
+            
+        } else if (Math.random() <= 0.7){
+            
+            Potion foundItem = processDefaultEnemyItemDrop();
+            DefaultEnemyDropDialog defaultEnemyDropDialog = new DefaultEnemyDropDialog(null, true, foundItem);
+            defaultEnemyDropDialog.setVisible(true);
+            
+        }
+    }
+    
+    private static Potion processDefaultEnemyItemDrop() {
+        Potion foundItem = null;
+        boolean foundBomb = false;
+        boolean foundStamina = false;
+        boolean foundPoison = false;
+        if (Math.random() < 0.20) {
+            foundBomb = true;
+        }
+        if (Math.random() < 0.35) {
+            foundStamina = true;
+        }
+        if (Math.random() < 0.5) {
+            foundPoison = true;
+        }
+
+        ArrayList<String> foundTypes = new ArrayList<>();
+        if (foundBomb) foundTypes.add("Bomb");
+        if (foundStamina) foundTypes.add("StaminaPotion");
+        if (foundPoison) foundTypes.add("PoisonPotion");
+
+        if (foundTypes.isEmpty()) {
+            foundTypes.add("PoisonPotion");
+        }
+
+        while (foundTypes.size() > 1) {
+            foundTypes.remove((int)(Math.random() * foundTypes.size()));
+        }
+
+        String type = foundTypes.get(0);
+        foundItem = createPotionByType(type);
+        
+        addItemToInventory(foundItem);
+        
+        return foundItem;
+    }
+    
+    private static void addItemToInventory(Potion item) {
+        Player player = Player.getInstance();
+        player.addItemToInventory(item);
+    }
+    
+    // Вспомогательный метод
+    private static Potion createPotionByType(String type) {
+        switch (type) {
+            case "Bomb":
+                return new Bomb();
+            case "StaminaPotion":
+                return new StaminaPotion();
+            case "PoisonPotion":
+                return new Poison();
+            default:
+                throw new IllegalArgumentException("Unknown potion type!");
         }
     }
 
@@ -490,6 +583,96 @@ public class Fight {
             isPoisoned = true;
         }
         return isPoisoned;
+    }
+
+    public static ArrayList<Equipment> processBossItemDrop(int floor) {
+        ArrayList<Equipment> foundItems = new ArrayList<>();
+        Random random = new Random();
+
+        ArrayList<String> possibleTypes = new ArrayList<>(Arrays.asList(
+                "Bomb", "PoisonPotion", "StaminaPotion",
+                "LightArmor", "TrooperArmor", "HeavyArmor",
+                "Sword", "Bow", "Spear", "Hammer", "Axe"
+        ));
+
+        boolean giveArmor = random.nextBoolean();
+
+        String chosenType = null;
+        if (giveArmor) {
+            String[] armorTypes = {"LightArmor", "TrooperArmor", "HeavyArmor"};
+            chosenType = armorTypes[random.nextInt(armorTypes.length)];
+        } else {
+            String[] weaponTypes = {"Sword", "Bow", "Spear", "Hammer", "Axe"};
+            chosenType = weaponTypes[random.nextInt(weaponTypes.length)];
+        }
+        
+        foundItems.add(getEquipmentSampleByTypeAndFloor(chosenType, floor, random));
+        
+        possibleTypes.remove(chosenType);
+
+        int totalItems = 3;
+
+        while (foundItems.size() < totalItems && !possibleTypes.isEmpty()) {
+            int idx = random.nextInt(possibleTypes.size());
+            String nextType = possibleTypes.remove(idx);
+            foundItems.add(getEquipmentSampleByTypeAndFloor(nextType, floor, random));
+        }
+
+        addItemsToInventory(foundItems);
+        
+        return foundItems;
+    }
+
+    private static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
+        int idxInZone = getRandomIndexForFloor(floor, random);
+        switch (type) {
+            case "LightArmor":
+                return new LightArmor(ArmorStorage.lightArmor.get(idxInZone));
+            case "TrooperArmor":
+                return new TrooperArmor(ArmorStorage.trooperArmor.get(idxInZone));
+            case "HeavyArmor":
+                return new HeavyArmor(ArmorStorage.heavyArmor.get(idxInZone));
+            case "Sword":
+                return new Sword(WeaponsStorage.swords.get(idxInZone));
+            case "Bow":
+                return new Bow(WeaponsStorage.bows.get(idxInZone));
+            case "Spear":
+                return new Spear(WeaponsStorage.spears.get(idxInZone));
+            case "Hammer":
+                return new Hammer(WeaponsStorage.hammers.get(idxInZone));
+            case "Axe":
+                return new Axe(WeaponsStorage.axes.get(idxInZone));
+            // Зелья и расходники создаются как новые экземпляры 
+            case "Bomb":
+                return new Bomb();
+            case "PoisonPotion":
+                return new Poison();
+            case "StaminaPotion":
+                return new StaminaPotion();
+            default:
+                throw new IllegalArgumentException("Unknown equipment type: " + type);
+        }
+    }
+
+    // Возвращает индекс в списке предметов согласно текущей зоне
+    private static int getRandomIndexForFloor(int floor, Random random) {
+        if (floor <= 3) {
+            // зона 1, индексы 0..4
+            return random.nextInt(5);
+        } else if (floor <= 5) {
+            // зона 2, индексы 5..9
+            return 5 + random.nextInt(5);
+        } else {
+            // зона 3, индексы 10..14
+            return 10 + random.nextInt(5);
+        }
+    }
+    
+    private static void addItemsToInventory(List<? extends Equipment> items) {
+        Player player = Player.getInstance();
+        for (Equipment e : items) {
+            player.addItemToInventory(e);
+        }
     }
     
 }

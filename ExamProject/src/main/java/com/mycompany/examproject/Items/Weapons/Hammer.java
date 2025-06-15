@@ -5,12 +5,15 @@
 package com.mycompany.examproject.Items.Weapons;
 
 import com.mycompany.examproject.Items.Weapon;
+import java.io.Serializable;
 
 /**
  *
  * @author Arseniy
  */
-public class Hammer extends Weapon{
+public class Hammer extends Weapon implements Serializable{
+    
+    private static final long serialVersionUID = 1L;
     
     public Hammer(String name, int weight, int damage, int durability) {
         super(name, weight, damage, durability);

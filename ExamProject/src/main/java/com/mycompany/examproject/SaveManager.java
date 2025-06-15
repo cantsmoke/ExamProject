@@ -8,6 +8,7 @@ package com.mycompany.examproject;
  *
  * @author Arseniy
  */
+import com.mycompany.examproject.GUI.GameSavedDialog;
 import java.io.*;
 
 public class SaveManager {
@@ -16,9 +17,8 @@ public class SaveManager {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
             oos.writeObject(gameState);
             
-            
-            System.out.println("Game saved.");//вместо вывода в консоль, показ диалогового окна
-            
+            GameSavedDialog gameSavedDialog = new GameSavedDialog(null, true);
+            gameSavedDialog.setVisible(true);
             
         } catch (IOException e) {
             e.printStackTrace();

@@ -6,7 +6,6 @@ package com.mycompany.examproject;
 
 import com.mycompany.examproject.GUI.MainMenuForm;
 import javax.swing.SwingUtilities;
-
 /**
  *
  * @author Arseniy

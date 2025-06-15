@@ -16,7 +16,6 @@ import com.mycompany.examproject.Enemies.enemyStructure.BloodHeirOfTheMark;
 import com.mycompany.examproject.Enemies.enemyStructure.AshenGatekeeper;
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.BossType;
-
 /**
  *
  * @author Arseniy

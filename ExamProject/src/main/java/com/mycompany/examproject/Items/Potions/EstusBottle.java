@@ -19,9 +19,9 @@ public class EstusBottle extends Potion implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private double healRegenPercentage;   // Количество восстанавливаемого HP
-    private int maxUses;      // Лимит глотков на обновление (как в Dark Souls)
-    private int usesLeft;     // Осталось глотков
+    private double healRegenPercentage;
+    private int maxUses;
+    private int usesLeft;
     
     private String imageURL = "C:\\Users\\Arseniy\\Downloads\\imgonline-com-ua-BrightnessContrast-DWdgxay1HD3Nqm.png";
 

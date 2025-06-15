@@ -5,7 +5,6 @@
 package com.mycompany.examproject.Enemies;
 
 import com.mycompany.examproject.Enemies.enemyStructure.*;
-
 /**
  *
  * @author Arseniy

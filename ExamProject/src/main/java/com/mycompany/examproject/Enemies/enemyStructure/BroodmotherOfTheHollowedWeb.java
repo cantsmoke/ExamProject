@@ -4,14 +4,11 @@
  */
 package com.mycompany.examproject.Enemies.enemyStructure;
 
-import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.EntityActionType;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Items.Weapons.Axe;
 import com.mycompany.examproject.Items.Weapons.Hammer;
 import com.mycompany.examproject.Items.Weapons.Spear;
-import com.mycompany.examproject.Items.Weapons.Sword;
-
 /**
  *
  * @author Arseniy

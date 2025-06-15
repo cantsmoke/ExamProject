@@ -5,7 +5,6 @@
 package com.mycompany.examproject.Items.Weapons;
 
 import java.util.List;
-
 /**
  *
  * @author Arseniy

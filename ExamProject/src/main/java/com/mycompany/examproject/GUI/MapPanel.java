@@ -28,10 +28,8 @@ public class MapPanel extends JPanel {
         final int ROOM_SIZE = 30;
         final int GAP = 10;
 
-        // Сначала отрисуем соединения между посещёнными комнатами
         g.setColor(Color.BLACK);
 
-        // Теперь отрисуем сами комнаты
         for (int x = 0; x < floor.getWidth(); x++) {
             for (int y = 0; y < floor.getHeight(); y++) {
                 Room room = rooms[x][y];
@@ -39,7 +37,6 @@ public class MapPanel extends JPanel {
                 int drawX = x * (ROOM_SIZE + GAP);
                 int drawY = y * (ROOM_SIZE + GAP);
 
-                // Цвет текущей комнаты
                 if (room == currentRoom) {
                     g.setColor(Color.RED);
                 } else if (room.isVisitedByPlayer()) {
@@ -52,12 +49,10 @@ public class MapPanel extends JPanel {
                 g.setColor(Color.BLACK);
                 g.drawRect(drawX, drawY, ROOM_SIZE, ROOM_SIZE);
 
-                // Первая буква типа комнаты
                 g.drawString(room.getType().name().substring(0, 1), drawX + 10, drawY + 20);
             }
         }
         
-        // Отрисуем соединения между посещёнными комнатами
         for (int x = 0; x < floor.getWidth(); x++) {
             for (int y = 0; y < floor.getHeight(); y++) {
                 Room room = rooms[x][y];
@@ -74,17 +69,16 @@ public class MapPanel extends JPanel {
                     int endX = connected.getX() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
                     int endY = connected.getY() * (ROOM_SIZE + GAP) + ROOM_SIZE / 2;
 
-                    // Проверка на две серые комнаты (оба посещены, ни одна не currentRoom)
                     if (room != currentRoom && connected != currentRoom) {
-                        g.setColor(Color.GRAY); // обе — серые
+                        g.setColor(Color.GRAY);
                     } else {
-                        g.setColor(Color.BLACK); // одна из них — текущая
+                        g.setColor(Color.BLACK);
                     }
 
                     g.drawLine(startX, startY, endX, endY);
                 }
             }
         }
-
     }
+    
 }

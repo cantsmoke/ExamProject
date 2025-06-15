@@ -9,13 +9,7 @@ import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.GUI.PotionAlreadyUsedDialog;
 import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
 import com.mycompany.examproject.Enemies.enemyStructure.Skeleton;
-import com.mycompany.examproject.GUI.AttackVariantsDialog;
-import com.mycompany.examproject.GUI.BattleForm;
-import com.mycompany.examproject.GUI.BossItemDropDialog;
-import com.mycompany.examproject.GUI.DefaultEnemyDropDialog;
-import com.mycompany.examproject.GUI.FightLoseForm;
-import com.mycompany.examproject.GUI.FightWinDialog;
-import com.mycompany.examproject.GUI.NotEnoughStaminaDialog;
+import com.mycompany.examproject.GUI.*;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
 import com.mycompany.examproject.Items.Armors.HeavyArmor;
 import com.mycompany.examproject.Items.Armors.LightArmor;
@@ -53,15 +47,6 @@ public class Fight {
     public Fight(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
-        
-//        Player.getInstance().addItemToInventory(new Poison());
-//        Player.getInstance().addItemToInventory(new Poison());
-//        
-//        Player.getInstance().addItemToInventory(new Bomb());
-//        Player.getInstance().addItemToInventory(new Bomb());
-//        Player.getInstance().addItemToInventory(new Bomb());
-//        Player.getInstance().addItemToInventory(new Bomb());
-//        Player.getInstance().addItemToInventory(new Bomb());
         
         Random random = new Random();
         
@@ -164,7 +149,6 @@ public class Fight {
         } else if (enemyActionForPlayersAttack == EntityActionType.BLOCK){
             double enemyBlockPossibility = enemy.getBlockP() + 0.15;
             if(Math.random() < enemyBlockPossibility){
-                //String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
                 String logPart = enemy.getName() + " blocked your light attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
@@ -240,7 +224,6 @@ public class Fight {
         } else if (enemyActionForPlayersAttack == EntityActionType.BLOCK){
             double enemyBlockPossibility = enemy.getBlockP() - 0.05;
             if(Math.random() < enemyBlockPossibility){
-                //String logPart = enemy.takeHeavyDamage(player.getSelectedWeapon(), player.getBaseDamage());
                 String logPart = enemy.getName() + " blocked your heavy attack!";
                 battleForm.appendToLogArea(logPart);
             } else {
@@ -289,8 +272,7 @@ public class Fight {
         if (enemyActionForPlayersBlock == EntityActionType.HEAVY_ATTACK){
             double playerBlockPossibility = player.getBlockP() - 0.05;
             if(Math.random() < playerBlockPossibility){
-                
-                
+
                 if(player.hasCounterAttack() && player.getStamina() >= 5 && player.getTotalEquipmentWeight() < player.getBearableWeight() * 1.5){
                     String logPart1 = "You blocked " + enemy.getName() + " heavy attack and counter-attacked him!";
                     player.setStamina(player.getStamina() - 5);
@@ -303,8 +285,7 @@ public class Fight {
                     String logPart2 = enemy.takeLightDamage(player.getSelectedWeapon(), (int) (player.getBaseDamage() * 0.3));
                     battleForm.appendToLogArea(logPart2);
                 } else {
-                    //player.takeDamage((int) (enemy.getDamage() * 0.2));
-                    String logPart = "You blocked " + enemy.getName() + " heavy attack!"/* + " and took " + (int)(enemy.getDamage() * 0.2 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    String logPart = "You blocked " + enemy.getName() + " heavy attack!";
                     battleForm.appendToLogArea(logPart);
                 }
                 
@@ -330,7 +311,7 @@ public class Fight {
                     battleForm.appendToLogArea(logPart2);
                 } else {
                     player.takeDamage((int) (enemy.getDamage() * 0.1));
-                    String logPart = "You blocked " + enemy.getName() + " light attack!"/* + " and took " + (int)(enemy.getDamage() * 0.1 * (1 - player.getSelectedArmor().getDamageReduction())) + " damage!"*/;
+                    String logPart = "You blocked " + enemy.getName() + " light attack!";
                     battleForm.appendToLogArea(logPart);
                 }
                 
@@ -395,7 +376,6 @@ public class Fight {
             winDialog.setVisible(true);
             
             processEnemyItemDrop();
-            //обработка выпадения вещей
 
             battleForm.dispose();
             
@@ -411,6 +391,10 @@ public class Fight {
             
             this.poisonDuration = 0;
             this.poison = null;
+            
+            if(enemy instanceof Boss){
+                GUIandLogicIntermediary.autoSave(player);
+            }
             
             GUIandLogicIntermediary.showNavigationForm();
         } else if (player.getHp() <= 0){
@@ -483,8 +467,7 @@ public class Fight {
         Player player = Player.getInstance();
         player.addItemToInventory(item);
     }
-    
-    // Вспомогательный метод
+
     private static Potion createPotionByType(String type) {
         switch (type) {
             case "Bomb":
@@ -611,7 +594,6 @@ public class Fight {
         possibleTypes.remove(chosenType);
 
         int totalItems = 3;
-
         while (foundItems.size() < totalItems && !possibleTypes.isEmpty()) {
             int idx = random.nextInt(possibleTypes.size());
             String nextType = possibleTypes.remove(idx);
@@ -642,7 +624,6 @@ public class Fight {
                 return new Hammer(WeaponsStorage.hammers.get(idxInZone));
             case "Axe":
                 return new Axe(WeaponsStorage.axes.get(idxInZone));
-            // Зелья и расходники создаются как новые экземпляры 
             case "Bomb":
                 return new Bomb();
             case "PoisonPotion":
@@ -654,16 +635,12 @@ public class Fight {
         }
     }
 
-    // Возвращает индекс в списке предметов согласно текущей зоне
     private static int getRandomIndexForFloor(int floor, Random random) {
         if (floor <= 3) {
-            // зона 1, индексы 0..4
             return random.nextInt(5);
         } else if (floor <= 5) {
-            // зона 2, индексы 5..9
             return 5 + random.nextInt(5);
         } else {
-            // зона 3, индексы 10..14
             return 10 + random.nextInt(5);
         }
     }
@@ -674,5 +651,5 @@ public class Fight {
             player.addItemToInventory(e);
         }
     }
-    
+
 }

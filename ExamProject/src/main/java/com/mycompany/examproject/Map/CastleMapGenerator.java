@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
-
 /**
  *
  * @author Arseniy
@@ -39,19 +38,17 @@ public class CastleMapGenerator implements Serializable{
         return this.floors;
     }
     
-    // Generates the entire castle map and prints each floor
     public List<Floor> generateMap() {
         for (int floorNum = 1; floorNum <= TOTAL_FLOORS; floorNum++) {
             Floor floor = createFloor(floorNum);
             floors.add(floor);
-            printFloor(floor); // Print the ASCII map for this floor
+            printFloor(floor);
         }
         connectFloors();
         floorsShared = this.floors;
         return floors;
     }
 
-    // Creates a single floor based on its number
     private Floor createFloor(int floorNumber) {
         int width, height;
         if (floorNumber <= 3) {
@@ -63,9 +60,9 @@ public class CastleMapGenerator implements Serializable{
         } else if (floorNumber <= 9) {
             width = 4;
             height = 4;
-        } else { // Floor 10
+        } else {
             width = 3;
-            height = 1; // Linear layout for 3 rooms
+            height = 1;
         }
 
         Floor floor = new Floor(floorNumber, width, height);
@@ -75,7 +72,6 @@ public class CastleMapGenerator implements Serializable{
         return floor;
     }
 
-    // Initializes all rooms as NORMAL with descriptions
     private void initializeRooms(Floor floor) {
         for (int x = 0; x < floor.getWidth(); x++) {
             for (int y = 0; y < floor.getHeight(); y++) {
@@ -88,14 +84,12 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
-    // Places staircase (up/down), rest, boss, and start rooms
     private void placeSpecialRooms(Floor floor) {
         int width = floor.getWidth();
         int height = floor.getHeight();
         int floorNum = floor.getFloorNumber();
 
         if (floorNum == TOTAL_FLOORS) {
-            // Floor 10: Exactly 3 rooms (staircase down, rest, boss)
             floor.setRoom(0, 0, new Room(0, 0, floorNum, RoomType.STAIRCASE_DOWN, "A spiral of broken stone descends into the abyss below. The air rises thick with the scent of blood long dried. \n" +
                 "Each step echoes like a heartbeat — a reminder that what lies beneath remembers your presence.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 11_31_40.png"));
             floor.setRoom(1, 0, new Room(1, 0, floorNum, RoomType.REST, "A forgotten sanctuary untouched by decay. A pale light filters through unseen cracks, warming the cold flagstones. \n" +
@@ -106,14 +100,12 @@ public class CastleMapGenerator implements Serializable{
             floor.setRestRoom(floor.getRooms()[1][0]);
             floor.setBossRoom(floor.getRooms()[2][0]);
         } else {
-            // Place rest room
             int restX = random.nextInt(width);
             int restY = random.nextInt(height);
             floor.setRoom(restX, restY, new Room(restX, restY, floorNum, RoomType.REST, "A chamber of stillness and ancient grace. Moss creeps gently over statues of forgotten saints, \n" +
                 "and a faint glow lingers around the altar. It soothes not the body, but the soul — a rare mercy in this cursed place.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_06_21.png"));
             floor.setRestRoom(floor.getRooms()[restX][restY]);
 
-            // Place boss room
             int bossX = random.nextInt(width);
             int bossY = random.nextInt(height);
             while (bossX == restX && bossY == restY) {
@@ -124,7 +116,6 @@ public class CastleMapGenerator implements Serializable{
                 "The air shivers with malice. Whatever sleeps in this darkness is no mere beast. It dreams of your death.", "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 3 июн. 2025 г., 16_10_08.png"));
             floor.setBossRoom(floor.getRooms()[bossX][bossY]);
 
-            // Place staircase up room adjacent to boss room (except on last floor)
             if (floorNum < TOTAL_FLOORS) {
                 int[] staircaseUpPos = getAdjacentPosition(floor, bossX, bossY);
                 if (staircaseUpPos != null) {
@@ -134,7 +125,6 @@ public class CastleMapGenerator implements Serializable{
                 }
             }
 
-            // Place staircase down room (except on floor 1)
             if (floorNum > 1) {
                 int downX = random.nextInt(width);
                 int downY = random.nextInt(height);
@@ -148,7 +138,6 @@ public class CastleMapGenerator implements Serializable{
                 floor.setStaircaseDownRoom(floor.getRooms()[downX][downY]);
             }
 
-            // Place start room on floor 1
             if (floorNum == 1) {
                 int startX = random.nextInt(width);
                 int startY = random.nextInt(height);
@@ -164,7 +153,6 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
-    // Gets a random adjacent position to a given room
     private int[] getAdjacentPosition(Floor floor, int x, int y) {
         List<int[]> possiblePositions = new ArrayList<>();
         if (x > 0) possiblePositions.add(new int[]{x - 1, y});
@@ -175,13 +163,11 @@ public class CastleMapGenerator implements Serializable{
         return possiblePositions.get(random.nextInt(possiblePositions.size()));
     }
 
-    // Connects rooms to form a maze-like structure using DFS
     private void connectRooms(Floor floor) {
         int width = floor.getWidth();
         int height = floor.getHeight();
         Room[][] rooms = floor.getRooms();
 
-        // Special case for floor 10 (linear structure)
         if (floor.getFloorNumber() == TOTAL_FLOORS) {
             rooms[0][0].addConnection(rooms[1][0]);
             rooms[1][0].addConnection(rooms[0][0]);
@@ -190,7 +176,6 @@ public class CastleMapGenerator implements Serializable{
             return;
         }
 
-        // Connect the staircase up room to the boss room explicitly
         Room staircaseUpRoom = floor.getStaircaseUpRoom();
         Room bossRoom = floor.getBossRoom();
         if (staircaseUpRoom != null && bossRoom != null) {
@@ -198,37 +183,29 @@ public class CastleMapGenerator implements Serializable{
             bossRoom.addConnection(staircaseUpRoom);
         }
 
-        // Reset visited status for all rooms
         floor.resetVisited();
-        // Mark the staircase up room as visited to exclude it from maze generation
         if (staircaseUpRoom != null) {
             staircaseUpRoom.setVisited(true);
         }
 
-        // Start DFS from the start room (floor 1) or a random room (other floors)
         Room startRoom = (floor.getFloorNumber() == 1) ? floor.getStartRoom() : rooms[0][0];
         Stack<Room> stack = new Stack<>();
         stack.push(startRoom);
         startRoom.setVisited(true);
 
-        // Directions for adjacent rooms: up, right, down, left
         int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 
-        // DFS to create a maze, excluding the staircase up room
         while (!stack.isEmpty()) {
             Room current = stack.peek();
             int x = current.getX();
             int y = current.getY();
 
-            // Find unvisited neighbors, excluding the staircase up room unless it's the boss room connecting to it
             List<int[]> unvisitedNeighbors = new ArrayList<>();
             for (int[] dir : directions) {
                 int newX = x + dir[0];
                 int newY = y + dir[1];
                 if (newX >= 0 && newX < width && newY >= 0 && newY < height && rooms[newX][newY] != null) {
                     Room neighbor = rooms[newX][newY];
-                    // Include the neighbor if it's unvisited and not the staircase up room,
-                    // or if it's the staircase up room and the current room is the boss room
                     if (!neighbor.isVisited() && (neighbor != staircaseUpRoom || current == bossRoom)) {
                         unvisitedNeighbors.add(new int[]{newX, newY});
                     }
@@ -236,7 +213,6 @@ public class CastleMapGenerator implements Serializable{
             }
 
             if (!unvisitedNeighbors.isEmpty()) {
-                // Choose a random unvisited neighbor
                 int[] nextPos = unvisitedNeighbors.get(random.nextInt(unvisitedNeighbors.size()));
                 Room nextRoom = rooms[nextPos[0]][nextPos[1]];
                 current.addConnection(nextRoom);
@@ -248,20 +224,18 @@ public class CastleMapGenerator implements Serializable{
             }
         }
 
-        // Add a few extra connections to make the maze less linear (optional, for variety)
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Room room = rooms[x][y];
-                if (room == null || room == staircaseUpRoom) continue; // Skip staircase up room
-                // Small chance to add an extra connection
-                if (random.nextDouble() < 0.1) { // 10% chance
+                if (room == null || room == staircaseUpRoom) continue;
+                if (random.nextDouble() < 0.1) {
                     List<Room> possibleConnections = new ArrayList<>();
                     for (int[] dir : directions) {
                         int newX = x + dir[0];
                         int newY = y + dir[1];
                         if (newX >= 0 && newX < width && newY >= 0 && newY < height && rooms[newX][newY] != null) {
                             Room neighbor = rooms[newX][newY];
-                            if (neighbor != staircaseUpRoom) { // Exclude staircase up room
+                            if (neighbor != staircaseUpRoom) {
                                 possibleConnections.add(neighbor);
                             }
                         }
@@ -278,11 +252,9 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
-    // Connects floors via staircases (up to next floor, down to previous floor)
     private void connectFloors() {
         for (int i = 0; i < floors.size(); i++) {
             Floor currentFloor = floors.get(i);
-            // Connect to the next floor (if not the last floor)
             if (i < floors.size() - 1) {
                 Floor nextFloor = floors.get(i + 1);
                 Room currentStaircaseUp = currentFloor.getStaircaseUpRoom();
@@ -292,7 +264,6 @@ public class CastleMapGenerator implements Serializable{
                     nextStaircaseDown.addConnection(currentStaircaseUp);
                 }
             }
-            // Connect to the previous floor (if not the first floor)
             if (i > 0) {
                 Floor prevFloor = floors.get(i - 1);
                 Room currentStaircaseDown = currentFloor.getStaircaseDownRoom();
@@ -348,16 +319,13 @@ public class CastleMapGenerator implements Serializable{
         return descriptions[random.nextInt(descriptions.length)];
     }
 
-    // Prints an ASCII representation of the floor
     private void printFloor(Floor floor) {
         System.out.println("\n=== Floor " + floor.getFloorNumber() + " ===");
         int width = floor.getWidth();
         int height = floor.getHeight();
         Room[][] rooms = floor.getRooms();
 
-        // Print room grid
         for (int y = 0; y < height; y++) {
-            // Print room row
             for (int x = 0; x < width; x++) {
                 Room room = rooms[x][y];
                 if (room == null) {
@@ -384,7 +352,6 @@ public class CastleMapGenerator implements Serializable{
                             break;
                     }
                 }
-                // Print horizontal connections
                 if (x < width - 1 && room != null && rooms[x + 1][y] != null && room.getConnections().contains(rooms[x + 1][y])) {
                     System.out.print("---");
                 } else {
@@ -392,7 +359,6 @@ public class CastleMapGenerator implements Serializable{
                 }
             }
             System.out.println();
-            // Print vertical connections
             if (y < height - 1) {
                 for (int x = 0; x < width; x++) {
                     Room room = rooms[x][y];
@@ -409,7 +375,6 @@ public class CastleMapGenerator implements Serializable{
             }
         }
 
-        // Print legend
         System.out.println("\nLegend:");
         System.out.println("[ N ]: Normal Room");
         System.out.println("[S+ ]: Staircase Up Room");
@@ -422,7 +387,6 @@ public class CastleMapGenerator implements Serializable{
         System.out.println();
     }
 
-    // Getter for floors
     public static List<Floor> getFloors() {
         return floorsShared;
     }
@@ -431,7 +395,7 @@ public class CastleMapGenerator implements Serializable{
         if (floors.isEmpty()) {
             throw new IllegalStateException("Map has not been generated yet! Call generateMap() first.");
         }
-        Floor firstFloor = floors.get(0); // Floor 1 is at index 0
+        Floor firstFloor = floors.get(0);
         Room startRoom = firstFloor.getStartRoom();
         if (startRoom == null) {
             throw new IllegalStateException("Start room not found on floor 1!");

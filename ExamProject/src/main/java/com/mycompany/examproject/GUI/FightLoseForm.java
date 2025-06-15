@@ -35,7 +35,6 @@ public class FightLoseForm extends javax.swing.JFrame {
         losePanel = new javax.swing.JPanel();
         loseLabel = new javax.swing.JLabel();
         mainMenuButton = new javax.swing.JButton();
-        loadLastSave = new javax.swing.JButton();
         loseIconLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -57,17 +56,6 @@ public class FightLoseForm extends javax.swing.JFrame {
             }
         });
 
-        loadLastSave.setBackground(new java.awt.Color(102, 102, 102));
-        loadLastSave.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
-        loadLastSave.setForeground(new java.awt.Color(204, 204, 204));
-        loadLastSave.setText("LOAD LAST SAVE");
-        loadLastSave.setBorder(null);
-        loadLastSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loadLastSaveActionPerformed(evt);
-            }
-        });
-
         loseIconLabel.setIcon(new javax.swing.ImageIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 11 июн. 2025 г., 15_09_46 (1).png")); // NOI18N
 
         javax.swing.GroupLayout losePanelLayout = new javax.swing.GroupLayout(losePanel);
@@ -77,29 +65,24 @@ public class FightLoseForm extends javax.swing.JFrame {
             .addGroup(losePanelLayout.createSequentialGroup()
                 .addGroup(losePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(losePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(loadLastSave, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(losePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(loseIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                            .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(losePanelLayout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(loseIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(losePanelLayout.createSequentialGroup()
-                        .addGap(124, 124, 124)
+                        .addGap(52, 52, 52)
                         .addComponent(loseLabel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         losePanelLayout.setVerticalGroup(
             losePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(losePanelLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(loseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(32, 32, 32)
                 .addComponent(loseIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(losePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(mainMenuButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loadLastSave, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addComponent(mainMenuButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -129,14 +112,8 @@ public class FightLoseForm extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mainMenuButtonActionPerformed
 
-    private void loadLastSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadLastSaveActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_loadLastSaveActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton loadLastSave;
     private javax.swing.JLabel loseIconLabel;
     private javax.swing.JLabel loseLabel;
     private javax.swing.JPanel losePanel;

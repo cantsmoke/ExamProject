@@ -5,10 +5,7 @@
 package com.mycompany.examproject.Items;
 
 import com.mycompany.examproject.GUI.ArmorBrokeDialog;
-import com.mycompany.examproject.Player;
 import java.io.Serializable;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Arseniy
@@ -24,11 +21,8 @@ public abstract class Armor implements Equipment, Serializable{
     protected int durability;
     protected int maxDurability;
     protected boolean isBroken = false;
-    
     protected boolean isSelected = false;
-    
     protected boolean wasStatusWindowShowed = false;
-    
     protected String imageURL;
 
     public Armor(String name, int weight, double damageReduction, int durability) {

@@ -3,17 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.examproject;
-
 /**
  *
  * @author Arseniy
  */
-import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.File;
 
-// Создаём собственный FileSystemView
 class SingleRootFileSystemView extends FileSystemView {
     private final File root;
 

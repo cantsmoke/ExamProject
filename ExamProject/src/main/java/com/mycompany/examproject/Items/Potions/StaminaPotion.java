@@ -26,7 +26,7 @@ public class StaminaPotion extends Potion implements Serializable{
     
     public StaminaPotion() {
         super("Stamina potion", "Regenerates stamina.");
-        // Генерация случайного размера
+        
         if (new Random().nextBoolean()) {
             this.size = "Big";
             this.staminaRegenAmount = 30;
@@ -38,7 +38,6 @@ public class StaminaPotion extends Potion implements Serializable{
         }
     }
     
-    // геттеры для новых полей, если нужно
     public String getSize() {
         return size;
     }

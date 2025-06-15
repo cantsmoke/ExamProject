@@ -12,20 +12,7 @@ import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.Enemies.enemyStructure.Mimic;
-import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
-import com.mycompany.examproject.GUI.FightLoseForm;
-import com.mycompany.examproject.GUI.ForewordDialog;
-import com.mycompany.examproject.GUI.InventoryForm;
-import com.mycompany.examproject.GUI.InventoryFormForBattle;
-import com.mycompany.examproject.GUI.MainMenuForm;
-import com.mycompany.examproject.GUI.NothingFoundDialog;
-import com.mycompany.examproject.GUI.StashFoundDialog;
-import com.mycompany.examproject.GUI.StateAndNavigationForm;
-import com.mycompany.examproject.GUI.TrapDialog;
-import com.mycompany.examproject.GUI.UpgradeMenu;
-import com.mycompany.examproject.GUI.YouAreRestingDialog;
-import com.mycompany.examproject.GUI.YouFoundChestDialog;
-import com.mycompany.examproject.GUI.YouLostDialog;
+import com.mycompany.examproject.GUI.*;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
 import com.mycompany.examproject.Items.Armors.HeavyArmor;
 import com.mycompany.examproject.Items.Armors.LightArmor;
@@ -48,12 +35,13 @@ import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
 import java.awt.Color;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIDefaults;
@@ -132,8 +120,11 @@ public class GUIandLogicIntermediary {
                 player = gameState.player;
                 Player.setInstance(player);
                 castleMapGenerator = gameState.castleMap;
+                
+                enemySection1Factory = new EnemySection1Factory();
+                enemySection2Factory = new EnemySection2Factory();
+                enemySection3Factory = new EnemySection3Factory();
 
-                // 🔥 Вставить вот здесь:
                 CastleMapGenerator.setFloors(castleMapGenerator.getFloorsInstance());
 
                 stateAndNavigationForm = new StateAndNavigationForm();
@@ -141,6 +132,26 @@ public class GUIandLogicIntermediary {
                 stateAndNavigationForm.setVisible(true);
             }
         }
+    }
+    
+    public static void autoSave(Player player) {
+        File saveDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        if (!saveDir.exists()) {
+            saveDir.mkdirs();
+        }
+
+        int level = player.getLevel();
+        int floor = player.getCurrentRoom().getFloor();
+
+        String timeStamp = new SimpleDateFormat("dd-MM-yyyy_HH-mm-ss").format(new Date());
+        String fileName = "Save - LVL " + level + ", FLOOR " + floor + " - " + timeStamp + ".dat";
+
+        File saveFile = new File(saveDir, fileName);
+
+        GameState gameState = new GameState(player, castleMapGenerator);
+        SaveManager.saveGame(gameState, saveFile.getAbsolutePath());
+
+        System.out.println("Game automatically saved to " + saveFile.getAbsolutePath());
     }
 
     private static void applyDarkTheme(JFileChooser chooser) {
@@ -163,6 +174,10 @@ public class GUIandLogicIntermediary {
         defaults.put("TextField.foreground", fg);
         defaults.put("ComboBox.background", new Color(60, 60, 60));
         defaults.put("ComboBox.foreground", fg);
+        
+        UIManager.put("OptionPane.messageForeground", new Color(255, 255, 255));
+        UIManager.put("Button.foreground", new Color(255, 255, 255));
+        UIManager.put("Label.foreground", new Color(255, 255, 255));
 
         SwingUtilities.updateComponentTreeUI(chooser);
     }
@@ -449,13 +464,10 @@ public class GUIandLogicIntermediary {
             }
             
         } else {
-            stateAndNavigationForm.setVisible(false);
-            
             NothingFoundDialog nothingFoundDialog = new NothingFoundDialog(null, true);
             nothingFoundDialog.setVisible(true);
             
             stateAndNavigationForm.updateLabels();
-            stateAndNavigationForm.setVisible(true);
         }
     }
     
@@ -508,7 +520,6 @@ public class GUIandLogicIntermediary {
         }
     }
     
-    // Вспомогательный метод
     private static Potion createPotionByType(String type) {
         switch (type) {
             case "Bomb":
@@ -547,7 +558,7 @@ public class GUIandLogicIntermediary {
         
         possibleTypes.remove(chosenType);
 
-        int totalItems = 3 + random.nextInt(3); // 3, 4 или 5
+        int totalItems = 3 + random.nextInt(3);
 
         while (foundItems.size() < totalItems && !possibleTypes.isEmpty()) {
             int idx = random.nextInt(possibleTypes.size());
@@ -579,7 +590,6 @@ public class GUIandLogicIntermediary {
                 return new Hammer(WeaponsStorage.hammers.get(idxInZone));
             case "Axe":
                 return new Axe(WeaponsStorage.axes.get(idxInZone));
-            // Зелья и расходники создаются как новые экземпляры 
             case "Bomb":
                 return new Bomb();
             case "PoisonPotion":
@@ -591,16 +601,12 @@ public class GUIandLogicIntermediary {
         }
     }
 
-    // Возвращает индекс в списке предметов согласно текущей зоне
     private static int getRandomIndexForFloor(int floor, Random random) {
         if (floor <= 3) {
-            // зона 1, индексы 0..4
             return random.nextInt(5);
         } else if (floor <= 5) {
-            // зона 2, индексы 5..9
             return 5 + random.nextInt(5);
         } else {
-            // зона 3, индексы 10..14
             return 10 + random.nextInt(5);
         }
     }

@@ -244,10 +244,10 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void weaponListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_weaponListValueChanged
-        if (!evt.getValueIsAdjusting()) { // чтобы обработка была только по завершении выбора (а не при каждом смене выделения)
+        if (!evt.getValueIsAdjusting()) {
             Weapon selected = (Weapon) weaponList.getSelectedValue();
             if (selected != null) {
-                itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                itemNameLabel.setText("Item name: " + selected.getName());
                 itemWeightLabel.setText("Item weight: " + selected.getWeight());
                 itemDamageOrDamageReductionLabel.setText("Item damage: " + selected.getDamage());
                 itemDurabilityLabel.setText("Item's durability left: " + selected.getDurability() + "/" + selected.getMaxDurability());
@@ -268,11 +268,11 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
     }//GEN-LAST:event_closeInventoryButtonActionPerformed
 
     private void potionListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_potionListValueChanged
-        if (!evt.getValueIsAdjusting()) { // чтобы обработка была только по завершении выбора (а не при каждом смене выделения)
+        if (!evt.getValueIsAdjusting()) {
             Potion selected = (Potion) potionList.getSelectedValue();
             if (selected != null) {
                 if(selected instanceof EstusBottle){
-                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item health regeneration(%): " + ((EstusBottle) selected).getHealthRegenPercentage()*100 + "%");
                     itemDurabilityLabel.setText("Item's uses left: " + ((EstusBottle) selected).getUsesLeft()+ "/" + ((EstusBottle) selected).getMaxUses());
@@ -283,19 +283,19 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                     }
                     itemIconLabel.setIcon(new ImageIcon(((EstusBottle)selected).getImageURL()));
                 } else if (selected instanceof StaminaPotion){
-                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item stamina regen points: " + ((StaminaPotion) selected).getStaminaRegenAmount());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((StaminaPotion) selected).getImageURL()));
                 } else if (selected instanceof Bomb){
-                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item damage: " + ((Bomb) selected).getDamage());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
                     itemIconLabel.setIcon(new ImageIcon(((Bomb) selected).getImageURL()));
                 } else if (selected instanceof Poison){
-                    itemNameLabel.setText("Item name: " + selected.getName()); // или selected.toString()
+                    itemNameLabel.setText("Item name: " + selected.getName());
                     itemWeightLabel.setText("Item weight: no weight");
                     itemDamageOrDamageReductionLabel.setText("Item damage/duration: " + ((Poison) selected).getDamage() + "/" + ((Poison) selected).getDuration());
                     itemDurabilityLabel.setText("Item's durability left: no durability, single use");
@@ -315,7 +315,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         Weapon selectedWeapon = weaponList.getSelectedValue();
         Potion selectedPotion = potionList.getSelectedValue();
 
-        Player player = Player.getInstance(); // Получаем текущего игрока
+        Player player = Player.getInstance();
 
         if (selectedWeapon != null && !selectedWeapon.isBroken()) {
             if (selectedWeapon != Player.getInstance().getSelectedWeapon()){
@@ -401,8 +401,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
             }
         }
 
-        // Сортировка по алфавиту по названию
-        weapons.sort(Comparator.comparing(Weapon::getName)); // предположим, что есть getName()
+        weapons.sort(Comparator.comparing(Weapon::getName));
 
         DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
         for (Weapon w : weapons) {
@@ -422,22 +421,6 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
             potionModel.addElement(p);
         }
         potionList.setModel(potionModel);
-        
-//        DefaultListModel<Weapon> weaponModel = new DefaultListModel<>();
-//        for (Equipment eq : inventory) {
-//            if (eq instanceof Weapon) {
-//                weaponModel.addElement((Weapon) eq);
-//            }
-//        }
-//        weaponList.setModel(weaponModel);
-//        
-//        DefaultListModel<Potion> potionModel = new DefaultListModel<>();
-//        for (Equipment eq : inventory) {
-//            if (eq instanceof Potion) {
-//                potionModel.addElement((Potion) eq);
-//            }
-//        }
-//        potionList.setModel(potionModel);
         
         repairComponentsAmountLabel.setText("AMOUNT OF REPAIRING COMPONENTS: " + Player.getInstance().getRepairComponents());
     }

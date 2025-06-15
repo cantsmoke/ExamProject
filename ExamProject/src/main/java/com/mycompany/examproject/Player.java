@@ -7,22 +7,16 @@ package com.mycompany.examproject;
 import com.mycompany.examproject.GUI.LevelUpdateDialog;
 import com.mycompany.examproject.Items.Armor;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
-import com.mycompany.examproject.Items.Armors.HeavyArmor;
 import com.mycompany.examproject.Items.Armors.TrooperArmor;
 import com.mycompany.examproject.Items.Equipment;
-import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Items.Potions.EstusBottle;
-import com.mycompany.examproject.Items.Potions.StaminaPotion;
 import com.mycompany.examproject.Items.Weapon;
 import com.mycompany.examproject.Items.Weapons.Sword;
 import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
-import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 /**
  *
  * @author Arseniy
@@ -30,7 +24,7 @@ import java.util.Random;
 public class Player implements Serializable{
     
     private static final long serialVersionUID = 1L;
-    // Core stats
+
     private int hp;
     private int maxHp;
     private int stamina;
@@ -127,8 +121,8 @@ public class Player implements Serializable{
     }
     
     public void updateDodgeProbability() {
-        int enduranceLevel = this.endurance; // или getEndurance(), если геттер
-        int equipmentWeight = getTotalEquipmentWeight(); // или getEquipmentWeight()
+        int enduranceLevel = this.endurance;
+        int equipmentWeight = getTotalEquipmentWeight();
         double baseDodge = 0.5;
         double dodge = baseDodge
                 + (enduranceLevel * 0.025)
@@ -177,7 +171,7 @@ public class Player implements Serializable{
     
     public void addSoulsToTotal(int souls){
         this.totalSoulsAmount = this.totalSoulsAmount + souls;
-        int newLevel = this.totalSoulsAmount / 500; // например, при 1200 душах — это 2
+        int newLevel = 1 + this.totalSoulsAmount / 500;
         
         if (newLevel > getLevel()) {
             updateLevel();
@@ -211,16 +205,7 @@ public class Player implements Serializable{
         this.selectedArmor.setSelected(true);
         this.selectedWeapon.setSelected(true);
         
-//        Sword swordTemplate1 = WeaponsStorage.swords.get(10);
-//        addItemToInventory(new Sword(swordTemplate1.getName(), swordTemplate1.getWeight(), swordTemplate1.getDamage(), swordTemplate1.getDurability()));
-//        
-//        HeavyArmor heavyArmor = ArmorStorage.heavyArmor.get(14);
-//        addItemToInventory(new HeavyArmor(heavyArmor.getName(), heavyArmor.getWeight(), heavyArmor.getDamageReduction(), heavyArmor.getDurability()));
-        
         addItemToInventory(new EstusBottle());
-//        addItemToInventory(new StaminaPotion());
-//        addItemToInventory(new StaminaPotion());
-//        addItemToInventory(new StaminaPotion());
     }
     
     public void setBaseDamage(int newBaseDamage){
@@ -329,9 +314,8 @@ public class Player implements Serializable{
         this.currentSoulsAmount = this.currentSoulsAmount - soulsSpended;      
         this.stamina += 5;
         this.bearableWeight += 1;
-        calcCritPossibility();
         
-        System.out.println(this.critP);
+        calcCritPossibility();
     }
 
     public void setCurrentRoom(Room room){

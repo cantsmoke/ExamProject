@@ -4,10 +4,8 @@
  */
 package com.mycompany.examproject.Enemies.enemyStructure;
 
-import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
 import com.mycompany.examproject.EntityActionType;
 import com.mycompany.examproject.Items.Weapon;
-
 /**
  *
  * @author Arseniy

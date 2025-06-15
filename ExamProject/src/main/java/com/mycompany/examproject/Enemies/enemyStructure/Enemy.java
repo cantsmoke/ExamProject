@@ -22,12 +22,11 @@ public abstract class Enemy {
 
     public Enemy(String name, int health, int damage, int floorNum) {
         this.name = name;
-        this.health = health + floorNum * 10; // усиливаем от этажа
+        this.health = health + floorNum * 10;
         this.maxHealth = this.health;
         this.damage = damage + floorNum * 2;
     }
     
-    // Геттеры
     public String getName() {
         return name;
     }
@@ -44,7 +43,6 @@ public abstract class Enemy {
         return damage;
     }
 
-    // Сеттеры
     public void setName(String name) {
         this.name = name;
     }

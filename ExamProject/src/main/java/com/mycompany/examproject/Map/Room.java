@@ -7,7 +7,6 @@ package com.mycompany.examproject.Map;
 import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
-
 /**
  *
  * @author Arseniy
@@ -16,11 +15,11 @@ public class Room implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private int x, y, floor; // Coordinates and floor number
-    private RoomType type;   // Type of the room
-    private List<Room> connections; // Adjacent rooms (for navigation)
-    private String description; // Textual description of the room
-    private boolean visited; // Tracks if the room has been visited
+    private int x, y, floor;
+    private RoomType type;
+    private List<Room> connections;
+    private String description;
+    private boolean visited;
     private String roomPictureSource;
     private boolean visitedByPlayer;
 
@@ -49,7 +48,6 @@ public class Room implements Serializable{
     public boolean isVisitedByPlayer() { return visitedByPlayer; }
     public void setVisitedByPlayer(boolean visitedByPlayer) { this.visitedByPlayer = visitedByPlayer; }
     
-    // Getters and setters
     public int getX() { return x; }
     public int getY() { return y; }
     public int getFloor() { return floor; }
@@ -63,4 +61,5 @@ public class Room implements Serializable{
     public String getRoomPictureSource(){
         return this.roomPictureSource;
     }
+    
 }

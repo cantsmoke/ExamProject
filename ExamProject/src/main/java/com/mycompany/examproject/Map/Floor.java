@@ -15,14 +15,15 @@ public class Floor implements Serializable{
     
     private static final long serialVersionUID = 1L;
     
-    private int floorNumber; // Floor index (1 to 10)
-    private int width, height; // Dimensions of the floor
-    private Room[][] rooms; // 2D grid of rooms
-    private Room staircaseUpRoom; // Room with staircase leading up
-    private Room staircaseDownRoom; // Room with staircase leading down
-    private Room restRoom; // Room for resting
-    private Room bossRoom; // Room with the boss
-    private Room startRoom; // Starting room (only on floor 1)
+    private int floorNumber;
+    private int width, height;
+    
+    private Room[][] rooms;
+    private Room staircaseUpRoom;
+    private Room staircaseDownRoom;
+    private Room restRoom;
+    private Room bossRoom;
+    private Room startRoom;
 
     public Floor(int floorNumber, int width, int height) {
         this.floorNumber = floorNumber;
@@ -31,7 +32,6 @@ public class Floor implements Serializable{
         this.rooms = new Room[width][height];
     }
 
-    // Getters and setters
     public Room[][] getRooms() { return rooms; }
     public Room getStaircaseUpRoom() { return staircaseUpRoom; }
     public Room getStaircaseDownRoom() { return staircaseDownRoom; }
@@ -48,7 +48,6 @@ public class Floor implements Serializable{
     public int getHeight() { return height; }
     public int getFloorNumber() { return floorNumber; }
 
-    // Reset visited status of all rooms for maze generation
     public void resetVisited() {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {

@@ -20,6 +20,8 @@ public class Room {
     private String roomPictureSource;
     private boolean visitedByPlayer;
 
+    private boolean wasExplored = false;
+    
     public Room(int x, int y, int floor, RoomType type, String description, String roomPictureSource) {
         this.x = x;
         this.y = y;
@@ -32,6 +34,14 @@ public class Room {
         this.visitedByPlayer = false;
     }
 
+    public void setExplored(boolean wasExplored){
+        this.wasExplored = wasExplored;
+    }
+    
+    public boolean wasExplored(){
+        return this.wasExplored;
+    }
+    
     public boolean isVisitedByPlayer() { return visitedByPlayer; }
     public void setVisitedByPlayer(boolean visitedByPlayer) { this.visitedByPlayer = visitedByPlayer; }
     

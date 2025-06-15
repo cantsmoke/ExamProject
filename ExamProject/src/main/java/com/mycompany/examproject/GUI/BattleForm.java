@@ -24,6 +24,8 @@ public class BattleForm extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
+        
+        this.setResizable(false);
     }
 
     /**
@@ -58,13 +60,16 @@ public class BattleForm extends javax.swing.JFrame {
 
         BattleFramePanel.setBackground(new java.awt.Color(0, 0, 0));
 
+        logScrollPane.setBackground(new java.awt.Color(0, 0, 0));
+        logScrollPane.setBorder(new AntiqueBorder());
+
         battleLogArea.setEditable(false);
         battleLogArea.setBackground(new java.awt.Color(0, 0, 0));
         battleLogArea.setColumns(20);
         battleLogArea.setFont(new java.awt.Font("Yu Mincho Light", 0, 13)); // NOI18N
         battleLogArea.setForeground(new java.awt.Color(204, 204, 204));
         battleLogArea.setRows(5);
-        battleLogArea.setBorder(new AntiqueBorder());
+        battleLogArea.setBorder(null);
         battleLogArea.setCaretColor(new java.awt.Color(0, 0, 0));
         logScrollPane.setViewportView(battleLogArea);
 

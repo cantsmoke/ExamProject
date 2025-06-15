@@ -17,4 +17,9 @@ public class Axe extends Weapon{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_26_14.png";
     }
     
+    public Axe(Axe other) {
+        super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_26_14.png";
+    }
+    
 }

@@ -17,4 +17,9 @@ public class Sword extends Weapon{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
     }
     
+    public Sword(Sword other) {
+        super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 11_53_15.png";
+    }
+    
 }

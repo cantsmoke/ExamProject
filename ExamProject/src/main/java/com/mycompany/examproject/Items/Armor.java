@@ -101,6 +101,7 @@ public abstract class Armor implements Equipment{
     public void repair(){
         this.durability = this.maxDurability;
         this.damageReduction = this.maxDamageReduction;
+        this.isBroken = false;
     }
     
 }

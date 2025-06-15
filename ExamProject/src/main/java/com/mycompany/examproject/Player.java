@@ -80,8 +80,8 @@ public class Player {
         this.selectedWeapon = null;
         this.selectedArmor = null;    
         
-        this.totalSoulsAmount = 450;
-        this.currentSoulsAmount = 450;
+        this.totalSoulsAmount = 0;
+        this.currentSoulsAmount = 0;
         this.level = 1;
         
         this.currentRoom = room;       

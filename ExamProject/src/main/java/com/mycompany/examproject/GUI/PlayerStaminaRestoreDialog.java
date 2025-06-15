@@ -25,6 +25,8 @@ public class PlayerStaminaRestoreDialog extends javax.swing.JDialog {
         this.maxStamina = maxStamina;
         
         updateLabels();
+        
+        this.setResizable(false);
     }
 
     /**

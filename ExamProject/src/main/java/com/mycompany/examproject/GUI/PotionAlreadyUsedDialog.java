@@ -20,6 +20,8 @@ public class PotionAlreadyUsedDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         initComponents();
         setLocationRelativeTo(null);
+        
+        this.setResizable(false);
     }
 
     /**

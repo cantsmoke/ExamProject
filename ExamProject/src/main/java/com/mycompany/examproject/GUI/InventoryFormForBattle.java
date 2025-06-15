@@ -44,6 +44,8 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                 closeInventoryButtonActionPerformed();
             }
         });
+        
+        this.setResizable(false);
     }
 
     /**
@@ -254,7 +256,7 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
                 } else {
                     itemDurabilityLabel.setForeground(new Color(204, 204, 204));
                 }
-                itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()) {});
+                itemIconLabel.setIcon(new ImageIcon(selected.getImageUrl()));
             }
             potionList.clearSelection();
         }

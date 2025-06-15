@@ -22,6 +22,8 @@ public class ArmorBrokeDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 13_59_53.png");
+        
+        this.setResizable(false);
     }
 
     /**

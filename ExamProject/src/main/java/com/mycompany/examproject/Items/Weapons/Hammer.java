@@ -17,4 +17,9 @@ public class Hammer extends Weapon{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 12_02_48.png";
     }
     
+    public Hammer(Hammer other) {
+        super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 12_02_48.png";
+    }
+    
 }

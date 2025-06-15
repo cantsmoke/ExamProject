@@ -11,17 +11,46 @@ import com.mycompany.examproject.Enemies.EnemySection3Factory;
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.BossType;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
+import com.mycompany.examproject.Enemies.enemyStructure.Mimic;
 import com.mycompany.examproject.GUI.EnemyEncounteredDialog;
+import com.mycompany.examproject.GUI.FightLoseForm;
+import com.mycompany.examproject.GUI.ForewordDialog;
 import com.mycompany.examproject.GUI.InventoryForm;
 import com.mycompany.examproject.GUI.InventoryFormForBattle;
+import com.mycompany.examproject.GUI.MainMenuForm;
+import com.mycompany.examproject.GUI.NothingFoundDialog;
+import com.mycompany.examproject.GUI.StashFoundDialog;
 import com.mycompany.examproject.GUI.StateAndNavigationForm;
+import com.mycompany.examproject.GUI.TrapDialog;
 import com.mycompany.examproject.GUI.UpgradeMenu;
+import com.mycompany.examproject.GUI.YouAreRestingDialog;
+import com.mycompany.examproject.GUI.YouFoundChestDialog;
+import com.mycompany.examproject.GUI.YouLostDialog;
+import com.mycompany.examproject.Items.Armors.ArmorStorage;
+import com.mycompany.examproject.Items.Armors.HeavyArmor;
+import com.mycompany.examproject.Items.Armors.LightArmor;
+import com.mycompany.examproject.Items.Armors.TrooperArmor;
+import com.mycompany.examproject.Items.Equipment;
+import com.mycompany.examproject.Items.Potion;
 import com.mycompany.examproject.Items.Potions.Bomb;
+import com.mycompany.examproject.Items.Potions.EstusBottle;
 import com.mycompany.examproject.Items.Potions.Poison;
+import com.mycompany.examproject.Items.Potions.StaminaPotion;
+import com.mycompany.examproject.Items.Weapons.Axe;
+import com.mycompany.examproject.Items.Weapons.Bow;
+import com.mycompany.examproject.Items.Weapons.Hammer;
+import com.mycompany.examproject.Items.Weapons.Spear;
+import com.mycompany.examproject.Items.Weapons.Sword;
+import com.mycompany.examproject.Items.Weapons.WeaponsStorage;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
 import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+import javax.swing.JFrame;
 
 /**
  *
@@ -42,6 +71,9 @@ public class GUIandLogicIntermediary {
     private GUIandLogicIntermediary(){}
     
     public static void handleNewGameButtonPressed(){ 
+        ForewordDialog forewordDialog = new ForewordDialog(null, true);
+        forewordDialog.setVisible(true);
+        
         castleMapGenerator = new CastleMapGenerator();
         castleMapGenerator.generateMap();
         
@@ -73,6 +105,7 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        handlePlayerFoundRestRoom();
     }
     
     public static void handlePLayerGoingEast() {
@@ -88,6 +121,7 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        handlePlayerFoundRestRoom();
     }
     
     public static void handlePLayerGoingWest() {
@@ -103,6 +137,7 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        handlePlayerFoundRestRoom();
     }
     
     public static void handlePLayerGoingNorth() {
@@ -118,6 +153,7 @@ public class GUIandLogicIntermediary {
         player.getCurrentRoom().setVisitedByPlayer(true);
         
         stateAndNavigationForm.updateLabels();
+        handlePlayerFoundRestRoom();
     }
     
     public static void handlePLayerUsingStairs() {
@@ -147,7 +183,7 @@ public class GUIandLogicIntermediary {
     }
     
     private static void handleEnemyEncounter(Room currentRoom) {
-        double encounterProbability = 0.2 + currentRoom.getFloor() * 0.05;
+        double encounterProbability = 0.25;
         double randomValue = Math.random();
         
         if (encounterProbability > randomValue && currentRoom.getType() != RoomType.STAIRCASE_DOWN
@@ -172,6 +208,31 @@ public class GUIandLogicIntermediary {
                 stateAndNavigationForm.setVisible(false);
             }
         }
+    }
+    
+    public static void handlePlayerFoundRestRoom(){
+        if (player.getCurrentRoom().getType() == RoomType.REST){
+            
+            stateAndNavigationForm.setVisible(false);
+            player.setHp(player.getMaxHp());
+            player.setStamina(player.getMaxStamina());
+            for (Equipment eq : player.getInventory()) {
+                if (eq instanceof EstusBottle) {
+                    ((EstusBottle) eq).refill();
+                }
+            }
+            
+            YouAreRestingDialog youAreRestingDialog = new YouAreRestingDialog(null, true);
+            youAreRestingDialog.setVisible(true); 
+        }
+    }
+    
+    public static void handleMimicEncounter() {
+        EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
+        enemyEncounteredDialog.setVisible(true);
+        Enemy enemy = new Mimic("Mimic", 300, 50, Player.getInstance().getDamage());
+        fight = new Fight(player, enemy);
+        stateAndNavigationForm.setVisible(false);
     }
     
     private static Enemy generateBasicEnemy(){
@@ -249,6 +310,200 @@ public class GUIandLogicIntermediary {
     
     public static boolean isPoisoned() {
         return fight.isPoisoned();
+    }
+    
+    public static void handlePLayerExploringLocation() {
+        double rand = Math.random();
+        
+        Player.getInstance().getCurrentRoom().setExplored(true);
+        
+        if (rand < 0.07) {
+            
+            stateAndNavigationForm.setVisible(false);
+            TrapDialog trapDialog = new TrapDialog(null, true);
+            trapDialog.setVisible(true);
+            Player.getInstance().setHp((int) (player.getHp() - player.getMaxHp() * 0.8));
+            if (player.getHp() <= 0){   
+                YouLostDialog youLostDialog = new YouLostDialog(null, true);
+                youLostDialog.setVisible(true);
+            } else {
+                stateAndNavigationForm.updateLabels();
+                stateAndNavigationForm.setVisible(true);
+            }
+            
+        } else if (rand < 0.14) {
+            
+            stateAndNavigationForm.setVisible(false);
+            double subRand1 = Math.random();
+            if (subRand1 < 0.7) {
+                ArrayList<Potion> foundItems = processFoundedItemsInStash();
+                StashFoundDialog stashFoundDialog = new StashFoundDialog(null, true, foundItems);
+                stashFoundDialog.setVisible(true);
+                
+                stateAndNavigationForm.updateLabels();
+                stateAndNavigationForm.setVisible(true);
+            } else {
+                YouFoundChestDialog YouFoundChestDialog = new YouFoundChestDialog(null, true);
+                YouFoundChestDialog.setVisible(true);
+                
+                stateAndNavigationForm.updateLabels();
+            }
+            
+        } else {
+            stateAndNavigationForm.setVisible(false);
+            
+            NothingFoundDialog nothingFoundDialog = new NothingFoundDialog(null, true);
+            nothingFoundDialog.setVisible(true);
+            
+            stateAndNavigationForm.updateLabels();
+            stateAndNavigationForm.setVisible(true);
+        }
+    }
+    
+    private static ArrayList<Potion> processFoundedItemsInStash() {
+        ArrayList<Potion> foundItems = new ArrayList<>();
+        boolean foundBomb = false;
+        boolean foundStamina = false;
+        boolean foundPoison = false;
+        if (Math.random() < 0.20) {
+            foundBomb = true;
+        }
+        if (Math.random() < 0.35) {
+            foundStamina = true;
+        }
+        if (Math.random() < 0.5) {
+            foundPoison = true;
+        }
+
+        ArrayList<String> foundTypes = new ArrayList<>();
+        if (foundBomb) foundTypes.add("Bomb");
+        if (foundStamina) foundTypes.add("StaminaPotion");
+        if (foundPoison) foundTypes.add("PoisonPotion");
+
+        if (foundTypes.isEmpty()) {
+            foundTypes.add("PoisonPotion");
+        }
+
+        while (foundTypes.size() > 2) {
+            foundTypes.remove((int)(Math.random() * foundTypes.size()));
+        }
+
+        if (foundTypes.size() == 1) {
+            String type = foundTypes.get(0);
+            foundItems.add(createPotionByType(type));
+            foundItems.add(createPotionByType(type));
+        } else if (foundTypes.size() == 2) {
+            foundItems.add(createPotionByType(foundTypes.get(0)));
+            foundItems.add(createPotionByType(foundTypes.get(1)));
+        }
+        
+        addItemsToInventory(foundItems);
+        
+        return foundItems;
+    }
+
+    private static void addItemsToInventory(List<? extends Equipment> items) {
+        Player player = Player.getInstance();
+        for (Equipment e : items) {
+            player.addItemToInventory(e);
+        }
+    }
+    
+    // Вспомогательный метод
+    private static Potion createPotionByType(String type) {
+        switch (type) {
+            case "Bomb":
+                return new Bomb();
+            case "StaminaPotion":
+                return new StaminaPotion();
+            case "PoisonPotion":
+                return new Poison();
+            default:
+                throw new IllegalArgumentException("Unknown potion type!");
+        }
+    }
+      
+    public static ArrayList<Equipment> processFoundedItemsInChest(int floor) {
+        ArrayList<Equipment> foundItems = new ArrayList<>();
+        Random random = new Random();
+
+        ArrayList<String> possibleTypes = new ArrayList<>(Arrays.asList(
+                "Bomb", "PoisonPotion", "StaminaPotion",
+                "LightArmor", "TrooperArmor", "HeavyArmor",
+                "Sword", "Bow", "Spear", "Hammer", "Axe"
+        ));
+
+        boolean giveArmor = random.nextBoolean();
+
+        String chosenType = null;
+        if (giveArmor) {
+            String[] armorTypes = {"LightArmor", "TrooperArmor", "HeavyArmor"};
+            chosenType = armorTypes[random.nextInt(armorTypes.length)];
+        } else {
+            String[] weaponTypes = {"Sword", "Bow", "Spear", "Hammer", "Axe"};
+            chosenType = weaponTypes[random.nextInt(weaponTypes.length)];
+        }
+        
+        foundItems.add(getEquipmentSampleByTypeAndFloor(chosenType, floor, random));
+        
+        possibleTypes.remove(chosenType);
+
+        int totalItems = 3 + random.nextInt(3); // 3, 4 или 5
+
+        while (foundItems.size() < totalItems && !possibleTypes.isEmpty()) {
+            int idx = random.nextInt(possibleTypes.size());
+            String nextType = possibleTypes.remove(idx);
+            foundItems.add(getEquipmentSampleByTypeAndFloor(nextType, floor, random));
+        }
+
+        addItemsToInventory(foundItems);
+        
+        return foundItems;
+    }
+
+    private static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
+        int idxInZone = getRandomIndexForFloor(floor, random);
+        switch (type) {
+            case "LightArmor":
+                return new LightArmor(ArmorStorage.lightArmor.get(idxInZone));
+            case "TrooperArmor":
+                return new TrooperArmor(ArmorStorage.trooperArmor.get(idxInZone));
+            case "HeavyArmor":
+                return new HeavyArmor(ArmorStorage.heavyArmor.get(idxInZone));
+            case "Sword":
+                return new Sword(WeaponsStorage.swords.get(idxInZone));
+            case "Bow":
+                return new Bow(WeaponsStorage.bows.get(idxInZone));
+            case "Spear":
+                return new Spear(WeaponsStorage.spears.get(idxInZone));
+            case "Hammer":
+                return new Hammer(WeaponsStorage.hammers.get(idxInZone));
+            case "Axe":
+                return new Axe(WeaponsStorage.axes.get(idxInZone));
+            // Зелья и расходники создаются как новые экземпляры 
+            case "Bomb":
+                return new Bomb();
+            case "PoisonPotion":
+                return new Poison();
+            case "StaminaPotion":
+                return new StaminaPotion();
+            default:
+                throw new IllegalArgumentException("Unknown equipment type: " + type);
+        }
+    }
+
+    // Возвращает индекс в списке предметов согласно текущей зоне
+    private static int getRandomIndexForFloor(int floor, Random random) {
+        if (floor <= 3) {
+            // зона 1, индексы 0..4
+            return random.nextInt(5);
+        } else if (floor <= 5) {
+            // зона 2, индексы 5..9
+            return 5 + random.nextInt(5);
+        } else {
+            // зона 3, индексы 10..14
+            return 10 + random.nextInt(5);
+        }
     }
     
 }

@@ -24,6 +24,8 @@ public class NotEnoughStaminaDialog extends javax.swing.JDialog {
         this.requiredStamina = requiredStamina;
         
         updateLabels();
+        
+        this.setResizable(false);
     }
 
     /**

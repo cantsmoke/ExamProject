@@ -128,7 +128,7 @@ public class Fight {
         }
         
         if (enemyActionForPlayersAttack == EntityActionType.DODGE){
-            double enemyDodgePossibility = enemy.getDodgeP() - 0.1  + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
+            double enemyDodgePossibility = enemy.getDodgeP() + calculateEquipmentDodgePenalty(player.getTotalEquipmentWeight());
             if(Math.random() < enemyDodgePossibility){
                 String logPart = enemy.getName() + " dodged your attack!";
                 battleForm.appendToLogArea(logPart);
@@ -144,7 +144,7 @@ public class Fight {
                 }
             }
         } else if (enemyActionForPlayersAttack == EntityActionType.BLOCK){
-            double enemyBlockPossibility = enemy.getBlockP() + 0.1;
+            double enemyBlockPossibility = enemy.getBlockP() + 0.15;
             if(Math.random() < enemyBlockPossibility){
                 //String logPart = enemy.takeLightDamage(player.getSelectedWeapon(), player.getBaseDamage());
                 String logPart = enemy.getName() + " blocked your light attack!";
@@ -392,6 +392,7 @@ public class Fight {
             
             GUIandLogicIntermediary.showNavigationForm();
         } else if (player.getHp() <= 0){
+            battleForm.setVisible(false);
             FightLoseForm loseForm = new FightLoseForm();
             loseForm.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             loseForm.addWindowListener(new java.awt.event.WindowAdapter() {

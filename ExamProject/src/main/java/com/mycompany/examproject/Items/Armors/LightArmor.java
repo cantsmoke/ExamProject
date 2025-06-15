@@ -17,4 +17,9 @@ public class LightArmor extends Armor{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
     }
     
+    public LightArmor(LightArmor other) {
+        super(other.getName(), other.getWeight(), other.getDamageReduction(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_28_15.png";
+    }
+    
 }

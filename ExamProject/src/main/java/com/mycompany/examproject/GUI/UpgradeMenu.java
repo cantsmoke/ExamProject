@@ -33,6 +33,8 @@ public class UpgradeMenu extends javax.swing.JFrame {
                 closeButtonAction();
             }
         });
+        
+        this.setResizable(false);
     }
 
     /**
@@ -59,7 +61,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
         closeButton = new javax.swing.JButton();
         counterAttackButton = new javax.swing.JButton();
         specialAbilitiesLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        specialAbilityCrollPane = new javax.swing.JScrollPane();
         counterAttackDescriptionArea = new javax.swing.JTextArea();
 
         currentStrengthLabel1.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
@@ -153,6 +155,8 @@ public class UpgradeMenu extends javax.swing.JFrame {
         specialAbilitiesLabel.setForeground(new java.awt.Color(204, 204, 204));
         specialAbilitiesLabel.setText("Special abilities:");
 
+        specialAbilityCrollPane.setBorder(null);
+
         counterAttackDescriptionArea.setBackground(new java.awt.Color(0, 0, 0));
         counterAttackDescriptionArea.setColumns(20);
         counterAttackDescriptionArea.setFont(new java.awt.Font("Yu Mincho Light", 0, 12)); // NOI18N
@@ -162,7 +166,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
         counterAttackDescriptionArea.setText("If you successfully block an enemy attack, you automatically deal a counterattack, which deals 20 to 30 percent of your light attack damage. Note that a counterattack costs 5 stamina points and spends them accordingly. You also won't be able to counterattack if your equipment weight is one and a half times your tolerable weight.");
         counterAttackDescriptionArea.setWrapStyleWord(true);
         counterAttackDescriptionArea.setEnabled(false);
-        jScrollPane1.setViewportView(counterAttackDescriptionArea);
+        specialAbilityCrollPane.setViewportView(counterAttackDescriptionArea);
 
         javax.swing.GroupLayout upgradeMenuPanelLayout = new javax.swing.GroupLayout(upgradeMenuPanel);
         upgradeMenuPanel.setLayout(upgradeMenuPanelLayout);
@@ -175,33 +179,35 @@ public class UpgradeMenu extends javax.swing.JFrame {
                         .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(agilityIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(upgradeAgilityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(enduranceIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(upgradeEnduranceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(counterAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(specialAbilitiesLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(upgradeStrengthButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(strenghtIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(agilityIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(upgradeAgilityButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(18, 18, 18)
+                                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(enduranceIconLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(upgradeEnduranceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(currentSoulsAmountLabel)))
+                                .addGap(18, 18, 18)
+                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(currentStrengthLabel)
+                                    .addComponent(currentAgilityLabel)
+                                    .addComponent(currentEnduranceLabel)))
                             .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(currentSoulsAmountLabel)))
-                        .addGap(18, 18, 18)
-                        .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(currentStrengthLabel)
-                            .addComponent(currentAgilityLabel)
-                            .addComponent(currentEnduranceLabel))
+                                .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(specialAbilitiesLabel)
+                                    .addComponent(counterAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(specialAbilityCrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 266, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -210,19 +216,19 @@ public class UpgradeMenu extends javax.swing.JFrame {
             .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                 .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                            .addGap(81, 81, 81)
-                            .addComponent(currentStrengthLabel)
-                            .addGap(18, 18, 18)
-                            .addComponent(currentAgilityLabel)
-                            .addGap(18, 18, 18)
-                            .addComponent(currentEnduranceLabel))
-                        .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                            .addGap(81, 81, 81)
-                            .addComponent(enduranceIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upgradeMenuPanelLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(agilityIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(agilityIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                            .addGap(81, 81, 81)
+                            .addGroup(upgradeMenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
+                                    .addComponent(currentStrengthLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(currentAgilityLabel)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(currentEnduranceLabel))
+                                .addComponent(enduranceIconLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addComponent(currentSoulsAmountLabel)
@@ -242,7 +248,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                         .addComponent(closeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(upgradeMenuPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(specialAbilityCrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -368,8 +374,8 @@ public class UpgradeMenu extends javax.swing.JFrame {
     private javax.swing.JLabel currentStrengthLabel;
     private javax.swing.JLabel currentStrengthLabel1;
     private javax.swing.JLabel enduranceIconLabel;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel specialAbilitiesLabel;
+    private javax.swing.JScrollPane specialAbilityCrollPane;
     private javax.swing.JLabel strenghtIconLabel;
     private javax.swing.JButton upgradeAgilityButton;
     private javax.swing.JButton upgradeEnduranceButton;

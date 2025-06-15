@@ -17,4 +17,9 @@ public class Spear extends Weapon{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
     }
     
+    public Spear(Spear other) {
+        super(other.getName(), other.getWeight(), other.getDamage(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 13_45_57 (1).png";
+    }
+    
 }

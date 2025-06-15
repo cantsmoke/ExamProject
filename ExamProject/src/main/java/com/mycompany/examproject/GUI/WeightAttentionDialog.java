@@ -25,6 +25,8 @@ public class WeightAttentionDialog extends javax.swing.JDialog {
         setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 1.png");
         
         textLabel3.setText(Player.getInstance().getBearableWeight() + " KG");
+        
+        this.setResizable(false);
     }
 
     /**

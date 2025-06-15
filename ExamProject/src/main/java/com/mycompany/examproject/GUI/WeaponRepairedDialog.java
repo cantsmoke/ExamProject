@@ -22,6 +22,8 @@ public class WeaponRepairedDialog extends javax.swing.JDialog {
         initComponents();
         setLocationRelativeTo(null);
         setIcon("C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 13 июн. 2025 г., 14_36_06.png");
+        
+        this.setResizable(false);
     }
 
     /**

@@ -20,6 +20,8 @@ public class MainMenuForm extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
+        
+        this.setResizable(false);
     }
 
     /**

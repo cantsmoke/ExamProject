@@ -24,6 +24,8 @@ public class WeaponSelectedDialog extends javax.swing.JDialog {
         this.name = name;
         
         updateLabels();
+        
+        this.setResizable(false);
     }
 
     /**

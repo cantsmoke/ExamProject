@@ -24,6 +24,8 @@ public class ArmorSelectedDialog extends javax.swing.JDialog {
         this.name = name;
         
         updateLabels();
+        
+        this.setResizable(false);
     }
 
     /**

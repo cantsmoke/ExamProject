@@ -25,6 +25,8 @@ public class PlayerHealedDialog extends javax.swing.JDialog {
         this.maxHealth = maxHealth;
         
         updateLabels();
+        
+        this.setResizable(false);
     }
 
     /**

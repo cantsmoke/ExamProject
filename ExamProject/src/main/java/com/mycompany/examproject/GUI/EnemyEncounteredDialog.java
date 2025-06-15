@@ -20,6 +20,8 @@ public class EnemyEncounteredDialog extends javax.swing.JDialog {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
+        
+        this.setResizable(false);
     }
 
     /**

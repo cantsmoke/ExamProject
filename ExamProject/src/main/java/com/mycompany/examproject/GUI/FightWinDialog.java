@@ -20,6 +20,8 @@ public class FightWinDialog extends javax.swing.JDialog {
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
         initComponents();
+        
+        this.setResizable(false);
     }
 
     /**

@@ -17,4 +17,9 @@ public class HeavyArmor extends Armor{
         this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 1.png";
     }
     
+    public HeavyArmor(HeavyArmor other) {
+        super(other.getName(), other.getWeight(), other.getDamageReduction(), other.getDurability());
+        this.imageURL = "C:\\Users\\Arseniy\\Downloads\\ChatGPT Image 12 июн. 2025 г., 1.png";
+    }
+    
 }

@@ -10,4 +10,5 @@ package com.mycompany.examproject.Items;
  */
 public interface Equipment {
     void checkStatus();
+    String getName();
 }

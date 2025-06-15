@@ -101,6 +101,7 @@ public abstract class Weapon implements Equipment{
     public void repair(){
         this.durability = this.maxDurability;
         this.damage = this.maxDamage;
+        this.isBroken = false;
     }
     
 }

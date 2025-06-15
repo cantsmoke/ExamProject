@@ -26,6 +26,8 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
+        
+        this.setResizable(false);
     }
 
     /**
@@ -51,6 +53,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationImageLabel = new javax.swing.JLabel();
         LocationDescriptionScrollPane = new javax.swing.JScrollPane();
         locationDescriptionArea = new javax.swing.JTextArea();
+        exploreLocationButton = new javax.swing.JButton();
         NavigationPanel = new javax.swing.JPanel();
         currentFloorLabel = new javax.swing.JLabel();
         moveNorthButton = new javax.swing.JButton();
@@ -194,6 +197,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationImageLabel.setBorder(new AntiqueBorder());
 
         LocationDescriptionScrollPane.setBackground(new java.awt.Color(0, 0, 0));
+        LocationDescriptionScrollPane.setBorder(new AntiqueBorder());
         LocationDescriptionScrollPane.setForeground(new java.awt.Color(0, 0, 0));
 
         locationDescriptionArea.setEditable(false);
@@ -204,9 +208,20 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         locationDescriptionArea.setLineWrap(true);
         locationDescriptionArea.setRows(5);
         locationDescriptionArea.setWrapStyleWord(true);
-        locationDescriptionArea.setBorder(new AntiqueBorder());
+        locationDescriptionArea.setBorder(null);
         locationDescriptionArea.setCaretColor(new java.awt.Color(204, 204, 204));
         LocationDescriptionScrollPane.setViewportView(locationDescriptionArea);
+
+        exploreLocationButton.setBackground(new java.awt.Color(51, 51, 51));
+        exploreLocationButton.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
+        exploreLocationButton.setForeground(new java.awt.Color(204, 204, 204));
+        exploreLocationButton.setText("Explore location");
+        exploreLocationButton.setBorder(null);
+        exploreLocationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exploreLocationButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout LocationInfoPanelLayout = new javax.swing.GroupLayout(LocationInfoPanel);
         LocationInfoPanel.setLayout(LocationInfoPanelLayout);
@@ -218,15 +233,21 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                     .addComponent(locationImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 558, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LocationInfoPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(exploreLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(143, 143, 143))
         );
         LocationInfoPanelLayout.setVerticalGroup(
             LocationInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LocationInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(locationImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(113, 113, 113))
+                .addComponent(LocationDescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(exploreLocationButton, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155))
         );
 
         NavigationPanel.setBackground(new java.awt.Color(0, 0, 0));
@@ -371,7 +392,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
                 .addComponent(moveSouthButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(useLadderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -388,8 +409,10 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(PlayerInfoAndBasicButtonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(LocationInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(NavigationPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(LocationInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -434,6 +457,10 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         GUIandLogicIntermediary.handlePLayerUsingStairs();
         System.out.println(Player.getInstance().getCurrentRoom().getFloor());
     }//GEN-LAST:event_useLadderButtonActionPerformed
+
+    private void exploreLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploreLocationButtonActionPerformed
+        GUIandLogicIntermediary.handlePLayerExploringLocation();
+    }//GEN-LAST:event_exploreLocationButtonActionPerformed
 
     public void updateLabels(){
         locationImageLabel.setIcon(new ImageIcon(Player.getInstance().getCurrentRoom().getRoomPictureSource()));
@@ -520,6 +547,14 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         } else {
             moveSouthButton.setEnabled(true);
         }
+        
+        if(Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_DOWN || Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_UP || 
+           Player.getInstance().getCurrentRoom().getType() == RoomType.ENTRANCE_HALL || Player.getInstance().getCurrentRoom().getType() == RoomType.BOSS ||
+           Player.getInstance().getCurrentRoom().wasExplored() == true || Player.getInstance().getCurrentRoom().getType() == RoomType.REST){
+            exploreLocationButton.setEnabled(false);
+        } else {
+            exploreLocationButton.setEnabled(true);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -529,6 +564,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
     private javax.swing.JPanel PlayerInfoAndBasicButtonsPanel;
     private javax.swing.JLabel currentFloorLabel;
     private javax.swing.JButton exitToMainMenuButton;
+    private javax.swing.JButton exploreLocationButton;
     private javax.swing.JLabel floorNumber;
     private javax.swing.JProgressBar healthBar;
     private javax.swing.JButton inventoryButton;

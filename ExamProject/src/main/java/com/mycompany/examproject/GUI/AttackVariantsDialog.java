@@ -29,6 +29,8 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
         if (Player.getInstance().getTotalEquipmentWeight() >= Player.getInstance().getBearableWeight()){
             lightAttackButton.setEnabled(false);
         }
+        
+        this.setResizable(false);
     }
     
     public EntityActionType getAttackType(){

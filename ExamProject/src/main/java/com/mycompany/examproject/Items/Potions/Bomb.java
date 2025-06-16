@@ -71,7 +71,7 @@ public class Bomb extends Potion implements Serializable{
      */
     @Override
     public String toString() {
-        return name + "(" + damage + ")";
+        return this.name + "(" + damage + ")";
     }
 
     /**

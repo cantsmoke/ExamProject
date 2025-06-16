@@ -30,47 +30,47 @@ public abstract class Weapon implements Equipment, Serializable{
     /**
      * Название оружия.
      */
-    protected String name;
+    private String name;
     
     /**
      * Вес оружия.
      */
-    protected int weight;
+    private int weight;
     
     /**
      * Текущий урон оружия.
      */
-    protected int damage;
+    private int damage;
     
     /**
      * Максимальный урон оружия.
      */
-    protected int maxDamage;
+    private int maxDamage;
     
     /**
      * Текущая прочность оружия.
      */
-    protected int durability;
+    private int durability;
     
     /**
      * Максимальная прочность оружия.
      */
-    protected int maxDurability;
+    private int maxDurability;
     
     /**
      * Флаг, указывающий, сломано ли оружие.
      */
-    protected boolean isBroken = false;
+    private boolean isBroken = false;
     
     /**
      * Флаг, указывающий, выбрано ли оружие игроком.
      */
-    protected boolean isSelected = false;
+    private boolean isSelected = false;
     
     /**
      * Флаг, указывающий, был ли показан диалог о поломке оружия.
      */
-    protected boolean wasStatusWindowShowed = false;
+    private boolean wasStatusWindowShowed = false;
     
     /**
      * URL изображения оружия.

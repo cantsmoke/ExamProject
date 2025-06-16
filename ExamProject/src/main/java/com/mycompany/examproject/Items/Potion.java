@@ -33,7 +33,7 @@ public abstract class Potion implements Equipment, Serializable {
     /**
      * Описание зелья (эффекты, способ применения).
      */
-    protected String description;
+    private String description;
 
     /**
      * Создаёт новое зелье с указанными именем и описанием.

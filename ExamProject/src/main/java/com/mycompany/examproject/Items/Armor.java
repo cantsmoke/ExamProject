@@ -5,6 +5,7 @@
 package com.mycompany.examproject.Items;
 
 import com.mycompany.examproject.GUI.ArmorBrokeDialog;
+import com.mycompany.examproject.Items.Equipment;
 import java.io.Serializable;
 
 /**
@@ -33,42 +34,42 @@ public abstract class Armor implements Equipment, Serializable{
     /**
      * Вес брони.
      */
-    protected int weight;
+    private int weight;
     
     /**
      * Текущее значение снижения урона.
      */
-    protected double damageReduction;
+    private double damageReduction;
     
     /**
      * Максимальное значение снижения урона.
      */
-    protected double maxDamageReduction;
+    private double maxDamageReduction;
     
     /**
      * Текущая прочность брони.
      */
-    protected int durability;
+    private int durability;
     
     /**
      * Максимальная прочность брони.
      */
-    protected int maxDurability;
+    private int maxDurability;
     
     /**
      * Флаг, указывающий, сломана ли броня.
      */
-    protected boolean isBroken = false;
+    private boolean isBroken = false;
     
     /**
      * Флаг, указывающий, выбрана ли броня игроком.
      */
-    protected boolean isSelected = false;
+    private boolean isSelected = false;
     
     /**
      * Флаг, указывающий, был ли показан диалог о поломке брони.
      */
-    protected boolean wasStatusWindowShowed = false;
+    private boolean wasStatusWindowShowed = false;
     
     /**
      * URL изображения брони.

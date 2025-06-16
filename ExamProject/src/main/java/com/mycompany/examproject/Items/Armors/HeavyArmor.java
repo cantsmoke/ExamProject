@@ -22,7 +22,7 @@ import java.io.Serializable;
 public class HeavyArmor extends Armor implements Serializable{
     
     private static final long serialVersionUID = 1L;
-    
+
     /**
      * Конструктор для создания новой тяжелой брони с заданными параметрами.
      *

@@ -40,4 +40,18 @@ public interface Skeleton {
      * @return описание результата получения урона
      */
     String takeLightDamage(Weapon selectedWeapon, int baseDamage);
+    
+    /**
+    * Возвращает текущее количество здоровья скелета.
+    *
+    * @return текущее здоровье
+    */
+   int getHealth();
+
+   /**
+    * Возвращает базовый урон скелета.
+    *
+    * @return базовый урон
+    */
+   int getDamage();
 }

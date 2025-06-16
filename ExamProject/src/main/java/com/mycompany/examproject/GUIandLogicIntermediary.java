@@ -684,7 +684,7 @@ public class GUIandLogicIntermediary {
      *
      * @return список найденных зелий
      */
-    private static ArrayList<Potion> processFoundedItemsInStash() {
+    static ArrayList<Potion> processFoundedItemsInStash() {
         ArrayList<Potion> foundItems = new ArrayList<>();
         boolean foundBomb = false;
         boolean foundStamina = false;

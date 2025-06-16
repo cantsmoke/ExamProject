@@ -34,6 +34,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
+
 /**
  * Класс, управляющий боевой системой между игроком и врагом в пошаговой RPG.
  * <p>
@@ -60,7 +61,7 @@ public class Fight {
     /**
      * Форма интерфейса боя, отображающая информацию о бое.
      */
-    private static BattleForm battleForm;
+    static BattleForm battleForm;
 
     /**
      * Индекс текущего шаблона действий врага.
@@ -86,7 +87,6 @@ public class Fight {
      * @param player игрок, участвующий в бою
      * @param enemy враг, против которого ведется бой
      */
-    
     public Fight(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
@@ -531,7 +531,7 @@ public class Fight {
      * и отображается диалог победы. Если здоровье игрока достигает нуля, отображается
      * форма поражения.
      */
-    private void checkWinLoseConditions(){
+    void checkWinLoseConditions(){
         if(enemy.getHealth() <= 0){
             FightWinDialog winDialog = new FightWinDialog(battleForm, true);
             winDialog.setVisible(true);

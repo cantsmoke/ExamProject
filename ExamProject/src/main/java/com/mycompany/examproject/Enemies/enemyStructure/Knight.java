@@ -44,4 +44,18 @@ public interface Knight {
      * @return описание результата нанесенного урона
      */
     String takeLightDamage(Weapon selectedWeapon, int baseDamage);
+    
+    /**
+    * Возвращает текущее количество здоровья рыцаря.
+    *
+    * @return текущее здоровье
+    */
+   int getHealth();
+
+   /**
+    * Возвращает значение базового урона рыцаря.
+    *
+    * @return базовый урон
+    */
+   int getDamage();
 }

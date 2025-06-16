@@ -40,4 +40,18 @@ public interface Hound {
      * @return описание результата получения урона
      */
     String takeLightDamage(Weapon selectedWeapon, int baseDamage);
+    
+    /**
+    * Возвращает текущее количество здоровья гончей.
+    *
+    * @return текущее здоровье
+    */
+   int getHealth();
+
+   /**
+    * Возвращает значение базового урона гончей.
+    *
+    * @return базовый урон
+    */
+   int getDamage();
 }

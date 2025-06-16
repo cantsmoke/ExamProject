@@ -5,6 +5,7 @@
 package com.mycompany.examproject.GUI;
 
 import com.mycompany.examproject.GUIandLogicIntermediary;
+import com.mycompany.examproject.Items.Potions.Bomb;
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Room;
 import com.mycompany.examproject.Map.RoomType;
@@ -14,6 +15,16 @@ import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 
 /**
+ * Главное окно управления состоянием персонажа и навигации по игровому миру.
+ * <p>
+ * Наследуется от {@link javax.swing.JFrame} и предоставляет графический интерфейс для отображения
+ * текущих характеристик игрока (таких как здоровье, выносливость, опыт и др.), а также для перемещения
+ * между различными локациями или областями игрового мира.
+ * <br>
+ * Содержит различные информационные панели, кнопки, мини-карту и средства взаимодействия с игровым состоянием.
+ * <br>
+ * Служит основной точкой взаимодействия пользователя с игровым процессом вне боевых сцен.
+ * </p>
  *
  * @author Arseniy
  */
@@ -417,50 +428,138 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Обрабатывает нажатие кнопки выхода в главное меню.
+    * <p>
+    * Создает и отображает главное меню {@link MainMenuForm}, закрывая текущее окно навигации.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки выхода.
+    */
     private void exitToMainMenuButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitToMainMenuButtonActionPerformed
         MainMenuForm mainMenu = new MainMenuForm();
         mainMenu.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_exitToMainMenuButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки сохранения игры.
+    * <p>
+    * Запускает процедуру сохранения текущего состояния через {@link GUIandLogicIntermediary#saveCurrentGame()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки сохранения.
+    */
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         GUIandLogicIntermediary.saveCurrentGame();
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки движения на запад.
+    * <p>
+    * Передает команду на обработку перемещения игрока в западном направлении через {@link GUIandLogicIntermediary#handlePLayerGoingWest()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки движения на запад.
+    */
     private void moveWestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveWestButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingWest();
     }//GEN-LAST:event_moveWestButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки движения на север.
+    * <p>
+    * Передает команду на обработку перемещения игрока в северном направлении через {@link GUIandLogicIntermediary#handlePLayerGoingNorth()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки движения на север.
+    */
     private void moveNorthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveNorthButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingNorth();
     }//GEN-LAST:event_moveNorthButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки открытия инвентаря.
+    * <p>
+    * Вызывает отображение окна инвентаря через {@link GUIandLogicIntermediary#openInventory()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки инвентаря.
+    */
     private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventoryButtonActionPerformed
         GUIandLogicIntermediary.openInventory();
     }//GEN-LAST:event_inventoryButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки открытия меню улучшений.
+    * <p>
+    * Запускает открытие меню улучшений через {@link GUIandLogicIntermediary#openUpgradeMenu()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки меню улучшений.
+    */
     private void upgradeMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeMenuActionPerformed
         GUIandLogicIntermediary.openUpgradeMenu();
     }//GEN-LAST:event_upgradeMenuActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки движения на восток.
+    * <p>
+    * Передает команду на обработку перемещения игрока в восточном направлении через {@link GUIandLogicIntermediary#handlePLayerGoingEast()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки движения на восток.
+    */
     private void moveEastButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveEastButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingEast();
     }//GEN-LAST:event_moveEastButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки движения на юг.
+    * <p>
+    * Передает команду на обработку перемещения игрока в южном направлении через {@link GUIandLogicIntermediary#handlePLayerGoingSouth()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки движения на юг.
+    */
     private void moveSouthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moveSouthButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerGoingSouth();
     }//GEN-LAST:event_moveSouthButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки использования лестницы или перехода между этажами.
+    * <p>
+    * Выводит в консоль номер текущего этажа игрока до и после попытки перехода через {@link GUIandLogicIntermediary#handlePLayerUsingStairs()}.
+    * </p>
+    * 
+    * @param evt Событие, вызванное нажатием кнопки использования лестницы.
+    */
     private void useLadderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useLadderButtonActionPerformed
         System.out.println(Player.getInstance().getCurrentRoom().getFloor());
         GUIandLogicIntermediary.handlePLayerUsingStairs();
         System.out.println(Player.getInstance().getCurrentRoom().getFloor());
     }//GEN-LAST:event_useLadderButtonActionPerformed
-
+    
+    /**
+    * Обрабатывает нажатие кнопки исследования текущей локации.
+    * <p>
+    * Запускает процесс исследования локации через {@link GUIandLogicIntermediary#handlePLayerExploringLocation()}.
+    * </p>
+    *
+    * @param evt Событие, вызванное нажатием кнопки исследования.
+    */
     private void exploreLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploreLocationButtonActionPerformed
         GUIandLogicIntermediary.handlePLayerExploringLocation();
     }//GEN-LAST:event_exploreLocationButtonActionPerformed
 
+    /**
+    * Обновляет графические элементы формы в соответствии с текущим состоянием игрока и локации.
+    * <p>
+    * Устанавливает изображение локации и её описание, актуализирует показатели здоровья и выносливости на полосах,
+    * отображает уровень, число душ, номер этажа. Изменяет цвет полосы здоровья при низких значениях HP.
+    * Перерисовывает мини-карту, проверяет доступность лестниц и навигационных кнопок.
+    * </p>
+    */
     public void updateLabels(){
         locationImageLabel.setIcon(new ImageIcon(getClass().getResource(Player.getInstance().getCurrentRoom().getRoomPictureSource())));
         locationDescriptionArea.setText(Player.getInstance().getCurrentRoom().getDescription());
@@ -501,6 +600,13 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         UIManager.put("Button.disabledText", Color.BLACK);
     }
     
+    /**
+    * Проверяет, находится ли игрок сейчас в комнате с лестницей, и настраивает кнопку подъёма/спуска.
+    * <p>
+    * Если комната является лестничной клеткой (вверх или вниз), активирует кнопку лестницы и изменяет её цвета.
+    * Иначе кнопка делается неактивной и окрашивается в основной цвет окна.
+    * </p>
+    */
     private void checkIfLadder() {
         if (Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_DOWN || Player.getInstance().getCurrentRoom().getType() == RoomType.STAIRCASE_UP){
             useLadderButton.setForeground(new Color(204, 204, 204));
@@ -513,6 +619,13 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         }
     }
     
+    /**
+    * Устанавливает состояние доступности (enabled/disabled) кнопок навигации в зависимости от
+    * наличия комнат соответствующих направлений (север, юг, восток, запад).
+    * <p>
+    * Также регулирует доступность кнопки "Исследовать локацию" в зависимости от типа комнаты и уже совершённого исследования.
+    * </p>
+    */
     private void checkNavigationButtonsAvailability() {
         int floor = Player.getInstance().getCurrentRoom().getFloor();
         int x = Player.getInstance().getCurrentRoom().getX();

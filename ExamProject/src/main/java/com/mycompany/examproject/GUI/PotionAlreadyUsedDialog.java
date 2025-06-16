@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что зелье уже было использовано.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается, когда игрок пытается повторно применить зелье,
+ * действие которого уже активно.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     PotionAlreadyUsedDialog dialog = new PotionAlreadyUsedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

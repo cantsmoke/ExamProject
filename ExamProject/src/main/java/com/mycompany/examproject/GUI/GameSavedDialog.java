@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока об успешном сохранении игры.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется после завершения операции сохранения,
+ * чтобы подтвердить пользователю, что игра сохранена. Обычно содержит соответствующее
+ * уведомление и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     GameSavedDialog dialog = new GameSavedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

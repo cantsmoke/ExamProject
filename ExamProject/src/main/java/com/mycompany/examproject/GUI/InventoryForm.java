@@ -26,7 +26,21 @@ import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+
 /**
+ * Окно инвентаря игрока.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и предоставляет графический интерфейс для просмотра 
+ * и управления предметами инвентаря игрока вне сражений. Позволяет просматривать список
+ * оружия, зелий и других предметов, а также информацию о них (название, характеристики, количество, прочность и пр.).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     InventoryForm inventoryForm = new InventoryForm();
+ *     inventoryForm.setVisible(true);
+ * </pre>
+ *
  *
  * @author Arseniy
  */
@@ -285,6 +299,18 @@ public class InventoryForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Обрабатывает изменение выбранного оружия в списке weaponList.
+    * <p>
+    * При выборе оружия отображаются его подробные характеристики: название, вес, урон, прочность
+    * (в виде "оставшаяся/максимальная"), а также иконка. Если прочность меньше 20% от максимальной,
+    * метка прочности подсвечивается красным цветом, иначе отображается серым.
+    * Одновременно снимается выделение в списках брони ({@code armorList}) и зелий ({@code potionList}),
+    * чтобы избежать одновременного отображения информации о разных типах предметов.
+    * </p>
+    *
+    * @param evt Событие изменения выбора в списке оружия.
+    */
     private void weaponListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_weaponListValueChanged
         if (!evt.getValueIsAdjusting()) {
             Weapon selected = (Weapon) weaponList.getSelectedValue();
@@ -306,6 +332,18 @@ public class InventoryForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_weaponListValueChanged
 
+    /**
+    * Обрабатывает изменение выбранной брони в списке armorList.
+    * <p>
+    * При выборе брони отображаются ее главные характеристики: название, вес, процент снижения урона,
+    * прочность (в виде "оставшаяся/максимальная"), а также соответствующая иконка. Если прочность ниже 20% от максимальной,
+    * значение прочности подсвечивается красным цветом, иначе серым.
+    * Дополнительно снимается выделение в списках оружия ({@code weaponList}) и зелий ({@code potionList}),
+    * чтобы исключить одновременное отображение сведений о других типах предметов.
+    * </p>
+    *
+    * @param evt Событие изменения выбора в списке брони.
+    */
     private void armorListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_armorListValueChanged
         if (!evt.getValueIsAdjusting()) {
             Armor selected = (Armor) armorList.getSelectedValue();
@@ -332,6 +370,24 @@ public class InventoryForm extends javax.swing.JFrame {
         GUIandLogicIntermediary.showNavigationForm();
     }//GEN-LAST:event_closeInventoryButtonActionPerformed
 
+    /**
+    * Обрабатывает изменение выбранного зелья в списке {@code potionList}.
+    * <p>
+    * При выборе зелья отображает его подробные характеристики, включая название, особенности действия, остаток использований (если применимо)
+    * и иконку. Для Estus Bottle дополнительно выделяет количество оставшихся применений красным цветом, если их осталось 30% и менее.
+    * Для одноразовых предметов выводится сообщение "single use". Вес для всех зелий отображается как "no weight".
+    * Также снимает выделение с других списков предметов — {@code weaponList} и {@code armorList}, чтобы исключить одновременный выбор разных типов вещей.
+    * </p>
+    *
+    * <ul>
+    *  <li>EstusBottle — выводится процент восстановления здоровья и остаток использований.</li>
+    *  <li>StaminaPotion — отображается количество восстанавливаемых очков выносливости.</li>
+    *  <li>Bomb — показывается урон от применения.</li>
+    *  <li>Poison — указывается урон и длительность.</li>
+    * </ul>
+    *
+    * @param evt Событие изменения выбора в списке зелий.
+    */
     private void potionListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_potionListValueChanged
         if (!evt.getValueIsAdjusting()) {
             Potion selected = (Potion) potionList.getSelectedValue();
@@ -413,6 +469,20 @@ public class InventoryForm extends javax.swing.JFrame {
         UpdateLabels();
     }//GEN-LAST:event_repairButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки починки предмета.
+    * <p>
+    * Проверяет, выбран ли в списке оружия или брони предмет, требующий ремонта (является ли он сломанным).
+    * Если выбран сломанный предмет оружия и у игрока достаточно ремонтных компонентов (20 или больше), то предмет чинится,
+    * из инвентаря игрока списывается 20 ремонтных компонентов, и появляется диалог с сообщением об успешном ремонте.
+    * Если ремонтных компонентов не хватает — появляется предупреждающий диалог о неудачной попытке починки.
+    * Аналогично работает и для брони, только для ремонта требуется 30 ремонтных компонентов.
+    * Если не выбран ни один предмет или выбранный предмет не требует ремонта — показывается диалог с соответствующим сообщением.
+    * По завершении процедуры починки обновляются данные на форме.
+    * </p>
+    *
+    * @param evt Событие, сигнализирующее о нажатии кнопки починки.
+    */
     private void equipeUseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipeUseButtonActionPerformed
         Weapon selectedWeapon = weaponList.getSelectedValue();
         Armor selectedArmor = armorList.getSelectedValue();
@@ -469,6 +539,13 @@ public class InventoryForm extends javax.swing.JFrame {
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
     
+    /**
+    * Проверяет, не превышает ли суммарный вес экипировки игрока терпимый вес.
+    * <p>
+    * Если суммарный вес экипировки игрока {@link Player#getTotalEquipmentWeight()} равен или больше максимального переносимого веса
+    * {@link Player#getBearableWeight()}, то отображается диалоговое окно {@link WeightAttentionDialog} с предупреждением о перегрузе.
+    * </p>
+    */
     public void checkSelectedEquipmentWeight(){
         if(Player.getInstance().getTotalEquipmentWeight() >= Player.getInstance().getBearableWeight()){
             WeightAttentionDialog weightAttentionDialog = new WeightAttentionDialog(null, true);
@@ -476,6 +553,16 @@ public class InventoryForm extends javax.swing.JFrame {
         }
     }
     
+    /**
+    * Обновляет содержимое списков инвентаря и связанных меток на форме инвентаря.
+    * <p>
+    * Формирует новые модели для списков оружия, брони и зелий на основе актуального инвентаря игрока {@link Player#getInventory()}.
+    * Каждый тип предметов сортируется по названию и устанавливается в соответствующий список на форме:
+    * {@code weaponList} — для оружия, {@code armorList} — для брони, {@code potionList} — для зелий.
+    * <br>
+    * Также обновляется метка количества ремонтных компонентов на значение, полученное с помощью {@link Player#getRepairComponents()}.
+    * </p>
+    */
     public void UpdateLabels(){
         List<Equipment> inventory = Player.getInstance().getInventory();
         

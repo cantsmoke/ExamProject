@@ -12,6 +12,19 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
+ * Диалоговое окно, отображающее найденные игроком предметы в сундуке.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и используется в момент,
+ * когда игрок открывает сундук и получает новый лут. Показывает 
+ * список найденных предметов и позволяет закрыть окно кнопкой "OK".
+ * </p>
+ * 
+ * Пример использования:
+ * <pre>
+ *     ArrayList&lt;Equipment&gt; foundItems = ...;
+ *     ChestFoundDialog dialog = new ChestFoundDialog(parentFrame, true, foundItems);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

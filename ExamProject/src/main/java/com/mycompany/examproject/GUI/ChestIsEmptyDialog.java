@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что сундук пуст.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и вызывается, когда игрок открывает
+ * сундук, в котором не найдено ни одного предмета. Обычно содержит
+ * сообщение о пустом сундуке и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ChestIsEmptyDialog dialog = new ChestIsEmptyDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

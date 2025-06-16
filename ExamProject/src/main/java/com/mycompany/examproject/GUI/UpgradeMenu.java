@@ -12,6 +12,19 @@ import java.awt.event.WindowEvent;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
 /**
+ * Окно для выбора и проведения улучшений персонажа или его инвентаря.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и предоставляет интерфейс, позволяющий игроку тратить души на улучшения и
+ * повышать характеристики персонажа.
+ * Обычно содержит кнопки для выбора характеристик, отображает текущее количество доступных очков и характеристики после улучшения.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     UpgradeMenu upgradeMenu = new UpgradeMenu();
+ *     upgradeMenu.setVisible(true);
+ * </pre>
+ *
  *
  * @author Arseniy
  */
@@ -284,29 +297,75 @@ public class UpgradeMenu extends javax.swing.JFrame {
         GUIandLogicIntermediary.showNavigationForm();
     }
     
+    /**
+    * Обрабатывает нажатие на кнопку улучшения силы.
+    * <p>
+    * Увеличивает силу игрока при наличии достаточного количества душ, списывает необходимое количество душ,
+    * повышает стоимость следующего улучшения на 25, и обновляет все соответствующие метки и доступность кнопок на форме.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку улучшения силы.
+    */
     private void upgradeStrengthButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeStrengthButtonActionPerformed
         Player.getInstance().boostStrength(requiredSoulsStrength);
         requiredSoulsStrength += 25;
         updateLabels();
     }//GEN-LAST:event_upgradeStrengthButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие на кнопку улучшения ловкости.
+    * <p>
+    * Увеличивает ловкость игрока при наличии достаточного количества душ, списывает необходимое количество душ,
+    * увеличивает стоимость следующего улучшения на 25, и обновляет все соответствующие метки и доступность кнопок на форме.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку улучшения ловкости.
+    */
     private void upgradeAgilityButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeAgilityButtonActionPerformed
         Player.getInstance().boostAgility(requiredSoulsAgility);
         requiredSoulsAgility += 25;
         updateLabels();
     }//GEN-LAST:event_upgradeAgilityButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие на кнопку улучшения выносливости.
+    * <p>
+    * Увеличивает выносливость игрока при наличии достаточного количества душ, списывает необходимое количество душ,
+    * увеличивает стоимость следующего улучшения на 25, и обновляет все соответствующие метки и доступность кнопок на форме.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку улучшения выносливости.
+    */
     private void upgradeEnduranceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_upgradeEnduranceButtonActionPerformed
         Player.getInstance().boostEndurance(requiredSoulsEndurance);
         requiredSoulsEndurance += 25;
         updateLabels();
     }//GEN-LAST:event_upgradeEnduranceButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие на кнопку разблокировки контратаки.
+    * <p>
+    * При наличии достаточного количества душ разблокирует возможность использовать контратаку у игрока,
+    * списывает требуемое количество душ и обновляет метки и кнопки на форме.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку разблокировки контратаки.
+    */
     private void counterAttackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_counterAttackButtonActionPerformed
         Player.getInstance().unlockCounterAttack(requiredSoulsCounterAttack);
         updateLabels();
     }//GEN-LAST:event_counterAttackButtonActionPerformed
     
+    /**
+    * Обновляет отображение информации об уровне характеристик и количестве душ игрока,
+    * а также тексты и состояния кнопок улучшения.
+    * <p>
+    * Устанавливает значения и подписи для меток текущих душ и характеристик (сила, ловкость, выносливость).
+    * Обновляет текст кнопок улучшения в зависимости от текущего значения характеристик и доступности улучшения.
+    * Также обновляет текст на кнопке открытия контратаки.
+    * В завершение вызывает {@link #updateButtonAvaibility()} для корректного состояния кнопок.
+    * </p>
+    */
     private void updateLabels() {
         currentSoulsAmountLabel.setText("Your current souls amount is " + Player.getInstance().getCurrentSoulsAmount() + "!");
         
@@ -341,6 +400,14 @@ public class UpgradeMenu extends javax.swing.JFrame {
         updateButtonAvaibility();
     }
     
+    /**
+    * Обновляет доступность (enabled) кнопок улучшений в зависимости от количества душ у игрока
+    * и возможности дальнейшего улучшения характеристик.
+    * <p>
+    * Если у игрока не хватает душ или характеристика достигла максимального уровня (10), соответствующая кнопка становится неактивной.
+    * Аналогично, если контратака уже разблокирована или не хватает душ на её разблокировку, кнопка также отключается.
+    * </p>
+    */
     private void updateButtonAvaibility() {
         if (Player.getInstance().getCurrentSoulsAmount() < requiredSoulsStrength || Player.getInstance().getStrength() == 10){
             upgradeStrengthButton.setEnabled(false);

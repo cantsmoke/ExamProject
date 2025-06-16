@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что при поиске или взаимодействии ничего не найдено.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда результатом исследования локации ялвяется отсутствие чего-либо в ней.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     NothingFoundDialog dialog = new NothingFoundDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

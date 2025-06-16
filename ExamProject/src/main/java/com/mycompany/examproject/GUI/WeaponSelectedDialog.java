@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о выборе оружия.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок выбирает какое-либо оружие.
+ * Обычно содержит информацию о выбранном оружии и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     WeaponSelectedDialog dialog = new WeaponSelectedDialog(parentFrame, true, "Лук");
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

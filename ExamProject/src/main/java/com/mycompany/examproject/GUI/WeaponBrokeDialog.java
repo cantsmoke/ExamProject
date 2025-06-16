@@ -8,6 +8,17 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о поломке оружия.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется в момент, когда у игрока ломается оружие.
+ * Предназначено для информирования игрока, чтобы он мог вовремя заменить или починить оружие.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     WeaponBrokeDialog dialog = new WeaponBrokeDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

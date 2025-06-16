@@ -8,6 +8,17 @@ import com.mycompany.examproject.GUIandLogicIntermediary;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что он находится в режиме отдыха.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок отдыхает для восстановления
+ * здоровья, энергии и запасов эстуса.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     YouAreRestingDialog dialog = new YouAreRestingDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

@@ -12,6 +12,19 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
+ * Диалоговое окно, отображающее предметы, выпавшие с босса после его победы.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и вызывается после успешной битвы с боссом.
+ * Показывает игроку выпавшие предметы в виде списка и предоставляет кнопку для закрытия окна.
+ * Использует чёрный фон и стилизованный шрифт для соответствия атмосфере игры.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArrayList&lt;Equipment&gt; loot = boss.getDroppedItems();
+ *     BossItemDropDialog dialog = new BossItemDropDialog(parentFrame, true, loot);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

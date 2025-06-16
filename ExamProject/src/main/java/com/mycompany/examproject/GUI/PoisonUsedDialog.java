@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока об успешном использовании яда.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется после того, как игрок применил яд против врага.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     PoisonUsedDialog dialog = new PoisonUsedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о победе в битве.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается после успешного завершения боя.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     FightWinDialog dialog = new FightWinDialog(parentFrame, true, battleResult);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

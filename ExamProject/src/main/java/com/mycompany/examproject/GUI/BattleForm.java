@@ -12,6 +12,20 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Окно с интерфейсом для проведения боя между игроком и противником.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и отображает все элементы, необходимые для управления боем:
+ * сведения об участниках, их характеристики, кнопки для выбора действий (атака, защита, использование предметов и др.),
+ * а также сообщения о ходе сражения и результатах.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     BattleForm battleForm = new BattleForm();
+ *     battleForm.setVisible(true);
+ * </pre>
+ *
+ * Обычно вызывается, когда игрок вступает в бой с врагом.
  *
  * @author Arseniy
  */
@@ -291,10 +305,29 @@ public class BattleForm extends javax.swing.JFrame {
         GUIandLogicIntermediary.handlePlayerOpenDialogFromBattle();
     }//GEN-LAST:event_inventoryButtonActionPerformed
     
+    /**
+    * Добавляет новое сообщение в журнал боя с визуальным разделителем.
+    * <p>
+    * Сообщение добавляется в текстовую область журнала боя, после каждого сообщения добавляется строка "-----------".
+    * </p>
+    *
+    * @param message Сообщение, которое будет добавлено в журнал боя.
+    */
     public void appendToLogArea(String message) {
         battleLogArea.append(message + "\n" + "-----------" + "\n");
     }
     
+    /**
+    * Обновляет доступность и видимость кнопок управления боем в зависимости от выносливости игрока.
+    * <p>
+    * Если у игрока есть выносливость ({@code stamina}>0), кнопка пропуска хода скрывается и выключается,
+    * остальные кнопки (атака, блок, уворот, инвентарь) становятся активными.
+    * Если выносливость на нуле, активной остаётся только уворот и инвентарь, 
+    * а кнопка пропуска становится видимой и доступной.
+    * </p>
+    *
+    * @param player Текущий игрок, чья выносливость анализируется.
+    */
     public void updateButtonAvaibility(Player player){
         if(player.getStamina() > 0){
             skipTurnButton.setVisible(false);
@@ -316,6 +349,18 @@ public class BattleForm extends javax.swing.JFrame {
         }
     }
     
+    /**
+    * Обновляет отображение информации о состоянии игрока и врага на панели боя.
+    * <p>
+    * Обновляются: иконка, имя, полоски здоровья и выносливости, значения урона,
+    * а также цвет полосок здоровья в критическом состоянии (меньше 25%).
+    * Если у персонажа здоровье меньше нуля, на индикаторе показывается 0.
+    * В конце вызывается {@link #updateButtonAvaibility(Player)}.
+    * </p>
+    *
+    * @param player Объект игрока, чьи данные отображаются.
+    * @param enemy  Объект врага, чьи данные отображаются.
+    */
     public void updateLabels(Player player, Enemy enemy){
         skipTurnButton.setVisible(false);
         skipTurnButton.setEnabled(false);

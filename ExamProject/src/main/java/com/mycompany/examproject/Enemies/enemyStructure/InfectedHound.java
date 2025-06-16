@@ -11,63 +11,69 @@ import com.mycompany.examproject.Items.Weapons.Spear;
 import com.mycompany.examproject.Items.Weapons.Sword;
 
 /**
- *
+ * Враг "InfectedHound" — Заражённый Пёс.
+ * 
+ * <p>Шанс уклонения выше, шанс блока низкий.</p>
+ * 
+ * <p>Шаблон атак: тяжёлый — лёгкий — лёгкий — тяжёлый — лёгкий.</p>
+ * 
+ * <p>Урон варьируется в зависимости от типа оружия.</p>
+ * 
  * @author Arseniy
  */
-public class InfectedHound extends Enemy implements Hound{
-    
-    private static EntityActionType[] defaultPattern = new EntityActionType[] {
-            EntityActionType.HEAVY_ATTACK,
-            EntityActionType.LIGHT_ATTACK,
-            EntityActionType.LIGHT_ATTACK,
-            EntityActionType.HEAVY_ATTACK,
-            EntityActionType.LIGHT_ATTACK
-        };
+public class InfectedHound extends Enemy implements Hound {
+
+    private static final EntityActionType[] defaultPattern = new EntityActionType[] {
+        EntityActionType.HEAVY_ATTACK,
+        EntityActionType.LIGHT_ATTACK,
+        EntityActionType.LIGHT_ATTACK,
+        EntityActionType.HEAVY_ATTACK,
+        EntityActionType.LIGHT_ATTACK
+    };
+
     private EntityActionType[] pattern;
     private String iconSource;
-    
     private double dodgeP;
     private double blockP;
-    
+
     public InfectedHound(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = defaultPattern;
         this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 14_30_37.png";
-        
         this.dodgeP = 0.6;
         this.blockP = 0.2;
     }
-    
+
     @Override
-    public String getIconSource(){
-        return this.iconSource;
+    public String getIconSource() {
+        return iconSource;
     }
-    
+
     @Override
     public void setIconSource(String url) {
         this.iconSource = url;
     }
 
     @Override
-    public void setPattern(EntityActionType[] newPattern){
+    public void setPattern(EntityActionType[] newPattern) {
         this.pattern = newPattern;
     }
-    
+
     @Override
     public EntityActionType[] getPattern() {
-        return defaultPattern;
+        return pattern;  // Возвращаем текущий паттерн, а не всегда дефолтный
     }
-    
+
     @Override
-    public double getDodgeP(){
-        return this.dodgeP;
+    public double getDodgeP() {
+        return dodgeP;
     }
-    
+
     @Override
-    public double getBlockP(){
-        return this.blockP;
+    public double getBlockP() {
+        return blockP;
     }
-    
+
     public static EntityActionType[] getDefaultPattern() {
         return defaultPattern;
     }
@@ -81,6 +87,7 @@ public class InfectedHound extends Enemy implements Hound{
         } else if (selectedWeapon instanceof Sword) {
             damage *= 1.3;
         }
+
         this.health -= damage;
         return this.name + " took " + damage + " damage!";
     }
@@ -94,13 +101,13 @@ public class InfectedHound extends Enemy implements Hound{
         } else if (selectedWeapon instanceof Sword) {
             damage *= 1.2;
         }
+
         this.health -= damage;
         return this.name + " took " + damage + " damage!";
     }
-    
+
     @Override
     public int getSouls() {
         return 100;
     }
-    
 }

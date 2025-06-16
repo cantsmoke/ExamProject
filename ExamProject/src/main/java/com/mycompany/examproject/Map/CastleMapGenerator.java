@@ -10,34 +10,82 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
+
 /**
+ * Класс для генерации карты замка в RPG-игре.
+ * <p>
+ * Реализует интерфейс {@link Serializable} и создает многоэтажную карту замка,
+ * состоящую из этажей ({@link Floor}) с комнатами ({@link Room}) различных типов.
+ * Обеспечивает создание и соединение комнат, этажей, а также предоставляет методы
+ * для навигации по карте.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 public class CastleMapGenerator implements Serializable{
     
+    /**
+     * Идентификатор версии сериализации.
+     */
     private static final long serialVersionUID = 1L;
     
+    /**
+     * Общее количество этажей в замке.
+     */
     private static final int TOTAL_FLOORS = 10;
     
+    /**
+     * Статический список этажей, доступный для всех экземпляров класса.
+     */
     private static List<Floor> floorsShared;
+    
+    /**
+     * Локальный список этажей, генерируемых данным экземпляром.
+     */
     private List<Floor> floors;
     
+    /**
+     * Генератор случайных чисел для создания карты.
+     */
     private Random random;
-
+    
+    /**
+     * Конструктор для создания генератора карты.
+     * <p>
+     * Инициализирует список этажей и генератор случайных чисел.
+     */
     public CastleMapGenerator() {
         this.floors = new ArrayList<>();
         this.random = new Random();
     }
     
+    /**
+     * Устанавливает статический список этажей.
+     *
+     * @param loadedFloors список этажей для установки
+     */
     public static void setFloors(List<Floor> loadedFloors) {
         floorsShared = loadedFloors;
     }
     
+    /**
+     * Возвращает локальный список этажей.
+     *
+     * @return список этажей
+     */
     public List<Floor> getFloorsInstance() {
         return this.floors;
     }
     
+    /**
+     * Генерирует карту замка.
+     * <p>
+     * Создает этажи, заполняет их комнатами, соединяет комнаты и этажи,
+     * а также выводит структуру каждого этажа в консоль.
+     *
+     * @return список сгенерированных этажей
+     */
     public List<Floor> generateMap() {
         for (int floorNum = 1; floorNum <= TOTAL_FLOORS; floorNum++) {
             Floor floor = createFloor(floorNum);
@@ -49,6 +97,15 @@ public class CastleMapGenerator implements Serializable{
         return floors;
     }
 
+    /**
+     * Создает этаж с заданным номером.
+     * <p>
+     * Определяет размеры этажа в зависимости от номера, инициализирует комнаты
+     * и размещает специальные комнаты (например, лестницы, боссы, отдых).
+     *
+     * @param floorNumber номер этажа
+     * @return созданный этаж
+     */
     private Floor createFloor(int floorNumber) {
         int width, height;
         if (floorNumber <= 3) {
@@ -72,6 +129,13 @@ public class CastleMapGenerator implements Serializable{
         return floor;
     }
 
+    /**
+     * Инициализирует комнаты на этаже.
+     * <p>
+     * Заполняет этаж обычными комнатами с описаниями и изображениями.
+     *
+     * @param floor этаж для инициализации
+     */
     private void initializeRooms(Floor floor) {
         for (int x = 0; x < floor.getWidth(); x++) {
             for (int y = 0; y < floor.getHeight(); y++) {
@@ -84,6 +148,13 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
+    /**
+     * Размещает специальные комнаты на этаже.
+     * <p>
+     * Добавляет комнаты отдыха, боссов, лестницы и входной зал, избегая пересечений.
+     *
+     * @param floor этаж для размещения комнат
+     */
     private void placeSpecialRooms(Floor floor) {
         int width = floor.getWidth();
         int height = floor.getHeight();
@@ -153,6 +224,14 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
+    /**
+     * Находит соседнюю позицию для размещения комнаты.
+     *
+     * @param floor этаж
+     * @param x текущая координата x
+     * @param y текущая координата y
+     * @return массив с координатами соседней позиции или null, если позиций нет
+     */
     private int[] getAdjacentPosition(Floor floor, int x, int y) {
         List<int[]> possiblePositions = new ArrayList<>();
         if (x > 0) possiblePositions.add(new int[]{x - 1, y});
@@ -163,6 +242,14 @@ public class CastleMapGenerator implements Serializable{
         return possiblePositions.get(random.nextInt(possiblePositions.size()));
     }
 
+    /**
+     * Соединяет комнаты на этаже.
+     * <p>
+     * Создает пути между комнатами, используя алгоритм обхода в глубину,
+     * и добавляет случайные дополнительные соединения.
+     *
+     * @param floor этаж для соединения комнат
+     */
     private void connectRooms(Floor floor) {
         int width = floor.getWidth();
         int height = floor.getHeight();
@@ -252,6 +339,11 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
+    /**
+     * Соединяет этажи между собой.
+     * <p>
+     * Создает связи между лестницами вверх и вниз на соседних этажах.
+     */
     private void connectFloors() {
         for (int i = 0; i < floors.size(); i++) {
             Floor currentFloor = floors.get(i);
@@ -276,6 +368,14 @@ public class CastleMapGenerator implements Serializable{
         }
     }
 
+    /**
+     * Генерирует описание и URL изображения для обычной комнаты.
+     *
+     * @param floor номер этажа
+     * @param x координата x комнаты
+     * @param y координата y комнаты
+     * @return строка в формате "описание|||URL"
+     */
     private String generateRoomDescription(int floor, int x, int y) {
         String[] descriptions = {
             "You enter a space forgotten by time — the stone vaults tremble under the pressure of silence. " +
@@ -318,6 +418,13 @@ public class CastleMapGenerator implements Serializable{
         return descriptions[random.nextInt(descriptions.length)];
     }
 
+    /**
+     * Выводит структуру этажа в консоль.
+     * <p>
+     * Отображает расположение комнат, их типы и связи между ними.
+     *
+     * @param floor этаж для вывода
+     */
     private void printFloor(Floor floor) {
         
         System.out.println("\n=== Floor " + floor.getFloorNumber() + " ===");
@@ -387,10 +494,21 @@ public class CastleMapGenerator implements Serializable{
         System.out.println();
     }
 
+    /**
+     * Возвращает статический список этажей.
+     *
+     * @return список этажей
+     */
     public static List<Floor> getFloors() {
         return floorsShared;
     }
 
+    /**
+     * Возвращает начальную комнату на первом этаже.
+     *
+     * @return начальная комната
+     * @throws IllegalStateException если карта не сгенерирована или начальная комната не найдена
+     */
     public Room getStartRoom() {
         if (floors.isEmpty()) {
             throw new IllegalStateException("Map has not been generated yet! Call generateMap() first.");
@@ -403,6 +521,14 @@ public class CastleMapGenerator implements Serializable{
         return startRoom;
     }
     
+    /**
+     * Возвращает комнату к востоку от текущей.
+     *
+     * @param x текущая координата x
+     * @param y текущая координата y
+     * @param currentFloor номер текущего этажа
+     * @return комната к востоку или null, если переход невозможен
+     */
     public static Room getRoomToEast(int x, int y, int currentFloor) {
         Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
@@ -414,6 +540,14 @@ public class CastleMapGenerator implements Serializable{
         return null;
     }
 
+    /**
+     * Возвращает комнату к западу от текущей.
+     *
+     * @param x текущая координата x
+     * @param y текущая координата y
+     * @param currentFloor номер текущего этажа
+     * @return комната к западу или null, если переход невозможен
+     */
     public static Room getRoomToWest(int x, int y, int currentFloor) {
         Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
@@ -425,6 +559,14 @@ public class CastleMapGenerator implements Serializable{
         return null;
     }
 
+    /**
+     * Возвращает комнату к северу от текущей.
+     *
+     * @param x текущая координата x
+     * @param y текущая координата y
+     * @param currentFloor номер текущего этажа
+     * @return комната к северу или null, если переход невозможен
+     */
     public static Room getRoomNorth(int x, int y, int currentFloor) {
         Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();
@@ -436,6 +578,14 @@ public class CastleMapGenerator implements Serializable{
         return null;
     }
 
+    /**
+     * Возвращает комнату к югу от текущей.
+     *
+     * @param x текущая координата x
+     * @param y текущая координата y
+     * @param currentFloor номер текущего этажа
+     * @return комната к югу или null, если переход невозможен
+     */
     public static Room getRoomSouth(int x, int y, int currentFloor) {
         Floor currentFloorObj = floorsShared.get(currentFloor - 1);
         Room[][] rooms = currentFloorObj.getRooms();

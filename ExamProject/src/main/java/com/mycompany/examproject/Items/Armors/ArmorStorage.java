@@ -7,10 +7,35 @@ package com.mycompany.examproject.Items.Armors;
 import java.util.List;
 
 /**
+ * Хранилище предопределённых комплектов брони, разбитых по типам:
+ * {@link LightArmor}, {@link TrooperArmor} и {@link HeavyArmor}.
+ * Используется для генерации снаряжения в игре, например, при старте или луте.
  *
+ * <p>Каждый список является {@code static final}, то есть доступен глобально и не изменяется.</p>
+ * 
+ * <p>Типы брони:</p>
+ * <ul>
+ *     <li><b>LightArmor</b> — лёгкая броня, минимальный вес и защита, даёт высокий шанс уклонения.</li>
+ *     <li><b>TrooperArmor</b> — сбалансированная броня: умеренная защита и вес.</li>
+ *     <li><b>HeavyArmor</b> — тяжёлая броня, высокая защита и прочность, но большой вес.</li>
+ * </ul>
+ * 
+ * <p>Каждый элемент списка создаётся заранее с уникальными характеристиками, названиями и параметрами.</p>
+ * 
+ * <p>Пример использования:</p>
+ * <pre>{@code
+ * List<LightArmor> lightList = ArmorStorage.lightArmor;
+ * Armor random = ArmorStorage.trooperArmor.get(2);
+ * }</pre>
+ * 
  * @author Arseniy
  */
 public class ArmorStorage {
+    
+    /**
+     * Коллекция предопределённых экземпляров {@link LightArmor}.
+     * Подходит для классов, ориентированных на скорость и уклонение.
+     */
     public static final List<LightArmor> lightArmor = List.of(
         new LightArmor("Shadowthread Vest", 5, 0.10, 50),
         new LightArmor("Whispering Leather", 6, 0.12, 55),
@@ -29,6 +54,10 @@ public class ArmorStorage {
         new LightArmor("Veil of Lost Echoes", 8, 0.32, 65)
     );
 
+    /**
+     * Коллекция предопределённых экземпляров {@link TrooperArmor}.
+     * Используется как универсальный тип для сбалансированной защиты.
+     */
     public static final List<TrooperArmor> trooperArmor = List.of(
         new TrooperArmor("Ironbound Mail", 15, 0.30, 120),
         new TrooperArmor("Steelguard Plate", 17, 0.32, 125),
@@ -47,6 +76,10 @@ public class ArmorStorage {
         new TrooperArmor("Eclipse Guard Armor", 23, 0.55, 190)
     );
 
+    /**
+     * Коллекция предопределённых экземпляров {@link HeavyArmor}.
+     * Максимально защищающая, но самая тяжёлая броня в игре.
+     */
     public static final List<HeavyArmor> heavyArmor = List.of(
         new HeavyArmor("Titan's Warplate", 48, 0.4, 250),
         new HeavyArmor("Cataclysm Greatplate", 49, 0.42, 260),

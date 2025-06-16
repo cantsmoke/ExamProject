@@ -8,6 +8,18 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что его броня сломалась.
+ * <p>
+ * Наследуется от {@link javax.swing.JDialog} и отображается, когда броня персонажа
+ * разрушена в процессе игры. Может содержать описание события и кнопки для закрытия окна
+ * или совершения других действий (например, просмотр инвентаря или приобретение новой брони).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArmorBrokeDialog dialog = new ArmorBrokeDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

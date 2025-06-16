@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о том, что выносливость уже восполнена полностью.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется в случае, если игрок пытается восполнить выносливость, 
+ * когда её уровень уже максимален.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     StaminaIsFullDialog dialog = new StaminaIsFullDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

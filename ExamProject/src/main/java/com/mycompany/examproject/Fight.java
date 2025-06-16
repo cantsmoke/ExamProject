@@ -35,18 +35,57 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.JFrame;
 /**
+ * Класс, управляющий боевой системой между игроком и врагом в пошаговой RPG.
+ * <p>
+ * Этот класс отвечает за инициализацию боя, управление действиями игрока и врага,
+ * обработку атак, уклонений, блоков, использование предметов, а также проверку
+ * условий победы или поражения. Интерфейс боя отображается через {@link BattleForm}.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 public class Fight {
 
+    /**
+     * Игрок, участвующий в бою.
+     */
     private Player player;
+
+    /**
+     * Враг, против которого ведется бой.
+     */
     private Enemy enemy;
+
+    /**
+     * Форма интерфейса боя, отображающая информацию о бое.
+     */
     private static BattleForm battleForm;
+
+    /**
+     * Индекс текущего шаблона действий врага.
+     */
     private int currentEnemyActionPattern = 0;
-    
+
+    /**
+     * Оставшаяся длительность действия яда на враге.
+     */
     private int poisonDuration = 0;
+
+    /**
+     * Объект яда, примененного к врагу, или null, если яд не активен.
+     */
     private Poison poison = null;
+
+    /**
+     * Конструктор, инициализирующий бой между игроком и врагом.
+     * <p>
+     * Создает новый бой, инициализирует интерфейс {@link BattleForm}, обновляет
+     * отображаемые данные и делает форму видимой.
+     *
+     * @param player игрок, участвующий в бою
+     * @param enemy враг, против которого ведется бой
+     */
     
     public Fight(Player player, Enemy enemy) {
         this.player = player;
@@ -61,16 +100,35 @@ public class Fight {
         this.battleForm = battleForm;
     }
     
+    /**
+     * Скрывает интерфейс боя.
+     * <p>
+     * Делает форму боя невидимой и обновляет отображаемые данные.
+     */
     public void hideBattleForm(){
         this.battleForm.setVisible(false);
         this.battleForm.updateLabels(player, enemy);
     }
     
+    /**
+     * Показывает интерфейс боя.
+     * <p>
+     * Делает форму боя видимой и обновляет отображаемые данные.
+     */
     public void showBattleForm(){
         this.battleForm.setVisible(true);
         this.battleForm.updateLabels(player, enemy);
     }
     
+    /**
+     * Рассчитывает штраф к уклонению на основе веса экипировки игрока.
+     * <p>
+     * Штраф увеличивается с увеличением веса экипировки от минимального
+     * значения (6.0 кг) до максимального (100.0 кг).
+     *
+     * @param currentWeight текущий вес экипировки игрока
+     * @return штраф к уклонению (от 0.0 до 0.3)
+     */
     public static double calculateEquipmentDodgePenalty(double currentWeight) {
         double minWeight = 6.0;
         double maxWeight = 100.0;
@@ -84,7 +142,13 @@ public class Fight {
         double penaltyPerKg = maxPenalty / (maxWeight - minWeight);
         return (currentWeight - minWeight) * penaltyPerKg;
     }
-    
+
+    /**
+     * Обрабатывает атаку игрока.
+     * <p>
+     * Открывает диалог выбора типа атаки ({@link AttackVariantsDialog}) и в
+     * зависимости от выбора вызывает обработку легкой или тяжелой атаки.
+     */
     public void handlePlayerAttackAction() {
         AttackVariantsDialog attackVariantDialog = new AttackVariantsDialog(battleForm, true, player.getBaseDamage() + player.getSelectedWeapon().getDamage());
         attackVariantDialog.setVisible(true);
@@ -98,6 +162,14 @@ public class Fight {
         }
     }
     
+    /**
+     * Выбирает действие врага в ответ на атаку игрока.
+     * <p>
+     * Случайно выбирает одно из возможных действий (уклонение, блок или действие
+     * из шаблона врага) и обновляет индекс текущего шаблона.
+     *
+     * @return выбранное действие врага
+     */
     private EntityActionType chooseEnemyActionForPlayersAttack() {
         EntityActionType[] actions = {
             EntityActionType.DODGE,
@@ -116,6 +188,13 @@ public class Fight {
         return randomAction;
     }
     
+    /**
+     * Обрабатывает легкую атаку игрока.
+     * <p>
+     * Проверяет наличие достаточной выносливости, обновляет параметры оружия и
+     * выносливости игрока, определяет реакцию врага (уклонение, блок или контратака)
+     * и наносит урон при необходимости. Логирует результат в {@link BattleForm}.
+     */
     private void handlePlayerLightAttack() {
         EntityActionType enemyActionForPlayersAttack = chooseEnemyActionForPlayersAttack();
         
@@ -202,6 +281,16 @@ public class Fight {
         checkWinLoseConditions();
     }
 
+    /**
+     * Проверяет, быстрее ли враг при легкой атаке.
+     * <p>
+     * Учитывает тип врага, вес экипировки игрока и случайную вероятность,
+     * чтобы определить, прерывает ли враг атаку игрока.
+     *
+     * @param enemy враг, участвующий в бою
+     * @param player игрок, выполняющий атаку
+     * @return true, если враг быстрее, иначе false
+     */
     private boolean isEnemyFasterInLightAttack(Enemy enemy, Player player) {
         double baseEnemyFirstChance = 0.5;
 
@@ -227,6 +316,13 @@ public class Fight {
         return Math.random() < finalEnemyFirstChance;
     }
     
+    /**
+     * Обрабатывает тяжелую атаку игрока.
+     * <p>
+     * Проверяет наличие достаточной выносливости, обновляет параметры оружия и
+     * выносливости игрока, определяет реакцию врага и наносит урон при необходимости.
+     * Логирует результат в {@link BattleForm}.
+     */
     private void handlePlayerHeavyAttack() {
         EntityActionType enemyActionForPlayersAttack = chooseEnemyActionForPlayersAttack();
         
@@ -292,6 +388,14 @@ public class Fight {
         checkWinLoseConditions();
     }
 
+    
+    /**
+     * Обрабатывает блок игрока.
+     * <p>
+     * Проверяет наличие выносливости, выбирает действие врага из шаблона,
+     * определяет успех блока и возможность контратаки, обновляет состояние
+     * и логирует результат.
+     */
     void handlePlayerBlockAction() {
         
         if (player.getStamina() < 10){
@@ -368,6 +472,13 @@ public class Fight {
         checkWinLoseConditions();
     }
 
+    
+    /**
+     * Обрабатывает уклонение игрока.
+     * <p>
+     * Выбирает действие врага, увеличивает выносливость игрока, проверяет успех
+     * уклонения и наносит урон при неудаче. Логирует результат.
+     */
     void handlePlayerDodgeAction() {
         EntityActionType enemyActionForPlayersDodge = enemy.getPattern()[currentEnemyActionPattern];
         currentEnemyActionPattern++;
@@ -406,10 +517,20 @@ public class Fight {
         checkWinLoseConditions();
     }
     
+    /**
+     * Обновляет доступность кнопок интерфейса на основе выносливости игрока.
+     */
     private void checkPlayerStamina(){
         battleForm.updateButtonAvaibility(player);
     }
- 
+    
+    /**
+     * Проверяет условия победы или поражения в бою.
+     * <p>
+     * Если здоровье врага достигает нуля, игрок получает награды, бой завершается,
+     * и отображается диалог победы. Если здоровье игрока достигает нуля, отображается
+     * форма поражения.
+     */
     private void checkWinLoseConditions(){
         if(enemy.getHealth() <= 0){
             FightWinDialog winDialog = new FightWinDialog(battleForm, true);
@@ -455,6 +576,12 @@ public class Fight {
         }
     }
     
+    /**
+     * Обрабатывает выпадение предметов после победы над врагом.
+     * <p>
+     * Для боссов вызывает {@link #processBossItemDrop(int)}, для обычных врагов
+     * с вероятностью 70% выпадает зелье ({@link #processDefaultEnemyItemDrop()}).
+     */
     private void processEnemyItemDrop() {
         if (enemy instanceof Boss){
             
@@ -471,6 +598,14 @@ public class Fight {
         }
     }
     
+    /**
+     * Обрабатывает выпадение зелья от обычного врага.
+     * <p>
+     * Случайно выбирает тип зелья (бомба, зелье выносливости или яд) и добавляет
+     * его в инвентарь игрока.
+     *
+     * @return найденное зелье
+     */
     private static Potion processDefaultEnemyItemDrop() {
         Potion foundItem = null;
         boolean foundBomb = false;
@@ -507,11 +642,23 @@ public class Fight {
         return foundItem;
     }
     
+    /**
+     * Добавляет зелье в инвентарь игрока.
+     *
+     * @param item зелье для добавления
+     */
     private static void addItemToInventory(Potion item) {
         Player player = Player.getInstance();
         player.addItemToInventory(item);
     }
-
+    
+    /**
+     * Создает зелье указанного типа.
+     *
+     * @param type тип зелья ("Bomb", "StaminaPotion" или "PoisonPotion")
+     * @return созданное зелье
+     * @throws IllegalArgumentException если указан неизвестный тип зелья
+     */
     private static Potion createPotionByType(String type) {
         switch (type) {
             case "Bomb":
@@ -525,6 +672,13 @@ public class Fight {
         }
     }
 
+    
+    /**
+     * Обрабатывает пропуск хода игроком.
+     * <p>
+     * Увеличивает выносливость игрока, выбирает действие врага и наносит урон
+     * игроку в зависимости от атаки врага. Логирует результат.
+     */
     void handlePlayerSkipAction() {
         EntityActionType enemyActionForPlayersDodge = enemy.getPattern()[currentEnemyActionPattern];
         currentEnemyActionPattern++;
@@ -549,7 +703,14 @@ public class Fight {
         checkPlayerStamina();
         checkWinLoseConditions();
     }
-
+    
+    /**
+     * Обрабатывает использование игроком бомбы.
+     * <p>
+     * Наносит урон врагу, заставляет врага пропустить ход и логирует результат.
+     *
+     * @param bomb бомба, используемая игроком
+     */
     void handlePlayerUsingBomb(Bomb bomb) {
         enemy.takeBombDamage(bomb);
         
@@ -564,6 +725,14 @@ public class Fight {
         checkWinLoseConditions();
     }
 
+    /**
+     * Обрабатывает использование игроком яда.
+     * <p>
+     * Применяет яд к врагу, если он не иммунен и яд еще не активен. Враг пропускает
+     * ход, получает урон, и яд добавляется в бой. Логирует результат.
+     *
+     * @param poison яд, используемый игроком
+     */
     void handlePlayerUsingPoison(Poison poison) {
         if (this.poison == null){
             if (enemy instanceof Skeleton || enemy instanceof SirenOfOblivion){
@@ -586,6 +755,12 @@ public class Fight {
         }
     }
     
+    /**
+     * Проверяет и применяет эффект яда на врага.
+     * <p>
+     * Если яд активен, враг получает урон, уменьшается длительность яда, и результат
+     * логируется. Если длительность истекла, яд сбрасывается.
+     */
     void checkPoison(){
         if (this.poisonDuration != 0){
             this.poisonDuration--;
@@ -598,10 +773,20 @@ public class Fight {
         }
     }
 
+    /**
+     * Возвращает врага, участвующего в бою.
+     *
+     * @return текущий враг
+     */
     Enemy getEnemy() {
         return this.enemy;
     }
-
+    
+    /**
+     * Проверяет, отравлен ли враг.
+     *
+     * @return true, если яд активен, иначе false
+     */
     boolean isPoisoned() {
         boolean isPoisoned = false;
         if (this.poison == null){
@@ -612,6 +797,15 @@ public class Fight {
         return isPoisoned;
     }
 
+    /**
+     * Обрабатывает выпадение предметов после победы над боссом.
+     * <p>
+     * Случайно выбирает до трех предметов (оружие, броню или зелья) в зависимости
+     * от этажа и добавляет их в инвентарь игрока.
+     *
+     * @param floor текущий этаж игры
+     * @return список выпавших предметов
+     */
     public static ArrayList<Equipment> processBossItemDrop(int floor) {
         ArrayList<Equipment> foundItems = new ArrayList<>();
         Random random = new Random();
@@ -648,9 +842,19 @@ public class Fight {
         
         return foundItems;
     }
-
+    
+    /**
+     * Создает экземпляр экипировки по типу и этажу.
+     *
+     * @param type тип экипировки
+     * @param floor текущий этаж
+     * @param random генератор случайных чисел
+     * @return созданный объект экипировки
+     * @throws IllegalArgumentException если тип экипировки неизвестен
+     */
     private static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
         int idxInZone = getRandomIndexForFloor(floor, random);
+        
         switch (type) {
             case "LightArmor":
                 return new LightArmor(ArmorStorage.lightArmor.get(idxInZone));
@@ -678,7 +882,14 @@ public class Fight {
                 throw new IllegalArgumentException("Unknown equipment type: " + type);
         }
     }
-
+    
+    /**
+     * Возвращает случайный индекс для выбора экипировки в зависимости от этажа.
+     *
+     * @param floor текущий этаж
+     * @param random генератор случайных чисел
+     * @return случайный индекс для выбора экипировки
+     */
     private static int getRandomIndexForFloor(int floor, Random random) {
         if (floor <= 3) {
             return random.nextInt(5);
@@ -689,6 +900,11 @@ public class Fight {
         }
     }
     
+    /**
+     * Добавляет список экипировки в инвентарь игрока.
+     *
+     * @param items список экипировки для добавления
+     */
     private static void addItemsToInventory(List<? extends Equipment> items) {
         Player player = Player.getInstance();
         for (Equipment e : items) {

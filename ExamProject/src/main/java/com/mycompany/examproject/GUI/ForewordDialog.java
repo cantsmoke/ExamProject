@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, отображающее вступительный текст или предисловие к игре.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и используется для показа игроку
+ * вводной информации и сюжета перед началом игрового процесса.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ForewordDialog dialog = new ForewordDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

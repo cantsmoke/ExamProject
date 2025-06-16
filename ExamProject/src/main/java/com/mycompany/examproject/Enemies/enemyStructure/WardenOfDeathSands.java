@@ -14,17 +14,51 @@ import com.mycompany.examproject.Items.Weapons.Spear;
 import com.mycompany.examproject.Items.Weapons.Sword;
 
 /**
+ * Босс "WardenOfDeathSands" — Страж Песков Смерти. 
+ * Обитает в проклятых пустынных залах, где время и плоть рассыпаются в прах.
+ *
+ * <p>Наследует {@link Boss} и определяет собственные модификаторы урона в зависимости от типа оружия:</p>
+ * <ul>
+ *     <li>{@link Bow}, {@link Hammer} — пониженный урон.</li>
+ *     <li>{@link Sword} — повышенный урон.</li>
+ * </ul>
+ *
+ * <p>Особенности:</p>
+ * <ul>
+ *     <li>Шанс уклонения — 50%.</li>
+ *     <li>Шанс блока — 40%.</li>
+ *     <li>Боевой паттерн: тяжёлая — лёгкая — лёгкая — тяжёлая атака.</li>
+ * </ul>
+ *
+ * <p>Пример создания:</p>
+ * <pre>{@code
+ * WardenOfDeathSands warden = new WardenOfDeathSands("Warden of Death Sands", 300, 100, 7);
+ * }</pre>
  *
  * @author Arseniy
  */
-public class WardenOfDeathSands extends Boss{
-    
+public class WardenOfDeathSands extends Boss {
+
+    /** Шаблон атак босса. */
     private EntityActionType[] pattern;
+
+    /** Иконка босса. */
     private String iconSource;
-    
+
+    /** Вероятность уклонения. */
     private double dodgeP;
+
+    /** Вероятность блока. */
     private double blockP;
-    
+
+    /**
+     * Конструктор создания босса Warden of Death Sands.
+     *
+     * @param name имя босса
+     * @param health количество здоровья
+     * @param damage урон
+     * @param floorNum этаж, на котором появляется
+     */
     public WardenOfDeathSands(String name, int health, int damage, int floorNum) {
         super(name, health, damage, floorNum);
         this.pattern = new EntityActionType[] {
@@ -34,31 +68,41 @@ public class WardenOfDeathSands extends Boss{
             EntityActionType.HEAVY_ATTACK
         };
         this.iconSource = "/ChatGPT Image 4 июн. 2025 г., 17 (1).png";
-        
         this.dodgeP = 0.5;
         this.blockP = 0.4;
     }
-    
+
+    /** {@inheritDoc} */
     @Override
     public EntityActionType[] getPattern() {
         return pattern;
     }
-    
+
+    /** {@inheritDoc} */
     @Override
-    public String getIconSource(){
+    public String getIconSource() {
         return this.iconSource;
     }
-    
+
+    /** {@inheritDoc} */
     @Override
-    public double getDodgeP(){
+    public double getDodgeP() {
         return this.dodgeP;
     }
-    
+
+    /** {@inheritDoc} */
     @Override
-    public double getBlockP(){
+    public double getBlockP() {
         return this.blockP;
     }
-    
+
+    /**
+     * Обработка тяжёлого урона с модификаторами от оружия.
+     * 
+     * @param selectedWeapon оружие
+     * @param baseDamage базовый урон
+     * @return строка отчёта о нанесённом уроне
+     */
     @Override
     public String takeHeavyDamage(Weapon selectedWeapon, int baseDamage) {
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 1.2);
@@ -72,6 +116,13 @@ public class WardenOfDeathSands extends Boss{
         return this.name + " took " + damage + " damage!";
     }
 
+    /**
+     * Обработка лёгкого урона с модификаторами от оружия.
+     * 
+     * @param selectedWeapon оружие
+     * @param baseDamage базовый урон
+     * @return строка отчёта о нанесённом уроне
+     */
     @Override
     public String takeLightDamage(Weapon selectedWeapon, int baseDamage) {
         int damage = (int) ((selectedWeapon.getDamage() + baseDamage) * 0.8);
@@ -84,5 +135,4 @@ public class WardenOfDeathSands extends Boss{
         this.health -= damage;
         return this.name + " took " + damage + " damage!";
     }
-    
 }

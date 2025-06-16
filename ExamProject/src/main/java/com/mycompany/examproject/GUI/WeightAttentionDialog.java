@@ -9,6 +9,16 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, предупреждающее игрока о превышении или достижении критического веса инвентаря.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда текущий вес предметов, переносимых игроком, превышает терпимый.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     WeightAttentionDialog dialog = new WeightAttentionDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

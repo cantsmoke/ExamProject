@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Окно, отображающееся при поражении игрока в бою.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и вызывается в случае проигрыша битвы.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     FightLoseForm form = new FightLoseForm();
+ *     form.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

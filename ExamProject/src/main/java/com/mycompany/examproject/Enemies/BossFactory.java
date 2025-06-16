@@ -16,12 +16,26 @@ import com.mycompany.examproject.Enemies.enemyStructure.BloodHeirOfTheMark;
 import com.mycompany.examproject.Enemies.enemyStructure.AshenGatekeeper;
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.BossType;
+
 /**
+ * Фабричный класс для создания боссов в RPG-игре.
+ * <p>
+ * Использует паттерн фабричного метода для создания экземпляров боссов
+ * на основе указанного типа {@link BossType}.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 public class BossFactory {
     
+    /**
+     * Создает босса в зависимости от указанного типа.
+     *
+     * @param bossType тип босса, соответствующий этажу
+     * @return экземпляр босса, соответствующий указанному типу
+     * @throws IllegalArgumentException если указан неизвестный тип босса
+     */
     public static Boss createBoss(BossType bossType){
         switch (bossType) {
             case FLOOR_ONE_BOSS:

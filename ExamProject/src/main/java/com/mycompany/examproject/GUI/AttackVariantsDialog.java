@@ -9,6 +9,18 @@ import com.mycompany.examproject.Player;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно для выбора варианта атаки игроком.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и предназначен для отображения различных
+ * способов атаки, доступных игроку (легкая или тяжелая). Обычно содержит кнопки для
+ * выбора нужного варианта.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     AttackVariantsDialog dialog = new AttackVariantsDialog(parentFrame, true, availableAttacks);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

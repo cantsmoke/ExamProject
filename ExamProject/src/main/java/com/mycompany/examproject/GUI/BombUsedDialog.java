@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что была использована бомба.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается в игре, когда игрок применяет
+ * бомбу. Содержит сообщение о действии.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     BombUsedDialog dialog = new BombUsedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

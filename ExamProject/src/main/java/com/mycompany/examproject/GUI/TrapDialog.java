@@ -8,6 +8,16 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о срабатывании ловушки.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок попадает в ловушку.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     TrapDialog dialog = new TrapDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

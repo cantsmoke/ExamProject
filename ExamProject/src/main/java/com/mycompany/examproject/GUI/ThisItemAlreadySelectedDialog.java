@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что данный предмет уже выбран.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется в ситуациях, когда осуществляется попытка
+ * выбрать предмет, который уже находится в выбранном состоянии.
+ * Обычно содержит соответствующее информационное сообщение и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ThisItemAlreadySelectedDialog dialog = new ThisItemAlreadySelectedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

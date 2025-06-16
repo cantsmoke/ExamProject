@@ -12,27 +12,63 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+
 /**
+ * Фабрика для создания врагов третьего сектора (этажи 6-9) в RPG-игре.
+ * <p>
+ * Реализует интерфейс {@link EnemyFactory} для создания врагов типов {@link Skeleton},
+ * {@link Hound} и {@link Knight}, а также случайных и комбинированных врагов с уникальными
+ * характеристиками и поведением.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 public class EnemySection3Factory implements EnemyFactory{
 
+    /**
+     * Создает врага типа {@link Skeleton} для указанного этажа.
+     *
+     * @param floorNum номер этажа, на котором появляется враг
+     * @return экземпляр врага {@link KingSkeleton}
+     */
     @Override
     public Skeleton createSkeleton(int floorNum) {
         return new KingSkeleton("King skeleton", 180, 70, floorNum - 2);
     }
-
+    
+    /**
+     * Создает врага типа {@link Hound} для указанного этажа.
+     *
+     * @param floorNum номер этажа, на котором появляется враг
+     * @return экземпляр врага {@link GiantHound}
+     */
     @Override
     public Hound createHound(int floorNum) {
         return new GiantHound("Giant hound", 170, 80, floorNum - 2);
     }
 
+    /**
+     * Создает врага типа {@link Knight} для указанного этажа.
+     *
+     * @param floorNum номер этажа, на котором появляется враг
+     * @return экземпляр врага {@link SaintKnight}
+     */
     @Override
     public Knight createKnight(int floorNum) {
         return new SaintKnight("Saint knight", 220, 90, floorNum - 2);
     }
     
+    /**
+     * Создает случайного врага для указанного этажа.
+     * <p>
+     * С равной вероятностью возвращает врага типа {@link Skeleton}, {@link Hound},
+     * {@link Knight} или комбинированного врага.
+     *
+     * @param floorNum номер этажа, на котором появляется враг
+     * @return экземпляр случайного врага
+     * @throws IllegalArgumentException если тип врага неизвестен
+     */
     public Enemy createRandomEnemy(int floorNum) {
         Random random = new Random();
         int choice = random.nextInt(4);
@@ -50,7 +86,16 @@ public class EnemySection3Factory implements EnemyFactory{
         }
     }
     
-    
+    /**
+     * Создает комбинированного врага для указанного этажа.
+     * <p>
+     * Комбинирует базового врага ({@link Skeleton} или {@link Hound}) с шаблоном
+     * поведения другого типа врага, задавая уникальное имя и изображение.
+     *
+     * @param floorNum номер этажа, на котором появляется враг
+     * @return экземпляр комбинированного врага
+     * @throws IllegalArgumentException если комбинация врагов недопустима
+     */
     public Enemy createCombinedEnemy(int floorNum) {
         Random random = new Random();
 
@@ -76,7 +121,15 @@ public class EnemySection3Factory implements EnemyFactory{
         return baseEnemy;
     }
 
-
+    /**
+     * Объединяет имена двух врагов в одно.
+     * <p>
+     * Имена сортируются лексикографически для консистентности.
+     *
+     * @param name1 имя первого врага
+     * @param name2 имя второго врага
+     * @return объединенное имя
+     */
     private String mergeNames(String name1, String name2) {
         if (name1.compareTo(name2) < 0) {
             return name1 + "-" + name2;
@@ -85,6 +138,14 @@ public class EnemySection3Factory implements EnemyFactory{
         }
     }
     
+    /**
+     * Создает врага по указанному типу.
+     *
+     * @param type тип врага (0 для {@link Skeleton}, 1 для {@link Hound}, 2 для {@link Knight})
+     * @param floorNum номер этажа
+     * @return экземпляр врага
+     * @throws IllegalArgumentException если тип врага неизвестен
+     */
     public Enemy createEnemyByType(int type, int floorNum) {
         switch (type) {
             case 0:
@@ -97,15 +158,29 @@ public class EnemySection3Factory implements EnemyFactory{
         }
     }
     
+     /**
+     * Возвращает шаблон поведения врага по указанному типу.
+     *
+     * @param type тип врага (0 для {@link Skeleton}, 1 для {@link Hound}, 2 для {@link Knight})
+     * @return массив шаблонов поведения
+     * @throws IllegalArgumentException если тип шаблона неизвестен
+     */
     private EntityActionType[] getPatternByType(int type) {
         switch (type) {
-            case 0: return CursedSkeleton.getDefaultPattern();
-            case 1: return ShadowHound.getDefaultPattern();
-            case 2: return RottingKnight.getDefaultPattern();
+            case 0: return KingSkeleton.getDefaultPattern();
+            case 1: return GiantHound.getDefaultPattern();
+            case 2: return SaintKnight.getDefaultPattern();
             default: throw new IllegalArgumentException("Unknown pattern type");
         }
     }
     
+    /**
+     * Возвращает имя врага по указанному типу.
+     *
+     * @param type тип врага (0 для Skeleton, 1 для Hound, 2 для Knight)
+     * @return имя врага
+     * @throws IllegalArgumentException если тип врага неизвестен
+     */
     private String getEnemyName(int type) {
         switch (type) {
             case 0: return "Skeleton";
@@ -115,7 +190,14 @@ public class EnemySection3Factory implements EnemyFactory{
         }
     }
     
+    /**
+     * Устанавливает путь к изображению для комбинированного врага.
+     *
+     * @param enemy комбинированный враг
+     * @throws IllegalArgumentException если имя врага недопустимо или комбинация неизвестна
+     */
     private void setCombinedEnemyImageSource(Enemy enemy) {
+        
         String name = enemy.getName();
 
         if (name == null || !name.contains("-")) {

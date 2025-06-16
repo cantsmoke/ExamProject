@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о необходимости выбрать предмет.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется в ситуациях, когда игрок пытается экипировать или использовать предмет, не выбрав его.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     YouNeedToChooseItemDialog dialog = new YouNeedToChooseItemDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

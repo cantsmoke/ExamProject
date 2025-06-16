@@ -50,27 +50,68 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.filechooser.FileSystemView;
 
 /**
+ * Класс-посредник между графическим интерфейсом и логикой игры.
+ * <p>
+ * Этот класс управляет взаимодействием между элементами интерфейса и игровой логикой,
+ * включая сохранение и загрузку игры, навигацию по карте, встречи с врагами, использование
+ * предметов и открытие меню. Обеспечивает синхронизацию состояния игрока, карты и боевой системы.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 public class GUIandLogicIntermediary {
     
+    /**
+     * Форма навигации и состояния игрока.
+     */
     private static StateAndNavigationForm stateAndNavigationForm;
+    
+    /**
+     * Игрок, участвующий в игре.
+     */
     private static Player player;
+    
+    /**
+     * Генератор карты замка.
+     */
     private static CastleMapGenerator castleMapGenerator;
     
+    /**
+     * Фабрика врагов для первого сектора (этажи 1-3).
+     */
     private static EnemySection1Factory enemySection1Factory;
+    
+    /**
+     * Фабрика врагов для второго сектора (этажи 4-5).
+     */
     private static EnemySection2Factory enemySection2Factory;
+    
+    /**
+     * Фабрика врагов для третьего сектора (этажи 6-9).
+     */
     private static EnemySection3Factory enemySection3Factory;
     
+    /**
+     * Текущий бой между игроком и врагом.
+     */
     private static Fight fight;
 
+    /**
+     * Приватный конструктор для предотвращения создания экземпляров класса.
+     */
     private GUIandLogicIntermediary(){}
     
+    
+    /**
+     * Сохраняет текущее состояние игры в файл.
+     * <p>
+     * Открывает диалог выбора файла, применяет темную тему, проверяет перезапись
+     * существующего файла и сохраняет состояние игры через {@link SaveManager}.
+     */
     public static void saveCurrentGame() {
         File fixedDir = new File(System.getProperty("user.dir"));
-        FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
-        JFileChooser fileChooser = new JFileChooser(fixedDir, fsv);
+        JFileChooser fileChooser = new JFileChooser(fixedDir);
         
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Файлы сохранения (*.dat)", "dat");
         fileChooser.setFileFilter(filter);
@@ -102,10 +143,16 @@ public class GUIandLogicIntermediary {
         }
     }
 
+    /**
+     * Загружает игру из файла.
+     * <p>
+     * Открывает диалог выбора файла, загружает состояние игры через {@link SaveManager},
+     * инициализирует игрока, карту и фабрики врагов, а также отображает форму навигации.
+     * Если загрузка не удалась, открывает главное меню.
+     */
     public static void loadGame() {
         File fixedDir = new File(System.getProperty("user.dir"));
-        FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
-        JFileChooser fileChooser = new JFileChooser(fixedDir, fsv);
+        JFileChooser fileChooser = new JFileChooser(fixedDir);
 
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Файлы сохранения (*.dat)", "dat");
         fileChooser.setFileFilter(filter);
@@ -138,6 +185,14 @@ public class GUIandLogicIntermediary {
         }
     }
     
+    /**
+     * Автоматически сохраняет игру в файл с меткой времени.
+     * <p>
+     * Создает файл сохранения с именем, включающим уровень игрока, этаж и временную метку,
+     * и сохраняет состояние игры через {@link SaveManager}.
+     *
+     * @param player текущий игрок
+     */
     public static void autoSave(Player player) {
         File saveDir = new File(System.getProperty("user.dir"));
         if (!saveDir.exists()) {
@@ -157,7 +212,14 @@ public class GUIandLogicIntermediary {
 
         System.out.println("Game automatically saved to " + saveFile.getAbsolutePath());
     }
-
+    
+    /**
+     * Применяет темную тему к диалогу выбора файла.
+     * <p>
+     * Настраивает цвета фона, текста и элементов интерфейса для создания темной темы.
+     *
+     * @param chooser диалог выбора файла
+     */
     private static void applyDarkTheme(JFileChooser chooser) {
         UIDefaults defaults = UIManager.getLookAndFeelDefaults();
 
@@ -186,6 +248,12 @@ public class GUIandLogicIntermediary {
         SwingUtilities.updateComponentTreeUI(chooser);
     }
     
+    /**
+     * Обрабатывает нажатие кнопки "Новая игра".
+     * <p>
+     * Показывает вступительный диалог, генерирует новую карту, создает игрока
+     * и отображает форму навигации.
+     */
     public static void handleNewGameButtonPressed(){ 
         ForewordDialog forewordDialog = new ForewordDialog(null, true);
         forewordDialog.setVisible(true);
@@ -208,6 +276,12 @@ public class GUIandLogicIntermediary {
         stateAndNavigationForm.setVisible(true);
     }
     
+    /**
+     * Обрабатывает перемещение игрока на юг.
+     * <p>
+     * Обновляет текущую комнату игрока, проверяет встречу с врагом и комнату отдыха,
+     * обновляет интерфейс навигации.
+     */
     public static void handlePLayerGoingSouth() {
         int x = player.getCurrentRoom().getX();
         int y = player.getCurrentRoom().getY();
@@ -224,6 +298,12 @@ public class GUIandLogicIntermediary {
         handlePlayerFoundRestRoom();
     }
     
+    /**
+     * Обрабатывает перемещение игрока на восток.
+     * <p>
+     * Обновляет текущую комнату игрока, проверяет встречу с врагом и комнату отдыха,
+     * обновляет интерфейс навигации.
+     */
     public static void handlePLayerGoingEast() {
         int x = player.getCurrentRoom().getX();
         int y = player.getCurrentRoom().getY();
@@ -240,6 +320,12 @@ public class GUIandLogicIntermediary {
         handlePlayerFoundRestRoom();
     }
     
+    /**
+     * Обрабатывает перемещение игрока на запад.
+     * <p>
+     * Обновляет текущую комнату игрока, проверяет встречу с врагом и комнату отдыха,
+     * обновляет интерфейс навигации.
+     */
     public static void handlePLayerGoingWest() {
         int x = player.getCurrentRoom().getX();
         int y = player.getCurrentRoom().getY();
@@ -256,6 +342,12 @@ public class GUIandLogicIntermediary {
         handlePlayerFoundRestRoom();
     }
     
+    /**
+     * Обрабатывает перемещение игрока на север.
+     * <p>
+     * Обновляет текущую комнату игрока, проверяет встречу с врагом и комнату отдыха,
+     * обновляет интерфейс навигации.
+     */
     public static void handlePLayerGoingNorth() {
         int x = player.getCurrentRoom().getX();
         int y = player.getCurrentRoom().getY();
@@ -272,6 +364,12 @@ public class GUIandLogicIntermediary {
         handlePlayerFoundRestRoom();
     }
     
+    /**
+     * Обрабатывает использование лестницы игроком.
+     * <p>
+     * Перемещает игрока на следующий или предыдущий этаж в зависимости от типа лестницы,
+     * обновляет интерфейс навигации.
+     */
     public static void handlePLayerUsingStairs() {
         Room current = player.getCurrentRoom();
 
@@ -298,6 +396,14 @@ public class GUIandLogicIntermediary {
         stateAndNavigationForm.updateLabels();
     }
     
+    /**
+     * Обрабатывает встречу игрока с врагом в комнате.
+     * <p>
+     * С вероятностью 25% создает бой с обычным врагом или боссом, если комната
+     * предназначена для босса. Прячет форму навигации и инициализирует бой.
+     *
+     * @param currentRoom текущая комната игрока
+     */
     private static void handleEnemyEncounter(Room currentRoom) {
         double encounterProbability = 0.25;
         double randomValue = Math.random();
@@ -326,6 +432,12 @@ public class GUIandLogicIntermediary {
         }
     }
     
+    /**
+     * Обрабатывает нахождение игроком комнаты отдыха.
+     * <p>
+     * Если текущая комната — комната отдыха, восстанавливает здоровье и выносливость
+     * игрока, наполняет фляги эстуса и показывает диалог отдыха.
+     */
     public static void handlePlayerFoundRestRoom(){
         if (player.getCurrentRoom().getType() == RoomType.REST){
             
@@ -345,6 +457,11 @@ public class GUIandLogicIntermediary {
         }
     }
     
+    /**
+     * Обрабатывает встречу игрока с мимиком.
+     * <p>
+     * Создает бой с врагом-мимиком и скрывает форму навигации.
+     */
     public static void handleMimicEncounter() {
         EnemyEncounteredDialog enemyEncounteredDialog = new EnemyEncounteredDialog(null, true);
         enemyEncounteredDialog.setVisible(true);
@@ -353,6 +470,13 @@ public class GUIandLogicIntermediary {
         stateAndNavigationForm.setVisible(false);
     }
     
+    /**
+     * Генерирует случайного врага в зависимости от этажа.
+     * <p>
+     * Использует фабрики врагов для создания врага, соответствующего текущему этажу.
+     *
+     * @return сгенерированный враг
+     */
     private static Enemy generateBasicEnemy(){
         Enemy enemy = null;
         if (player.getCurrentRoom().getFloor() <= 3) {
@@ -365,31 +489,66 @@ public class GUIandLogicIntermediary {
         return enemy;
     }
     
+    /**
+     * Обрабатывает атаку игрока в бою.
+     * <p>
+     * Вызывает метод атаки из текущего боя {@link Fight#handlePlayerAttackAction()}.
+     */
     public static void handlePlayerAttackAction() {
         fight.handlePlayerAttackAction();
     }
     
+    /**
+     * Обрабатывает блок игрока в бою.
+     * <p>
+     * Вызывает метод блока из текущего боя {@link Fight#handlePlayerBlockAction()}.
+     */
     public static void handlePlayerBlockAction() {
         fight.handlePlayerBlockAction();
     }
-
+    
+    /**
+     * Обрабатывает уклонение игрока в бою.
+     * <p>
+     * Вызывает метод уклонения из текущего боя {@link Fight#handlePlayerDodgeAction()}.
+     */
     public static void handlePlayerDodgeAction() {
         fight.handlePlayerDodgeAction();
     }
     
+    /**
+     * Обрабатывает пропуск хода игроком в бою.
+     * <p>
+     * Вызывает метод пропуска хода из текущего боя {@link Fight#handlePlayerSkipAction()}.
+     */
     public static void handlePlayerSkipAction() {
         fight.handlePlayerSkipAction();
     }
     
+    /**
+     * Показывает форму навигации.
+     * <p>
+     * Обновляет данные формы и делает ее видимой.
+     */
     public static void showNavigationForm() {
         stateAndNavigationForm.updateLabels();
         stateAndNavigationForm.setVisible(true);
     }
     
+    /**
+     * Показывает форму боя.
+     * <p>
+     * Вызывает метод показа формы боя из текущего боя {@link Fight#showBattleForm()}.
+     */
     public static void showBattleForm() {
         fight.showBattleForm();
     }
     
+    /**
+     * Открывает инвентарь игрока.
+     * <p>
+     * Скрывает форму навигации и показывает форму инвентаря.
+     */
     public static void openInventory() {
         stateAndNavigationForm.setVisible(false);
         
@@ -397,7 +556,12 @@ public class GUIandLogicIntermediary {
         inventoryForm.setVisible(true);
         inventoryForm.UpdateLabels();
     }
-
+    
+    /**
+     * Открывает инвентарь во время боя.
+     * <p>
+     * Скрывает форму боя и показывает форму инвентаря для боя.
+     */
     public static void handlePlayerOpenDialogFromBattle() {
         fight.hideBattleForm();
         
@@ -406,6 +570,11 @@ public class GUIandLogicIntermediary {
         inventoryFormForBattle.UpdateLabels();
     }
 
+    /**
+     * Открывает меню улучшений.
+     * <p>
+     * Скрывает форму навигации и показывает меню улучшений.
+     */
     public static void openUpgradeMenu() {
         UpgradeMenu upgradeMenu = new UpgradeMenu();
         upgradeMenu.setVisible(true);
@@ -413,23 +582,55 @@ public class GUIandLogicIntermediary {
         stateAndNavigationForm.setVisible(false);
     }
     
+    /**
+     * Обрабатывает использование бомбы игроком в бою.
+     * <p>
+     * Вызывает метод использования бомбы из текущего боя {@link Fight#handlePlayerUsingBomb(Bomb)}.
+     *
+     * @param bomb бомба, используемая игроком
+     */
     public static void handlePlayerUsingBomb(Bomb bomb) {
         fight.handlePlayerUsingBomb(bomb);
     }
     
+    /**
+     * Обрабатывает использование яда игроком в бою.
+     * <p>
+     * Вызывает метод использования яда из текущего боя {@link Fight#handlePlayerUsingPoison(Poison)}.
+     *
+     * @param poison яд, используемый игроком
+     */
     public static void handlePlayerUsingPoison(Poison poison) {
         fight.handlePlayerUsingPoison(poison);
     }
     
+    /**
+     * Проверяет текущее здоровье врага в бою.
+     * <p>
+     * Возвращает здоровье врага из текущего боя.
+     *
+     * @return текущее здоровье врага
+     */
     public static int checkEnemyHealth() {
         int enemyHealth = fight.getEnemy().getHealth();
         return enemyHealth;
     }
     
+    /**
+     * Проверяет, отравлен ли враг в текущем бою.
+     *
+     * @return true, если враг отравлен, иначе false
+     */
     public static boolean isPoisoned() {
         return fight.isPoisoned();
     }
     
+    /**
+     * Обрабатывает исследование текущей локации игроком.
+     * <p>
+     * С вероятностью 7% игрок попадает в ловушку, с вероятностью 7% находит тайник
+     * или сундук, иначе ничего не находит. Обновляет интерфейс и состояние игрока.
+     */
     public static void handlePLayerExploringLocation() {
         double rand = Math.random();
         
@@ -475,6 +676,14 @@ public class GUIandLogicIntermediary {
         }
     }
     
+    /**
+     * Обрабатывает нахождение тайника с зельями.
+     * <p>
+     * Случайно выбирает до двух зелий (бомба, зелье выносливости или яд) и добавляет
+     * их в инвентарь игрока.
+     *
+     * @return список найденных зелий
+     */
     private static ArrayList<Potion> processFoundedItemsInStash() {
         ArrayList<Potion> foundItems = new ArrayList<>();
         boolean foundBomb = false;
@@ -517,6 +726,11 @@ public class GUIandLogicIntermediary {
         return foundItems;
     }
 
+    /**
+     * Добавляет предметы в инвентарь игрока.
+     *
+     * @param items список предметов для добавления
+     */
     private static void addItemsToInventory(List<? extends Equipment> items) {
         Player player = Player.getInstance();
         for (Equipment e : items) {
@@ -524,6 +738,13 @@ public class GUIandLogicIntermediary {
         }
     }
     
+    /**
+     * Создает зелье указанного типа.
+     *
+     * @param type тип зелья ("Bomb", "StaminaPotion" или "PoisonPotion")
+     * @return созданное зелье
+     * @throws IllegalArgumentException если указан неизвестный тип зелья
+     */
     private static Potion createPotionByType(String type) {
         switch (type) {
             case "Bomb":
@@ -537,6 +758,15 @@ public class GUIandLogicIntermediary {
         }
     }
       
+    /**
+     * Обрабатывает нахождение сундука с предметами.
+     * <p>
+     * Случайно выбирает от 3 до 5 предметов (оружие, броню или зелья) в зависимости
+     * от этажа и добавляет их в инвентарь игрока.
+     *
+     * @param floor текущий этаж
+     * @return список найденных предметов
+     */
     public static ArrayList<Equipment> processFoundedItemsInChest(int floor) {
         ArrayList<Equipment> foundItems = new ArrayList<>();
         Random random = new Random();
@@ -576,6 +806,15 @@ public class GUIandLogicIntermediary {
         return foundItems;
     }
 
+    /**
+     * Создает экземпляр экипировки по типу и этажу.
+     *
+     * @param type тип экипировки
+     * @param floor текущий этаж
+     * @param random генератор случайных чисел
+     * @return созданный объект экипировки
+     * @throws IllegalArgumentException если тип экипировки неизвестен
+     */
     private static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
         int idxInZone = getRandomIndexForFloor(floor, random);
         switch (type) {
@@ -605,7 +844,14 @@ public class GUIandLogicIntermediary {
                 throw new IllegalArgumentException("Unknown equipment type: " + type);
         }
     }
-
+    
+    /**
+     * Возвращает случайный индекс для выбора экипировки в зависимости от этажа.
+     *
+     * @param floor текущий этаж
+     * @param random генератор случайных чисел
+     * @return случайный индекс для выбора экипировки
+     */
     private static int getRandomIndexForFloor(int floor, Random random) {
         if (floor <= 3) {
             return random.nextInt(5);

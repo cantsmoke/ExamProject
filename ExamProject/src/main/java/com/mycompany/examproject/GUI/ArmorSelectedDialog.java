@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно для уведомления или подтверждения выбора брони игроком.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и используется для отображения информации 
+ * о выбранной игроком броне, а также для подтверждения или отмены данного выбора.
+ * Как правило, содержит описание выбранной брони и элементы управления (например, кнопки подтверждения).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArmorSelectedDialog dialog = new ArmorSelectedDialog(parentFrame, true, selectedArmor);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

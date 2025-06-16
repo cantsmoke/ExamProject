@@ -8,6 +8,16 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, уведомляющее игрока об успешном ремонте оружия.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок восстанавливает работоспособность оружия.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     WeaponRepairedDialog dialog = new WeaponRepairedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

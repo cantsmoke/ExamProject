@@ -23,7 +23,22 @@ import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 /**
+ * Окно инвентаря, используемое во время сражения.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и предоставляет игроку доступ к предметам инвентаря, доступным непосредственно в процессе боя (оружее, расходуемые предметы).
+ * Позволяет просматривать список доступных предметов, использовать или экипировать их на ходу, а также отображает основную информацию
+ * по выбранному предмету (характеристики, количество, тип и т.д).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     InventoryFormForBattle inventoryForm = new InventoryFormForBattle();
+ *     inventoryForm.setVisible(true);
+ * </pre>
+ *
+ * Чаще всего вызывается из боевой формы для доступа к предметам.
  *
  * @author Arseniy
  */
@@ -243,6 +258,17 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Обрабатывает изменение выбранного оружия в списке weaponList.
+    * <p>
+    * При изменении выбора оружия в списке отображает детальную информацию о выбранном оружии:
+    * его название, вес, урон, прочность, а также иконку.
+    * Если прочность менее 20% от максимальной, значение прочности выделяется красным цветом.
+    * Также автоматически снимает выделение с списка зелий, чтобы не было одновременного выбора в обеих группах предметов.
+    * </p>
+    *
+    * @param evt Событие изменения выбора в списке оружия.
+    */
     private void weaponListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_weaponListValueChanged
         if (!evt.getValueIsAdjusting()) {
             Weapon selected = (Weapon) weaponList.getSelectedValue();
@@ -315,6 +341,19 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         GUIandLogicIntermediary.showBattleForm();
     } 
     
+    /**
+    * Обрабатывает изменение выбранного зелья в списке potionList.
+    * <p>
+    * При изменении выбора зелья отображает подробную информацию о выбранном предмете:
+    * его название, параметры восстановления или урона, количество использований (если применимо),
+    * а также соответствующую иконку для каждого типа зелья — {@link EstusBottle}, {@link StaminaPotion}, {@link Bomb}, {@link Poison}.
+    * Для Estus Bottle дополнительно выделяет число оставшихся использований красным, если их осталось 30% или меньше.
+    * Вес для всех зелий указывается как отсутствующий ("no weight"), а для предметов одноразового использования — сообщается отдельная метка.
+    * Также автоматически снимает выделение с weaponList, чтобы не было одновременного выделения оружия и зелья.
+    * </p>
+    * 
+    * @param evt Событие изменения выбора в списке зелий.
+    */
     private void equipeUseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_equipeUseButtonActionPerformed
         Weapon selectedWeapon = weaponList.getSelectedValue();
         Potion selectedPotion = potionList.getSelectedValue();
@@ -388,6 +427,14 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         UpdateLabels();
     }//GEN-LAST:event_equipeUseButtonActionPerformed
     
+    /**
+    * Проверяет, не превышает ли общий вес экипировки игрока терпимый вес.
+    * <p>
+    * Если суммарный вес выбранной экипировки игрока {@link Player#getTotalEquipmentWeight()} равен или превышает максимально возможный вес,
+    * который игрок может нести {@link Player#getBearableWeight()}, то отображается предупреждающее диалоговое окно {@link WeightAttentionDialog},
+    * информирующее пользователя о превышении лимита веса.
+    * </p>
+    */
     public void checkSelectedEquipmentWeight(){
         if(Player.getInstance().getTotalEquipmentWeight() >= Player.getInstance().getBearableWeight()){
             WeightAttentionDialog weightAttentionDialog = new WeightAttentionDialog(null, true);
@@ -395,6 +442,17 @@ public class InventoryFormForBattle extends javax.swing.JFrame {
         }
     }
     
+    /**
+    * Обновляет отображение инвентаря и связанных с ним меток на форме.
+    * <p>
+    * Формирует и сортирует списки оружия и зелий из инвентаря игрока {@link Player#getInventory()}, 
+    * устанавливает их в соответствующие модели отображения списков на форме: {@code weaponList} и {@code potionList}.
+    * Оружие и зелья сортируются в алфавитном порядке по их названию.
+    * <br>
+    * Также обновляет метку с количеством ремонтных компонентов, отображая их актуальное значение,
+    * получаемое через {@link Player#getRepairComponents()}.
+    * </p>
+    */
     public void UpdateLabels(){
         List<Equipment> inventory = Player.getInstance().getInventory();
         

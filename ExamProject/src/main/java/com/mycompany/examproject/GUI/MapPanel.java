@@ -5,8 +5,15 @@
 package com.mycompany.examproject.GUI;
 
 /**
+ * Панель для отображения карты этажа замка в RPG-игре.
+ * <p>
+ * Наследуется от {@link JPanel} и отвечает за визуальное представление комнат этажа,
+ * их соединений и текущего положения игрока. Комнаты отображаются в виде прямоугольников,
+ * с разными цветами для текущей и посещённых комнат.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 import com.mycompany.examproject.Map.CastleMapGenerator;
 import com.mycompany.examproject.Map.Floor;
@@ -17,6 +24,15 @@ import java.awt.*;
 
 public class MapPanel extends JPanel {
     
+    /**
+     * Отрисовывает компонент, отображая карту текущего этажа.
+     * <p>
+     * Рисует комнаты этажа в виде прямоугольников, обозначая текущую комнату красным,
+     * посещённые — серым, а непосещённые — чёрным. Также отображает связи между
+     * посещёнными комнатами линиями.
+     *
+     * @param g графический контекст для рисования
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -25,7 +41,6 @@ public class MapPanel extends JPanel {
         int currentFloorNumber = currentRoom.getFloor();
         Floor floor = CastleMapGenerator.getFloors().get(currentFloorNumber - 1);
         Room[][] rooms = floor.getRooms();
-
         final int ROOM_SIZE = 30;
         final int GAP = 10;
 

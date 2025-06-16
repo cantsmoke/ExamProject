@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, отображающее информацию об успешном восстановлении здоровья игрока.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется после успешного использования
+ * лечебного предмета. Показывает текущее, максимальное и восстановленное значение здоровья.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     PlayerHealedDialog dialog =
+ *         new PlayerHealedDialog(parentFrame, true, newHealth, healthBefore, maxHealth);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

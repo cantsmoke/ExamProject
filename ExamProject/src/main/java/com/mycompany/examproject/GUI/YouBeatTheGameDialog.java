@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, поздравляющее игрока с успешным завершением игры.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается, когда игрок проходит игру до конца.
+ * Содержит поздравительное сообщение и послесловие.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     YouBeatTheGameDialog dialog = new YouBeatTheGameDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

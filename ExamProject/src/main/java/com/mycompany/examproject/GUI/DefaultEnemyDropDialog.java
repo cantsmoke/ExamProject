@@ -11,6 +11,18 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
+ * Диалоговое окно, информирующее игрока о предмете, который выпал с обычного врага.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и вызывается в игре, когда после победы над
+ * стандартным противником игрок получает награду — зелье или другой предмет.
+ * Диалог показывает информацию о найденном предмете и позволяет закрыть окно.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     DefaultEnemyDropDialog dialog = new DefaultEnemyDropDialog(parentFrame, true, drop);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

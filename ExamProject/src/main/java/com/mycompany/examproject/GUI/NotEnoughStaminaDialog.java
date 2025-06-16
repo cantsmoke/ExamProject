@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о недостаточном уровне выносливости для выполнения действия.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок пытается совершить действие,
+ * требующее больше выносливости, чем доступно в данный момент (например, удар).
+ * Обычно содержит соответствующее информационное сообщение и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     NotEnoughStaminaDialog dialog = new NotEnoughStaminaDialog(parentFrame, true, requiredStamina);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

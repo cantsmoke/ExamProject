@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о том, что броня не была отремонтирована.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и используется в случае,
+ * если попытка починить броню не удалась (например, из-за нехватки ресурсов или других условий).
+ * Обычно содержит соответствующее сообщение и элементы управления для закрытия окна или предпринятия других действий.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArmorWasNotrepairedDialog dialog = new ArmorWasNotrepairedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

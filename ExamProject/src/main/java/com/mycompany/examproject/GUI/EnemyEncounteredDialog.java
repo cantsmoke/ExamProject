@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о встрече с врагом.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок встречает врага на карте или в локации.
+ * Обычно содержит информацию о противнике, его изображение или основные характеристики, а также 
+ * предлагает дальнейшие действия (например, начать бой или отступить).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     EnemyEncounteredDialog dialog = new EnemyEncounteredDialog(parentFrame, true, encounteredEnemy);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

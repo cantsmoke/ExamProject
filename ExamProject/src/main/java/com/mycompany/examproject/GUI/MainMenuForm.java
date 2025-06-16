@@ -8,6 +8,19 @@ import com.mycompany.examproject.GUIandLogicIntermediary;
 import java.awt.Color;
 
 /**
+ * Главное окно меню игры.
+ * <p>
+ * Наследует {@link javax.swing.JFrame} и предоставляет пользователю основной интерфейс для доступа к ключевым функциям игры,
+ * таким как начало новой игры, загрузка сохранения, или выход из приложения.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     MainMenuForm mainMenu = new MainMenuForm();
+ *     mainMenu.setVisible(true);
+ * </pre>
+ *
+ * Является точкой входа для взаимодействия игрока с приложением перед началом игрового процесса.
  *
  * @author Arseniy
  */
@@ -126,16 +139,41 @@ public class MainMenuForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+    * Обрабатывает нажатие кнопки "Новая игра".
+    * <p>
+    * Запускает процесс создания новой игры посредством вызова соответствующего метода, а затем закрывает главное меню.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку.
+    */
     private void newGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameButtonActionPerformed
         GUIandLogicIntermediary.handleNewGameButtonPressed();
         this.dispose();
     }//GEN-LAST:event_newGameButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки "Загрузить игру".
+    * <p>
+    * Запускает процесс загрузки сохранённой игры через специальный метод, 
+    * после чего закрывает главное меню.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку.
+    */
     private void loadGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadGameButtonActionPerformed
         GUIandLogicIntermediary.loadGame();
         this.dispose();
     }//GEN-LAST:event_loadGameButtonActionPerformed
 
+    /**
+    * Обрабатывает нажатие кнопки "Выход".
+    * <p>
+    * Завершает выполнение приложения.
+    * </p>
+    *
+    * @param evt Событие нажатия на кнопку.
+    */
     private void exitGameButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitGameButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitGameButtonActionPerformed

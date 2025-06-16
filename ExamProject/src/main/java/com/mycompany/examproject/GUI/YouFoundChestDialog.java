@@ -12,6 +12,17 @@ import java.awt.Color;
 import java.util.ArrayList;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что он нашёл сундук.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок обнаруживает сундук с полезными предметами.
+ * Обычно содержит сообщение о находке и кнопки для варинатов, что сделать с сундуком (пройти мимо или открыть).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     YouFoundChestDialog dialog = new YouFoundChestDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */
@@ -135,6 +146,25 @@ public class YouFoundChestDialog extends javax.swing.JDialog {
         GUIandLogicIntermediary.showNavigationForm();
     }//GEN-LAST:event_passChestButtonActionPerformed
 
+    /**
+    * Обработка нажатия кнопки открытия сундука.
+    * <p>
+    * Генерирует случайное событие при попытке открыть сундук:
+    * <ul>
+    *     <li>С вероятностью 50% игрок находит предметы, которые отображаются в диалоге {@link ChestFoundDialog}.</li>
+    *     <li>С вероятностью 20% сундук оказывается пустым, отображается {@link ChestIsEmptyDialog}.</li>
+    *     <li>
+    *         С вероятностью 30% сундук оказывается мимиком:
+    *         <ul>
+    *             <li>Если ловкость игрока меньше 4, персонаж мгновенно погибает и показывается {@link MimicKilledYouInstantly}.</li>
+    *             <li>Иначе вызывается обработка встречи с мимиком методом {@link GUIandLogicIntermediary#handleMimicEncounter()}.</li>
+    *         </ul>
+    *     </li>
+    * </ul>
+    * После завершения любого сценария текущее диалоговое окно закрывается.
+    *
+    * @param evt событие нажатия на кнопку открытия сундука
+    */
     private void openChestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openChestButtonActionPerformed
         double subRand2 = Math.random();
         if (subRand2 < 0.5){

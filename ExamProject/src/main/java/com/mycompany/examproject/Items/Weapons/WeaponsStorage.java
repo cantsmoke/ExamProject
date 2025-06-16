@@ -5,12 +5,37 @@
 package com.mycompany.examproject.Items.Weapons;
 
 import java.util.List;
+
 /**
+ * Хранилище предопределённых видов оружия, разбитых по типам:
+ * {@link Sword}, {@link Bow}, {@link Hammer}, {@link Spear}, {@link Axe}.
+ * Используется для генерации оружия в игре — например, при старте, в магазинах, луте или наградах.
+ *
+ * <p>Каждая коллекция объявлена как {@code static final}, что обеспечивает её глобальную доступность 
+ * и неизменяемость во время выполнения программы.</p>
+ *
+ * <p>Типы оружия:</p>
+ * <ul>
+ *     <li><b>Sword</b> — мечи, универсальное холодное оружие с хорошим балансом урона, веса и прочности.</li>
+ *     <li><b>Bow</b> — луки и арбалеты, дальнобойное оружие с высоким уроном и прочностью.</li>
+ *     <li><b>Hammer</b> — молоты, тяжёлое оружие с высоким уроном и небольшим запасом прочности.</li>
+ *     <li><b>Spear</b> — копья, сбалансированное оружие со средней дальностью и характеристиками.</li>
+ *     <li><b>Axe</b> — топоры, сильный урон с хорошей проникающей способностью, но весомее мечей.</li>
+ * </ul>
+ *
+ * <p>Пример использования:</p>
+ * <pre>{@code
+ * List<Sword> swordList = WeaponsStorage.swords;
+ * Weapon randomBow = WeaponsStorage.bows.get(3);
+ * }</pre>
  *
  * @author Arseniy
  */
 public class WeaponsStorage {
     
+    /**
+     * Коллекция предопределённых экземпляров {@link Sword}.
+     */
     public static final List<Sword> swords = List.of(
         new Sword("Forsaken Dagger of the Lost", 2, 10, 60),
         new Sword("Blade of Withering Ashes", 2, 15, 65),
@@ -29,7 +54,9 @@ public class WeaponsStorage {
         new Sword("Eclipse Slayer of the Forgotten God", 9, 120, 200)
     );
 
-
+    /**
+     * Коллекция предопределённых экземпляров {@link Bow}.
+     */
     public static final List<Bow> bows = List.of(
         new Bow("Whispering Shortbow of the Hollow", 2, 15, 120),
         new Bow("Dark Falcon Bow", 3, 25, 100),
@@ -48,7 +75,9 @@ public class WeaponsStorage {
         new Bow("Doomreaver Siege Crossbow", 9, 120, 400)
     );
 
-
+    /**
+     * Коллекция предопределённых экземпляров {@link Hammer}.
+     */
     public static final List<Hammer> hammers = List.of(
         new Hammer("Emaciated Butcher's Bone Hammer", 10, 60, 40),
         new Hammer("Cracked Stone Sledge of the Exile", 12, 65, 35),
@@ -67,7 +96,9 @@ public class WeaponsStorage {
         new Hammer("Cataclysm Maul of the World Ender", 25, 160, 60)
     );
 
-
+    /**
+     * Коллекция предопределённых экземпляров {@link Spear}.
+     */
     public static final List<Spear> spears = List.of(
         new Spear("Shaggy Spear of the Wolf Order", 7, 60, 50),
         new Spear("Coastal Spear of Lightning", 8, 65, 60),
@@ -86,7 +117,9 @@ public class WeaponsStorage {
         new Spear("Eclipse Impaler of the World Eater", 15, 130, 120)
     );
 
-
+    /**
+     * Коллекция предопределённых экземпляров {@link Axe}.
+     */
     public static final List<Axe> axes = List.of( 
         new Axe("Crescent Axe of the Exile", 10, 40, 70),
         new Axe("Twisted Hatchet of the Hollow", 8, 45, 60),

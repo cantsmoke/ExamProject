@@ -7,6 +7,16 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, отображающее информацию о повышении уровня персонажа.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и вызывается после получения игроком нового уровня.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     LevelUpdateDialog dialog = new LevelUpdateDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

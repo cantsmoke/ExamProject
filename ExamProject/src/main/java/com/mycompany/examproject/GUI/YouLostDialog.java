@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о проигрыше в игре.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается, когда игрок проигрывает
+ * (погибает).
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     YouLostDialog dialog = new YouLostDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

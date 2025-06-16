@@ -8,6 +8,18 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что его броня была отремонтирована.
+ * <p>
+ * Наследуется от {@link javax.swing.JDialog} и отображается, когда броня персонажа
+ * успешно восстановлена в процессе игры. Обычно содержит соответствующее сообщение
+ * и элементы управления для закрытия диалога или перехода к дальнейшим действиям.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArmorRepairedDialog dialog = new ArmorRepairedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

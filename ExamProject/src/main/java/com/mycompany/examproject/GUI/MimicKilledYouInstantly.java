@@ -7,6 +7,18 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о мгновенной смерти от мимика.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и отображается, когда игрок погибает мгновенно из-за нападения мимика —
+ * особого врага, замаскированного под сундук или предмет.
+ * Обычно содержит соответствующее сообщение, визуализацию события и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     MimicKilledYouInstantly dialog = new MimicKilledYouInstantly(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

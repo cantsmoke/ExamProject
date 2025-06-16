@@ -7,6 +7,17 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что оружие не было отремонтировано.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется в ситуациях, когда попытка починить оружие оказалась неудачной.
+ * Обычно содержит сообщение о невозможности ремонта и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     WeaponWasNotrepairedDialog dialog = new WeaponWasNotrepairedDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

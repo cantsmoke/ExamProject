@@ -7,6 +7,19 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о восстановлении выносливости.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется после того, как игрок полностью или частично восстановил выносливость 
+ * с помощью предмета, способности или иного действия. 
+ * Обычно отображает предыдущее, восстановленное и максимальное значение выносливости, а также сообщение об успешном восстановлении.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     PlayerStaminaRestoreDialog dialog =
+ *         new PlayerStaminaRestoreDialog(parentFrame, true, newStamina, staminaBefore, maxStamina);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

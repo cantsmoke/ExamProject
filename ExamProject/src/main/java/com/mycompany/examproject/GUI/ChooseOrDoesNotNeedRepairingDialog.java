@@ -7,6 +7,19 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, информирующее игрока о том, что необходимо выбрать предмет для ремонта,
+ * либо выбранные предметы в ремонте не нуждаются.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и используется в случае, если игрок
+ * пытается отремонтировать предметы, но либо не выбрал ни одного, либо выбранные
+ * уже не требуют ремонта. Обычно содержит соответствующее сообщение и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ChooseOrDoesNotNeedRepairingDialog dialog = new ChooseOrDoesNotNeedRepairingDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

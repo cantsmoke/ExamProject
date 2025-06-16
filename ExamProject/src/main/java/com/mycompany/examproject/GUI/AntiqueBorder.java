@@ -5,16 +5,39 @@
 package com.mycompany.examproject.GUI;
 
 /**
+ * Класс для создания декоративной античной рамки в интерфейсе RPG-игры.
+ * <p>
+ * Наследуется от {@link AbstractBorder} и рисует стилизованную рамку с орнаментами
+ * в углах, используя линии и дуги. Используется для оформления элементов интерфейса,
+ * таких как панели или окна.
  *
  * @author Arseniy
+ * @version 1.0
+ * @since 2025-06-16
  */
 import javax.swing.border.AbstractBorder;
 import java.awt.*;
 
 public class AntiqueBorder extends AbstractBorder {
     
+    /**
+     * Цвет рамки (серый с RGB 150, 150, 150).
+     */
     private final Color borderColor = new Color(150, 150, 150);
 
+    /**
+     * Рисует рамку вокруг компонента.
+     * <p>
+     * Создает прямоугольную рамку с отступами и орнаментами в углах, используя
+     * линии и дуги с антиалиасингом для сглаживания.
+     *
+     * @param c компонент, для которого рисуется рамка
+     * @param g графический контекст
+     * @param x координата x верхнего левого угла
+     * @param y координата y верхнего левого угла
+     * @param width ширина рамки
+     * @param height высота рамки
+     */
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
         Graphics2D g2 = (Graphics2D) g.create();
@@ -42,6 +65,16 @@ public class AntiqueBorder extends AbstractBorder {
         g2.dispose();
     }
 
+    /**
+     * Рисует орнамент в углу рамки.
+     * <p>
+     * Создает декоративный элемент из дуг и линий, поворачивая его на заданный угол.
+     *
+     * @param g2 графический контекст
+     * @param cx координата x центра орнамента
+     * @param cy координата y центра орнамента
+     * @param rotateDeg угол поворота орнамента (в градусах)
+     */
     private void drawOrnateCorner(Graphics2D g2, int cx, int cy, int rotateDeg) {
 
         Graphics2D g = (Graphics2D) g2.create();
@@ -60,6 +93,15 @@ public class AntiqueBorder extends AbstractBorder {
         g.dispose();
     }
 
+    /**
+     * Возвращает отступы рамки.
+     * <p>
+     * Определяет внутренние отступы для содержимого компонента, чтобы оно не
+     * перекрывалось рамкой.
+     *
+     * @param c компонент, для которого запрашиваются отступы
+     * @return объект {@link Insets} с отступами (28 пикселей со всех сторон)
+     */
     @Override
     public Insets getBorderInsets(Component c) {
         return new Insets(28, 28, 28, 28);

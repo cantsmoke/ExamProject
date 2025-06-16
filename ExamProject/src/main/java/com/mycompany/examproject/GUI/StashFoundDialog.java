@@ -11,6 +11,18 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
+ * Диалоговое окно, информирующее игрока о найденном тайнике с предметами.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок обнаружил тайник, 
+ * содержащий предметы типа {@link Potion}. Отображает список найденных предметов.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     ArrayList&lt;Potion&gt; foundItems = ...;
+ *     StashFoundDialog dialog = new StashFoundDialog(parentFrame, true, foundItems);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

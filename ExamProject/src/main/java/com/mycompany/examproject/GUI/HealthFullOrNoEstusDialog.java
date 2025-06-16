@@ -7,6 +7,19 @@ package com.mycompany.examproject.GUI;
 import java.awt.Color;
 
 /**
+ * Диалоговое окно, уведомляющее игрока о невозможности использования восстанавливающего предмета.
+ * <p>
+ * Наследует {@link javax.swing.JDialog} и появляется, когда игрок пытается использовать зелье или другой
+ * восстанавливающий предмет, но его здоровье уже полностью восстановлено, либо отсутствуют такие предметы
+ * (эстус).
+ * Обычно содержит соответствующее информационное сообщение и кнопку для закрытия окна.
+ * </p>
+ *
+ * Пример использования:
+ * <pre>
+ *     HealthFullOrNoEstusDialog dialog = new HealthFullOrNoEstusDialog(parentFrame, true);
+ *     dialog.setVisible(true);
+ * </pre>
  *
  * @author Arseniy
  */

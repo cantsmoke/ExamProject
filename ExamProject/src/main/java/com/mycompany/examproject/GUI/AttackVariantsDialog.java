@@ -19,8 +19,9 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
      */
     
     private EntityActionType attackType;
+    private int totalBaseDamage;
     
-    public AttackVariantsDialog(java.awt.Frame parent, boolean modal) {
+    public AttackVariantsDialog(java.awt.Frame parent, boolean modal, int totalBaseDamage) {
         super(parent, modal);
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
@@ -30,7 +31,12 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
             lightAttackButton.setEnabled(false);
         }
         
+        this.totalBaseDamage = totalBaseDamage;
+        
         this.setResizable(false);
+        
+        lightAttackButton.setText("Light attack; damage: " + (int) (totalBaseDamage * 0.8));
+        heavyAttackButton.setText("Heavy attack; damage: " + (int) (totalBaseDamage * 1.2));
     }
     
     public EntityActionType getAttackType(){
@@ -51,6 +57,7 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
         lightAttackButton = new javax.swing.JButton();
         heavyAttackButton = new javax.swing.JButton();
         chooseAttackLabel = new javax.swing.JLabel();
+        noteLabel = new javax.swing.JLabel();
 
         jButton1.setText("jButton1");
 
@@ -80,34 +87,47 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
             }
         });
 
-        chooseAttackLabel.setFont(new java.awt.Font("Castellar", 0, 14)); // NOI18N
+        chooseAttackLabel.setFont(new java.awt.Font("Castellar", 0, 18)); // NOI18N
         chooseAttackLabel.setForeground(new java.awt.Color(204, 204, 204));
         chooseAttackLabel.setText("Choose attack type you want to use");
+
+        noteLabel.setFont(new java.awt.Font("Yu Mincho Light", 0, 12)); // NOI18N
+        noteLabel.setForeground(new java.awt.Color(204, 204, 204));
+        noteLabel.setText("Note that enemies can take more or less damage then shown here, since it depends on weapon you are using!");
 
         javax.swing.GroupLayout chooseAttackPanelLayout = new javax.swing.GroupLayout(chooseAttackPanel);
         chooseAttackPanel.setLayout(chooseAttackPanelLayout);
         chooseAttackPanelLayout.setHorizontalGroup(
             chooseAttackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chooseAttackPanelLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
-                .addGroup(chooseAttackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(chooseAttackPanelLayout.createSequentialGroup()
+                .addGroup(chooseAttackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chooseAttackPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lightAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(heavyAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(chooseAttackPanelLayout.createSequentialGroup()
-                        .addComponent(lightAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(heavyAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(chooseAttackLabel))
-                .addGap(36, 36, 36))
+                        .addContainerGap()
+                        .addComponent(noteLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chooseAttackPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(chooseAttackLabel)
+                .addGap(85, 85, 85))
         );
         chooseAttackPanelLayout.setVerticalGroup(
             chooseAttackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, chooseAttackPanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(26, 26, 26)
                 .addComponent(chooseAttackLabel)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addGroup(chooseAttackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lightAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(heavyAttackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(noteLabel)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -148,5 +168,6 @@ public class AttackVariantsDialog extends javax.swing.JDialog {
     private javax.swing.JButton heavyAttackButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton lightAttackButton;
+    private javax.swing.JLabel noteLabel;
     // End of variables declaration//GEN-END:variables
 }

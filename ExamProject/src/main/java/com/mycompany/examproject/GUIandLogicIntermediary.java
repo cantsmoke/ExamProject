@@ -68,9 +68,10 @@ public class GUIandLogicIntermediary {
     private GUIandLogicIntermediary(){}
     
     public static void saveCurrentGame() {
-        File fixedDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        File fixedDir = new File(System.getProperty("user.dir"));
         FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = new JFileChooser(fixedDir, fsv);
+        
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Файлы сохранения (*.dat)", "dat");
         fileChooser.setFileFilter(filter);
         applyDarkTheme(fileChooser);
@@ -102,7 +103,7 @@ public class GUIandLogicIntermediary {
     }
 
     public static void loadGame() {
-        File fixedDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        File fixedDir = new File(System.getProperty("user.dir"));
         FileSystemView fsv = new SingleRootFileSystemView(fixedDir);
         JFileChooser fileChooser = new JFileChooser(fixedDir, fsv);
 
@@ -131,11 +132,14 @@ public class GUIandLogicIntermediary {
                 stateAndNavigationForm.updateLabels();
                 stateAndNavigationForm.setVisible(true);
             }
+        } else {
+            MainMenuForm mainMenuForm = new MainMenuForm();
+            mainMenuForm.setVisible(true);
         }
     }
     
     public static void autoSave(Player player) {
-        File saveDir = new File("C:\\Users\\Arseniy\\Documents\\GitHub\\ExamProject\\ExamProject\\src\\main\\resources");
+        File saveDir = new File(System.getProperty("user.dir"));
         if (!saveDir.exists()) {
             saveDir.mkdirs();
         }

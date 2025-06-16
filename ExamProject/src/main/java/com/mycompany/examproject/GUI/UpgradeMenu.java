@@ -145,6 +145,7 @@ public class UpgradeMenu extends javax.swing.JFrame {
         counterAttackButton.setFont(new java.awt.Font("Castellar", 0, 12)); // NOI18N
         counterAttackButton.setForeground(new java.awt.Color(204, 204, 204));
         counterAttackButton.setText("jButton1");
+        counterAttackButton.setBorder(null);
         counterAttackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 counterAttackButtonActionPerformed(evt);

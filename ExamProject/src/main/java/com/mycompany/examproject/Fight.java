@@ -6,9 +6,13 @@ package com.mycompany.examproject;
 
 import com.mycompany.examproject.Enemies.enemyStructure.Boss;
 import com.mycompany.examproject.Enemies.enemyStructure.Enemy;
+import com.mycompany.examproject.Enemies.enemyStructure.Hound;
+import com.mycompany.examproject.Enemies.enemyStructure.Knight;
+import com.mycompany.examproject.Enemies.enemyStructure.Mimic;
 import com.mycompany.examproject.GUI.PotionAlreadyUsedDialog;
 import com.mycompany.examproject.Enemies.enemyStructure.SirenOfOblivion;
 import com.mycompany.examproject.Enemies.enemyStructure.Skeleton;
+import com.mycompany.examproject.Enemies.enemyStructure.TheUnhallowedArchon;
 import com.mycompany.examproject.GUI.*;
 import com.mycompany.examproject.Items.Armors.ArmorStorage;
 import com.mycompany.examproject.Items.Armors.HeavyArmor;
@@ -69,7 +73,7 @@ public class Fight {
     
     public static double calculateEquipmentDodgePenalty(double currentWeight) {
         double minWeight = 6.0;
-        double maxWeight = 80.0;
+        double maxWeight = 100.0;
         double maxPenalty = 0.3;
         if (currentWeight <= minWeight) {
             return 0.0;
@@ -82,7 +86,7 @@ public class Fight {
     }
     
     public void handlePlayerAttackAction() {
-        AttackVariantsDialog attackVariantDialog = new AttackVariantsDialog(battleForm, true);
+        AttackVariantsDialog attackVariantDialog = new AttackVariantsDialog(battleForm, true, player.getBaseDamage() + player.getSelectedWeapon().getDamage());
         attackVariantDialog.setVisible(true);
         
         EntityActionType playerAttackType = attackVariantDialog.getAttackType();
@@ -162,9 +166,20 @@ public class Fight {
                     battleForm.appendToLogArea(logPart);
                 }
             }
-        } else if (enemyActionForPlayersAttack == EntityActionType.LIGHT_ATTACK){
-            String logPart = "Both decided to use light attack and nobody took damage!";
-            battleForm.appendToLogArea(logPart);
+        } else if (enemyActionForPlayersAttack == EntityActionType.LIGHT_ATTACK) {
+            
+            if (isEnemyFasterInLightAttack(enemy, player)) {
+                String logPart1 = enemy.getName() + " was faster and interrupted your light attack!";
+                String logPart2 = "You took " + (int) (enemy.getDamage() * 0.8) + " damage!";
+                int damageTaken = (int) (enemy.getDamage() * 0.8);
+                player.takeDamage(damageTaken);
+                battleForm.appendToLogArea(logPart1);
+                battleForm.appendToLogArea(logPart2);
+            } else {
+                String logPart = "Both used light attacks simultaneously — no damage taken!";
+                battleForm.appendToLogArea(logPart);
+            }
+            
         } else if (enemyActionForPlayersAttack == EntityActionType.HEAVY_ATTACK){
             if (Math.random() < player.getCritP()){
                 String logPart1 = enemy.getName() + " used heavy attack, but your light attack was faster!";
@@ -187,6 +202,31 @@ public class Fight {
         checkWinLoseConditions();
     }
 
+    private boolean isEnemyFasterInLightAttack(Enemy enemy, Player player) {
+        double baseEnemyFirstChance = 0.5;
+
+        if (enemy instanceof Skeleton) {
+            baseEnemyFirstChance = 0.7;
+        } else if (enemy instanceof Hound) {
+            baseEnemyFirstChance = 0.6;
+        } else if (enemy instanceof Knight) {
+            baseEnemyFirstChance = 0.3;
+        } else if (enemy instanceof Boss) {
+            baseEnemyFirstChance = 0.65;
+        } else if (enemy instanceof Mimic) {
+            baseEnemyFirstChance = 0.2;
+        }
+
+        double equipmentWeight = player.getTotalEquipmentWeight();
+        double weightModifier = (equipmentWeight - 50.0) / 250.0;
+        double finalEnemyFirstChance = baseEnemyFirstChance + weightModifier;
+
+        finalEnemyFirstChance = Math.max(0.05, Math.min(0.95, finalEnemyFirstChance));
+        finalEnemyFirstChance = Math.round(finalEnemyFirstChance * 100.0) / 100.0;
+
+        return Math.random() < finalEnemyFirstChance;
+    }
+    
     private void handlePlayerHeavyAttack() {
         EntityActionType enemyActionForPlayersAttack = chooseEnemyActionForPlayersAttack();
         
@@ -380,7 +420,6 @@ public class Fight {
             battleForm.dispose();
             
             player.setStamina(player.getMaxStamina());
-            
             player.addCurrentSoulsAmount(enemy.getSouls());
             
             if(enemy instanceof Boss){
@@ -388,12 +427,17 @@ public class Fight {
             } else {
                 player.setRepairComponents(player.getRepairComponents() + 6);
             }
-            
+
             this.poisonDuration = 0;
             this.poison = null;
             
             if(enemy instanceof Boss){
                 GUIandLogicIntermediary.autoSave(player);
+            }
+            
+            if(enemy instanceof TheUnhallowedArchon){
+                YouBeatTheGameDialog youBeatTheGameDialog = new YouBeatTheGameDialog(null,true);
+                youBeatTheGameDialog.setVisible(true);
             }
             
             GUIandLogicIntermediary.showNavigationForm();

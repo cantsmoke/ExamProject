@@ -390,9 +390,9 @@ public class Player implements Serializable{
      * как активные.
      */
     public void setStartingEquipment(){
-        Sword swordTemplate = WeaponsStorage.swords.get(0);
+        Sword swordTemplate = WeaponsStorage.getSword(0);
         addItemToInventory(new Sword(swordTemplate.getName(), swordTemplate.getWeight(), swordTemplate.getDamage(), swordTemplate.getDurability()));      
-        TrooperArmor trooperArmorTemplate = ArmorStorage.trooperArmor.get(0);
+        TrooperArmor trooperArmorTemplate = ArmorStorage.getTrooperArmor(0);
         addItemToInventory(new TrooperArmor(trooperArmorTemplate.getName(), trooperArmorTemplate.getWeight(), trooperArmorTemplate.getDamageReduction(), trooperArmorTemplate.getDurability())); 
         this.selectedWeapon = (Weapon) inventory.get(0);
         this.selectedArmor = (Armor) inventory.get(1);

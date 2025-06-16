@@ -28,7 +28,7 @@ public abstract class Armor implements Equipment, Serializable{
     /**
      * Название брони.
      */
-    protected String name;
+    private String name;
     
     /**
      * Вес брони.

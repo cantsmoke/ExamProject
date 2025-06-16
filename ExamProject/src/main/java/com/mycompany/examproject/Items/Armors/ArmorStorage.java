@@ -36,7 +36,7 @@ public class ArmorStorage {
      * Коллекция предопределённых экземпляров {@link LightArmor}.
      * Подходит для классов, ориентированных на скорость и уклонение.
      */
-    public static final List<LightArmor> lightArmor = List.of(
+    private static final List<LightArmor> lightArmor = List.of(
         new LightArmor("Shadowthread Vest", 5, 0.10, 50),
         new LightArmor("Whispering Leather", 6, 0.12, 55),
         new LightArmor("Silent Wind Cloak", 5, 0.13, 60),
@@ -58,7 +58,7 @@ public class ArmorStorage {
      * Коллекция предопределённых экземпляров {@link TrooperArmor}.
      * Используется как универсальный тип для сбалансированной защиты.
      */
-    public static final List<TrooperArmor> trooperArmor = List.of(
+    private static final List<TrooperArmor> trooperArmor = List.of(
         new TrooperArmor("Ironbound Mail", 15, 0.30, 120),
         new TrooperArmor("Steelguard Plate", 17, 0.32, 125),
         new TrooperArmor("Gravewatcher Harness", 16, 0.34, 130),
@@ -80,7 +80,7 @@ public class ArmorStorage {
      * Коллекция предопределённых экземпляров {@link HeavyArmor}.
      * Максимально защищающая, но самая тяжёлая броня в игре.
      */
-    public static final List<HeavyArmor> heavyArmor = List.of(
+    private static final List<HeavyArmor> heavyArmor = List.of(
         new HeavyArmor("Titan's Warplate", 48, 0.4, 250),
         new HeavyArmor("Cataclysm Greatplate", 49, 0.42, 260),
         new HeavyArmor("Obsidian Juggernaut", 49, 0.45, 270),
@@ -97,4 +97,38 @@ public class ArmorStorage {
         new HeavyArmor("Dreadnought Bastion", 70, 0.6, 380),
         new HeavyArmor("Colossus of the Abyss", 75, 0.65, 400)
     );
+    
+    /**
+    * Возвращает экземпляр {@link LightArmor} по указанному индексу.
+    *
+    * @param index индекс брони в списке {@code lightArmor}
+    * @return экземпляр {@link LightArmor} по этому индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static LightArmor getLightArmor(int index) {
+       return lightArmor.get(index);
+   }
+
+   /**
+    * Возвращает экземпляр {@link TrooperArmor} по указанному индексу.
+    *
+    * @param index индекс брони в списке {@code trooperArmor}
+    * @return экземпляр {@link TrooperArmor} по этому индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static TrooperArmor getTrooperArmor(int index) {
+       return trooperArmor.get(index);
+   }
+
+   /**
+    * Возвращает экземпляр {@link HeavyArmor} по указанному индексу.
+    *
+    * @param index индекс брони в списке {@code heavyArmor}
+    * @return экземпляр {@link HeavyArmor} по этому индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static HeavyArmor getHeavyArmor(int index) {
+       return heavyArmor.get(index);
+   }
+    
 }

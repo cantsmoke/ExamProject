@@ -819,21 +819,21 @@ public class GUIandLogicIntermediary {
         int idxInZone = getRandomIndexForFloor(floor, random);
         switch (type) {
             case "LightArmor":
-                return new LightArmor(ArmorStorage.lightArmor.get(idxInZone));
+                return new LightArmor(ArmorStorage.getLightArmor(idxInZone));
             case "TrooperArmor":
-                return new TrooperArmor(ArmorStorage.trooperArmor.get(idxInZone));
+                return new TrooperArmor(ArmorStorage.getTrooperArmor(idxInZone));
             case "HeavyArmor":
-                return new HeavyArmor(ArmorStorage.heavyArmor.get(idxInZone));
+                return new HeavyArmor(ArmorStorage.getHeavyArmor(idxInZone));
             case "Sword":
-                return new Sword(WeaponsStorage.swords.get(idxInZone));
+                return new Sword(WeaponsStorage.getSword(idxInZone));
             case "Bow":
-                return new Bow(WeaponsStorage.bows.get(idxInZone));
+                return new Bow(WeaponsStorage.getBow(idxInZone));
             case "Spear":
-                return new Spear(WeaponsStorage.spears.get(idxInZone));
+                return new Spear(WeaponsStorage.getSpear(idxInZone));
             case "Hammer":
-                return new Hammer(WeaponsStorage.hammers.get(idxInZone));
+                return new Hammer(WeaponsStorage.getHammer(idxInZone));
             case "Axe":
-                return new Axe(WeaponsStorage.axes.get(idxInZone));
+                return new Axe(WeaponsStorage.getAxe(idxInZone));
             case "Bomb":
                 return new Bomb();
             case "PoisonPotion":

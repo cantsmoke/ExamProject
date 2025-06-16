@@ -36,7 +36,7 @@ public class WeaponsStorage {
     /**
      * Коллекция предопределённых экземпляров {@link Sword}.
      */
-    public static final List<Sword> swords = List.of(
+    private static final List<Sword> swords = List.of(
         new Sword("Forsaken Dagger of the Lost", 2, 10, 60),
         new Sword("Blade of Withering Ashes", 2, 15, 65),
         new Sword("Funeral Sword of the Ancient Monk", 2, 20, 70),
@@ -57,7 +57,7 @@ public class WeaponsStorage {
     /**
      * Коллекция предопределённых экземпляров {@link Bow}.
      */
-    public static final List<Bow> bows = List.of(
+    private static final List<Bow> bows = List.of(
         new Bow("Whispering Shortbow of the Hollow", 2, 15, 120),
         new Bow("Dark Falcon Bow", 3, 25, 100),
         new Bow("Moonlit Hunter's Bow", 3, 30, 130),
@@ -78,7 +78,7 @@ public class WeaponsStorage {
     /**
      * Коллекция предопределённых экземпляров {@link Hammer}.
      */
-    public static final List<Hammer> hammers = List.of(
+    private static final List<Hammer> hammers = List.of(
         new Hammer("Emaciated Butcher's Bone Hammer", 10, 60, 40),
         new Hammer("Cracked Stone Sledge of the Exile", 12, 65, 35),
         new Hammer("Gravedigger's Giant Maul", 15, 70, 30),
@@ -99,7 +99,7 @@ public class WeaponsStorage {
     /**
      * Коллекция предопределённых экземпляров {@link Spear}.
      */
-    public static final List<Spear> spears = List.of(
+    private static final List<Spear> spears = List.of(
         new Spear("Shaggy Spear of the Wolf Order", 7, 60, 50),
         new Spear("Coastal Spear of Lightning", 8, 65, 60),
         new Spear("Drowning Pilgrim's Spike", 9, 70, 70),
@@ -120,7 +120,7 @@ public class WeaponsStorage {
     /**
      * Коллекция предопределённых экземпляров {@link Axe}.
      */
-    public static final List<Axe> axes = List.of( 
+    private static final List<Axe> axes = List.of( 
         new Axe("Crescent Axe of the Exile", 10, 40, 70),
         new Axe("Twisted Hatchet of the Hollow", 8, 45, 60),
         new Axe("Bonecleaver of the Drowned Tribe", 9, 50, 65),
@@ -137,5 +137,60 @@ public class WeaponsStorage {
         new Axe("Titan Maulaxe of the Eternal Siege", 17, 115, 100),
         new Axe("Voidbite Axe of the Doomsworn", 18, 120, 100)
     );
+    
+    /**
+    * Возвращает экземпляр {@link Sword} по указанному индексу.
+    *
+    * @param index индекс меча в списке {@code swords}
+    * @return экземпляр {@link Sword} по данному индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static Sword getSword(int index) { 
+       return swords.get(index); 
+   }
+
+   /**
+    * Возвращает экземпляр {@link Bow} по указанному индексу.
+    *
+    * @param index индекс лука в списке {@code bows}
+    * @return экземпляр {@link Bow} по данному индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static Bow getBow(int index) { 
+       return bows.get(index); 
+   }
+
+   /**
+    * Возвращает экземпляр {@link Hammer} по указанному индексу.
+    *
+    * @param index индекс молота в списке {@code hammers}
+    * @return экземпляр {@link Hammer} по данному индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static Hammer getHammer(int index) { 
+       return hammers.get(index); 
+   }
+
+   /**
+    * Возвращает экземпляр {@link Spear} по указанному индексу.
+    *
+    * @param index индекс копья в списке {@code spears}
+    * @return экземпляр {@link Spear} по данному индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static Spear getSpear(int index) { 
+       return spears.get(index); 
+   }
+
+   /**
+    * Возвращает экземпляр {@link Axe} по указанному индексу.
+    *
+    * @param index индекс топора в списке {@code axes}
+    * @return экземпляр {@link Axe} по данному индексу
+    * @throws IndexOutOfBoundsException если индекс вне диапазона допустимых значений
+    */
+   public static Axe getAxe(int index) { 
+       return axes.get(index); 
+   }
 
 }

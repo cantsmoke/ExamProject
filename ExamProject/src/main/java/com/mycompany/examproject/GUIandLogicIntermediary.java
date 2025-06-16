@@ -220,7 +220,7 @@ public class GUIandLogicIntermediary {
      *
      * @param chooser диалог выбора файла
      */
-    private static void applyDarkTheme(JFileChooser chooser) {
+    static void applyDarkTheme(JFileChooser chooser) {
         UIDefaults defaults = UIManager.getLookAndFeelDefaults();
 
         Color bg = new Color(40, 40, 40);
@@ -477,7 +477,7 @@ public class GUIandLogicIntermediary {
      *
      * @return сгенерированный враг
      */
-    private static Enemy generateBasicEnemy(){
+    static Enemy generateBasicEnemy(){
         Enemy enemy = null;
         if (player.getCurrentRoom().getFloor() <= 3) {
             enemy = enemySection1Factory.createRandomEnemy(player.getCurrentRoom().getFloor());
@@ -745,7 +745,7 @@ public class GUIandLogicIntermediary {
      * @return созданное зелье
      * @throws IllegalArgumentException если указан неизвестный тип зелья
      */
-    private static Potion createPotionByType(String type) {
+    static Potion createPotionByType(String type) {
         switch (type) {
             case "Bomb":
                 return new Bomb();
@@ -815,7 +815,7 @@ public class GUIandLogicIntermediary {
      * @return созданный объект экипировки
      * @throws IllegalArgumentException если тип экипировки неизвестен
      */
-    private static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
+    static Equipment getEquipmentSampleByTypeAndFloor(String type, int floor, Random random) {
         int idxInZone = getRandomIndexForFloor(floor, random);
         switch (type) {
             case "LightArmor":
@@ -852,7 +852,7 @@ public class GUIandLogicIntermediary {
      * @param random генератор случайных чисел
      * @return случайный индекс для выбора экипировки
      */
-    private static int getRandomIndexForFloor(int floor, Random random) {
+    static int getRandomIndexForFloor(int floor, Random random) {
         if (floor <= 3) {
             return random.nextInt(5);
         } else if (floor <= 5) {

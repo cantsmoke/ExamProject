@@ -17,6 +17,11 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
+/**
+ * Тесты для класса Player.
+ *
+ * @author Arseniy
+ */
 public class PlayerTest {
 
     private Room room;

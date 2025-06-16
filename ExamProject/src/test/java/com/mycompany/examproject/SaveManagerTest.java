@@ -10,6 +10,11 @@ import org.junit.jupiter.api.Test;
 import java.io.*;
 import static org.mockito.Mockito.*;
 
+/**
+ * Тесты для класса SaveManager.
+ *
+ * @author Arseniy
+ */
 public class SaveManagerTest {
 
     private GameState gameState;

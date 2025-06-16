@@ -5,9 +5,13 @@
 package com.mycompany.examproject;
 
 import static org.junit.jupiter.api.Assertions.*;
-import com.mycompany.examproject.Fight;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Тесты для класса Fight.
+ *
+ * @author Arseniy
+ */
 public class FightTest {
 
     @Test
@@ -40,5 +44,5 @@ public class FightTest {
         double expectedPenalty = (53.0 - 6.0) * (0.3 / 94.0);
         assertEquals(expectedPenalty, penalty, 0.0001);
     }
-    
+
 }

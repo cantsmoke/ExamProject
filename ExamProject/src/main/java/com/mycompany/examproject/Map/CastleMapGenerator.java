@@ -376,7 +376,7 @@ public class CastleMapGenerator implements Serializable{
      * @param y координата y комнаты
      * @return строка в формате "описание|||URL"
      */
-    private String generateRoomDescription(int floor, int x, int y) {
+    String generateRoomDescription(int floor, int x, int y) {
         String[] descriptions = {
             "You enter a space forgotten by time — the stone vaults tremble under the pressure of silence. " +
             "The dust of centuries settles on the rusty armor that guards the void. " +

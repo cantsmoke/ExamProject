@@ -170,7 +170,7 @@ public class Fight {
      *
      * @return выбранное действие врага
      */
-    private EntityActionType chooseEnemyActionForPlayersAttack() {
+    EntityActionType chooseEnemyActionForPlayersAttack() {
         EntityActionType[] actions = {
             EntityActionType.DODGE,
             EntityActionType.BLOCK,

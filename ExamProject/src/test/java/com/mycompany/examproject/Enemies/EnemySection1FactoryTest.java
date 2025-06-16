@@ -14,6 +14,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Тесты для класса EnemySection1Factory.
+ *
+ * @author Arseniy
+ */
 public class EnemySection1FactoryTest {
 
     private EnemySection1Factory factory;

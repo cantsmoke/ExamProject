@@ -37,23 +37,7 @@ public class StateAndNavigationForm extends javax.swing.JFrame {
         initComponents();
         getContentPane().setBackground(Color.BLACK);
         setLocationRelativeTo(null);
-        
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());Player.getInstance().addItemToInventory(new Bomb());
-        Player.getInstance().addItemToInventory(new Bomb());
-        
-        
-        
-        
-        
-        
-        
+
         this.setResizable(false);
     }
 
